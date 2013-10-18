@@ -1,4 +1,10 @@
 Scheduler::Application.routes.draw do
+  get "welcome/index"
+
+  root :to => redirect('/welcome/index')
+
+  match 'welcome', :to => redirect('/welcome/index')
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
