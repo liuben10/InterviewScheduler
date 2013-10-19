@@ -1,12 +1,45 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <title>Shiffft</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
+
+<div class = "top-bar">
+	<div class = "attached">
+		<div class = "name">
+			<span>
+				<%= link_to "shiffft", welcome_index_path %>
+			</span>
+		</div>
+		<ul class = "right">
+			<li><%= link_to "home", welcome_index_path %></li>
+			<li><%= link_to "feedback", welcome_index_path%></li>
+		</ul>
+	</div>	
+</div>
+	
+	
 <%= yield %>
+
+
+
+<div class = "footer">
+	<footer class = "row">
+		<div class = "five columns">
+			<p><b>© shiffft 2013 | Bonghyun Kim</b></p>
+		</div>
+		<div class = "five columns">
+			<p>Questions? Concerns? Improvements? Contact us! </p>
+		</div>
+		<div class = "two columns">
+		</div>
+	</footer>
+</div>
+
 
 </body>
 </html>

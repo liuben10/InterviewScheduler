@@ -1,3 +1,244 @@
-// Place all the styles related to the welcome controller here.
+// Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+$index-main-color: #344152;
+$index-second-color: #687C97;
+
+.top-bar {
+	margin: 0;
+
+	border-bottom: solid 5px $index-main-color;
+	
+	.attached {
+		padding: 0 15px;
+		width: 1000px;
+		max-width: 100%;
+		z-index: 0 !important;
+		margin: 0 auto;
+		position: relative;
+		width: 980px;
+		
+		ul li a {
+			color: $index-main-color;
+			&:hover {background-color: $index-main-color; color: white;}
+		}
+		
+		.name {
+			float: left;
+			
+			a {
+				font-weight: bolder;
+				font-size: 26px;
+				font-family: Andale Mono;
+				letter-spacing: -6px;
+				color: $index-main-color;
+			
+				&:hover {background: none; }
+			 
+			}
+		}
+	}
+}
+
+.top-header {
+
+	text-align: center;
+	
+	border-bottom: solid 3px #e0eeee;
+
+	padding: 0 0 26px 0;
+	margin-bottom: 20px;
+	
+	background-image: linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
+	background-image: -o-linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
+	background-image: -moz-linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
+	background-image: -webkit-linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
+	background-image: -ms-linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.14, #E7F3F5),
+		color-stop(0.99, #DAE8F0)
+	);
+
+	.free-container {
+		
+		.free {
+			font-family: "Proxima Nova Bold",Arial,sans-serif;
+			font-size: 25px;
+			line-height: 25px;
+			color: #e0eeee;
+			padding: 15px 33px 16px 33px;
+			background-color: $index-main-color;
+			display: inline-block;
+			font-weight: 600;
+			margin-top: -4px;
+			-webkit-border-bottom-right-radius: 15px;
+			-webkit-border-bottom-left-radius: 15px;
+			-moz-border-radius-bottomright: 15px;
+			-moz-border-radius-bottomleft: 15px;
+			border-bottom-right-radius: 15px;
+			border-bottom-left-radius: 15px;
+		}
+	}
+	
+	.banner {
+		
+		h1 {
+			color: $index-main-color;
+			font-weight: 600;
+		}
+	
+		h4 {
+			color: $index-main-color;
+			font-weight: 200;
+			font-size: 18px;
+		}
+	}
+}
+
+.contact-header {
+	
+	border-bottom: solid 3px #e0eeee;
+
+	padding: 20px 0 20px 0;
+	margin-bottom: 20px;
+	
+	background-image: linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
+	background-image: -o-linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
+	background-image: -moz-linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
+	background-image: -webkit-linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
+	background-image: -ms-linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.14, #E7F3F5),
+		color-stop(0.99, #DAE8F0)
+	);
+	
+	.banner {
+		
+		h1 {
+			color: $index-main-color;
+			font-weight: 600;
+		}
+	
+		h4 {
+			color: $index-main-color;
+			font-weight: 200;
+			font-size: 18px;
+		}
+	}
+
+
+
+}
+
+.main-header {
+
+	border-bottom: solid 3px #e0eeee;
+	padding: 20px 0;
+	background-image: linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
+	background-image: -o-linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
+	background-image: -moz-linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
+	background-image: -webkit-linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
+	background-image: -ms-linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.14, #E7F3F5),
+		color-stop(0.99, #DAE8F0)
+	);
+	
+	.main-banner {
+		
+		h1 {
+			color: $index-main-color;
+			font-weight: 500;
+			font-size: 44px;
+		}
+	
+		h4 {
+			color: $index-main-color;
+			font-weight: 300;
+			font-size: 20px;
+		}
+	}
+	
+}
+
+.icon-row {
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 40px;
+	
+	i {
+		color: $index-second-color;
+		font-size: 60px;
+	}
+	
+	h2 {
+		color: $index-second-color;
+		font-weight: 300;
+		font-size: 17px;
+		margin: 0;
+	}
+	#icon-active {
+	
+		i {
+			color: $index-main-color;
+		}
+		h2 {
+			color: $index-main-color;
+			font-weight: 500;
+		}
+	}
+}
+
+.main-content {
+	min-height: 400px;
+	.side-nav {
+		a {
+			color: black;
+		}
+	}
+	
+	.button {
+		background-color: $index-main-color;
+	}
+	
+}
+
+.footer {
+	text-align: center;
+	background-color: #3F3F3F;
+	
+	p {
+		margin: 0;
+		color: white;
+		padding: 30px 0;
+		height: 100%;
+	}
+
+	.button{
+		background-color: white;
+		color: #3F3F3F;
+		margin-top: 29px;
+		margin-left: -150px;
+	}
+}
+.error-container {
+	text-align: center;
+#error{
+	font-size: 350px;
+	margin-top: 20px;
+	color: $index-main-color;
+}
+}
