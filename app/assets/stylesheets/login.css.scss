@@ -1,0 +1,45 @@
+// Place all the styles related to the login controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+div#header {
+  width: 1250px;
+  border-radius: 20px;
+  border-width: 0 15px;
+  border-color: #DBA901;
+}
+
+div#headlabel {
+  align: "left";
+  color: #DBA901;
+  background-color: #0404B4;
+  float: left;
+  font-family: Arial;
+  font-size: 15px;
+  border-radius: 20px;
+}
+
+div#login {
+  align: right;
+  font-size: 20px;
+  font-family: Arial;
+  padding-top: 15px;
+  vertical-align: text-center;
+  padding-left: 5px;
+  padding-right: 50px;
+  background-color: #0404B4;
+  color: #DBA901;
+  height: 80px;
+  border-radius: 20px;	
+}
+
+div#signupform {
+  margin: auto;
+  border-color: #00000;
+  border: 2px solid;
+  border-radius: 15px;
+  width: 25%;
+  height: 300px;
+
+}
