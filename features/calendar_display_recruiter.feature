@@ -9,22 +9,22 @@ Background: the recruiter's account already exists and there are scheduled appoi
 Given the following accounts exist:
   | username              | password          | type       |
   | fluffyBunnies         | pass1234          | recruiter  |
-  | radhesh               | lamepass101		    | recruiter  |
+  | radhesh               | lamepass101       | recruiter  |
   | nestorga              | fooPass3          | candidate  |
   | efriesen              | secure!p@ss       | candidate  |
-  | some_cand             | hello321		      | candidate  |
+  | some_cand             | hello321          | candidate  |
 
   And the following appointments exist:
 
-  | username        | type			    | meet_with  		| date       |
-  | fluffyBunnies   | recruiter		  | nestorga   		| 10/03/13   |
-  | fluffyBunnies   | recruiter     | efriesen   		| 12/25/12   |
-  | radhesh         | recruiter		  | some_cand  		| 03/02/14   |
-  | radhesh         | recruiter 		| nestorga		  | 07/27/08   |
-  | nestorga        | candidate		  | fluffyBunnies	| 10/03/13	 |
-  | nestorga        | recruiter     | radhesh	      | 07/27/08   |
-  | efriesen        | candidate		  | fluffyBunnies	| 12/25/12   |
-  | some_cand       |	candidate		  | radhesh			  | 03/02/14	 |
+  | username        | type          | meet_with     | date       |
+  | fluffyBunnies   | recruiter     | nestorga      | 10/03/13   |
+  | fluffyBunnies   | recruiter     | efriesen      | 12/25/12   |
+  | radhesh         | recruiter     | some_cand     | 03/02/14   |
+  | radhesh         | recruiter     | nestorga      | 07/27/08   |
+  | nestorga        | candidate     | fluffyBunnies | 10/03/13   |
+  | nestorga        | recruiter     | radhesh       | 07/27/08   |
+  | efriesen        | candidate     | fluffyBunnies | 12/25/12   |
+  | some_cand       | candidate     | radhesh       | 03/02/14   |
 
   And I am on the "fluffyBunnies" profile page
 
