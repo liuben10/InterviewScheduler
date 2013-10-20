@@ -15,7 +15,6 @@ Given the following accounts exist:
   | some_cand             | hello321          | candidate  |
 
   And the following appointments exist:
-
   | username        | type          | meet_with     | date       |
   | fluffyBunnies   | recruiter     | nestorga      | 10/03/13   |
   | fluffyBunnies   | recruiter     | efriesen      | 12/25/12   |
