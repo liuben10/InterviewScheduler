@@ -18,6 +18,8 @@ module NavigationHelpers
     when /^the (InterviewScheduler )?home\s?page$/ then '/'
     when /^a candidate profile page$/ then '/candidate'
     when /^a recruiter profile page$/ then '/recruiter'
+    when /^the "(.*)" profile page$/ then '/profiles' #XXX not implemented
+
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

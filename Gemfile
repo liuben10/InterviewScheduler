@@ -21,8 +21,20 @@ group :assets do
   gem 'zurb-foundation', '~> 4.0.0'
 end
 
+group :development, :test do
+  gem 'ruby-debug19'
+  gem 'database_cleaner'
+  gem 'capybara'
+  gem 'rspec-rails'
+end
+
+group :test do
+  gem 'cucumber-rails'
+  gem 'cucumber-rails-training-wheels'
+end
 
 gem 'jquery-rails'
+gem 'haml'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
