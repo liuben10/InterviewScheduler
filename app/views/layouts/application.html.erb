@@ -2,7 +2,7 @@
 <html>
 <head>
   <title>Interview Scheduler</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
@@ -16,25 +16,25 @@
   </ul>
   <section class="top-bar-section">
     <ul class="right">
-		<li class="has-form">
-        	<form>
-          		<div class="row collapse">
-	            	<div class="small-5 columns">
-                		<input type="text" value="Username">
-            		</div>
-            		<div class="small-5 columns">
-                		<input type="text" value="Password">
-            		</div>
-            		<div class="small-2 columns">
-              			<a href="#" class="button">Login</a>
-            		</div>
-          		</div>
-        	</form>
+    <li class="has-form">
+          <form>
+              <div class="row collapse">
+                <div class="small-5 columns">
+                    <input type="text" value="Username">
+                </div>
+                <div class="small-5 columns">
+                    <input type="text" value="Password">
+                </div>
+                <div class="small-2 columns">
+                    <a href="#" class="button">Login</a>
+                </div>
+              </div>
+          </form>
       </li>
     </ul>
   </section>
 </nav>
-	
+
 <%= yield %>
 
 
