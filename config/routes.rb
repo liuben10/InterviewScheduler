@@ -1,7 +1,7 @@
 Scheduler::Application.routes.draw do
   get "login/index"
   get "welcome/index" => "welcome#index"  
-
+  resources :candidates
   #root :to => redirect('/login/index')
 
   match 'login', :to => redirect('/login/index')

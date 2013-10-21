@@ -1,44 +1,41 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Shiffft</title>
+  <title>Interview Scheduler</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<div class = "top-bar">
-	<div class = "attached">
-		<div class = "name">
-			<span>
-				<%= link_to "shiffft", welcome_index_path %>
-			</span>
-		</div>
-		<ul class = "right">
-			<li><%= link_to "home", welcome_index_path %></li>
-			<li><%= link_to "feedback", welcome_index_path%></li>
-		</ul>
-	</div>	
-</div>
-	
+<nav class="top-bar">
+  <ul class="title-area">
+    <li class="name">
+      <h1><a href="#">Interview Scheduler</a></h1>
+    </li>
+  </ul>
+  <section class="top-bar-section">
+    <ul class="right">
+		<li class="has-form">
+        	<form>
+          		<div class="row collapse">
+	            	<div class="small-5 columns">
+                		<input type="text" value="Username">
+            		</div>
+            		<div class="small-5 columns">
+                		<input type="text" value="Password">
+            		</div>
+            		<div class="small-2 columns">
+              			<a href="#" class="button">Login</a>
+            		</div>
+          		</div>
+        	</form>
+      </li>
+    </ul>
+  </section>
+</nav>
 	
 <%= yield %>
-
-
-
-<div class = "footer">
-	<footer class = "row">
-		<div class = "five columns">
-			<p><b>© shiffft 2013 | Bonghyun Kim</b></p>
-		</div>
-		<div class = "five columns">
-			<p>Questions? Concerns? Improvements? Contact us! </p>
-		</div>
-		<div class = "two columns">
-		</div>
-	</footer>
-</div>
 
 
 </body>

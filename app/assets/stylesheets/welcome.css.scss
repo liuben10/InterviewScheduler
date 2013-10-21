@@ -5,44 +5,7 @@
 $index-main-color: #344152;
 $index-second-color: #687C97;
 
-.top-bar {
-	margin: 0;
-
-	border-bottom: solid 5px $index-main-color;
-	
-	.attached {
-		padding: 0 15px;
-		width: 1000px;
-		max-width: 100%;
-		z-index: 0 !important;
-		margin: 0 auto;
-		position: relative;
-		width: 980px;
-		
-		ul li a {
-			color: $index-main-color;
-			&:hover {background-color: $index-main-color; color: white;}
-		}
-		
-		.name {
-			float: left;
-			
-			a {
-				font-weight: bolder;
-				font-size: 26px;
-				font-family: Andale Mono;
-				letter-spacing: -6px;
-				color: $index-main-color;
-			
-				&:hover {background: none; }
-			 
-			}
-		}
-	}
-}
-
 .top-header {
-
 	text-align: center;
 	
 	border-bottom: solid 3px #e0eeee;
@@ -75,7 +38,7 @@ $index-second-color: #687C97;
 			background-color: $index-main-color;
 			display: inline-block;
 			font-weight: 600;
-			margin-top: -4px;
+			margin-top: 0px;
 			-webkit-border-bottom-right-radius: 15px;
 			-webkit-border-bottom-left-radius: 15px;
 			-moz-border-radius-bottomright: 15px;
@@ -216,29 +179,79 @@ $index-second-color: #687C97;
 	
 }
 
-.footer {
-	text-align: center;
-	background-color: #3F3F3F;
-	
-	p {
-		margin: 0;
-		color: white;
-		padding: 30px 0;
-		height: 100%;
-	}
+// Place all the styles related to the shift_events controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
 
-	.button{
-		background-color: white;
-		color: #3F3F3F;
-		margin-top: 29px;
-		margin-left: -150px;
+.form-wrapper
+{
+	background: rgb(35,52,76);
+	background: -moz-linear-gradient(top,  rgba(35,52,76,1) 2%, rgba(52,65,82,1) 100%);
+	background: -webkit-gradient(linear, left top, left bottom, color-stop(2%,rgba(35,52,76,1)), color-stop(100%,rgba(52,65,82,1)));
+	background: -webkit-linear-gradient(top,  rgba(35,52,76,1) 2%,rgba(52,65,82,1) 100%);
+	background: -o-linear-gradient(top,  rgba(35,52,76,1) 2%,rgba(52,65,82,1) 100%);
+	background: -ms-linear-gradient(top,  rgba(35,52,76,1) 2%,rgba(52,65,82,1) 100%);
+	background: linear-gradient(to bottom,  rgba(35,52,76,1) 2%,rgba(52,65,82,1) 100%);
+	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#23344c', endColorstr='#344152',GradientType=0 );
+	
+	
+	padding: 60px 150px 30px 150px;
+	border-radius: 10px;
+	border: solid 5px #42526C;
+	margin-bottom: 50px;
+
+
+	label
+	{
+		color: white;
+		font-weight: 300;
+		font-size: 16px;
+		letter-spacing: 1px;
+	}
+	.actions
+	{
+		text-align: center;
+	}
+	.button
+	{
+		color:#344152;
+		border-radius: 5px;
+		margin-top: 10px;
+		&:hover{background-color: #FCFCFC;}
+	}
+	h4
+	{
+		text-align: center;
+		color: white;
+		font-size: 33px;
+		font-weight: 200;
+		margin-bottom: 17px;
+	}
+	
+	#error_explanation
+	{
+		background-color: #334e69;
+		border: solid 3px #2d445b;
+		text-align: center;
+		margin-top: 20px;
+		margin-bottom: 10px;
+		padding: 10px 0;
+		border-radius: 10px;
+		ul
+		{
+			list-style-type: none;
+			margin: 0;
+			li
+			{
+			font-weight: 600;
+			font-family: Helvetica,sans-serif;
+			font-size: 16px;
+			color: white;
+			padding: 5px 0;
+			}
+		}
 	}
 }
-.error-container {
-	text-align: center;
-#error{
-	font-size: 350px;
-	margin-top: 20px;
-	color: $index-main-color;
-}
-}
+
+
+
