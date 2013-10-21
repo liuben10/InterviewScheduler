@@ -1,4 +1,5 @@
 Scheduler::Application.routes.draw do
+    root :to => 'welcome#index'
   get "login/index"
   get "welcome/index" => "welcome#index"  
   resources :candidates
@@ -25,7 +26,7 @@ Scheduler::Application.routes.draw do
   #     member do
   #       get 'short'
   #       post 'toggle'
-  #     end
+  #     endr
   #
   #     collection do
   #       get 'sold'
@@ -55,7 +56,6 @@ Scheduler::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root :to => 'welcome#index'
 
   # See how all your routes lay out with "rake routes"
 

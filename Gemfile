@@ -5,9 +5,6 @@ gem 'rails', '3.2.14'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'pg'
-
-
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -22,11 +19,16 @@ group :assets do
   gem 'foundation-icons-sass-rails'
 end
 
+group :production do
+  gem 'pg'
+end
+
 group :development, :test do
   gem 'ruby-debug19'
   gem 'database_cleaner'
   gem 'capybara'
   gem 'rspec-rails'
+  gem 'sqlite3'
 end
 
 group :test do
