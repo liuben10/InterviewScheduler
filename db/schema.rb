@@ -29,6 +29,14 @@ ActiveRecord::Schema.define(:version => 20131028013208) do
     t.datetime "updated_at", :null => false
   end
 
+  create_table "events", :force => true do |t|
+    t.string   "name"
+    t.datetime "start_at"
+    t.datetime "end_at"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
   create_table "recruiters", :force => true do |t|
     t.string   "name"
     t.string   "email"

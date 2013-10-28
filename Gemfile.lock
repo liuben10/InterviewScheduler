@@ -68,6 +68,7 @@ GEM
     database_cleaner (1.1.1)
     diff-lcs (1.2.4)
     erubis (2.7.0)
+    event-calendar (2.3.3)
     execjs (2.0.2)
     foundation-icons-sass-rails (3.0.0)
       railties (>= 3.1.1)
@@ -179,6 +180,7 @@ DEPENDENCIES
   cucumber-rails
   cucumber-rails-training-wheels
   database_cleaner
+  event-calendar
   foundation-icons-sass-rails
   haml
   jquery-rails

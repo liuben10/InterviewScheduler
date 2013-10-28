@@ -39,6 +39,7 @@ end
 
 gem 'jquery-rails'
 gem 'haml'
+gem 'event-calendar', :require => 'event_calendar'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
