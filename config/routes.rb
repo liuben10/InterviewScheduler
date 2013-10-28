@@ -1,9 +1,20 @@
 Scheduler::Application.routes.draw do
   root :to => 'welcome#index'
   get "welcome/index" => "welcome#index"
-
   resources :candidates
   resources :recruiters
+  #For Debug purposes, this will automatically go to these pages
+  get "recruiter/show" => "recruiters#show"
+  get "candidate/show" => "candidates#show"
+  post "recruiter/create" => "recruiters#create"
+  post "candidate/create" => "candidates#create"
+
+
+  match "candidates", :to => redirect('candidates/show')
+
+  match "recruiters", :to => redirect('recruiters/show')
+  #Just to go to the specific pages
+
 
 #temporary
   match 'login', :to => redirect('/welcome/index')
