@@ -3,6 +3,7 @@ Scheduler::Application.routes.draw do
   get "welcome/index" => "welcome#index"
   resources :candidates
   resources :recruiters
+  get "welcome/show" => "welcome#show"
   #For Debug purposes, this will automatically go to these pages
   get "recruiter/show" => "recruiters#show"
   get "candidate/show" => "candidates#show"
