@@ -1,0 +1,31 @@
+%header.top-header
+  .row.free-container
+    .twelve.columns
+      .free FREE
+  
+  .row.banner
+    .twelve.columns
+      %h1 PLAN, ORGANIZE & MANAGE INTERVIEWS
+      %h4 Easy way to effectively coordinate interviews for both the recruiter and the candidate
+
+.row
+.four.columns
+.four.columns
+  .form-wrapper
+    = form_tag candidates_path do
+      %h4 CREATE AN ACCOUNT
+      .field
+        = label :candidate, :username, 'Username'
+        = text_field :candidate, 'username'
+      .field
+        = label :candidate, :password, 'Password'
+        = password_field :candidate, 'password'
+      .field
+        = label :candidate, :name, 'Your Name'
+        = text_field :candidate, 'name'
+      .field
+        = label :candidate, :email, 'Email'
+        = text_field :candidate, 'email'
+      = submit_tag 'Create'
+
+.four.columns
