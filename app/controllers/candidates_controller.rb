@@ -4,17 +4,17 @@ class CandidatesController < ApplicationController
   def create
     Rails.logger.debug "Hello Candidate"
     Rails.logger.debug  params
-    email = params[:email]
-    name = params[:name]
+    name = params[:candidate][:name]
+    email = params[:candidate][:email]
     debugmsg = "Malformed input: "
-    flag = 0
+    flag = false
     if email.nil? or email.strip.empty?
       debugmsg += "Email is empty"
-      flag = 1
+      flag = true
     end
     if name.nil? or name.strip.empty?
       debugmsg += " Name is empty"
-      flag = 1
+      flag = true
     end
     if flag
       flash[:notice] = debugmsg

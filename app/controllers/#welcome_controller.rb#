@@ -8,7 +8,7 @@ class WelcomeController < ApplicationController
 
   def show
     Rails.logger.debug params
-
+    
 
   end
 end
