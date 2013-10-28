@@ -1,11 +1,12 @@
 Scheduler::Application.routes.draw do
-    root :to => 'welcome#index'
-  get "login/index"
-  get "welcome/index" => "welcome#index"  
-  resources :candidates
-  #root :to => redirect('/login/index')
+  root :to => 'welcome#index'
+  get "welcome/index" => "welcome#index"
 
-  match 'login', :to => redirect('/login/index')
+  resources :candidates
+  resources :recruiters
+
+#temporary
+  match 'login', :to => redirect('/welcome/index')
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
