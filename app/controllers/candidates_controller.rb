@@ -27,7 +27,7 @@ class CandidatesController < ApplicationController
 
 
   def show 
-    @candidate = Candidate.find_by_username params[:id]
+    @candidate = Candidate.find_by_id params[:id]
 #XXX DEBUG
 #@candidate = Candidate.new
 #@candidate.name = "Foo"
