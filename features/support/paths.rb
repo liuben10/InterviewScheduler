@@ -15,10 +15,10 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
-    when /^the (InterviewScheduler )?home\s?page$/ then '/'
+    when /^the (InterviewScheduler )?home\s?page$/ then '/welcome/index'
     when /^a candidate profile page$/ then '/candidate'
     when /^a recruiter profile page$/ then '/recruiter'
-    when /^the "(.*)" profile page$/ then '/profiles' #XXX not implemented
+    When /^the "(.*)" profile page" $/ then '/
 
 
     # Add more mappings here.

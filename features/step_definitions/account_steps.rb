@@ -13,6 +13,25 @@ Given /the following accounts exist/ do |account_table|
   end
 end
 
+Then /^(?:|I )should be on (.+)$/ do |page_name|
+  current_path = URI.parse(current_url).path
+  if current_path.respond_to? :should
+    current_path.should == path_to(page_name)
+  else
+    assert_equal path_to(page_name), current_path
+  end
+end
+
+#XXX added
+Then /^(?:|I )should not be on (.+)$/ do |page_name|
+  current_path = URI.parse(current_url).path
+  if current_path.respond_to? :should
+    current_path.should != path_to(page_name)
+  else
+    assert_not_equal path_to(page_name), current_path
+  end
+end
+
 When /I select acctype "(.*)"$/ do |acctype|
   select(acctype, :from=>"acctype")
 end

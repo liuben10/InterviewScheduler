@@ -23,7 +23,7 @@ class RecruitersController < ApplicationController
       Recruiter.create! params[:candidate]
       flash[:notice] = "New recruiter created with name: #{name} and email: #{email}"
     end
-    redirect_to welcome_index_path
+     redirect_to [recruiter_show_path, '?', {:userid=>params[:candidate][:name]}.to_query].join
   end
 
   def show

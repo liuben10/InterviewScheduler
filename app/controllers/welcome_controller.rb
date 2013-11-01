@@ -22,7 +22,7 @@ class WelcomeController < ApplicationController
     elsif not foundCandidate.nil?
       if foundCandidate.email != password
         flash[:notice] = "Password was incorrect, please try again"
-        redirect_to welcome_index_path.join
+        redirect_to welcome_index_path
       else
         #redirect_to candidate_show_path
         redirect_to [candidate_show_path, '?', {:userid=>params[:userid]}.to_query].join
