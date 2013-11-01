@@ -25,16 +25,10 @@ class CandidatesController < ApplicationController
     redirect_to welcome_index_path
   end
 
-
-<<<<<<< HEAD
   def show
     Rails.logger.debug params
     @candidate = Candidate.find_by_name(params[:userid])
 #    @candidate = Candidate.find_by_username params[:id]
-=======
-  def show 
-    @candidate = Candidate.find_by_id params[:id]
->>>>>>> e9a4ceb2b8373957395ccfd35df9768a4b7b57e6
 #XXX DEBUG
 # @candidate = Candidate.new
 
