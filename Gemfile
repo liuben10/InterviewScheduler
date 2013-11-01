@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '3.2.14'
-
+gem 'selenium-webdriver', '2.35.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
@@ -26,7 +26,7 @@ end
 
 group :development, :test do
   gem 'ruby-debug19'
-  gem 'database_cleaner'
+  gem 'database_cleaner', '< 1.1.0'
   gem 'capybara'
   gem 'rspec-rails'
   gem 'sqlite3'
