@@ -35,14 +35,14 @@
            </select>
         </div>
         <div class="actions">
-          <input type="submit" id="subutton" class="large button" value="Create">
+          <input type="submit" id="signupbutton" class="large button" value="Create">
         </div>
     <% end %>
 
   </div>
 </div>
 <script>
-$( "#subutton" ).click( function() {
+$( "#signupbutton" ).click( function() {
     selectVal = $("#acctype").val();
     if(selectVal == "recruiter") {
        $("#new_candidate").attr("method", "post");

@@ -15,24 +15,24 @@ Background: the user's account does not already exist
   And I am on the InterviewScheduler home page
 
 Scenario: non-existant username for potential active candidate
-  When I fill in "userid" with "tchang"
-  When I fill in "passid" with "barpass"
-  When I select acctype "Interviewee"
+  When I fill in "candidate_name" with "tchang"
+  When I fill in "candidate_email" with "barpass"
+  When I select acctype "Candidate"
   When I press "signupbutton"
   Then I should be on the "tchang" profile page
   And I should be on a candidate profile page
 
 Scenario: non-existant username for potential active recruiter
-  When I fill in "userid" with "pinkTutus"
-  When I fill in "passid" with "pink"
+  When I fill in "candidate_name" with "pinkTutus"
+  When I fill in "candidate_email" with "pink"
   When I select acctype "Recruiter"
   When I press "signupbutton"
   Then I should be on the "pinkTutus" profile page
   And I should be on a recruiter profile page
 
 Scenario: username already exists for potential active recruiter
-  When I fill in "userid" with "fluffyBunnies"
-  When I fill in "passid" with "barpass"
+  When I fill in "candidate_name" with "fluffyBunnies"
+  When I fill in "candidate_email" with "barpass"
   When I select acctype "Recruiter"
   When I press "signupbutton"
   Then I should be on the InterviewScheduler home page
@@ -40,9 +40,9 @@ Scenario: username already exists for potential active recruiter
   And I should not be on the "fluffyBunnies" profile page
 
 Scenario: username already exists for potential active candidate
-  When I fill in "userid" with "nestorga"
-  When I fill in "passid" with "barpass"
-  When I select acctype "Interviewee"
+  When I fill in "candidate_name" with "nestorga"
+  When I fill in "candidate_email" with "barpass"
+  When I select acctype "Candidate"
   When I press "signupbutton"
   Then I should be on the InterviewScheduler home page
   And I should not be on a candidate profile page

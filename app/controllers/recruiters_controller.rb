@@ -28,9 +28,9 @@ class RecruitersController < ApplicationController
 
   def show
 #XXX uncomment me
- #@recruiter = Recruiter.find_by_id params[:id]
-    @recruiter = Recruiter.new
-    @recruiter.name = "Foo"
-    @recruiter.email = "Bar"
+  @recruiter = Recruiter.find_by_name(params[:userid])
+#    @recruiter = Recruiter.new
+#    @recruiter.name = "Foo"
+#    @recruiter.email = "Bar"
   end
 end
