@@ -20,12 +20,12 @@ class CandidatesController < ApplicationController
       Candidate.create! params[:candidate]
       flash[:notice] = "New Candidate created with name: #{name} and email: #{email}"
     end
-     redirect_to [candidate_show_path, '?', {:userid=>params[:candidate][:name]}.to_query].join
+     redirect_to candidate_path(params[:candidate][:name])
   end
 
   def show
     Rails.logger.debug params
-    @candidate = Candidate.find_by_name(params[:userid])
+    @candidate = Candidate.find_by_name(params[:id])
 #    @candidate = Candidate.find_by_username params[:id]
 #XXX DEBUG
 # @candidate = Candidate.new

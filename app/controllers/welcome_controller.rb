@@ -17,7 +17,7 @@ class WelcomeController < ApplicationController
         redirect_to welcome_index_path
       else
         #redirect_to recruiter_show_path
-        redirect_to [recruiter_show_path, '?', {:userid=>params[:userid]}.to_query].join
+        redirect_to recruiter_path(params[:userid])
       end
     elsif not foundCandidate.nil?
       if foundCandidate.email != password
@@ -25,7 +25,7 @@ class WelcomeController < ApplicationController
         redirect_to welcome_index_path
       else
         #redirect_to candidate_show_path
-        redirect_to [candidate_show_path, '?', {:userid=>params[:userid]}.to_query].join
+        redirect_to candidate_path(params[:userid])
       end
     else
       flash[:notice] = "User #{username} was not found"
