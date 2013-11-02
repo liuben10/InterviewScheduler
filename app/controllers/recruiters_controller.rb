@@ -3,8 +3,6 @@ class RecruitersController < ApplicationController
   end
 
   def create
-    Rails.logger.debug "Hello Recruiter"
-    Rails.logger.debug params
     name = params[:candidate][:name]
     email = params[:candidate][:email]
     debugmsg = "Malformed input: "
