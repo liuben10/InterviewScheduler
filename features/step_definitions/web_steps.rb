@@ -104,62 +104,56 @@ When /^(?:|I )attach the file "([^"]*)" to "([^"]*)"$/ do |path, field|
   attach_file(field, File.expand_path(path))
 end
 
-Then /^(?:|I )should see "([^"]*)"$/ do |text|
+Then /^(?:|I )should( not)? see "([^"]*)"$/ do |not_see, text|
   if page.respond_to? :should
-    page.should have_content(text)
-  else
-    assert page.has_content?(text)
-  end
-end
-
-Then /^(?:|I )should see \/([^\/]*)\/$/ do |regexp|
-  regexp = Regexp.new(regexp)
-
-  if page.respond_to? :should
-    page.should have_xpath('//*', :text => regexp)
-  else
-    assert page.has_xpath?('//*', :text => regexp)
-  end
-end
-
-Then /^(?:|I )should not see "([^"]*)"$/ do |text|
-  if page.respond_to? :should
-    page.should have_no_content(text)
-  else
-    assert page.has_no_content?(text)
-  end
-end
-
-Then /^(?:|I )should not see \/([^\/]*)\/$/ do |regexp|
-  regexp = Regexp.new(regexp)
-
-  if page.respond_to? :should
-    page.should have_no_xpath('//*', :text => regexp)
-  else
-    assert page.has_no_xpath?('//*', :text => regexp)
-  end
-end
-
-Then /^the "([^"]*)" field(?: within (.*))? should contain "([^"]*)"$/ do |field, parent, value|
-  with_scope(parent) do
-    field = find_field(field)
-    field_value = (field.tag_name == 'textarea') ? field.text : field.value
-    if field_value.respond_to? :should
-      field_value.should =~ /#{value}/
+    if not_see
+      page.should have_no_content(text)
     else
-      assert_match(/#{value}/, field_value)
+      page.should have_content(text)
+    end
+  else
+    if not_see
+      assert page.has_no_content?(text)
+    else
+      assert page.has_content?(text)
     end
   end
 end
 
-Then /^the "([^"]*)" field(?: within (.*))? should not contain "([^"]*)"$/ do |field, parent, value|
+Then /^(?:|I )should( not)? see \/([^\/]*)\/$/ do |not_see, regexp|
+  regexp = Regexp.new(regexp)
+
+  if page.respond_to? :should
+    if not_see
+      page.should have_no_xpath('//*', :text => regexp)
+    else
+      page.should have_xpath('//*', :text => regexp)
+    end
+  else
+    if not_see
+      assert page.has_no_xpath?('//*', :text => regexp)
+    else
+      assert page.has_xpath?('//*', :text => regexp)
+    end
+  end
+end
+
+Then /^the "([^"]*)" field(?: within (.*))? should( not)? contain "([^"]*)"$/ do |field, parent, not_contain, value|
   with_scope(parent) do
     field = find_field(field)
     field_value = (field.tag_name == 'textarea') ? field.text : field.value
-    if field_value.respond_to? :should_not
-      field_value.should_not =~ /#{value}/
+    if field_value.respond_to? :should
+      if not_contain
+        field_value.should_not =~ /#{value}/
+      else
+        field_value.should =~ /#{value}/
+      end
     else
-      assert_no_match(/#{value}/, field_value)
+      if not_contain
+        assert_no_match(/#{value}/, field_value)
+      else
+        assert_match(/#{value}/, field_value)
+      end
     end
   end
 end
@@ -207,24 +201,21 @@ Then /^the "([^"]*)" field should have no error$/ do |field|
   end
 end
 
-Then /^the "([^"]*)" checkbox(?: within (.*))? should be checked$/ do |label, parent|
+Then /^the "([^"]*)" checkbox(?: within (.*))? should( not)? be checked$/ do |label, parent, not_checked|
   with_scope(parent) do
     field_checked = find_field(label)['checked']
     if field_checked.respond_to? :should
-      field_checked.should be_true
+      if not_checked
+        field_checked.should be_false
+      else
+        field_checked.should be_true
+      end
     else
-      assert field_checked
-    end
-  end
-end
-
-Then /^the "([^"]*)" checkbox(?: within (.*))? should not be checked$/ do |label, parent|
-  with_scope(parent) do
-    field_checked = find_field(label)['checked']
-    if field_checked.respond_to? :should
-      field_checked.should be_false
-    else
-      assert !field_checked
+      if not_checked
+        assert !field_checked
+      else
+        assert field_checked
+      end
     end
   end
 end
