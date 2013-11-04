@@ -19,8 +19,7 @@ Scenario: valid username and password for recruiter
   When I fill in "userid" with "fluffyBunnies"
   When I fill in "passid" with "pass1234"
   When I press "submitpass"
-  Then I should be on the "fluffyBunnies" recruiter page
-  And I should be on a recruiter profile page
+  Then I should be on the "fluffyBunnies" recruiters page
   And I should not be on the InterviewScheduler home page
 
 @javascript
@@ -28,8 +27,7 @@ Scenario: valid username and password for candidate
   When I fill in "userid" with "nestorga"
   When I fill in "passid" with "fooPass3"
   When I press "submitpass"
-  Then I should be on the "nestorga" candidate page
-  And I should be on a candidate profile page
+  Then I should be on the "nestorga" candidates page
   And I should not be on the InterviewScheduler home page
 
 @javascript
@@ -38,16 +36,16 @@ Scenario: valid username and invalid password for recruiter
   When I fill in "passid" with "secure!p@ss"
   When I press "submitpass"
   Then I should be on the InterviewScheduler home page
-  And I should not be on the "fluffyBunnies" recruiter page
-  And I should not be on a recruiter profile page
+  And I should not be on the "fluffyBunnies" recruiters page
+
 @javascript
 Scenario: valid username and invalid password for candidate
   When I fill in "userid" with "efriesen"
   When I fill in "passid" with "pass1234"
   When I press "submitpass"
   Then I should be on the InterviewScheduler home page
-  And I should not be on the "efriesen" candidate page
-  And I should not be on a candidate profile page
+  And I should not be on the "efriesen" candidates page
+ 
 
 @javascript
 Scenario: invalid username and valid password for candidate
@@ -55,8 +53,8 @@ Scenario: invalid username and valid password for candidate
   When I fill in "passid" with "secure!p@ss"
   When I press "submitpass"
   Then I should be on the InterviewScheduler home page
-  And I should not be on the "efriesen" candidate page
-  And I should not be on a candidate profile page
+  And I should not be on the "efriesen" candidates page
+
 
 @javascript
 Scenario: invalid username and valid password for recruiter
@@ -64,6 +62,5 @@ Scenario: invalid username and valid password for recruiter
   When I fill in "passid" with "pass1234"
   When I press "submitpass"
   Then I should be on the InterviewScheduler home page
-  And I should not be on the "fluffyBunnies" recruiter page
-  And I should not be on a recruiter profile page
-
+  And I should not be on the "fluffyBunnies" recruiters page
+ 

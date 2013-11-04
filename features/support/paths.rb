@@ -16,9 +16,9 @@ module NavigationHelpers
     case page_name
 
     when /^the (InterviewScheduler )?home\s?page$/ then '/welcome/index'
-    when /^a candidate profile page$/ then '/candidate/show'
-    when /^a recruiter profile page$/ then '/recruiter/show'
-    when /^the "(.*)" (candidate|recruiter) page$/ then "/#{$2}/show"
+    when /^a candidate profile page$/ then '/candidates'
+    when /^a recruiter profile page$/ then '/recruiters'
+    when /^the "(.*)" (candidates|recruiters) page$/ then "/#{$2}/#{$1}"
 
 
     # Add more mappings here.
