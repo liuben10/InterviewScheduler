@@ -5,10 +5,30 @@
 $index-main-color: #344152;
 $index-second-color: #687C97;
 
-.top-header {
-	text-align: center;
+.top-bar {
 	
-	border-bottom: solid 3px #e0eeee;
+	border-bottom: solid 5px $index-main-color;
+
+	.name {
+		h1 a{
+			color: $index-main-color;
+			font-size: 20px;
+			font-weight: 300;
+		}
+	}
+	
+	.has-form {
+		height: 65px;
+		form {
+			padding: 10px 20px 0 0;
+		}
+	}
+}
+
+.top-header {
+
+	text-align: center;	
+	border-bottom: solid 3px "black";
 
 	padding: 0 0 26px 0;
 	margin-bottom: 20px;
@@ -63,127 +83,8 @@ $index-second-color: #687C97;
 	}
 }
 
-.contact-header {
-	
-	border-bottom: solid 3px #e0eeee;
 
-	padding: 20px 0 20px 0;
-	margin-bottom: 20px;
-	
-	background-image: linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
-	background-image: -o-linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
-	background-image: -moz-linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
-	background-image: -webkit-linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
-	background-image: -ms-linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
-
-	background-image: -webkit-gradient(
-		linear,
-		left bottom,
-		left top,
-		color-stop(0.14, #E7F3F5),
-		color-stop(0.99, #DAE8F0)
-	);
-	
-	.banner {
-		
-		h1 {
-			color: $index-main-color;
-			font-weight: 600;
-		}
-	
-		h4 {
-			color: $index-main-color;
-			font-weight: 200;
-			font-size: 18px;
-		}
-	}
-
-
-
-}
-
-.main-header {
-
-	border-bottom: solid 3px #e0eeee;
-	padding: 20px 0;
-	background-image: linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
-	background-image: -o-linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
-	background-image: -moz-linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
-	background-image: -webkit-linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
-	background-image: -ms-linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
-
-	background-image: -webkit-gradient(
-		linear,
-		left bottom,
-		left top,
-		color-stop(0.14, #E7F3F5),
-		color-stop(0.99, #DAE8F0)
-	);
-	
-	.main-banner {
-		
-		h1 {
-			color: $index-main-color;
-			font-weight: 500;
-			font-size: 44px;
-		}
-	
-		h4 {
-			color: $index-main-color;
-			font-weight: 300;
-			font-size: 20px;
-		}
-	}
-	
-}
-
-.icon-row {
-	text-align: center;
-	margin-top: 30px;
-	margin-bottom: 40px;
-	
-	i {
-		color: $index-second-color;
-		font-size: 60px;
-	}
-	
-	h2 {
-		color: $index-second-color;
-		font-weight: 300;
-		font-size: 17px;
-		margin: 0;
-	}
-	#icon-active {
-	
-		i {
-			color: $index-main-color;
-		}
-		h2 {
-			color: $index-main-color;
-			font-weight: 500;
-		}
-	}
-}
-
-.main-content {
-	min-height: 400px;
-	.side-nav {
-		a {
-			color: black;
-		}
-	}
-	
-	.button {
-		background-color: $index-main-color;
-	}
-	
-}
-
-// Place all the styles related to the shift_events controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
-
-.form-wrapper
+#main-form .form-wrapper
 {
 	background: rgb(35,52,76);
 	background: -moz-linear-gradient(top,  rgba(35,52,76,1) 2%, rgba(52,65,82,1) 100%);
@@ -195,7 +96,7 @@ $index-second-color: #687C97;
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#23344c', endColorstr='#344152',GradientType=0 );
 	
 	
-	padding: 60px 150px 30px 150px;
+	padding: 60px 120px 30px 120px;
 	border-radius: 10px;
 	border: solid 5px #42526C;
 	margin-bottom: 50px;
@@ -253,5 +154,132 @@ $index-second-color: #687C97;
 	}
 }
 
+
+.icon-row {
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom: 40px;
+	
+	i {
+		color: $index-second-color;
+		font-size: 60px;
+	}
+	
+	h2 {
+		color: $index-second-color;
+		font-weight: 300;
+		font-size: 17px;
+		margin: 0;
+	}
+	#icon-active {
+	
+		i {
+			color: $index-main-color;
+		}
+		h2 {
+			color: $index-main-color;
+			font-weight: 500;
+		}
+	}
+}
+
+.main-content {
+	min-height: 400px;
+	.side-nav {
+		a {
+			color: black;
+		}
+	}
+	
+	.button {
+		background-color: $index-main-color;
+	}
+	
+}
+
+.large-2 {	
+	min-height: 1px;
+}
+
+// Place all the styles related to the shift_events controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.contact-header {
+	
+	border-bottom: solid 3px #e0eeee;
+
+	padding: 20px 0 20px 0;
+	margin-bottom: 20px;
+	
+	background-image: linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
+	background-image: -o-linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
+	background-image: -moz-linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
+	background-image: -webkit-linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
+	background-image: -ms-linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.14, #E7F3F5),
+		color-stop(0.99, #DAE8F0)
+	);
+	
+	.banner {
+		
+		h1 {
+			color: $index-main-color;
+			font-weight: 600;
+		}
+	
+		h4 {
+			color: $index-main-color;
+			font-weight: 200;
+			font-size: 18px;
+		}
+	}
+
+
+
+}
+
+
+
+
+.main-header {
+
+	border-bottom: solid 3px #e0eeee;
+	padding: 20px 0;
+	background-image: linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
+	background-image: -o-linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
+	background-image: -moz-linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
+	background-image: -webkit-linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
+	background-image: -ms-linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
+
+	background-image: -webkit-gradient(
+		linear,
+		left bottom,
+		left top,
+		color-stop(0.14, #E7F3F5),
+		color-stop(0.99, #DAE8F0)
+	);
+	
+	.main-banner {
+		
+		h1 {
+			color: $index-main-color;
+			font-weight: 500;
+			font-size: 44px;
+		}
+	
+		h4 {
+			color: $index-main-color;
+			font-weight: 300;
+			font-size: 20px;
+		}
+	}
+	
+}
 
 

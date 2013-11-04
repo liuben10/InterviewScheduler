@@ -2,8 +2,8 @@ class WelcomeController < ApplicationController
   def index
     @candidate = Candidate.new
     Rails.logger.debug "Hello?"
-    Rails.logger.debug @candidate.methods
-
+    Rails.logger.debug @candidate.attributes
+    
   end
 
   def show

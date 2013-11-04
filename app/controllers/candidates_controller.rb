@@ -1,6 +1,7 @@
 class CandidatesController < ApplicationController
   def index
   end
+  
   def create
     Rails.logger.debug "Hello Candidate"
     Rails.logger.debug  params

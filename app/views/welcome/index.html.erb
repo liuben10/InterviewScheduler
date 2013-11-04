@@ -1,46 +1,53 @@
 <header class = "top-header">
-  <div class = "row free-container">
-    <div class = "twelve columns" >
-      <div class = "free">FREE</div>
-    </div>
-  </div>
+	<div class = "row free-container">
+    	<div class = "twelve columns" >
+      		<div class = "free">FREE</div>
+    	</div>
+  	</div>
 
-  <div class = "row banner">
-    <div class = "twelve columns">
-      <h1> PLAN, ORGANIZE & MANAGE INTERVIEWS </h1>
-      <h4> Easy way to <b>effectively</b> coordinate interviews for both the recruiter and the candidate.</h4>
-    </div>
-  </div>
+  	<div class = "row banner">
+    	<div class = "twelve columns">
+      		<h1> PLAN, ORGANIZE & MANAGE INTERVIEWS </h1>
+      		<h4> Easy way to <b>effectively</b> coordinate interviews for both the recruiter and the candidate.</h4>
+    	</div>
+  	</div>
 </header>
-<div class = "row">
-<div class = "four columns"></div>
-<div class = "four columns">
-  <div class = "form-wrapper">
 
-    <%= form_for(@candidate) do |f| %>
-        <h4>CREATE AN ACCOUNT</h4>
-        <div class="field">
-          <%= f.label "Your name" %>
-          <%= f.text_field :name %>
-        </div>
-        <div class="field">
-          <%= f.label "Email" %>
-          <%= f.text_field :email %>
-        </div>
-        <div class="field">
-           <select id="acctype">
-             <option value="Please select an option" Selected>Please Select an Option</option>
-             <option value="recruiter">Recruiter</option>
-             <option value="candidate">Candidate</option>
-           </select>
-        </div>
-        <div class="actions">
-          <input type="submit" id="subutton" class="large button" value="Create">
-        </div>
-    <% end %>
+<div class = "row" id = "main-form">
+	<div class = "large-2 columns"></div>
+	<div class = "large-8 columns">
+  		<div class = "form-wrapper" >
 
-  </div>
+			<h4> CREATE AN ACCOUNT </h4>
+			<label>Recruiter or Candidate</label>
+			<form class = "custom">
+				<select id="acctype" class = "large">
+					<option value="candidate">Candidate</option>
+             		<option value="recruiter">Recruiter</option>
+           		</select>
+			</form>
+			
+    		<%= form_for(@candidate) do |f| %>
+        		<div class="field">
+          			<%= f.label "Your name" %>
+          			<%= f.text_field :name %>
+        		</div>
+        		<div class="field">
+          			<%= f.label "Email" %>
+          			<%= f.text_field :email %>
+        		</div>        		
+
+
+        		<div class="actions">
+          			<input type="submit" id="subutton" class="large button" value="Create">
+        		</div>
+    		<% end %>
+
+  		</div>
+	</div>
+	<div class = "large-2 columns"></div>
 </div>
+
 <script>
 $( "#subutton" ).click( function() {
     selectVal = $("#acctype").val();
@@ -59,5 +66,3 @@ $( "#subutton" ).click( function() {
 )
 </script>
 
-<div class = "four columns"></div>
-</div>
