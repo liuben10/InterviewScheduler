@@ -46,10 +46,39 @@
   		</div>
 	</div>
 	<div class = "large-2 columns"></div>
+=======
+<div class = "row">
+<div class = "four columns"></div>
+<div class = "four columns">
+  <div class = "form-wrapper">
+
+    <%= form_for(@candidate) do |f| %>
+        <h4>CREATE AN ACCOUNT</h4>
+        <div class="field">
+          <%= f.label "Your name" %>
+          <%= f.text_field :name %>
+        </div>
+        <div class="field">
+          <%= f.label "Email" %>
+          <%= f.text_field :email %>
+        </div>
+        <div class="field">
+           <select id="acctype">
+             <option value="Please select an option" Selected>Please Select an Option</option>
+             <option value="recruiter">Recruiter</option>
+             <option value="candidate">Candidate</option>
+           </select>
+        </div>
+        <div class="actions">
+          <input type="submit" id="signupbutton" class="large button" value="Create">
+        </div>
+    <% end %>
+
+  </div>
 </div>
 
 <script>
-$( "#subutton" ).click( function() {
+$( "#signupbutton" ).click( function() {
     selectVal = $("#acctype").val();
     if(selectVal == "recruiter") {
        $("#new_candidate").attr("method", "post");

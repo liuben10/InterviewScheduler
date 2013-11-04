@@ -3,34 +3,25 @@ class RecruitersController < ApplicationController
   end
 
   def create
-    Rails.logger.debug "Hello Recruiter"
-    Rails.logger.debug params
     name = params[:candidate][:name]
     email = params[:candidate][:email]
-    debugmsg = "Malformed input: "
-    flag = false
-    if email.nil? or email.strip.empty?
-      debugmsg += "Email is empty"
-      flag = true
-    end
-    if name.nil? or name.strip.empty?
-      debugmsg += " Name is empty"
-      flag = true
-    end
-    if flag
+    debugmsg = "Malformed input, email or name was empty"
+    if email.nil? or email.strip.empty? or name.nil? or name.strip.empty?
       flash[:notice] = debugmsg
+      redirect_to welcome_index_path
     else
       Recruiter.create! params[:candidate]
       flash[:notice] = "New recruiter created with name: #{name} and email: #{email}"
+      redirect_to recruiter_path(params[:candidate][:name])
     end
-    redirect_to welcome_index_path
+
   end
 
   def show
 #XXX uncomment me
- #@recruiter = Recruiter.find_by_id params[:id]
-    @recruiter = Recruiter.new
-    @recruiter.name = "Foo"
-    @recruiter.email = "Bar"
+  @recruiter = Recruiter.find_by_name(params[:id])
+#    @recruiter = Recruiter.new
+#    @recruiter.name = "Foo"
+#    @recruiter.email = "Bar"
   end
 end
