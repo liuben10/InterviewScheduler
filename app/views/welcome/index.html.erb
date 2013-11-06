@@ -83,7 +83,6 @@ $( "#signupbutton" ).click( function() {
        $("#new_candidate").attr("method", "post");
        $("#new_candidate").attr("action", "/candidate/create");
     } else {
-       alert("Please Select either Recruiter or Candidate");
        $("#new_candidate").attr("method", "get");
        $("#new_candidate").attr("action", "/welcome/index");
     }

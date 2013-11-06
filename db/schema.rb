@@ -23,8 +23,11 @@ ActiveRecord::Schema.define(:version => 20131028054354) do
   end
 
   create_table "candidates", :force => true do |t|
+    t.string   "username"
+    t.string   "password"
     t.string   "name"
     t.string   "email"
+    t.string   "phone"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

@@ -14,22 +14,24 @@ Background: the user's account does not already exist
 
   And I am on the InterviewScheduler home page
 
+
+
 @javascript
 Scenario: non-existant username for potential active candidate
   When I fill in "candidate_name" with "tchang"
   When I fill in "candidate_email" with "barpass"
   When I select acctype "Candidate"
   When I press "signupbutton"
-  Then I should be on the "tchang" candidate page
-  And I should be on a candidate profile page
+  Then I should be on the "tchang" candidates page
+ 
 @javascript
 Scenario: non-existant username for potential active recruiter
   When I fill in "candidate_name" with "pinkTutus"
   When I fill in "candidate_email" with "pink"
   When I select acctype "Recruiter"
   When I press "signupbutton"
-  Then I should be on the "pinkTutus" recruiter page
-  And I should be on a recruiter profile page
+  Then I should be on the "pinkTutus" recruiters page
+
 @javascript
 Scenario: username already exists for potential active recruiter
   When I fill in "candidate_name" with "fluffyBunnies"
@@ -38,7 +40,7 @@ Scenario: username already exists for potential active recruiter
   When I press "signupbutton"
   Then I should be on the InterviewScheduler home page
   And I should not be on a recruiter profile page
-  And I should not be on the "fluffyBunnies" recruiter page
+  And I should not be on the "fluffyBunnies" recruiters page
 @javascript
 Scenario: username already exists for potential active candidate
   When I fill in "candidate_name" with "nestorga"
@@ -46,6 +48,12 @@ Scenario: username already exists for potential active candidate
   When I select acctype "Candidate"
   When I press "signupbutton"
   Then I should be on the InterviewScheduler home page
-  And I should not be on a candidate profile page
-  And I should not be on the "nestorga" candidate page
+   And I should not be on the "nestorga" candidates page
 
+
+@javascript
+Scenario: invalid username and valid password for candidate
+  When I fill in "candidate_name" with "fluffyBunnys"
+  When I fill in "candidate_email" with "pass1234"
+  When I press "signupbutton"
+  Then I should be on the InterviewScheduler home page

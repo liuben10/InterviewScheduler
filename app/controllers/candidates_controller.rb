@@ -9,6 +9,9 @@ class CandidatesController < ApplicationController
     if email.nil? or email.strip.empty? or name.nil? or name.strip.empty?
       flash[:notice] = debugmsg
       redirect_to welcome_index_path
+    elsif not Candidate.find_by_name(name).nil? and Recruiter.find_by_name(name).nil?
+      flash[:notice] = "Candidate with name: #{name} already exist in database"
+      redirect_to welcome_index_path
     else
       Candidate.create! params[:candidate]
       flash[:notice] = "New Candidate created with name: #{name} and email: #{email}"
