@@ -19,12 +19,11 @@
     	</li>
 	</ul>
     <ul class="right">
-<<<<<<< HEAD
     	<li class="has-form">
           	<form action="/welcome/show" method="get" id="inputform">
               	<div class="row collapse">
                 	<div class="small-5 columns">
-                   		<input type="text" name="userid" value="Username">
+                   		<input type="text" name="userid" value="Email">
                 	</div>
                 	<div class="small-5 columns">
                    		<input type="text" name="passid" value="Password">
@@ -35,31 +34,22 @@
               	</div>
           	</form>
       	</li>
-=======
-    <li class="has-form">
-          <form action="/welcome/show" id="loginfo" method="get" id="inputform">
-              <div class="row collapse">
-                <div class="small-5 columns">
-                    <input type="text" name="userid" value="Username">
-                </div>
-                <div class="small-5 columns">
-                    <input type="password" name="passid" value="Password">
-                </div>
-                <div class="small-2 columns">
-                    <input type="submit" id="submitpass" class="button" value="Login"></a>
-                </div>
-              </div>
-          </form>
-      </li>
->>>>>>> b4f251622e3a19fddf0b3335543b8c6c36657237
     </ul>
 </nav>
 
 <% if flash[:notice] %>
   <%= flash[:notice] %>
-   <% end %>
+<% end %>
+
 <%= yield %>
 
+<div class = "footer">
+	<footer class = "row">
+		<div class = "large-12 columns">
+			<p>© Bonghyun Kim | Ben Liu | Tien Chang | Radhesh Devendran | Nick Estorga | Erin Friesen </p>
+		</div>
+	</footer>
+</div>
 
 <script src="/js/foundation.min.js"></script>
 <script>

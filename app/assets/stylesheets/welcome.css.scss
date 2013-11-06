@@ -1,9 +1,14 @@
 // Place all the styles related to the home controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'foundation-icons';
 
 $index-main-color: #344152;
 $index-second-color: #687C97;
+
+.large-2, .large-1 {	
+	min-height: 1px;
+}
 
 .top-bar {
 	
@@ -96,11 +101,10 @@ $index-second-color: #687C97;
 	filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#23344c', endColorstr='#344152',GradientType=0 );
 	
 	
-	padding: 60px 120px 30px 120px;
+	padding: 60px 120px 20px 120px;
 	border-radius: 10px;
 	border: solid 5px #42526C;
 	margin-bottom: 50px;
-
 
 	label
 	{
@@ -154,7 +158,6 @@ $index-second-color: #687C97;
 	}
 }
 
-
 .icon-row {
 	text-align: center;
 	margin-top: 30px;
@@ -162,7 +165,7 @@ $index-second-color: #687C97;
 	
 	i {
 		color: $index-second-color;
-		font-size: 60px;
+		font-size: 80px;
 	}
 	
 	h2 {
@@ -183,6 +186,7 @@ $index-second-color: #687C97;
 	}
 }
 
+
 .main-content {
 	min-height: 400px;
 	.side-nav {
@@ -194,12 +198,28 @@ $index-second-color: #687C97;
 	.button {
 		background-color: $index-main-color;
 	}
-	
 }
 
-.large-2 {	
-	min-height: 1px;
+.footer {
+	text-align: center;
+	background-color: #3F3F3F;
+	
+	p {
+		margin: 0;
+		color: white;
+		padding: 30px 0;
+		height: 100%;
+	}
+
+	.button{
+		background-color: white;
+		color: #3F3F3F;
+		margin-top: 29px;
+		margin-left: -150px;
+	}
 }
+
+
 
 // Place all the styles related to the shift_events controller here.
 // They will automatically be included in application.css.
@@ -243,9 +263,6 @@ $index-second-color: #687C97;
 
 
 }
-
-
-
 
 .main-header {
 
