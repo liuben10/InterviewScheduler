@@ -1,6 +1,17 @@
 class WelcomeController < ApplicationController
   def index
     @candidate = Candidate.new
+    sess_id = request.session_options[:id]
+    if ((not session[:authenticated_users].nil?) and (not session[:authenticated_users][sess_id].nil?))
+      sessname = session[:authenticated_users][sess_id]
+      candidate = Candidate.find_by_name(sessname)
+      recruiter = Recruiter.find_by_name(sessname)
+      if (not candidate.nil? or candidate.strip.empty?)
+        redirect_to candidate_path(candidate.name)
+      elsif (not recruiter.nil? or recruiter.strip.empty?)
+        redirect_to recruiter_path(recruiter.name)
+      end
+    end
   end
 
   def show
@@ -15,7 +26,7 @@ class WelcomeController < ApplicationController
         redirect_to welcome_index_path
       else
         #redirect_to recruiter_show_path
-        redirect_to recruiter_path(params[:userid])
+        redirect_to recruiter_path(foundRecruiter.name)
       end
     elsif not foundCandidate.nil?
       if foundCandidate.password != password
@@ -23,7 +34,7 @@ class WelcomeController < ApplicationController
         redirect_to welcome_index_path
       else
         #redirect_to candidate_show_path
-        redirect_to candidate_path(params[:userid])
+        redirect_to candidate_path(foundCandidate.name)
       end
     else
       flash[:notice] = "User #{username} was not found"

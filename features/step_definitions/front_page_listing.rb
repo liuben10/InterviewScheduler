@@ -12,6 +12,8 @@ Then /^I should see the candidate "(.*)" with the (status | email) of "(.*)"$/ d
   elsif check == "email"
     a = Recruiter.getCandidate(cand).getEmail()
     assert_equal val, a
+  end
+end
 
 
 Given /^the following information of the recruiters$/ do |rec_table|
@@ -28,3 +30,5 @@ Then /^I should see the recruiter "(.*)" with the (status | email) of "(.*)"$/ d
   elsif check == "email"
     a = Candidate.getRecruiter(rec).getEmail()
     assert_equal val, a
+  end
+end
