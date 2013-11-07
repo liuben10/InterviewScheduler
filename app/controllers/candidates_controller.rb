@@ -17,9 +17,8 @@ class CandidatesController < ApplicationController
     else
       Candidate.create! params[:candidate]
       flash[:notice] = "New Candidate created with password: #{password} and email: #{email}"
-      redirect_to candidate_path(params[:candidate][:password])
+      redirect_to candidate_path(params[:candidate][:name])
     end
-
   end
 
 
@@ -29,7 +28,7 @@ class CandidatesController < ApplicationController
 
   def show
     Rails.logger.debug params
-    @candidate = Candidate.find_by_password(params[:id])
+    @candidate = Candidate.find_by_name(params[:id])
 #    @candidate = Candidate.find_by_userpassword params[:id]
 #XXX DEBUG
 # @candidate = Candidate.new

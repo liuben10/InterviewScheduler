@@ -20,7 +20,7 @@ class RecruitersController < ApplicationController
    #    newrecruiterhash[:company] = params[:company]
       Recruiter.create! params[:candidate]
       flash[:notice] = "New recruiter created with password: #{password} and email: #{email}"
-      redirect_to recruiter_path(params[:candidate][:password])
+      redirect_to recruiter_path(params[:candidate][:name])
     end
   end
 
@@ -31,7 +31,7 @@ class RecruitersController < ApplicationController
 
   def show
 #XXX uncomment me
-  @recruiter = Recruiter.find_by_password(params[:id])
+  @recruiter = Recruiter.find_by_name(params[:id])
 #    @recruiter = Recruiter.new
 #    @recruiter.password = "Foo"
 #    @recruiter.email = "Bar"

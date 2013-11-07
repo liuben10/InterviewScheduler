@@ -1,3 +1,5 @@
+#  -*- coding: utf-8 -*-
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,29 +13,29 @@
 <body>
 
 <nav class="top-bar">
-	<ul class="title-area">
-    	<li class="name">
-    		<h1>
-				<a href="#">Interview Scheduler</a>
-	  		</h1>
-    	</li>
-	</ul>
+  <ul class="title-area">
+      <li class="name">
+        <h1>
+        <a href="/welcome/index">Interview Scheduler</a>
+        </h1>
+      </li>
+  </ul>
     <ul class="right">
-    	<li class="has-form">
-          	<form action="/welcome/show" method="get" id="inputform">
-              	<div class="row collapse">
-                	<div class="small-5 columns">
-                   		<input type="text" name="userid" value="Email">
-                	</div>
-                	<div class="small-5 columns">
-                   		<input type="text" name="passid" value="Password">
-                	</div>
-                	<div class="small-2 columns">
-                   		<input type="submit" class="button" value="Login"></a>
-                	</div>
-              	</div>
-          	</form>
-      	</li>
+      <li class="has-form">
+            <form action="/welcome/show" method="get" id="inputform">
+                <div class="row collapse">
+                  <div class="small-5 columns">
+                      <input type="text" name="userid" value="Email">
+                  </div>
+                  <div class="small-5 columns">
+                      <input type="password" name="passid" value="Password">
+                  </div>
+                  <div class="small-2 columns">
+                      <input type="submit" class="button" value="Login"></a>
+                  </div>
+                </div>
+            </form>
+        </li>
     </ul>
 </nav>
 
@@ -44,11 +46,11 @@
 <%= yield %>
 
 <div class = "footer">
-	<footer class = "row">
-		<div class = "large-12 columns">
-			<p>© Bonghyun Kim | Ben Liu | Tien Chang | Radhesh Devendran | Nick Estorga | Erin Friesen </p>
-		</div>
-	</footer>
+  <footer class = "row">
+    <div class = "large-12 columns">
+      <p>© Bonghyun Kim | Ben Liu | Tien Chang | Radhesh Devendran | Nick Estorga | Erin Friesen </p>
+    </div>
+  </footer>
 </div>
 
 <script src="/js/foundation.min.js"></script>
