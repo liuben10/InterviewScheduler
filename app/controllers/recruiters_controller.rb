@@ -19,7 +19,7 @@ class RecruitersController < ApplicationController
     else
    #    newrecruiterhash[:company] = params[:company]
       Recruiter.create! params[:candidate]
-      sessid = request.session_options[:id]
+      sessid = request.session_options[:id].to_i
       if session[:authenticated_users].nil?
         session[:authenticated_users] = {}
       end

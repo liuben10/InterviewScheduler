@@ -1,14 +1,14 @@
 class WelcomeController < ApplicationController
   def index
     @candidate = Candidate.new
-    sess_id = request.session_options[:id]
+    sess_id = request.session_options[:id].to_i
     if ((not session[:authenticated_users].nil?) and (not session[:authenticated_users][sess_id].nil?))
       sessname = session[:authenticated_users][sess_id]
       candidate = Candidate.find_by_name(sessname)
       recruiter = Recruiter.find_by_name(sessname)
-      if (not candidate.nil? or candidate.strip.empty?)
+      if not candidate.nil?
         redirect_to candidate_path(candidate.name)
-      elsif (not recruiter.nil? or recruiter.strip.empty?)
+      elsif not recruiter.nil?
         redirect_to recruiter_path(recruiter.name)
       end
     end
