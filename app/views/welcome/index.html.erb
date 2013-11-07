@@ -44,7 +44,8 @@
   		<div class = "form-wrapper" >
 
 			<h4> CREATE AN ACCOUNT </h4>
-			<label>Recruiter or Candidate</label>
+			<label>Candidate or Recruiter</label>
+			
 			<form class = "custom">
 				<select id="acctype" class = "large">
 					<option value="candidate">Candidate</option>
@@ -62,7 +63,7 @@
 					<%= f.text_field :password %>
 				</div>
         		<div class="actions">
-          			<input type="submit" id="subutton" class="large button" value="Create">
+          			<input type="submit" id="signupbutton" class="large button" value="Create">
         		</div>
     		<% end %>
 
@@ -70,8 +71,6 @@
 	</div>
 	<div class = "large-2 columns"></div>
 </div>
-
-
 
 <script>
 $( "#signupbutton" ).click( function() {
@@ -83,10 +82,10 @@ $( "#signupbutton" ).click( function() {
        $("#new_candidate").attr("method", "post");
        $("#new_candidate").attr("action", "/candidate/create");
     } else {
+       alert("Please Select either Recruiter or Candidate");
        $("#new_candidate").attr("method", "get");
        $("#new_candidate").attr("action", "/welcome/index");
     }
  }
 )
 </script>
-
