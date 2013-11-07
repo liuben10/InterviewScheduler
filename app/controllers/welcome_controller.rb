@@ -7,10 +7,10 @@ class WelcomeController < ApplicationController
     username = params[:userid]
     Rails.logger.debug username
     password = params[:passid]
-    foundRecruiter = Recruiter.find_by_name(username)
-    foundCandidate = Candidate.find_by_name(username)
+    foundRecruiter = Recruiter.find_by_email(username)
+    foundCandidate = Candidate.find_by_email(username)
     if not foundRecruiter.nil?
-      if foundRecruiter.email != password
+      if foundRecruiter.password != password
         flash[:notice] = "Password was incorrect, please try again"
         redirect_to welcome_index_path
       else
@@ -18,7 +18,7 @@ class WelcomeController < ApplicationController
         redirect_to recruiter_path(params[:userid])
       end
     elsif not foundCandidate.nil?
-      if foundCandidate.email != password
+      if foundCandidate.password != password
         flash[:notice] = "Password was incorrect, please try again"
         redirect_to welcome_index_path
       else
