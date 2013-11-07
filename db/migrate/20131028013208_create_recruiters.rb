@@ -3,7 +3,6 @@ class CreateRecruiters < ActiveRecord::Migration
     create_table :recruiters do |t|
       t.string :name
       t.string :email
-
       t.timestamps
     end
   end

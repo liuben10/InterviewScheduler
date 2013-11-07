@@ -1,80 +1,100 @@
 <header class = "top-header">
-	<div class = "row free-container">
-    	<div class = "twelve columns" >
-      		<div class = "free">FREE</div>
-    	</div>
-  	</div>
+  <div class = "row free-container">
+      <div class = "twelve columns" >
+          <div class = "free">FREE</div>
+      </div>
+    </div>
 
-  	<div class = "row banner">
-    	<div class = "twelve columns">
-      		<h1> PLAN, ORGANIZE & MANAGE INTERVIEWS </h1>
-      		<h4> Easy way to <b>effectively</b> coordinate interviews for both the recruiter and the candidate.</h4>
-    	</div>
-  	</div>
+    <div class = "row banner">
+      <div class = "twelve columns">
+          <h1> PLAN, ORGANIZE & MANAGE INTERVIEWS </h1>
+          <h4> Easy way to <b>effectively</b> coordinate interviews for both the recruiter and the candidate.</h4>
+      </div>
+    </div>
 </header>
 
 <div class = "row icon-row" >
-	<div class = "large-1 columns"> </div>
-	<div class = "large-2 columns" id = "icon-active">
-		<i class="fi-compass" id = "bottom-icon"></i>	
-		<h2>Get Started</h2>
-	</div>
-	<div class = "large-2 columns">
-		<i class="fi-megaphone" id ="bottom-icon"></i>
-		<h2>Search Candidates</h2>
-	</div>
-	<div class = "large-2 columns">
-		<i class="fi-address-book" id ="bottom-icon"></i>
-		<h2>Manage Interviews</h2>
-	</div>
-	<div class = "large-2 columns">
-		<i class="fi-clock" id ="bottom-icon"></i>
-		<h2>Set Time</h2>
-	</div>
-	<div class = "large-2 columns">
-		<i class="fi-dollar" id ="bottom-icon"></i>
-		<h2>Get Jobs</h2>
-	</div>
-	<div class = "large-1 columns"></div>
+  <div class = "large-1 columns"> </div>
+  <div class = "large-2 columns" id = "icon-active">
+    <i class="fi-compass" id = "bottom-icon"></i>
+    <h2>Get Started</h2>
+  </div>
+  <div class = "large-2 columns">
+    <i class="fi-megaphone" id ="bottom-icon"></i>
+    <h2>Search Candidates</h2>
+  </div>
+  <div class = "large-2 columns">
+    <i class="fi-address-book" id ="bottom-icon"></i>
+    <h2>Manage Interviews</h2>
+  </div>
+  <div class = "large-2 columns">
+    <i class="fi-clock" id ="bottom-icon"></i>
+    <h2>Set Time</h2>
+  </div>
+  <div class = "large-2 columns">
+    <i class="fi-dollar" id ="bottom-icon"></i>
+    <h2>Get Jobs</h2>
+  </div>
+  <div class = "large-1 columns"></div>
 </div>
 
 <div class = "row" id = "main-form">
-	<div class = "large-2 columns"></div>
-	<div class = "large-8 columns">
-  		<div class = "form-wrapper" >
+  <div class = "large-2 columns"></div>
+  <div class = "large-8 columns">
+      <div class = "form-wrapper" >
 
-			<h4> CREATE AN ACCOUNT </h4>
-			<label>Recruiter or Candidate</label>
-			<form class = "custom">
-				<select id="acctype" class = "large">
-					<option value="candidate">Candidate</option>
-             		<option value="recruiter">Recruiter</option>
-           		</select>
-			</form>
-			
-    		<%= form_for(@candidate) do |f| %>
-        		<div class="field">
-          			<%= f.label "Email" %>
-          			<%= f.text_field :email %>
-        		</div>
-        		<div class ="field">
-					<%= f.label "Password" %>
-					<%= f.text_field :password %>
-				</div>
-        		<div class="actions">
-          			<input type="submit" id="subutton" class="large button" value="Create">
-        		</div>
-    		<% end %>
+      <h4> CREATE AN ACCOUNT </h4>
+      <label>Recruiter or Candidate</label>
+      <form class = "custom">
+        <select id="acctype" class = "large">
+          <option value="candidate">Candidate</option>
+                <option value="recruiter">Recruiter</option>
+              </select>
+      </form>
 
-  		</div>
-	</div>
-	<div class = "large-2 columns"></div>
+        <%= form_for(@candidate) do |f| %>
+            <div class="field">
+                <%= f.label "Name" %>
+                <%= f.text_field :name %>
+            </div>
+            <div class="field">
+                <%= f.label "Email" %>
+                <%= f.text_field :email %>
+            </div>
+                     <div class ="field">
+                              <%= f.label "Password" %>
+                     <%= f.text_field :password %>
+        </div>
+                              <div class="field">
+                                       <label id="companyLabel" style="display:none;">Company </label>
+                <input type="hidden" id="character_company" name="company" value="">
+             </div>
+            <div class="actions">
+                <input type="submit" id="subutton" class="large button" value="Create">
+            </div>
+        <% end %>
+
+      </div>
+  </div>
+  <div class = "large-2 columns"></div>
 </div>
 
 
 
 <script>
-$( "#signupbutton" ).click( function() {
+$( "#acctype").change( function() {
+   selected = $("#acctype").val();
+   if(selected == "recruiter") {
+     $( "#companyLabel").css("display", "block");
+     $( "#character_company").attr("type", "text");
+   } else {
+     $( "#companyLabel").css("display", "none");
+     $( "#character_company").attr("type", "hidden");
+   }
+}
+)
+
+$( "#subutton" ).click( function() {
     selectVal = $("#acctype").val();
     if(selectVal == "recruiter") {
        $("#new_candidate").attr("method", "post");
