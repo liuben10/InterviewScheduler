@@ -1,6 +1,6 @@
 Scheduler::Application.routes.draw do
-  match 'candidates/:name/calendar(/:year(/:month))' =>  'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
-  match 'recruiters/:name/calendar(/:year(/:month))' =>  'calendar#index', :as => :calendar, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
+  match 'candidates/:name/calendar(/:year(/:month))' =>  'calendar#index', :as => :calendar_candidate, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
+  match 'recruiters/:name/calendar(/:year(/:month))' =>  'calendar#index', :as => :calendar_recruiter, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
 
   root :to => 'welcome#index'
   get "welcome/index" => "welcome#index"
@@ -20,6 +20,7 @@ Scheduler::Application.routes.draw do
 
 #temporary
   match 'login', :to => redirect('/welcome/index')
+  match 'logout', :to => redirect('/welcome/logout')
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
