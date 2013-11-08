@@ -6,13 +6,13 @@
 $index-main-color: #344152;
 $index-second-color: #687C97;
 
-.large-2, .large-1 {	
+.large-2, .large-1, .large-3 {	
 	min-height: 1px;
 }
 
 .top-bar {
 	
-	border-bottom: solid 5px $index-main-color;
+	border-bottom: solid 4px $index-main-color;
 
 	.name {
 		h1 a{
@@ -262,41 +262,6 @@ $index-second-color: #687C97;
 
 
 
-}
-
-.main-header {
-
-	border-bottom: solid 3px #e0eeee;
-	padding: 20px 0;
-	background-image: linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
-	background-image: -o-linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
-	background-image: -moz-linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
-	background-image: -webkit-linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
-	background-image: -ms-linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
-
-	background-image: -webkit-gradient(
-		linear,
-		left bottom,
-		left top,
-		color-stop(0.14, #E7F3F5),
-		color-stop(0.99, #DAE8F0)
-	);
-	
-	.main-banner {
-		
-		h1 {
-			color: $index-main-color;
-			font-weight: 500;
-			font-size: 44px;
-		}
-	
-		h4 {
-			color: $index-main-color;
-			font-weight: 300;
-			font-size: 20px;
-		}
-	}
-	
 }
 
 
