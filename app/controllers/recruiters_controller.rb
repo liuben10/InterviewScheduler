@@ -1,38 +1,20 @@
-class RecruitersController < ApplicationController
+class RecruitersController < UserController
   def index
     @recruiter=Recruiter.new
   end
 
   def create
     Rails.logger.debug params
-    password = params[:candidate][:password]
-    email = params[:candidate][:email]
-    name = params[:candidate][:name]
     params[:candidate][:company] = params[:company]
-    debugmsg = "Malformed input, name, email, password, or company was empty"
-    if validations(name, email, password)
-      flash[:notice] = debugmsg
-      redirect_to welcome_index_path
-    elsif not Recruiter.find_by_email(email).nil? and Candidate.find_by_email(email).nil?
-      flash[:notice] = "Recruiter with email: #{email} already exists in database"
-      redirect_to welcome_index_path
-    else
-   #    newrecruiterhash[:company] = params[:company]
+    success = create_account(params[:candidate])
+    if success
       Recruiter.create! params[:candidate]
-      sessid = request.session_options[:id].to_i
-      if session[:authenticated_users].nil?
-        session[:authenticated_users] = {}
-      end
-      session[:authenticated_users][sessid] = name
-      flash[:notice] = "New recruiter created with password: #{password} and email: #{email}"
+      flash[:notice] = "New Recruiter created with password: #{params[:candidate][:password]} and email: #{params[:candidate][:email]}"
       redirect_to recruiter_path(params[:candidate][:name])
+    else
+      redirect_to welcome_index_path
     end
   end
-
-  def validations(name, email, password)
-    return (email.nil? or email.strip.empty? or password.nil? or password.strip.empty? or name.nil? or name.strip.empty?)
-  end
-
 
   def show
 #XXX uncomment me
