@@ -4,7 +4,7 @@ class CandidatesController < UsersController
 
   def create
     Rails.logger.debug params
-    success = create_account(params[:candidate], :Candidate)
+    success = add_user(params[:candidate], :Candidate)
     if success
       redirect_to candidate_path(params[:candidate][:name])
     else
