@@ -30,4 +30,5 @@ class WelcomeController < ApplicationController
       redirect_to welcome_index_path
     end
   end
+  
 end
