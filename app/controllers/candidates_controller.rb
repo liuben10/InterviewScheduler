@@ -1,13 +1,11 @@
-class CandidatesController < UserController
+class CandidatesController < UsersController
   def index
   end
 
   def create
     Rails.logger.debug params
-    success = create_account(params[:candidate])
+    success = create_account(params[:candidate], :Candidate)
     if success
-      Candidate.create! params[:candidate]
-      flash[:notice] = "New Candidate created with password: #{params[:candidate][:password]} and email: #{params[:candidate][:email]}"
       redirect_to candidate_path(params[:candidate][:name])
     else
       redirect_to welcome_index_path     

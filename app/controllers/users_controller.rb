@@ -1,6 +1,7 @@
 class UsersController < ApplicationController
 
-	def create_account(user)
+	def create_account(user, type)
+		#type is a symbolized version of a class name
 	    password = user[:password]
 	    email = user[:email]
 	    name = user[:name]
@@ -12,6 +13,8 @@ class UsersController < ApplicationController
 	      flash[:notice] = "User with email: #{email} already exists in database"
 	      return false
 	    else
+	      type.to_s.constantize.create! params[:candidate]
+      	  flash[:notice] = "New #{type} created with password: #{params[:candidate][:password]} and email: #{params[:candidate][:email]}"
 	      sessid = request.session_options[:id].to_i
 	      if session[:authenticated_users].nil?
 	        session[:authenticated_users] = {}
