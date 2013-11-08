@@ -14,5 +14,15 @@
 //= require jquery_ujs
 //= require foundation
 //= require_tree .
-
 $(document).foundation();
+
+$(document).ready(function() {
+
+    $('#calendar').fullCalendar({
+        dayClick: function() {
+            alert('a day has been clicked!');
+        }
+		weekends: false
+    })
+
+});

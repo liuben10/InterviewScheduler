@@ -41,6 +41,11 @@ class WelcomeController < ApplicationController
       redirect_to welcome_index_path
     end
   end
+
+  def logout
+    session[:authenticated_users] = nil
+    redirect_to welcome_index_path
+  end
   
   
   
