@@ -37,7 +37,7 @@ class WelcomeController < ApplicationController
         redirect_to candidate_path(foundCandidate.name)
       end
     else
-      flash[:notice] = "User #{username} was not found"
+      flash[:notice] = "Email or password was incorrect"
       redirect_to welcome_index_path
     end
   end
@@ -46,5 +46,5 @@ class WelcomeController < ApplicationController
     session[:authenticated_users] = nil
     redirect_to welcome_index_path
   end
-  
+
 end

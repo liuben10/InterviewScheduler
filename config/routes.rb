@@ -4,8 +4,14 @@ Scheduler::Application.routes.draw do
 
   root :to => 'welcome#index'
   get "welcome/index" => "welcome#index"
+  get "candidate/update" => "users#update"
+  get "recruiter/update" => "users#update"
+  get "candidate/edit" => "candidates#edit"
+  get "recruiter/edit" => "recruiters#edit"
+  post "user/modify" => "users#modify"
   resources :candidates
   resources :recruiters
+
   get "welcome/show" => "welcome#show"
   #For Debug purposes, this will automatically go to these pages
   post "recruiter/create" => "recruiters#create"

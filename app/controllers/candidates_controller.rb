@@ -8,8 +8,13 @@ class CandidatesController < UsersController
     if success
       redirect_to candidate_path(params[:candidate][:name])
     else
-      redirect_to welcome_index_path     
+      redirect_to welcome_index_path
     end
+  end
+
+  def edit
+    Rails.logger.debug params
+    @candidate = Candidate.find_by_name(params[:format])
   end
 
   def show
