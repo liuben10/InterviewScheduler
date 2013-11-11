@@ -1,20 +1,19 @@
 
 <%= content_tag :h4, "Edit page for #{@candidate.name}" %>
-    <form method="post" action="/user/modify">
-    <%= hidden_field_tag "candidate_bool", "true" %>
+        <%= form_for @candidate, url: "/candidates/#{@candidate.name}", method: :put do |f| %>
             <div class="field">
-                <label>Name</label>
-                <%= text_field_tag "candidate_name", "#{@candidate.name}" %>
+                <%= f.label "Name" %>
+                <%= f.text_field :name, :value=>"#{@candidate.name}" %>
             </div>
             <div class="field">
-                     <label>Email</label>
-                     <%= text_field_tag "candidate_email", "#{@candidate.email}" %>
+                <%= f.label "Email" %>
+                <%= f.text_field :email, :value=>"#{@candidate.email}" %>
             </div>
             <div class ="field">
-                <label>Password</label>
-                <%= text_field_tag "candidate_password", "#{@candidate.password}" %>
+                <%= f.label "Password" %>
+                <%= f.password_field :password, :value=>"#{@candidate.password}" %>
             </div>
             <div class="actions">
                 <input type="submit" id="subutton" class="large button" value="Update">
             </div>
-       </form>
+        <% end %>

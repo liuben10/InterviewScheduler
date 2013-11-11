@@ -14,7 +14,13 @@ class CandidatesController < UsersController
 
   def edit
     Rails.logger.debug params
-    @candidate = Candidate.find_by_name(params[:format])
+    @candidate = Candidate.find_by_name(params[:id])
+  end
+
+  def update
+    @candidate = Candidate.find_by_name(params[:id])
+    modify(@candidate, :candidate)
+    redirect_to candidate_path(@candidate.name)
   end
 
   def show

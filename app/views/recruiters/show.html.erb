@@ -18,10 +18,9 @@
   </div>
 
   <div class = "large-3 columns">
-    <form action="/recruiter/update" method="get">
-        <%= hidden_field_tag("recruiter_boolean", "true") %>
-       <%= hidden_field_tag("recruiter_name", "#{@recruiter.name}") %>
-       <input type="submit" value="Edit" class = "medium button" id="edit_button">
+
+    <form action="/recruiters/<%=@recruiter.name%>/edit" method="get">
+       <input type="submit"  value="Edit" class="medium button" id="edit_button">
     </form>
   </div>
 </div>
