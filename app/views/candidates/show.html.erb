@@ -1,16 +1,22 @@
 <div class = "row">
-         <%= content_tag :h4, "#{@candidate.name}'s page" %>
+	<div class = "large-12 columns">
+	         <%= content_tag :h4, "#{@candidate.name}'s page" %>
+	</div>
+</div>
+
+<div class = "row">
   <div class = "large-1 columns">
     <i class="fi-home profile-icon"></i>
     <i class="fi-calendar profile-icon"></i>
     <i class="fi-mail profile-icon"></i>
     <i class="fi-wrench profile-icon"></i>
   </div>
+
   <div class = "large-8 columns">
     <div id = "calendar">
-
     </div>
   </div>
+
   <div class = "large-3 columns">
     <form action="/candidate/update" method="get">
         <%= hidden_field_tag("candidate_boolean", "true") %>
@@ -21,15 +27,6 @@
 </div>
 
 
-
-<style type='text/css'>
-
-	#calendar {
-		width: 900px;
-		margin: 0 auto;
-		}
-
-</style>
 
 
 <script type='text/javascript'>

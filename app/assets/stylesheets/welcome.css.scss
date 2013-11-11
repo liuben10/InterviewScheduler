@@ -13,7 +13,6 @@ $index-second-color: #687C97;
 .top-bar {
 	
 	border-bottom: solid 4px $index-main-color;
-
 	.name {
 		h1 a{
 			color: $index-main-color;
@@ -27,6 +26,14 @@ $index-second-color: #687C97;
 		form {
 			padding: 10px 20px 0 0;
 		}
+	}
+	
+ 	.top-bar-item a {
+		line-height: 61px !important;
+	}
+	
+	.top-bar-item a:hover {
+		background-color: #E8E8E8 !important;
 	}
 }
 

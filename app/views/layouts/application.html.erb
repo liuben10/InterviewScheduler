@@ -12,7 +12,6 @@
 <body>
 
 <nav class="top-bar">
-
   <ul class="title-area">
       <li class="name">
         <h1>
@@ -20,9 +19,9 @@
         </h1>
       </li>
   </ul>
-    <ul class="right">
       <% if session[:authenticated_users].nil? %>
-        <li class="has-form">
+      <ul class = "right">
+        <li class="has-form top-bar-item">
             <form action="/welcome/show" method="get" id="inputform">
                 <div class="row collapse">
                   <div class="small-5 columns">
@@ -37,12 +36,14 @@
                 </div>
             </form>
         </li>
+      </ul>
       <% else %>
-        <label> Logged in as <%= session[:authenticated_users][request.session_options[:id].to_i]%> </label>
-        <%= button_to "Logout", logout_path %>
+        <section class = "top-bar-section">
+	    <ul class="right">
+		  <li class = "top-bar-item"><%= link_to "Logout", logout_path, method: :post %></li>
+		</ul>
+		</section>
       <% end %>
-    </ul>
-
 </nav>
 
 <% if flash[:notice] %>
@@ -61,13 +62,12 @@
 
 <script src="/js/foundation.min.js"></script>
 <script>
+  $(document).foundation();
   document.write('<script src=/js/vendor/'
     + ('__proto__' in {} ? 'zepto' : 'jquery')
     + '.js><\/script>');
 </script>
-<script>
-  $(document).foundation();
-</script>
+
 
 </body>
 </html>
