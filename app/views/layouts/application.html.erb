@@ -21,7 +21,8 @@
       </li>
   </ul>
     <ul class="right">
-      <li class="has-form">
+      <% if session[:authenticated_users].nil? %>
+        <li class="has-form">
             <form action="/welcome/show" method="get" id="inputform">
                 <div class="row collapse">
                   <div class="small-5 columns">
@@ -36,6 +37,10 @@
                 </div>
             </form>
         </li>
+      <% else %>
+        <label> Logged in as <%= session[:authenticated_users][request.session_options[:id].to_i]%> </label>
+        <%= button_to "Logout", logout_path %>
+      <% end %>
     </ul>
 
 </nav>

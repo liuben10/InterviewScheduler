@@ -13,6 +13,8 @@ Scheduler::Application.routes.draw do
   resources :recruiters
 
   get "welcome/show" => "welcome#show"
+
+  post '/logout' => "welcome#logout"
   #For Debug purposes, this will automatically go to these pages
   post "recruiter/create" => "recruiters#create"
   post "candidate/create" => "candidates#create"
@@ -26,7 +28,6 @@ Scheduler::Application.routes.draw do
 
 #temporary
   match 'login', :to => redirect('/welcome/index')
-  match 'logout', :to => redirect('/welcome/logout')
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

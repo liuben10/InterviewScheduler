@@ -15,6 +15,10 @@ class WelcomeController < ApplicationController
   end
 
   def show
+    if session[:authenticated_users].nil?
+        session[:authenticated_users] = {}
+    end
+    sessid = request.session_options[:id].to_i
     username = params[:userid]
     Rails.logger.debug username
     password = params[:passid]
@@ -26,6 +30,7 @@ class WelcomeController < ApplicationController
         redirect_to welcome_index_path
       else
         #redirect_to recruiter_show_path
+        session[:authenticated_users][sessid] = foundRecruiter.name
         redirect_to recruiter_path(foundRecruiter.name)
       end
     elsif not foundCandidate.nil?
@@ -34,6 +39,7 @@ class WelcomeController < ApplicationController
         redirect_to welcome_index_path
       else
         #redirect_to candidate_show_path
+        session[:authenticated_users][sessid] = foundCandidate.name
         redirect_to candidate_path(foundCandidate.name)
       end
     else
