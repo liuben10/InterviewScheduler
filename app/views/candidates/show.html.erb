@@ -16,11 +16,13 @@
     <div id = "calendar">
     </div>
   </div>
-
   <div class = "large-3 columns">
     <form action="/candidates/<%=@candidate.name%>/edit" method="get">
        <input type="submit" value="Edit" class = "medium button" id="edit_button">
     </form>
+	
+	<%= button_to "Logout", logout_path, method: :post %>
+
   </div>
 </div>
 
