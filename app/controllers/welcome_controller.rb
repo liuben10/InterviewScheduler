@@ -14,34 +14,28 @@ class WelcomeController < ApplicationController
   end
 
   def show
-    sessid = request.session_options[:id].to_i
-    username = params[:userid]
-    Rails.logger.debug username
-    password = params[:passid]
-    foundRecruiter = Recruiter.find_by_email(username)
-    foundCandidate = Candidate.find_by_email(username)
+    Rails.logger.debug params[:userid]
+    foundRecruiter = Recruiter.find_by_email(params[:userid])
+    foundCandidate = Candidate.find_by_email(params[:userid])
     if not foundRecruiter.nil?
-      if foundRecruiter.password != password
-        flash[:notice] = "Password was incorrect, please try again"
-        redirect_to welcome_index_path
-      else
-        #redirect_to recruiter_show_path
-        session[:authenticated_user] = foundRecruiter.name
-        redirect_to recruiter_path(foundRecruiter.name)
-      end
+      foundUser = foundRecruiter
+      #redirect_to recruiter_show_path
+      redirectPath = recruiter_path(foundRecruiter.name)
     elsif not foundCandidate.nil?
-      if foundCandidate.password != password
-        flash[:notice] = "Password was incorrect, please try again"
-        redirect_to welcome_index_path
-      else
-        #redirect_to candidate_show_path
-        session[:authenticated_user] = foundCandidate.name
-        redirect_to candidate_path(foundCandidate.name)
-      end
+      foundUser = foundCandidate
+      #redirect_to candidate_show_path
+      redirectPath = candidate_path(foundCandidate.name)
     else
-      flash[:notice] = "Email or password was incorrect"
-      redirect_to welcome_index_path
+      flash[:notice] = "Email not found"
+      redirect_to welcome_index_path and return
     end
+    if foundUser.password != params[:passid]
+      flash[:notice] = "Password was incorrect, please try again"
+      redirect_to welcome_index_path and return
+    else
+      session[:authenticated_user] = foundUser.name
+    end
+    redirect_to redirectPath
   end
 
   def logout
