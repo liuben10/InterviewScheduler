@@ -16,9 +16,14 @@ class RecruitersController < UsersController
 
   def edit
     Rails.logger.debug params
-    @candidate = Candidate.find_by_name(params[:format])
+    @recruiter = Recruiter.find_by_name(params[:id])
   end
 
+  def update
+    @recruiter = Recruiter.find_by_name(params[:id])
+    modify(@recruiter, :recruiter)
+    redirect_to recruiter_path(@recruiter.name)
+  end
 
   def show
 #XXX uncomment me

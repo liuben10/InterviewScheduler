@@ -12,9 +12,7 @@
     </div>
   </div>
   <div class = "large-3 columns">
-    <form action="/candidate/update" method="get">
-        <%= hidden_field_tag("candidate_boolean", "true") %>
-       <%= hidden_field_tag("candidate_name", "#{@candidate.name}") %>
+    <form action="/candidates/<%=@candidate.name%>/edit" method="get">
        <input type="submit" value="Edit" class = "medium button" id="edit_button">
     </form>
   </div>

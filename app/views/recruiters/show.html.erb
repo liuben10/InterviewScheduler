@@ -1,4 +1,5 @@
 <div class = "row">
+         <%= content_tag :h4, "#{@recruiter.name}'s page" %>
   <div class = "large-1 columns">
     <i class="fi-home profile-icon"></i>
     <i class="fi-calendar profile-icon"></i>
@@ -11,9 +12,7 @@
     </div>
   </div>
   <div class = "large-3 columns">
-    <form action="/recruiter/update" method="get">
-       <input type="hidden" value="#{@candidate.name}" id="candidate_name">
-
+    <form action="/recruiters/<%=@recruiter.name%>/edit" method="get">
        <input type="submit"  value="Edit" class="medium button" id="edit_button">
     </form>
   </div>

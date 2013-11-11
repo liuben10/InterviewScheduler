@@ -26,33 +26,11 @@ class UsersController < ApplicationController
   end
 
 
-  def modify
-    if params[:candidate_bool].nil?
-      @recruiter = Recruiter.find_by_name(params[:candidate_name])
-      @recruiter.email = params[:candidate_email]
-      @recruiter.name = params[:candidate_name]
-      @recruiter.password = params[:candidate_password]
-      @recruiter.save!
-      redirect_to recruiter_path(params[:candidate_name])
-    else
-      @candidate = Candidate.find_by_name(params[:candidate_name])
-      @candidate.email = params[:candidate_email]
-      @candidate.name = params[:candidate_name]
-      @candidate.password = params[:candidate_password]
-      @candidate.save!
-      redirect_to candidate_path(params[:candidate_name])
-    end
-  end
-
-  def update
-    Rails.logger.debug "+++++++++++++"
-    Rails.logger.debug params
-    Rails.logger.debug "+++++++++++++"
-    if params[:candidate_boolean].nil?
-      redirect_to recruiter_edit_path(params[:candidate_name])
-    else
-      redirect_to candidate_edit_path(params[:candidate_name])
-    end
+  def modify(user, type)
+    user.email = params[type][:email]
+    user.name = params[type][:name]
+    user.password = params[type][:password]
+    user.save!
   end
 
   def validations(name, email, password)

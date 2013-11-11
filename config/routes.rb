@@ -4,8 +4,6 @@ Scheduler::Application.routes.draw do
 
   root :to => 'welcome#index'
   get "welcome/index" => "welcome#index"
-  get "candidate/update" => "users#update"
-  get "recruiter/update" => "users#update"
   get "candidate/edit" => "candidates#edit"
   get "recruiter/edit" => "recruiters#edit"
   post "user/modify" => "users#modify"
