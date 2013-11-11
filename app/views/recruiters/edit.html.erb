@@ -1,0 +1,19 @@
+
+<%= content_tag :h4, "Edit page for #{@candidate.name}" %>
+    <form method="post" action="/candidates/update"
+            <div class="field">
+                <label>Name</label>
+                <%= text_field_tag "candidate_name", "#{@candidate.name}" %>
+            </div>
+            <div class="field">
+                     <label>Email</label>
+                     <%= text_field_tag "candidate_email", "#{@candidate.email}" %>
+            </div>
+            <div class ="field">
+                <label>Password</label>
+                <%= text_field_tag "candidate_password", "#{@candidate.password}" %>
+            </div>
+            <div class="actions">
+                <input type="submit" id="subutton" class="large button" value="Update">
+            </div>
+       </form>
