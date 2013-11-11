@@ -1,9 +1,8 @@
 class WelcomeController < ApplicationController
   def index
     @candidate = Candidate.new
-    sess_id = request.session_options[:id].to_i
-    if ((not session[:authenticated_users].nil?) and (not session[:authenticated_users][sess_id].nil?))
-      sessname = session[:authenticated_users][sess_id]
+    if not session[:authenticated_user].nil?
+      sessname = session[:authenticated_user]
       candidate = Candidate.find_by_name(sessname)
       recruiter = Recruiter.find_by_name(sessname)
       if not candidate.nil?
@@ -27,10 +26,7 @@ class WelcomeController < ApplicationController
         redirect_to welcome_index_path
       else
         #redirect_to recruiter_show_path
-        if session[:authenticated_users].nil?
-          session[:authenticated_users] = {}
-        end
-        session[:authenticated_users][sessid] = foundRecruiter.name
+        session[:authenticated_user] = foundRecruiter.name
         redirect_to recruiter_path(foundRecruiter.name)
       end
     elsif not foundCandidate.nil?
@@ -39,10 +35,7 @@ class WelcomeController < ApplicationController
         redirect_to welcome_index_path
       else
         #redirect_to candidate_show_path
-        if session[:authenticated_users].nil?
-          session[:authenticated_users] = {}
-        end
-        session[:authenticated_users][sessid] = foundCandidate.name
+        session[:authenticated_user] = foundCandidate.name
         redirect_to candidate_path(foundCandidate.name)
       end
     else
@@ -52,7 +45,7 @@ class WelcomeController < ApplicationController
   end
 
   def logout
-    session[:authenticated_users] = nil
+    session[:authenticated_user] = nil
     redirect_to welcome_index_path
   end
 

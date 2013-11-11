@@ -18,11 +18,7 @@ class UsersController < ApplicationController
   def create_account(user, type)
     type.to_s.constantize.create! params[:candidate]
         flash[:notice] = "New #{type} created with password: #{params[:candidate][:password]} and email: #{params[:candidate][:email]}"
-      sessid = request.session_options[:id].to_i
-      if session[:authenticated_users].nil?
-        session[:authenticated_users] = {}
-      end
-      session[:authenticated_users][sessid] = user[:name]
+      session[:authenticated_user] = user[:name]
   end
 
 
