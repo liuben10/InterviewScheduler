@@ -7,13 +7,13 @@ I should be able to add candidates using their email address
 Background:
 
   Given the following accounts exist:
-    | username              | password          | type       | email
-    | fluffyBunnies         | pass1234          | recruiter  | bunnies@fluffy.com
-    | nestorga              | fooPass3          | candidate  | nestorga@cs.com
-    | efriesen              | secure!p@ss       | candidate  | efriesen@cs.com
-    | rottenPotatoes        | notGood           | candidate  | rottenPotatoes@movies.com
-    | joeSchmoe             | testPass          | candidate  | joeSchmoe@bum.com
-    | penelope              | 456pass           | candidate  | penelope@cruz.com
+    | username              | password          | type       | email                      |
+    | fluffyBunnies         | pass1234          | recruiter  | bunnies@fluffy.com         |
+    | nestorga              | fooPass3          | candidate  | nestorga@cs.com            |
+    | efriesen              | secure!p@ss       | candidate  | efriesen@cs.com            |
+    | rottenPotatoes        | notGood           | candidate  | rottenPotatoes@movies.com  |
+    | joeSchmoe             | testPass          | candidate  | joeSchmoe@bum.com          |
+    | penelope              | 456pass           | candidate  | penelope@cruz.com          |
 
   And I am on the "fluffyBunnies" recruiter page
 
