@@ -30,6 +30,7 @@ group :development, :test do
   gem 'capybara'
   gem 'rspec-rails'
   gem 'sqlite3'
+  gem 'simplecov'
 end
 
 group :test do
