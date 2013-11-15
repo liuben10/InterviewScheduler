@@ -41,9 +41,19 @@
 <div class = "row" id = "main-form">
   <div class = "large-3 columns"></div>
   <div class = "large-6 columns">
+	  
       <div class = "form-wrapper" >
 
       <h4> CREATE AN ACCOUNT </h4>
+	
+	  <% if flash[:notice] == "createError" %>
+    <div id="error_explanation">
+      <ul>
+        <li>Error: User Exists</li>
+      </ul>
+    </div>
+  <% end %>
+
       <label>Recruiter or Candidate</label>
       <form class = "custom">
         <select id="acctype" class = "large">

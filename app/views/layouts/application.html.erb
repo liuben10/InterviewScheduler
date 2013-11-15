@@ -34,6 +34,11 @@
                       <input type="submit" class="button" value="Login"></a>
                   </div>
                 </div>
+				<% if flash[:notice] == "Email not found" %>
+  					<small class="error">Email Not Found</small>
+				<% elsif flash[:notice] == "Password was incorrect, please try again" %>
+					<small class="error">Password Incorrect</small>
+				<% end %>
             </form>
         </li>
       </ul>
@@ -45,10 +50,6 @@
 		</section>
       <% end %>
 </nav>
-
-<% if flash[:notice] %>
-  <%= flash[:notice] %>
-<% end %>
 
 <%= yield %>
 

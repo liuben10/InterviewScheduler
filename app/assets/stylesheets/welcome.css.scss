@@ -35,6 +35,15 @@ $index-second-color: #687C97;
 	.top-bar-item a:hover {
 		background-color: #E8E8E8 !important;
 	}
+	
+	.error {
+		margin-top: 5px;
+		padding-left: 10px;
+	}
+	
+	.button {
+		width: 100%;
+	}
 }
 
 .top-header {
@@ -145,8 +154,8 @@ $index-second-color: #687C97;
 		background-color: #334e69;
 		border: solid 3px #2d445b;
 		text-align: center;
-		margin-top: 20px;
-		margin-bottom: 10px;
+		margin-top: 0px;
+		margin-bottom: 20px;
 		padding: 10px 0;
 		border-radius: 10px;
 		ul

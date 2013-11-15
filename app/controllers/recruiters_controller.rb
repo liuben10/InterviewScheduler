@@ -10,6 +10,7 @@ class RecruitersController < UsersController
     if success
       redirect_to recruiter_path(params[:candidate][:name])
     else
+      flash[:notice] = "createError"
       redirect_to welcome_index_path
     end
   end
