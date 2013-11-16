@@ -32,18 +32,4 @@ class CandidatesController < UsersController
 # @candidate = Candidate.new
   end
 
-
- #Radhesh's create; can be deleted if current create does the job
- # def create
- #  candidate = params[:candidate]
- #  success = Candidate.add_candidate(candidate)
- #  if success then
- #    flash[:notice] = "Account successfully created"
- #    redirect_to welcome_index_path
- #  else
- #    flash[:notice] = "Empty userpassword or password"
- #    redirect_to welcome_index_path
- #  end
- # end
-
 end

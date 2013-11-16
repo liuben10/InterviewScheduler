@@ -1,10 +1,10 @@
 Given /the following accounts exist/ do |account_table|
   account_table.hashes.each do |account|
     newaccounthash = {}
-    print account
+    #print account
     newaccounthash["name"] = account["username"]
     newaccounthash["email"] = account["password"]
-    print newaccounthash
+    #print newaccounthash
     if account["type"] == "recruiter"
       Recruiter.create! newaccounthash
     else
@@ -15,7 +15,7 @@ end
 
 Then /^(?:|I )should be on (.+)$/ do |page_name|
   current_path = URI.parse(current_url).path
-  print path_to(page_name)
+  #print path_to(page_name)
   if current_path.respond_to? :should
     current_path.should == path_to(page_name)
   else
@@ -34,6 +34,6 @@ Then /^(?:|I )should not be on (.+)$/ do |page_name|
 end
 
 When /I select acctype "(.*)"$/ do |acctype|
-  print acctype
+  #print acctype
   select(acctype, :from=>"acctype")
 end
