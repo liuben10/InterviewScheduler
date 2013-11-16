@@ -62,3 +62,9 @@ Scenario: invalid username and valid password for candidate
   And I fill in "candidate_password" with "pass1234"
   And I press "Create"
   Then I should be on the InterviewScheduler home page
+
+@javascript
+Scenario: Left some fields empty
+  When I fill in "candidate_name" with "radhesh"
+  And I press "Create"
+  Then I should be on the InterviewScheduler home page

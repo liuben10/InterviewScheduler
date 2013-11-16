@@ -25,7 +25,7 @@ Given the following accounts exist:
   | efriesen        | candidate     | fluffyBunnies | 12/25/12   |
   | some_cand       | candidate     | radhesh       | 03/02/14   |
 
-  And I am on the "fluffyBunnies" profile page
+  And I am on the "fluffyBunnies" recruiters page
 
 Scenario: Display upcoming appointments
   Then I should see an appointment with "nestorga" on "10/03/13"
