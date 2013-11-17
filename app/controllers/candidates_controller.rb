@@ -4,9 +4,13 @@ class CandidatesController < UsersController
 
   def create
     Rails.logger.debug params
+    #Creates a candidate.
+    #redirects to add_user in user_controller. The add_user actually creates the user
     success = add_user(params[:candidate], :Candidate)
     if success
-      redirect_to candidate_path(params[:candidate][:name])
+      #If the candidate was successfully created, redirect to the correct candidate profile page.
+      #Otherwise, redirect to the front page with error that user already exists or validation was incorrect.
+      redirect_to candidate_path(params[:candidate][:username])
     else
       flash[:notice] = "createError"
       redirect_to welcome_index_path
@@ -14,19 +18,21 @@ class CandidatesController < UsersController
   end
 
   def edit
-    Rails.logger.debug params
-    @candidate = Candidate.find_by_name(params[:id])
+    #Shows the corresponding edit page.
+    @candidate = Candidate.find_by_username(params[:id])
   end
-
   def update
-    @candidate = Candidate.find_by_name(params[:id])
+    #perfoms the actual update.
+    @candidate = Candidate.find_by_username(params[:id])
+    #Redirects to the modify in user_controller.  Just updates the specific entries for a candidate
     modify(@candidate, :candidate)
-    redirect_to candidate_path(@candidate.name)
+    #Redirects upon update to the candidate profile page.
+    redirect_to candidate_path(@candidate.username)
   end
 
   def show
-    Rails.logger.debug params
-    @candidate = Candidate.find_by_name(params[:id])
+    #Redirects to the candidate view
+    @candidate = Candidate.find_by_username(params[:id])
 #    @candidate = Candidate.find_by_userpassword params[:id]
 #XXX DEBUG
 # @candidate = Candidate.new

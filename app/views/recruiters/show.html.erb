@@ -1,7 +1,7 @@
 <div class = "row">
-	<div class = "large-12 columns">
-	         <%= content_tag :h4, "#{@recruiter.name}'s page" %>
-	</div>
+  <div class = "large-12 columns">
+           <%= content_tag :h4, "#{@recruiter.name}'s page" %>
+  </div>
 </div>
 
 <div class = "row">
@@ -18,6 +18,9 @@
   </div>
 
   <div class = "large-3 columns">
+    <form action="/recruiters/get_candidates" method="get">
+       <input type="submit" value="Find" class="medium button" id="show_button">
+    </form>
     <form action="/recruiters/<%=@recruiter.name%>/edit" method="get">
        <input type="submit"  value="Edit" class="medium button" id="edit_button">
     </form>
@@ -29,25 +32,25 @@
 
 <script type='text/javascript'>
 
-	$(document).ready(function() {
-	
-		
-		$('#calendar').fullCalendar({
-			editable: true,
-			events: [
-				{
-					title: ' School Starts',
-					start: new Date(2013, 0, 22, 10, 30),
-					allDay: false
-				},
-				{
-					title: ' Meeting',
-					start: new Date(2013, 0, 21, 10, 30),
-					allDay: false
-				}
-			]
-		});
-		
-	});
+  $(document).ready(function() {
+
+
+    $('#calendar').fullCalendar({
+      editable: true,
+      events: [
+        {
+          title: ' School Starts',
+          start: new Date(2013, 0, 22, 10, 30),
+          allDay: false
+        },
+        {
+          title: ' Meeting',
+          start: new Date(2013, 0, 21, 10, 30),
+          allDay: false
+        }
+      ]
+    });
+
+  });
 
 </script>

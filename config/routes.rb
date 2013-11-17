@@ -7,6 +7,7 @@ Scheduler::Application.routes.draw do
   get "candidate/edit" => "candidates#edit"
   get "recruiter/edit" => "recruiters#edit"
   post "user/modify" => "users#modify"
+  get "recruiter/get_candidates" => "recruiter#get_candidates"
   resources :candidates
   resources :recruiters
 

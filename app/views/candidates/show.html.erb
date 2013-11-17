@@ -1,7 +1,7 @@
 <div class = "row">
-	<div class = "large-12 columns">
-	         <%= content_tag :h4, "#{@candidate.name}'s page" %>
-	</div>
+  <div class = "large-12 columns">
+           <%= content_tag :h4, "#{@candidate.name}'s page" %>
+  </div>
 </div>
 
 <div class = "row">
@@ -28,25 +28,22 @@
 
 <script type='text/javascript'>
 
-	$(document).ready(function() {
-	
-		
-		$('#calendar').fullCalendar({
-			editable: true,
-			events: [
-				{
-					title: ' School Starts',
-					start: new Date(2013, 11, 15, 11, 15),
-					allDay: false
-				},
-				{
-					title: ' Meeting',
-					start: new Date(2013, 0, 21, 10, 30),
-					allDay: false
-				}
-			]
-		});
-		
-	});
-
+  $('#calendar').fullCalendar({
+    events: [
+        {
+            title  : 'event1',
+            start  : '2013-11-15'
+        },
+        {
+            title  : 'event2',
+            start  : '2013-11-15',
+            end    : '2013-11-15'
+        },
+        {
+            title  : 'event3',
+            start  : '2013-11-09 12:30:00',
+            allDay : false // will make the time show
+        }
+    ]
+});
 </script>
