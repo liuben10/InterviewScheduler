@@ -11,7 +11,8 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131117004218) do
+ActiveRecord::Schema.define(:version => 20131117004617) do
+
   create_table "appointments", :force => true do |t|
     t.string   "username"
     t.string   "type"

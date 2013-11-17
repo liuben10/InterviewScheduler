@@ -4,7 +4,6 @@ class Candidate < ActiveRecord::Base
   has_and_belongs_to_many :recruiters
 
 
-
   def self.add_candidate(candidate)
     if candidate[:username] != "" and candidate[:password] != "" then
       Candidate.create(candidate)

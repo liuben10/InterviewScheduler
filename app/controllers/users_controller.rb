@@ -30,17 +30,11 @@ class UsersController < ApplicationController
     user.save!
   end
 
-<<<<<<< HEAD
-  def validations(name, email, password)
-      return (email.nil? or email.strip.empty? or password.nil? or password.strip.empty? or name.nil? or name.strip.empty?)
-  end
-=======
   def show_events_for_user(user)
   end
 
   def validations(name, email, password, username)
       return (email.nil? or email.strip.empty? or password.nil? or password.strip.empty? or name.nil? or name.strip.empty? or username.nil? or username.strip.empty?)
     end
->>>>>>> 6929ef83878e4d2a86e26931de4c362fc073c20d
 
 end

@@ -17,16 +17,21 @@
   <div class = "large-8 columns">
 	<h3> List of Associated Recruiters </h3>
 	<% @recruiters.each do |recruiter|%>
-		<h4><%=recruiter%></h4>
+		<p><%=recruiter.name%></p>
     <% end %>
   </div>
 
   <div class = "large-3 columns">
 	<h6> Associate Recruiter </h6>
-	<form action="/candidate/add_recruiter" method="put" id="inputform">
-		<input type="text" name="username">
-		<input type="submit" class="button" value="Add">
-	</form>
+	<% if flash[:error] %>
+		<%= flash[:error] %>
+		</br></br>
+	<% end %>
+	<%= form_tag("add_recruiter", method: "post") do %>
+  		<%= label_tag(:recruiter, "Recruiter's Username") %>
+  		<%= text_field_tag(:recruiter) %>
+  		<%= submit_tag("Add") %>
+	<% end %>
 	
   </div>
 </div>

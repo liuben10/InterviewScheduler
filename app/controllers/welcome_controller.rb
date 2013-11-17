@@ -27,7 +27,7 @@ class WelcomeController < ApplicationController
       #redirect_to candidate_show_path
       redirectPath = candidate_path(foundCandidate.username)
     else
-      flash[:notice] = "Email not found"
+      flash[:notice] = "Username not found"
       redirect_to welcome_index_path and return
     end
     if foundUser.password != params[:password]
