@@ -5,9 +5,13 @@ class CandidatesController < UsersController
 
   def create
     Rails.logger.debug params
+    #Creates a candidate.
+    #redirects to add_user in user_controller. The add_user actually creates the user
     success = add_user(params[:candidate], :Candidate)
     if success
-      redirect_to candidate_path(params[:candidate][:id])
+      #If the candidate was successfully created, redirect to the correct candidate profile page.
+      #Otherwise, redirect to the front page with error that user already exists or validation was incorrect.
+      redirect_to candidate_path(params[:candidate][:username])
     else
       flash[:notice] = "createError"
       redirect_to welcome_index_path
@@ -15,39 +19,24 @@ class CandidatesController < UsersController
   end
 
   def edit
-    @candidate = Candidate.find_by_id(params[:id])
+    #Shows the corresponding edit page.
+    @candidate = Candidate.find_by_username(params[:id])
   end
-
   def update
-    @candidate = Candidate.find_by_id(params[:id])
+    #perfoms the actual update.
+    @candidate = Candidate.find_by_username(params[:id])
+    #Redirects to the modify in user_controller.  Just updates the specific entries for a candidate
     modify(@candidate, :candidate)
-    redirect_to candidate_path(@candidate.id)
+    #Redirects upon update to the candidate profile page.
+    redirect_to candidate_path(@candidate.username)
   end
 
   def show
-    @candidate = Candidate.find_by_id(params[:id])
+    #Redirects to the candidate view
+    @candidate = Candidate.find_by_username(params[:id])
+#    @candidate = Candidate.find_by_userpassword params[:id]
+#XXX DEBUG
+# @candidate = Candidate.new
   end
-
-  def list
-    @candidate = Candidate.find_by_id(params[:id])
-    @recruiters = @candidate.recruiters    
-  end
-  
-  def add_recruiter
-    
-  end
-
- #Radhesh's create; can be deleted if current create does the job
- # def create
- #  candidate = params[:candidate]
- #  success = Candidate.add_candidate(candidate)
- #  if success then
- #    flash[:notice] = "Account successfully created"
- #    redirect_to welcome_index_path
- #  else
- #    flash[:notice] = "Empty userpassword or password"
- #    redirect_to welcome_index_path
- #  end
- # end
 
 end

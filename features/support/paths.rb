@@ -19,6 +19,7 @@ module NavigationHelpers
     when /^a candidate profile page$/ then '/candidates'
     when /^a recruiter profile page$/ then '/recruiters'
     when /^the "(.*)" (candidates|recruiters) page$/ then "/#{$2}/#{$1}"
+    when /^the edit page for (candidate|recruiter) "(.*)"/ then "/#{$1}s/#{$2}/edit"
 
 
     # Add more mappings here.

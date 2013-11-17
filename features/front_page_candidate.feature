@@ -23,7 +23,7 @@ Background: the recruiter has the following recruiters
 	  | joeSchmoe		      | joe@recruiter.com   | In Progress |
     | penelope	    	  | pens@recruiter.com  | Hired       |
 
-	And I am on the "nestorga" candidate page
+	And I am on the "nestorga" candidates page
 
 Scenario: check to see the status of all the recruiters/positions
 	When I check "all_positions"
