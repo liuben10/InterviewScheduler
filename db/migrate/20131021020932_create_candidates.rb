@@ -4,6 +4,6 @@ class CreateCandidates < ActiveRecord::Migration
       t.string :name
       t.string :email
       t.timestamps
-    end
+     end
   end
 end

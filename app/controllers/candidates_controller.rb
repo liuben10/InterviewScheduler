@@ -33,6 +33,14 @@ class CandidatesController < UsersController
   def show
     #Redirects to the candidate view
     @candidate = Candidate.find_by_username(params[:id])
+    @events = get_events(@candidate, "candidate")
+    @eventString = ""
+    @events.each do |eve|
+      tmpstring += eve.start_at
+      tmpstring += eve.end_at
+      tmpstring += eve.name
+      tmpstring += "|"
+    end
 #    @candidate = Candidate.find_by_userpassword params[:id]
 #XXX DEBUG
 # @candidate = Candidate.new

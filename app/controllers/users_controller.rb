@@ -30,7 +30,13 @@ class UsersController < ApplicationController
     user.save!
   end
 
-  def show_events_for_user(user)
+  def get_events(user, type)
+    if type == "recruiter"
+      @user_events = Event.where(:recruiter_id => user.id)
+    else
+      @user_events = Event.where(:candidate_id => user.id)
+    end
+    return @user_events
   end
 
   def validations(name, email, password, username)

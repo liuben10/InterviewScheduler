@@ -37,7 +37,8 @@ class RecruitersController < UsersController
     #Redirects to the recruiter view
 #XXX uncomment me
    @recruiter = Recruiter.find_by_username(params[:id])
-#    @recruiter = Recruiter.new
+   @events = get_events(@recruiter, "recruiter")
+ #    @recruiter = Recruiter.new
 #    @recruiter.password = "Foo"
 #    @recruiter.email = "Bar"
   end
