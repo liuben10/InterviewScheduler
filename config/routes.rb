@@ -1,15 +1,16 @@
 Scheduler::Application.routes.draw do
-  match 'candidates/:name/calendar(/:year(/:month))' =>  'calendar#index', :as => :calendar_candidate, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
-  match 'recruiters/:name/calendar(/:year(/:month))' =>  'calendar#index', :as => :calendar_recruiter, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
+  #match 'candidates/:name/calendar(/:year(/:month))' =>  'calendar#index', :as => :calendar_candidate, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
+  #match 'recruiters/:name/calendar(/:year(/:month))' =>  'calendar#index', :as => :calendar_recruiter, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
+
 
   root :to => 'welcome#index'
+  
   get "welcome/index" => "welcome#index"
-  get "candidate/edit" => "candidates#edit"
-  get "recruiter/edit" => "recruiters#edit"
   post "user/modify" => "users#modify"
   resources :candidates
   resources :recruiters
 
+  get "candidate/:id/list" => "candidates#list", as: 'list_candidate'
   get "welcome/show" => "welcome#show"
 
   post '/logout' => "welcome#logout"
@@ -18,9 +19,9 @@ Scheduler::Application.routes.draw do
   post "candidate/create" => "candidates#create"
 
   match "welcome/show", :to => redirect("welcome/show")
-  match "candidates", :to => redirect('candidates/show')
+  #match "candidates", :to => redirect('candidates/show')
 
-  match "recruiters", :to => redirect('recruiters/show')
+  #match "recruiters", :to => redirect('recruiters/show')
   #Just to go to the specific pages
 
 

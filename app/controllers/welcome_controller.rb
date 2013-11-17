@@ -1,4 +1,5 @@
 class WelcomeController < ApplicationController
+  
   def index
     @candidate = Candidate.new
     if not session[:authenticated_user].nil?
@@ -14,22 +15,19 @@ class WelcomeController < ApplicationController
   end
 
   def show
-    Rails.logger.debug params[:userid]
-    foundRecruiter = Recruiter.find_by_email(params[:userid])
-    foundCandidate = Candidate.find_by_email(params[:userid])
+    foundRecruiter = Recruiter.find_by_email(params[:email])
+    foundCandidate = Candidate.find_by_email(params[:email])
     if not foundRecruiter.nil?
       foundUser = foundRecruiter
-      #redirect_to recruiter_show_path
-      redirectPath = recruiter_path(foundRecruiter.name)
+      redirectPath = recruiter_path(foundRecruiter.id)
     elsif not foundCandidate.nil?
       foundUser = foundCandidate
-      #redirect_to candidate_show_path
-      redirectPath = candidate_path(foundCandidate.name)
+      redirectPath = candidate_path(foundCandidate.id)
     else
       flash[:notice] = "Email not found"
       redirect_to welcome_index_path and return
     end
-    if foundUser.password != params[:passid]
+    if foundUser.password != params[:password]
       flash[:notice] = "Password was incorrect, please try again"
       redirect_to welcome_index_path and return
     else

@@ -5,8 +5,10 @@
 </div>
 
 <div class = "row">
-  <div class = "large-1 columns">
-    <i class="fi-home profile-icon"></i>
+	
+  <div class = "large-1 columns user-icon">
+	<%= link_to raw('<i class="fi-home profile-icon"></i>'), candidate_path %>
+	<%= link_to raw('<i class="fi-list-thumbnails profile-icon"></i>'), list_candidate_path %>
     <i class="fi-calendar profile-icon"></i>
     <i class="fi-mail profile-icon"></i>
     <i class="fi-wrench profile-icon"></i>
@@ -17,14 +19,11 @@
     </div>
   </div>
   <div class = "large-3 columns">
-    <form action="/candidates/<%=@candidate.name%>/edit" method="get">
+    <form action="/candidates/<%=@candidate.id %>/edit" method="get">
        <input type="submit" value="Edit" class = "medium button" id="edit_button">
     </form>
   </div>
 </div>
-
-
-
 
 <script type='text/javascript'>
 
@@ -35,13 +34,14 @@
 			editable: true,
 			events: [
 				{
-					title: ' School Starts',
-					start: new Date(2013, 11, 15, 11, 15),
+					title: 'Interview With Tien',
+					start: new Date(2013, 10, 15),
 					allDay: false
 				},
 				{
-					title: ' Meeting',
-					start: new Date(2013, 0, 21, 10, 30),
+					title: 'Interview With Nick',
+					start: new Date(2013, 10, 18),
+					end: new Date(2013, 10, 19),
 					allDay: false
 				}
 			]

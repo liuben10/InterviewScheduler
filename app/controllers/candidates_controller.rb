@@ -1,4 +1,5 @@
 class CandidatesController < UsersController
+  
   def index
   end
 
@@ -6,7 +7,7 @@ class CandidatesController < UsersController
     Rails.logger.debug params
     success = add_user(params[:candidate], :Candidate)
     if success
-      redirect_to candidate_path(params[:candidate][:name])
+      redirect_to candidate_path(params[:candidate][:id])
     else
       flash[:notice] = "createError"
       redirect_to welcome_index_path
@@ -14,24 +15,27 @@ class CandidatesController < UsersController
   end
 
   def edit
-    Rails.logger.debug params
-    @candidate = Candidate.find_by_name(params[:id])
+    @candidate = Candidate.find_by_id(params[:id])
   end
 
   def update
-    @candidate = Candidate.find_by_name(params[:id])
+    @candidate = Candidate.find_by_id(params[:id])
     modify(@candidate, :candidate)
-    redirect_to candidate_path(@candidate.name)
+    redirect_to candidate_path(@candidate.id)
   end
 
   def show
-    Rails.logger.debug params
-    @candidate = Candidate.find_by_name(params[:id])
-#    @candidate = Candidate.find_by_userpassword params[:id]
-#XXX DEBUG
-# @candidate = Candidate.new
+    @candidate = Candidate.find_by_id(params[:id])
   end
 
+  def list
+    @candidate = Candidate.find_by_id(params[:id])
+    @recruiters = @candidate.recruiters    
+  end
+  
+  def add_recruiter
+    
+  end
 
  #Radhesh's create; can be deleted if current create does the job
  # def create

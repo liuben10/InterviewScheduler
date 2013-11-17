@@ -17,10 +17,9 @@ class UsersController < ApplicationController
 
   def create_account(user, type)
     type.to_s.constantize.create! params[:candidate]
-        flash[:notice] = "New #{type} created with password: #{params[:candidate][:password]} and email: #{params[:candidate][:email]}"
-      session[:authenticated_user] = user[:name]
+    flash[:notice] = "New #{type} created with password: #{params[:candidate][:password]} and email: #{params[:candidate][:email]}"
+    session[:authenticated_user] = user[:name]
   end
-
 
   def modify(user, type)
     user.email = params[type][:email]
@@ -31,6 +30,6 @@ class UsersController < ApplicationController
 
   def validations(name, email, password)
       return (email.nil? or email.strip.empty? or password.nil? or password.strip.empty? or name.nil? or name.strip.empty?)
-    end
+  end
 
 end
