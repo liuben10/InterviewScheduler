@@ -1,27 +1,30 @@
 Scheduler::Application.routes.draw do
-  match 'candidates/:name/calendar(/:year(/:month))' =>  'calendar#index', :as => :calendar_candidate, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
-  match 'recruiters/:name/calendar(/:year(/:month))' =>  'calendar#index', :as => :calendar_recruiter, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
+  #match 'candidates/:name/calendar(/:year(/:month))' =>  'calendar#index', :as => :calendar_candidate, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
+  #match 'recruiters/:name/calendar(/:year(/:month))' =>  'calendar#index', :as => :calendar_recruiter, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
+
 
   root :to => 'welcome#index'
+
   get "welcome/index" => "welcome#index"
-  get "candidate/edit" => "candidates#edit"
-  get "recruiter/edit" => "recruiters#edit"
   post "user/modify" => "users#modify"
-  get "recruiter/get_candidates" => "recruiter#get_candidates"
   resources :candidates
   resources :recruiters
-
+  get "recruiter/get_candidates" => "recruiter#get_candidates"
+  get "candidate/:id/list" => "candidates#list", as: 'list_candidate'
   get "welcome/show" => "welcome#show"
+  get "recruiter/:id/list" => "recruiters#list", as: 'list_recruiter'
 
   post '/logout' => "welcome#logout"
   #For Debug purposes, this will automatically go to these pages
   post "recruiter/create" => "recruiters#create"
   post "candidate/create" => "candidates#create"
+  post "recruiter/:id/add_candidate" => "recruiters#add_candidate"
+  post "candidate/:id/add_recruiter" => "candidates#add_recruiter"
 
   match "welcome/show", :to => redirect("welcome/show")
-  match "candidates", :to => redirect('candidates/show')
+  #match "candidates", :to => redirect('candidates/show')
 
-  match "recruiters", :to => redirect('recruiters/show')
+  #match "recruiters", :to => redirect('recruiters/show')
   #Just to go to the specific pages
 
 

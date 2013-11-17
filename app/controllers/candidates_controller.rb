@@ -1,4 +1,5 @@
 class CandidatesController < UsersController
+
   def index
   end
 
@@ -41,9 +42,23 @@ class CandidatesController < UsersController
       tmpstring += eve.name
       tmpstring += "|"
     end
-#    @candidate = Candidate.find_by_userpassword params[:id]
-#XXX DEBUG
-# @candidate = Candidate.new
+  end
+
+  def list
+    @candidate = Candidate.find_by_username(params[:id])
+    @recruiters = @candidate.recruiters
+  end
+
+  def add_recruiter
+    @candidate = Candidate.find_by_username(params[:id])
+    @recruiter = Recruiter.find_by_username(params[:recruiter])
+    if @recruiter
+      @candidate.recruiters << @recruiter
+      redirect_to list_candidate_path(@candidate.username)
+    else
+      flash[:error] = "Could not find the recruiter with that username"
+      redirect_to list_candidate_path(@candidate.username)
+    end
   end
 
 end

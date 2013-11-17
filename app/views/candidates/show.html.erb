@@ -5,8 +5,10 @@
 </div>
 
 <div class = "row">
-  <div class = "large-1 columns">
-    <i class="fi-home profile-icon"></i>
+	
+  <div class = "large-1 columns user-icon">
+	<%= link_to raw('<i class="fi-home profile-icon"></i>'), candidate_path %>
+	<%= link_to raw('<i class="fi-list-thumbnails profile-icon"></i>'), list_candidate_path %>
     <i class="fi-calendar profile-icon"></i>
     <i class="fi-mail profile-icon"></i>
     <i class="fi-wrench profile-icon"></i>
@@ -17,33 +19,33 @@
     </div>
   </div>
   <div class = "large-3 columns">
-    <form action="/candidates/<%=@candidate.name%>/edit" method="get">
+    <form action="/candidates/<%=@candidate.id %>/edit" method="get">
        <input type="submit" value="Edit" class = "medium button" id="edit_button">
     </form>
   </div>
 </div>
 
-
-
-
 <script type='text/javascript'>
 
-  $('#calendar').fullCalendar({
-    events: [
-        {
-            title  : 'event1',
-            start  : '2013-11-15'
-        },
-        {
-            title  : 'event2',
-            start  : '2013-11-15',
-            end    : '2013-11-15'
-        },
-        {
-            title  : 'event3',
-            start  : '2013-11-09 12:30:00',
-            allDay : false // will make the time show
-        }
-    ]
-});
+	$(document).ready(function() {
+	
+		
+		$('#calendar').fullCalendar({
+			editable: true,
+			events: [
+				{
+					title: 'Interview With Tien',
+					start: new Date(2013, 10, 15),
+					allDay: false
+				},
+				{
+					title: 'Interview With Nick',
+					start: new Date(2013, 10, 18),
+					end: new Date(2013, 10, 19),
+					allDay: false
+				}
+			]
+		});
+		
+	});
 </script>

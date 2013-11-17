@@ -1,0 +1,37 @@
+<div class = "row">
+  <div class = "large-12 columns">
+    <%= content_tag :h4, "#{@candidate.name}'s page" %>
+  </div>
+</div>
+
+<div class = "row">
+
+  <div class = "large-1 columns user-icon">
+  <%= link_to raw('<i class="fi-home profile-icon"></i>'), candidate_path %>
+  <%= link_to raw('<i class="fi-list-thumbnails profile-icon"></i>'), list_candidate_path %>
+    <i class="fi-calendar profile-icon"></i>
+    <i class="fi-mail profile-icon"></i>
+    <i class="fi-wrench profile-icon"></i>
+  </div>
+
+  <div class = "large-8 columns">
+  <h3> List of Associated Recruiters </h3>
+  <% @recruiters.each do |recruiter|%>
+    <p><%=recruiter.name%></p>
+    <% end %>
+  </div>
+
+  <div class = "large-3 columns">
+  <h6> Associate Recruiter </h6>
+  <% if flash[:error] %>
+    <%= flash[:error] %>
+    </br></br>
+  <% end %>
+  <%= form_tag("add_recruiter", method: "post") do %>
+      <%= label_tag(:recruiter, "Recruiter's Username") %>
+      <%= text_field_tag(:recruiter) %>
+      <%= submit_tag("Add") %>
+  <% end %>
+
+  </div>
+</div>

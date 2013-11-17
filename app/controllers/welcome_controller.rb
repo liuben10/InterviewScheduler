@@ -1,4 +1,5 @@
 class WelcomeController < ApplicationController
+  
   def index
     @candidate = Candidate.new
     if not session[:authenticated_user].nil?
@@ -26,10 +27,10 @@ class WelcomeController < ApplicationController
       #redirect_to candidate_show_path
       redirectPath = candidate_path(foundCandidate.username)
     else
-      flash[:notice] = "Email not found"
+      flash[:notice] = "Username not found"
       redirect_to welcome_index_path and return
     end
-    if foundUser.password != params[:passid]
+    if foundUser.password != params[:password]
       flash[:notice] = "Password was incorrect, please try again"
       redirect_to welcome_index_path and return
     else

@@ -18,9 +18,6 @@ class RecruitersController < UsersController
     end
   end
 
-  def get_candidates
-    @listOfCandidates = Candidate.all
-  end
 
   def edit
     Rails.logger.debug paramsx
@@ -42,4 +39,22 @@ class RecruitersController < UsersController
 #    @recruiter.password = "Foo"
 #    @recruiter.email = "Bar"
   end
+
+  def list
+    @recruiter = Recruiter.find_by_username(params[:id])
+    @candidates = @recruiter.candidates
+  end
+
+  def add_candidate
+    @recruiter = Recruiter.find_by_username(params[:id])
+    @candidate = Candidate.find_by_username(params[:candidate])
+    if @candidate
+      @recruiter.candidates << @candidate
+      redirect_to list_recruiter_path(@recruiter.username)
+    else
+      flash[:error] = "Could not find the recruiter with that username"
+      redirect_to list_recruiter_path(@recruiter.username)
+    end
+  end
+
 end

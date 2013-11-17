@@ -4,12 +4,10 @@
   </div>
 </div>
 
-<%= hidden_field_tag
-
 <div class = "row">
-  <div class = "large-1 columns">
-    <i class="fi-home profile-icon"></i>
-    <i class="fi-calendar profile-icon"></i>
+  <div class = "large-1 columns user-icon">
+  <%= link_to raw('<i class="fi-home profile-icon"></i>'), recruiter_path %>
+    <%= link_to raw('<i class="fi-list-thumbnails profile-icon"></i>'), list_recruiter_path %>
     <i class="fi-mail profile-icon"></i>
     <i class="fi-wrench profile-icon"></i>
   </div>

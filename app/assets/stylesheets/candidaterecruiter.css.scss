@@ -37,6 +37,17 @@ $index-second-color: #687C97;
 	
 }
 
+.user-icon {
+	a {
+		color: black;
+	}
+	
+	a:hover {
+		color: grey;
+	}
+
+}
+
 .profile-icon {
 	font-size: 80px;
 	text-align: center;
