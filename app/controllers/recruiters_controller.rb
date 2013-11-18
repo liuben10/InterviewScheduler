@@ -20,7 +20,6 @@ class RecruitersController < UsersController
 
 
   def edit
-    Rails.logger.debug paramsx
     @recruiter = Recruiter.find_by_username(params[:id])
   end
 
