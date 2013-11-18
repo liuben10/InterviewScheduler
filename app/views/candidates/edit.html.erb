@@ -1,6 +1,6 @@
 
 <%= content_tag :h4, "Edit page for #{@candidate.name}" %>
-        <%= form_for @candidate, url: "/candidates/#{@candidate.name}", method: :put do |f| %>
+        <%= form_for @candidate, url: "/candidates/#{@candidate.username}", method: :put do |f| %>
             <div class="field">
                 <%= f.label "Name" %>
                 <%= f.text_field :name, :value=>"#{@candidate.name}" %>
