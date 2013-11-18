@@ -7,7 +7,7 @@ Feature: allow users to register for new accounts
 Background: the user's account does not already exist
 
   Given the following accounts exist:
-  | email                 | password          | type       |
+  | username              | password          | type       |
   | fluffyBunnies         | pass1234          | recruiter  |
   | nestorga              | fooPass3          | candidate  |
   | efriesen              | secure!p@ss       | candidate  |
@@ -18,7 +18,8 @@ Background: the user's account does not already exist
 
 @javascript
 Scenario: non-existant username for potential active candidate
-  When I fill in "candidate_name" with "tchang"
+  When I fill in "candidate_username" with "tchang"
+  And I fill in "candidate_name" with "tchang"
   And I fill in "candidate_email" with "tchang"
   And I fill in "candidate_password" with "barpass"
   And I select acctype "Candidate"
@@ -27,7 +28,8 @@ Scenario: non-existant username for potential active candidate
  
 @javascript
 Scenario: non-existant username for potential active recruiter
-  When I fill in "candidate_name" with "pinkTutus"
+  When I fill in "candidate_username" with "pinkTutus"
+  And I fill in "candidate_name" with "pinkTutus"
   And I fill in "candidate_email" with "pinkTutus"
   And I fill in "candidate_password" with "pink"
   And I select acctype "Recruiter"
@@ -36,7 +38,8 @@ Scenario: non-existant username for potential active recruiter
 
 @javascript
 Scenario: username already exists for potential active recruiter
-  When I fill in "candidate_name" with "fluffyBunnies"
+  When I fill in "candidate_username" with "fluffyBunnies"
+  And I fill in "candidate_name" with "fluffyBunnies"
   And I fill in "candidate_email" with "fluffyBunnies"
   And I fill in "candidate_password" with "barpass"
   And I select acctype "Recruiter"
@@ -46,7 +49,8 @@ Scenario: username already exists for potential active recruiter
 
 @javascript
 Scenario: username already exists for potential active candidate
-  When I fill in "candidate_name" with "nestorga"
+  When I fill in "candidate_username" with "nestorga"
+  And I fill in "candidate_name" with "nestorga"
   And I fill in "candidate_email" with "nestorga"
   And I fill in "candidate_password" with "barpass"
   And I select acctype "Candidate"
@@ -57,7 +61,8 @@ Scenario: username already exists for potential active candidate
 
 @javascript
 Scenario: invalid username and valid password for candidate
-  When I fill in "candidate_name" with "fluffyBunnies"
+  When I fill in "candidate_username" with "fluffyBunnies"
+  And I fill in "candidate_name" with "fluffyBunnies"
   And I fill in "candidate_email" with "fluffyBunnies"
   And I fill in "candidate_password" with "pass1234"
   And I press "Create"
@@ -65,6 +70,6 @@ Scenario: invalid username and valid password for candidate
 
 @javascript
 Scenario: Left some fields empty
-  When I fill in "candidate_name" with "radhesh"
+  When I fill in "candidate_username" with "radhesh"
   And I press "Create"
   Then I should be on the InterviewScheduler home page
