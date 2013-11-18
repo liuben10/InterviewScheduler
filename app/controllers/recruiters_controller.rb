@@ -18,7 +18,6 @@ class RecruitersController < UsersController
     end
   end
 
-
   def edit
     @recruiter = Recruiter.find_by_username(params[:id])
   end
@@ -30,13 +29,8 @@ class RecruitersController < UsersController
   end
 
   def show
-    #Redirects to the recruiter view
-#XXX uncomment me
    @recruiter = Recruiter.find_by_username(params[:id])
    @events = get_events(@recruiter, "recruiter")
- #    @recruiter = Recruiter.new
-#    @recruiter.password = "Foo"
-#    @recruiter.email = "Bar"
   end
 
   def list
