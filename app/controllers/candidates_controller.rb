@@ -1,5 +1,9 @@
 class CandidatesController < UsersController
 
+  before_filter :except => [:create] {|c|
+    c.authorize params[:id], :candidate
+  } 
+
   def index
   end
 
@@ -22,6 +26,7 @@ class CandidatesController < UsersController
     #Shows the corresponding edit page.
     @candidate = Candidate.find_by_username(params[:id])
   end
+  
   def update
     #perfoms the actual update.
     @candidate = Candidate.find_by_username(params[:id])
@@ -60,5 +65,4 @@ class CandidatesController < UsersController
       redirect_to list_candidate_path(@candidate.username)
     end
   end
-
 end

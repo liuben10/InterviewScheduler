@@ -54,17 +54,17 @@
       </div>
       <% end %>
 
-
-        <select id="acctype" class = "large">
-          <option value="candidate">Candidate</option>
-          <option value="recruiter">Recruiter</option>
-        </select>
-
+		<form class="custom">
+        	<select id="acctype" class = "large">
+          		<option value="candidate">Candidate</option>
+          		<option value="recruiter">Recruiter</option>
+        	</select>
+		</form>
 
         <%= form_for(@candidate) do |f| %>
             <div class="field">
-              <%= f.label "Username" %>
-              <%= f.text_field :username %>
+                <%= f.label "Username" %>
+                <%= f.text_field :username %>
             </div>
             <div class="field">
                 <%= f.label "Name" %>
@@ -74,17 +74,17 @@
                 <%= f.label "Email" %>
                 <%= f.text_field :email %>
             </div>
-                     <div class ="field">
-                              <%= f.label "Password" %>
-                     <%= f.password_field :password %>
-        </div>
-                              <div class="field">
-                                       <label id="companyLabel" style="display:none;">Company </label>
+            <div class ="field">
+                <%= f.label "Password" %>
+            	<%= f.password_field :password %>
+        	</div>
+            <div class="field">
+                <label id="companyLabel" style="display:none;">Company </label>
                 <input type="hidden" id="character_company" name="company" value="">
              </div>
-            <div class="actions">
+             <div class="actions">
                 <input type="submit" id="subutton" class="large button" value="Create">
-            </div>
+             </div>
         <% end %>
 
       </div>

@@ -64,3 +64,9 @@ Scenario: recruiters should be able to change their email
   And I press "Update"
   Then I should be on the "fluffyBunnies" recruiters page
   And the email for "fluffyBunnies" should be "wtf@yahoo.com"
+
+Scenario: recruiter should not be able to view a candidate's page
+  Given I am logged in as "fluffyBunnies" with password "pass1234"
+  And I am on the "fluffyBunnies" recruiters page
+  And I go to the "fluffyBunnies" candidates page
+  Then I should be on the "fluffyBunnies" recruiters page

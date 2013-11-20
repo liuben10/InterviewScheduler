@@ -1,4 +1,8 @@
 class RecruitersController < UsersController
+  before_filter :except => [:create] { |c| 
+    c.authorize params[:id], :recruiter
+  } 
+  
   def index
     @recruiter=Recruiter.new
   end
@@ -29,8 +33,8 @@ class RecruitersController < UsersController
   end
 
   def show
-   @recruiter = Recruiter.find_by_username(params[:id])
-   @events = get_events(@recruiter, "recruiter")
+    @recruiter = Recruiter.find_by_username(params[:id])
+    @events = get_events(@recruiter, "recruiter")
   end
 
   def list

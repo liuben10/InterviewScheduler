@@ -56,8 +56,7 @@ Scenario: username already exists for potential active candidate
   And I select acctype "Candidate"
   And I press "Create"
   Then I should be on the InterviewScheduler home page
-   And I should not be on the "nestorga" candidates page
-
+  And I should not be on the "nestorga" candidates page
 
 @javascript
 Scenario: invalid username and valid password for candidate
