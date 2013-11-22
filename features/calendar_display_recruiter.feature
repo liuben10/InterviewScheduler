@@ -25,7 +25,12 @@ Given the following accounts exist:
   | efriesen        | candidate     | fluffyBunnies | 12/25/12   |
   | some_cand       | candidate     | radhesh       | 03/02/14   |
 
-  And I am on the "fluffyBunnies" recruiters page
+  Given I am logged in as "fluffyBunnies" with password "pass1234"
+  
+@javascript
+Scenario: Add events as recruiter
+  When I add an event "InterviewTest1" starting at "2013,11,11,1,30" and ending at "2013,11,11,2,30"
+  Then I should see the event "InterviewTest1" in my events table
 
 Scenario: Display upcoming appointments
   Then I should see an appointment with "nestorga" on "10/03/13"

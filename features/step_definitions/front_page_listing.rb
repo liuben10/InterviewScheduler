@@ -5,6 +5,7 @@ Given /^the following information of the candidates$/ do |cand_table|
 end
 
 
+
 Then /^I should see the candidate "(.*)" with the (status | email) of "(.*)"$/ do |cand, check, val|
   if check == "status"
     a = Recruiter.getCandidate(cand).getStatus()

@@ -153,7 +153,7 @@
   </select></div>
  <label>Description</label><textarea id="description" name="description" class="textarea"></textarea>
 <%= hidden_field_tag "recruiter_id", "#{@recruiter.id}" %>
-<input type="submit" class="submitForm" value="Submit">
+<input type="submit" class="submitForm" id="submitButton" value="Submit">
 </form>
 <input type="submit" class="submitForm" id="cancelButton" value="Cancel"></div>
 <%= hidden_field_tag 'eventstring', "#{@eventsAsString}" %>

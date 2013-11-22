@@ -25,7 +25,7 @@ Given the following accounts exist:
 
   And I am logged in as "nestorga"
   And I am on the "nestorga" profile page
-
+ 
   Scenario: Display next five appointments in order from earliest to latest
     Then I should see an appointment with "fluffyBunnies" on "10/03/13" before "radhesh" on "12/25/12"
     And I should see an appointment with "radhesh" on "12/25/12" before "some_recr" on "07/27/08"
