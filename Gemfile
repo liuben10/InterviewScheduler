@@ -39,6 +39,7 @@ group :test do
 end
 
 gem 'jquery-rails'
+gem 'jquery-ui-rails'
 gem 'haml'
 gem 'event-calendar', :require => 'event_calendar'
 

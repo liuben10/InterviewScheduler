@@ -1,9 +1,12 @@
 class ApplicationController < ActionController::Base
-  protect_from_forgery
-    
+  #protect_from_forgery
+
   protected
     def authorize (currentUser, userType)
       userid = session[:authenticated_user]
+      Rails.logger.debug ";;;;;;;;;;;;;;;;;"
+      Rails.logger.debug session
+      Rails.logger.debug ";;;;;;;;;;;;;;;;;"
       if not Candidate.find_by_username(userid).nil?
         type = :candidate
       else
@@ -16,6 +19,6 @@ class ApplicationController < ActionController::Base
           redirect_to recruiter_path(userid)
         end
       end
-    end 
-    
+    end
+
 end

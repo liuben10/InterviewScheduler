@@ -9,6 +9,7 @@ Scheduler::Application.routes.draw do
   post "user/modify" => "users#modify"
   resources :candidates
   resources :recruiters
+  post "event/create" => "events#create"
   get "recruiter/get_candidates" => "recruiter#get_candidates"
   get "candidate/:id/list" => "candidates#list", as: 'list_candidate'
   get "welcome/show" => "welcome#show"

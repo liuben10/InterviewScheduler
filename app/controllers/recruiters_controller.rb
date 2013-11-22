@@ -1,8 +1,8 @@
 class RecruitersController < UsersController
-  before_filter :except => [:create] { |c| 
+  before_filter :except => [:create] { |c|
     c.authorize params[:id], :recruiter
-  } 
-  
+  }
+
   def index
     @recruiter=Recruiter.new
   end
@@ -33,9 +33,21 @@ class RecruitersController < UsersController
   end
 
   def show
+    require 'json'
     @recruiter = Recruiter.find_by_username(params[:id])
-    @events = get_events(@recruiter, "recruiter")
-  end
+    @events = get_events(@recruiter, "recruiter").to_a
+    @eventsAsString = ""
+    @events.each do |eve|
+      stringToAdd = ""
+      stringToAdd += eve.name
+      stringToAdd += ","
+      stringToAdd += eve.start_at.strftime("%FT%T%:z")
+      stringToAdd += ","
+      stringToAdd += eve.end_at.strftime("%FT%T%:z")
+      stringToAdd += "|"
+      @eventsAsString += stringToAdd
+    end
+   end
 
   def list
     @recruiter = Recruiter.find_by_username(params[:id])

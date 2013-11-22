@@ -4,7 +4,7 @@ Given /the following accounts exist/ do |account_table|
     #print account
     newaccounthash["username"] = account["username"]
     newaccounthash["password"] = account["password"]
-    newaccounthash["email"] = account["email"]
+    #newaccounthash["email"] = account["email"]
     #print newaccounthash
     if account["type"] == "recruiter"
       Recruiter.create! newaccounthash
