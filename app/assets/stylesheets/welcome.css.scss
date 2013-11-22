@@ -6,6 +6,10 @@
 $index-main-color: #344152;
 $index-second-color: #687C97;
 
+.invisible {
+	display: none;
+}
+
 .large-2, .large-1, .large-3 {	
 	min-height: 1px;
 }

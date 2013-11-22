@@ -36,18 +36,8 @@ class RecruitersController < UsersController
     require 'json'
     @recruiter = Recruiter.find_by_username(params[:id])
     @events = get_events(@recruiter, "recruiter").to_a
-    @eventsAsString = ""
-    @events.each do |eve|
-      stringToAdd = ""
-      stringToAdd += eve.name
-      stringToAdd += ","
-      stringToAdd += eve.start_at.strftime("%FT%T%:z")
-      stringToAdd += ","
-      stringToAdd += eve.end_at.strftime("%FT%T%:z")
-      stringToAdd += "|"
-      @eventsAsString += stringToAdd
-    end
-   end
+    
+  end
 
   def list
     @recruiter = Recruiter.find_by_username(params[:id])

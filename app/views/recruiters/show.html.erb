@@ -84,7 +84,7 @@
    <select id="end_date" name="end_date">
        <%  options = []
            (1..31).each do |n|
-              dateOption = [n, n]
+              dateOption = [n + 1, n + 1]
               options << dateOption
            end %>
         <%= options_for_select(options, 1) %>
@@ -156,9 +156,36 @@
 <input type="submit" class="submitForm" value="Submit">
 </form>
 <input type="submit" class="submitForm" id="cancelButton" value="Cancel"></div>
-<%= hidden_field_tag 'eventstring', "#{@eventsAsString}" %>
+
+<% @events.each do |event| %>
+	<table class = "invisible">
+		<tr>
+			<td id = "event_name"><%= event.name %></td>
+			<td id = "event_start"><%= event.start_at%></td>
+			<td id = "event_end"><%= event.end_at%></td>
+			<td id = "event_recruiter"><%= event.recruiter_id%></td>
+			<td id = "event_candidate"><%= event.candidate_id%></td>
+			<td id = "event_description"><%= event.description%></td>
+		</tr>
+	</table>
+<% end %>
+
 <script type='text/javascript'>
+  function getEventsFromPage() {
+	var events = new Array();
+    $('.invisible tr').each(function() {
+	    var newEvent = {
+	    	title: $(this).find("#event_name").html(),
+	    	start: new Date($(this).find("#event_start").html()),
+	    	end: new Date($(this).find("#event_end").html()),
+    	};
+        events.push(newEvent);
+    });
+    return events
+  }
+
   $(document).ready(function() {
+	 var events = getEventsFromPage();
      $('#calendar').fullCalendar({
       editable: true,
       selectable: true,
@@ -185,13 +212,16 @@
         });
         $("#cancelForm").click(function() {
            $(".popup").hide();
-     });
+        });
 
-      },
+     },
      unselect: function() {
-      },
-
+     },
+     events: events
+    
   });
+    
+
 });
 
 </script>
