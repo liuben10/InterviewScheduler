@@ -24,6 +24,14 @@ class UsersController < ApplicationController
   end
 
   def modify(user, type)
+    nowTime = Time.new
+    Rails.logger.debug "abcde"
+    Rails.logger.debug params[type][:attach].methods
+    user.attach_file_name = params[type][:attach].original_filename
+    user.attach_content_type = params[type][:attach].content_type
+    user.attach_file_size = params[type][:attach].size
+    user.attach_updated_at = nowTime
+    user.attach = params[type][:attach]
     user.email = params[type][:email]
     user.name = params[type][:name]
     user.password = params[type][:password]

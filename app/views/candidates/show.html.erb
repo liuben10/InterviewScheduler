@@ -8,11 +8,12 @@
   </div>
 </div>
 
+<a style="display: inline-block;" href="<%= @candidate.attach.url %>">Resume</a>
 <div class = "row">
-	
+
   <div class = "large-1 columns user-icon">
-	<%= link_to raw('<i class="fi-home profile-icon"></i>'), candidate_path %>
-	<%= link_to raw('<i class="fi-list-thumbnails profile-icon"></i>'), list_candidate_path %>
+  <%= link_to raw('<i class="fi-home profile-icon"></i>'), candidate_path %>
+  <%= link_to raw('<i class="fi-list-thumbnails profile-icon"></i>'), list_candidate_path %>
     <i class="fi-calendar profile-icon"></i>
     <i class="fi-mail profile-icon"></i>
     <i class="fi-wrench profile-icon"></i>
@@ -33,25 +34,25 @@
 
 <script type='text/javascript'>
 
-	$(document).ready(function() {
-	
-		
-		$('#calendar').fullCalendar({
-			editable: true,
-			events: [
-				{
-					title: 'Interview With Tien',
-					start: new Date(2013, 10, 15),
-					allDay: false
-				},
-				{
-					title: 'Interview With Nick',
-					start: new Date(2013, 10, 18),
-					end: new Date(2013, 10, 19),
-					allDay: false
-				}
-			]
-		});
-		
-	});
+  $(document).ready(function() {
+
+
+    $('#calendar').fullCalendar({
+      editable: true,
+      events: [
+        {
+          title: 'Interview With Tien',
+          start: new Date(2013, 10, 15),
+          allDay: false
+        },
+        {
+          title: 'Interview With Nick',
+          start: new Date(2013, 10, 18),
+          end: new Date(2013, 10, 19),
+          allDay: false
+        }
+      ]
+    });
+
+  });
 </script>
