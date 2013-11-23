@@ -17,7 +17,6 @@
     <div class="attachment">
       <%= f.label "Attachment" %>
       <%= f.file_field :attach %>
-      <a href="<%= @candidate.attach.url %> "><b> File attached </b></a>
       <br/>
     </div>
 
@@ -25,7 +24,6 @@
       <br/>
       <%= f.label "Picture" %>
       <%= f.file_field :pic %>
-      <%= image_tag @candidate.pic.url %>
       <br/>
     </div>
 

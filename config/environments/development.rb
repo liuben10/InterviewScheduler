@@ -34,4 +34,7 @@ Scheduler::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  #ImageMagick path needed for image processing
+  Paperclip.options[:command_path] = "/usr/bin/"
 end

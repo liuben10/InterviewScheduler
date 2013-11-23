@@ -1,16 +1,17 @@
 <div class = "row">
-  <p>
-    <b>Candidate:</b>
-    <%= image_tag @candidate.pic.url %>
-  </p>
   <div class = "large-12 columns">
     <%= content_tag :h4, "#{@candidate.name}'s page" %>
   </div>
+  <div class="large-12 columns">
+    <%= image_tag @candidate.pic.url(:thumb) %>
+  </div>
+  <br/>
+  <div class="large-12 columns">
+    <a style="display: inline-block;" href="<%= @candidate.attach.url %>">Resume</a>
+  </div>
 </div>
 
-<a style="display: inline-block;" href="<%= @candidate.attach.url %>">Resume</a>
 <div class = "row">
-
   <div class = "large-1 columns user-icon">
   <%= link_to raw('<i style="display: inline-block;" class="fi-home profile-icon"></i>'), candidate_path %>
   <%= link_to raw('<i style="display: inline-block;" class="fi-list-thumbnails profile-icon"></i>'), list_candidate_path %>
