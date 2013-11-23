@@ -1,19 +1,37 @@
 
 <%= content_tag :h4, "Edit page for #{@candidate.name}" %>
-        <%= form_for @candidate, url: "/candidates/#{@candidate.username}", method: :put do |f| %>
-            <div class="field">
-                <%= f.label "Name" %>
-                <%= f.text_field :name, :value=>"#{@candidate.name}" %>
-            </div>
-            <div class="field">
-                <%= f.label "Email" %>
-                <%= f.text_field :email, :value=>"#{@candidate.email}" %>
-            </div>
-            <div class ="field">
-                <%= f.label "Password" %>
-                <%= f.password_field :password, :value=>"#{@candidate.password}" %>
-            </div>
-            <div class="actions">
-                <input type="submit" id="subutton" class="large button" value="Update">
-            </div>
-        <% end %>
+  <%= form_for @candidate, :html => { :multipart => true }, url: "/candidates/#{@candidate.username}", method: :put do |f| %>
+    <div class="field">
+      <%= f.label "Name" %>
+      <%= f.text_field :name, :value=>"#{@candidate.name}" %>
+    </div>
+    <div class="field">
+      <%= f.label "Email" %>
+      <%= f.text_field :email, :value=>"#{@candidate.email}" %>
+    </div>
+    <div class ="field">
+      <%= f.label "Password" %>
+      <%= f.password_field :password, :value=>"#{@candidate.password}" %>
+    </div>
+	
+    <div class="attachment">
+      <%= f.label "Attachment" %>
+      <%= f.file_field :attach %>
+      <a href="<%= @candidate.attach.url %> "><b> File attached </b></a>
+      <br/>
+    </div>
+
+    <div class="pic">
+      <br/>
+      <%= f.label "Picture" %>
+      <%= f.file_field :pic %>
+      <%= image_tag @candidate.pic.url %>
+      <br/>
+    </div>
+
+    <br/>
+
+    <div class="actions">
+      <input type="submit" id="subutton" class="large button" value="Update">
+    </div>
+<% end %>
