@@ -3,8 +3,7 @@
     <%= content_tag :h4, "#{@recruiter.name}'s page" %>
   </div>
   <div class="large-12 columns">
-    <%= image_tag @recruiter.pic.url(:thumb) %>
-  </div>
+      </div>
   <br/>
 
 </div>
@@ -15,24 +14,26 @@
     <%= link_to raw('<i style="display: inline-block;" class="fi-list-thumbnails profile-icon"></i>'), list_recruiter_path %>
     <%= link_to raw('<i style="display: inline-block;" class="fi-calendar profile-icon"></i>'), calendar_recruiter_path %>
     <i class="fi-mail profile-icon"></i>
-    <i class="fi-wrench profile-icon"></i>
+    <%= link_to raw('<i class="fi-wrench profile-icon"></i>'), "/recruiters/#{@recruiter.username}/edit" %>
   </div>
 
   <div class = "large-8 columns">
     <h2> Dashboard </h2>
     <h3> Upcoming Events </h3>
-    <% if @appointments.empty? %>
+    <% if @events.empty? %>
       <p> No upcoming events </p>
     <% else %>
-      <% @appointments.each do |appointment|%>
-        <p><%="#{appointment.meet_with}, #{mdyFormat(appointment.date)}"%></p>
+      <% @events.each do |appointment|%>
+                            <h6><%= "Appointment Request for #{appointment.pending_id}" %></h6>
+                            <p>
+                              Appointment: <%="#{appointment.name}"%><br>
+                              Start Time:<%="#{mdyFormat(appointment.start_at)}"%><br>
+                              Description: <%="#{appointment.description}"%></p>
       <% end %>
     <% end %>
   </div>
 
   <div class = "large-3 columns">
-    <form action="/recruiters/<%=@recruiter.username%>/edit" method="get">
-       <input type="submit"  value="Edit" class="medium button" id="edit_button">
-    </form>
-  </div>
+      <%= image_tag @recruiter.pic.url(:thumb) %>
+   </div>
 </div>

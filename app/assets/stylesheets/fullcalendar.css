@@ -587,4 +587,29 @@ table.fc-border-separate {
 	_overflow: hidden;
 	}
 	
-	
+
+.customOrange,
+.customOrange div,	
+.customOrange span {
+     background-color: orange;
+     border-color: orange;
+     color: black;
+     font-weight: bold;
+}
+
+.customGreen,
+.customGreen div,
+.customGreen span {
+   background-color: green;
+   border-color: green;
+   color: yellow;
+   font-weight: bold;
+}
+
+.customRed,
+.customRed div,
+.customRed span {
+   background-color: red;
+   color: white;
+   font-weight: bold;
+}
