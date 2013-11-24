@@ -19,8 +19,15 @@ class UsersController < ApplicationController
 
   def create_account(user, type)
     type.to_s.constantize.create! params[:candidate]
-        flash[:notice] = "New #{type} created with password: #{params[:candidate][:password]} and email: #{params[:candidate][:email]}"
-      session[:authenticated_user] = user[:username]
+    flash[:notice] = "New #{type} created with password: #{params[:candidate][:password]} and email: #{params[:candidate][:email]}"
+    session[:authenticated_user] = user[:username]
+    if type.to_s == "Candidate"
+      UserMailer.welcome_candidate(Candidate.find_by_name(params[:candidate][:name]))
+                .deliver
+    elsif type.to_s == "Recruiter"
+      UserMailer.welcome_recruiter(Recruiter.find_by_name(params[:candidate][:name]))
+                .deliver
+    end
   end
 
   def modify(user, type)
