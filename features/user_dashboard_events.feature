@@ -16,26 +16,26 @@ Background:
   | some_cand             | horriblePass      | candidate  |
   
 
-  And the following appointments exist:
-  | username        | acc_type      | meet_with     | date       |
-  | nestorga        | candidate     | fluffyBunnies | 2013-10-03 |
-  | nestorga        | candidate     | radhesh       | 2012-12-25 |
-  | nestorga        | candidate     | some_recr     | 2008-07-27 |
-  | nestorga        | candidate     | some_recr     | 2014-03-02 |
-  
-  | nestorga        | candidate     | some_recr     | 2019-10-29 |
-  | radhesh         | recruiter     | efriesen      | 2016-08-10 |
-  | radhesh         | recruiter     | nestorga      | 2012-12-25 |
-  | radhesh         | recruiter     | some_cand     | 2000-11-13 |
-  | radhesh         | recruiter     | some_cand     | 2014-02-20 |
-  
-  | radhesh         | recruiter     | some_cand     | 2019-12-07 |
+  And the following events exist:
+  | candidate       | recruiter        | start_at   |
+  | nestorga        | fluffyBunnies | 2013-10-03 |
+  | nestorga        | radhesh       | 2012-12-25 |
+  | nestorga        | some_recr     | 2008-07-27 |
+  | nestorga        | some_recr     | 2014-03-02 |
+  | nestorga        | some_recr     | 2019-10-29 |
+  | nestorga        | some_recr     | 2021-06-20 |
+  | efriesen        | radhesh       | 2016-08-10 |
+  | some_cand       | radhesh       | 2000-11-13 |
+  | some_cand       | radhesh       | 2021-06-14 |
+  | some_cand       | radhesh       | 2014-02-20 |
+  | some_cand       | radhesh       | 2019-12-07 |
+
 
  
   Scenario: Display next five appointments in order from earliest to latest for candidates
     Given I am logged in as "nestorga" with password "fooPass3"
     And I am on the "nestorga" candidates page
-    Then I should see the appointment with "some_recr" on "07/27/08" before "radhesh" on "12/25/12"
+    Then I should see an appointment with "some_recr" on "07/27/08" 
     And I should see the appointment with "radhesh" on "12/25/12" before "fluffyBunnies" on "10/03/13"
     And I should see the appointment with "fluffyBunnies" on "10/03/13" before "some_recr" on "03/02/14"
     And I should see the appointment with "some_recr" on "03/02/14" before "some_recr" on "10/29/19"

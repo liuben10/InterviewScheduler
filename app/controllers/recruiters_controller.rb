@@ -38,7 +38,7 @@ class RecruitersController < UsersController
 
   def show
     @recruiter = Recruiter.find_by_username(params[:id])
-    @appointments = Appointments.find(:all, :conditions=>["username = ?", params[:id]], :order=>"date ASC", :limit=>5)
+    @events = Event.find(:all, :conditions=>["recruiter_id = ?", @recruiter.id], :order=>"start_at ASC", :limit=>5)
   end
 
   def list

@@ -1,8 +1,12 @@
-Given /the following appointments exist/ do |appt_table|
-	  appt_table.hashes.each do |appt|
+Given /the following events exist/ do |event_table|
+	  event_table.hashes.each do |event|
     # each returned element will be a hash whose key is the table header.
     # you should arrange to add that movie to the database here.
-    Appointments.create(appt)
+    event["candidate_id"] = Candidate.find_by_username(event["candidate"]).id
+    event["recruiter_id"] = Recruiter.find_by_username(event["recruiter"]).id
+    event.delete("candidate")
+    event.delete("recruiter")
+    Event.create(event)
   end
 end
 

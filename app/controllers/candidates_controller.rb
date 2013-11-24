@@ -39,7 +39,7 @@ class CandidatesController < UsersController
   def show
     #Redirects to the candidate view
     @candidate = Candidate.find_by_username(params[:id])
-    @appointments = Appointments.find(:all, :conditions=>["username = ?", params[:id]], :order=>"date ASC", :limit=>5)
+    @events = Event.find(:all, :conditions=>["candidate_id = ?", @candidate.id], :order=>"start_at ASC", :limit=>5)
   end
 
   def list
