@@ -49,7 +49,7 @@ Scheduler::Application.configure do
       port:                   587,
       domain:                 'gmail.com',
       user_name:              'interviewscheduler33@gmail.com',
-      password:               '4DzA$3CpDt',
+      password:               'itmbxenctffipqfr',
       authentication:         'plain',
       enable_starttls_auto:   true }
 
