@@ -37,15 +37,20 @@ class RecruitersController < UsersController
   end
 
   def show
-    require 'json'
     @recruiter = Recruiter.find_by_username(params[:id])
-    @events = get_events(@recruiter, "recruiter")
-    #respond_with(@events)
+    @appointments = Appointments.find(:all, :conditions=>["username = ?", params[:id]], :order=>"date ASC", :limit=>5)
   end
 
   def list
     @recruiter = Recruiter.find_by_username(params[:id])
     @candidates = @recruiter.candidates
+  end
+
+  def calendar
+    require 'json'
+    @recruiter = Recruiter.find_by_username(params[:id])
+    @events = get_events(@recruiter, "recruiter")
+    #respond_with(@events)
   end
 
   def add_candidate

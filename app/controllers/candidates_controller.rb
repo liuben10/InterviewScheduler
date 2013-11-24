@@ -39,6 +39,16 @@ class CandidatesController < UsersController
   def show
     #Redirects to the candidate view
     @candidate = Candidate.find_by_username(params[:id])
+    @appointments = Appointments.find(:all, :conditions=>["username = ?", params[:id]], :order=>"date ASC", :limit=>5)
+  end
+
+  def list
+    @candidate = Candidate.find_by_username(params[:id])
+    @recruiters = @candidate.recruiters
+  end
+
+  def calendar
+    @candidate = Candidate.find_by_username(params[:id])
     @events = get_events(@candidate, "candidate")
     @eventString = ""
     @events.each do |eve|
@@ -47,11 +57,6 @@ class CandidatesController < UsersController
       tmpstring += eve.name
       tmpstring += "|"
     end
-  end
-
-  def list
-    @candidate = Candidate.find_by_username(params[:id])
-    @recruiters = @candidate.recruiters
   end
 
   def add_recruiter

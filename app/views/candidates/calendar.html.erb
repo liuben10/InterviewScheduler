@@ -21,19 +21,36 @@
   </div>
 
   <div class = "large-8 columns">
-    <h2> Dashboard </h2>
-    <h3> Upcoming Events </h3>
-    <% @appointments.each do |appointment|%>
-      <p><%="#{appointment.meet_with}, #{mdyFormat(appointment.date)}"%></p>
-    <% end %>
+    <div id = "calendar">
+    </div>
   </div>
 
-
   <div class = "large-3 columns">
-    <form action="/candidates/<%=@candidate.username %>/edit" method="get">
-       <input type="submit" value="Edit" class = "medium button" id="edit_button">
-    </form>
   </div>
 
 </div>
 
+<script type='text/javascript'>
+
+  $(document).ready(function() {
+
+
+    $('#calendar').fullCalendar({
+      editable: true,
+      events: [
+        {
+          title: 'Interview With Tien',
+          start: new Date(2013, 10, 15),
+          allDay: false
+        },
+        {
+          title: 'Interview With Nick',
+          start: new Date(2013, 10, 18),
+          end: new Date(2013, 10, 19),
+          allDay: false
+        }
+      ]
+    });
+
+  });
+</script>
