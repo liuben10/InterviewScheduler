@@ -39,7 +39,7 @@ class RecruitersController < UsersController
     @recruiter = Recruiter.find_by_username(params[:id])
     @events = get_events(@recruiter, "recruiter")
     #respond_with(@events)
-   end
+  end
 
   def list
     @recruiter = Recruiter.find_by_username(params[:id])

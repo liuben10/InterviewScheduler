@@ -48,8 +48,8 @@ Scheduler::Application.configure do
       address:                'smtp.gmail.com',
       port:                   587,
       domain:                 'gmail.com',
-      user_name:              'ischeduler33@gmail.com',
-      password:               'rwL8s!6XoC',
+      user_name:              'interviewscheduler33@gmail.com',
+      password:               '4DzA$3CpDt',
       authentication:         'plain',
       enable_starttls_auto:   true }
 
