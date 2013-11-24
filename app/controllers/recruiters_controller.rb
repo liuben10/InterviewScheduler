@@ -38,11 +38,7 @@ class RecruitersController < UsersController
 
   def show
     @recruiter = Recruiter.find_by_username(params[:id])
-<<<<<<< HEAD
     @events = Event.find(:all, :conditions=>["recruiter_id = ?", @recruiter.id], :order=>"start_at ASC", :limit=>5)
-=======
-    @events = get_events(@recruiter, "recruiter")
->>>>>>> 591da4972c8e080ec791f236a1e649fb1cd8f578
   end
 
   def list

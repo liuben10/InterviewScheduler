@@ -39,11 +39,7 @@ class CandidatesController < UsersController
   def show
     #Redirects to the candidate view
     @candidate = Candidate.find_by_username(params[:id])
-<<<<<<< HEAD
     @events = Event.find(:all, :conditions=>["candidate_id = ?", @candidate.id], :order=>"start_at ASC", :limit=>5)
-=======
-    @events = get_events(@candidate, "candidate")
->>>>>>> 591da4972c8e080ec791f236a1e649fb1cd8f578
   end
 
   def list
