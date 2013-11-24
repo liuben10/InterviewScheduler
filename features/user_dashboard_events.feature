@@ -17,7 +17,7 @@ Background:
   
 
   And the following events exist:
-  | candidate       | recruiter        | start_at   |
+  | pending_id      | recruiter_id  | start_at   |
   | nestorga        | fluffyBunnies | 2013-10-03 |
   | nestorga        | radhesh       | 2012-12-25 |
   | nestorga        | some_recr     | 2008-07-27 |
@@ -35,7 +35,7 @@ Background:
   Scenario: Display next five appointments in order from earliest to latest for candidates
     Given I am logged in as "nestorga" with password "fooPass3"
     And I am on the "nestorga" candidates page
-    Then I should see an appointment with "some_recr" on "07/27/08" 
+    Then I should see the appointment with "some_recr" on "07/27/08" before "radhesh" on "12/25/12"
     And I should see the appointment with "radhesh" on "12/25/12" before "fluffyBunnies" on "10/03/13"
     And I should see the appointment with "fluffyBunnies" on "10/03/13" before "some_recr" on "03/02/14"
     And I should see the appointment with "some_recr" on "03/02/14" before "some_recr" on "10/29/19"

@@ -26,7 +26,7 @@
       <p> No upcoming events </p>
     <% else %>
       <% @events.each do |event|%>
-        <p><%="#{username(event.recruiter_id, :Recruiter)}, #{mdyFormat(event.start_at)}"%></p>
+        <p><%=show_event_info(event, event.recruiter_id)%></p>
       <% end %>
     <% end %>
   </div>
