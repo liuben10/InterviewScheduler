@@ -31,15 +31,6 @@ class UsersController < ApplicationController
   end
 
   def modify(user, type)
-=begin
-    nowTime = Time.new
-    Rails.logger.debug "abcde"
-    Rails.logger.debug params[type][:attach].methods
-    user.attach_file_name = params[type][:attach].original_filename
-    user.attach_content_type = params[type][:attach].content_type
-    user.attach_file_size = params[type][:attach].size
-    user.attach_updated_at = nowTime
-=end
     user.attach = params[type][:attach]
     user.pic = params[type][:pic]
     user.email = params[type][:email]
@@ -50,9 +41,9 @@ class UsersController < ApplicationController
 
   def get_events(user, type)
     if type == "recruiter"
-      @user_events = Event.where(:recruiter_id => user.id)
+      @user_events = Event.where(:recruiter_id => user.username)
     else
-      @user_events = Event.where(:candidate_id => user.id)
+      @user_events = Event.where(:candidate_id => user.username)
     end
     return @user_events
   end

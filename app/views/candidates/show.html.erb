@@ -3,8 +3,7 @@
     <%= content_tag :h4, "#{@candidate.name}'s page" %>
   </div>
   <div class="large-12 columns">
-    <%= image_tag @candidate.pic.url(:thumb) %>
-  </div>
+   </div>
   <br/>
   <div class="large-12 columns">
     <a style="display: inline-block;" href="<%= @candidate.attach.url %>">Resume</a>
@@ -17,7 +16,7 @@
   <%= link_to raw('<i style="display: inline-block;" class="fi-list-thumbnails profile-icon"></i>'), list_candidate_path %>
   <%= link_to raw('<i style="display: inline-block;" class="fi-calendar profile-icon"></i>'), calendar_candidate_path %>
     <i class="fi-mail profile-icon"></i>
-    <i class="fi-wrench profile-icon"></i>
+   <%=  link_to raw('<i class="fi-wrench profile-icon"></i>'), "/candidates/#{@candidate.username}/edit"%>
   </div>
 
   <div class = "large-8 columns">
@@ -34,10 +33,8 @@
 
 
   <div class = "large-3 columns">
-    <form action="/candidates/<%=@candidate.username %>/edit" method="get">
-       <input type="submit" value="Edit" class = "medium button" id="edit_button">
-    </form>
-  </div>
+    <%= image_tag @candidate.pic.url(:thumb) %>
+   </div>
 
 </div>
 

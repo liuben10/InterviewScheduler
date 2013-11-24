@@ -2,9 +2,7 @@
   <div class = "large-12 columns">
     <%= content_tag :h4, "#{@candidate.name}'s page" %>
   </div>
-  <div class="large-12 columns">
-    <%= image_tag @candidate.pic.url(:thumb) %>
-  </div>
+
   <br/>
   <div class="large-12 columns">
     <a style="display: inline-block;" href="<%= @candidate.attach.url %>">Resume</a>
@@ -23,13 +21,21 @@
   <div class = "large-8 columns">
     <div id = "calendar">
     </div>
+<div>
+     <div class="customOrange">
+          Pending Events with no candidate specified
+      </div>
+      <div class="customRed">
+         Pending interview timeslots in which no candidate has agreed to yet.
+      </div>
+      <div class="customGreen">
+         Confirmed interview timeslots
+      </div>
+    </div>
   </div>
-
-  <div class = "large-3 columns">
-  </div>
-
+<div class= "large-3 columns">
 </div>
-
+</div>
 <script type='text/javascript'>
 
   $(document).ready(function() {
@@ -38,17 +44,20 @@
     $('#calendar').fullCalendar({
       editable: true,
       events: [
-        {
-          title: 'Interview With Tien',
-          start: new Date(2013, 10, 15),
-          allDay: false
-        },
-        {
-          title: 'Interview With Nick',
-          start: new Date(2013, 10, 18),
-          end: new Date(2013, 10, 19),
-          allDay: false
-        }
+          <% @events.each do |event| %>
+          {
+             title : "<%= event.name %>",
+             start: "<%= event.start_at %>",
+             end: "<%= event.end_at %>",
+             <% if event.pending_id == "" or event.pending_id.nil? %>
+                className: 'customOrange'
+              <% elsif not (event.pending_id.nil? or event.pending_id == "") and not (event.candidate_id.nil? or event.pending_id == "")%>
+                className: 'customGreen'
+              <% else %>
+                className: 'customRed'
+             <% end %>
+           },
+          <% end %>
       ]
     });
 

@@ -2,7 +2,7 @@ class CandidatesController < UsersController
 
   before_filter :except => [:create] {|c|
     c.authorize params[:id], :candidate
-  } 
+  }
 
   def index
   end
@@ -26,7 +26,7 @@ class CandidatesController < UsersController
     #Shows the corresponding edit page.
     @candidate = Candidate.find_by_username(params[:id])
   end
-  
+
   def update
     #perfoms the actual update.
     @candidate = Candidate.find_by_username(params[:id])
@@ -39,7 +39,11 @@ class CandidatesController < UsersController
   def show
     #Redirects to the candidate view
     @candidate = Candidate.find_by_username(params[:id])
+<<<<<<< HEAD
     @events = Event.find(:all, :conditions=>["candidate_id = ?", @candidate.id], :order=>"start_at ASC", :limit=>5)
+=======
+    @events = get_events(@candidate, "candidate")
+>>>>>>> 591da4972c8e080ec791f236a1e649fb1cd8f578
   end
 
   def list
@@ -50,13 +54,6 @@ class CandidatesController < UsersController
   def calendar
     @candidate = Candidate.find_by_username(params[:id])
     @events = get_events(@candidate, "candidate")
-    @eventString = ""
-    @events.each do |eve|
-      tmpstring += eve.start_at
-      tmpstring += eve.end_at
-      tmpstring += eve.name
-      tmpstring += "|"
-    end
   end
 
   def add_recruiter
