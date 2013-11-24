@@ -23,8 +23,12 @@
   <div class = "large-8 columns">
     <h2> Dashboard </h2>
     <h3> Upcoming Events </h3>
-    <% @appointments.each do |appointment|%>
-      <p><%="#{appointment.meet_with}, #{mdyFormat(appointment.date)}"%></p>
+    <% if @appointments.empty? %>
+      <p> No upcoming events </p>
+    <% else %>
+      <% @appointments.each do |appointment|%>
+        <p><%="#{appointment.meet_with}, #{mdyFormat(appointment.date)}"%></p>
+      <% end %>
     <% end %>
   </div>
 
