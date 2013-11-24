@@ -9,7 +9,11 @@ class UserMailer < ActionMailer::Base
     @candidate = candidate
     @message = message
     email_with_name = "#{@candidate.name} <#{@candidate.email}>"
-    mail(to: email_with_name, subject: "New message from recruiter #{recruiter.name}!")
+    if @recruiter.company != ""
+      mail(to: email_with_name, subject: "New message from recruiter #{@recruiter.name} of #{@recruiter.company}!")
+    else
+      mail(to: email_with_name, subject: "New message from recruiter #{@recruiter.name}!")
+    end
   end
 
   def welcome_candidate(candidate)

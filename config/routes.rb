@@ -20,6 +20,7 @@ Scheduler::Application.routes.draw do
   post "recruiter/create" => "recruiters#create"
   post "candidate/create" => "candidates#create"
   post "recruiter/:id/add_candidate" => "recruiters#add_candidate"
+  post "recruiter/:id/message_candidate" => "recruiters#message_candidate"
   post "candidate/:id/add_recruiter" => "candidates#add_recruiter"
 
   match "welcome/show", :to => redirect("welcome/show")

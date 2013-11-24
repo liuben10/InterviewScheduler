@@ -15,10 +15,30 @@
   </div>
 
   <div class = "large-8 columns">
-  <h3> List of Associated Recruiters </h3>
+  <h3> List of Associated Candidates </h3>
+  <table>
+    <tr>
+      <th>Full Name</th>
+      <th>Username</th>
+      <th>Email</th>
+    </tr>
   <% @candidates.each do |candidate|%>
-    <p><%=candidate.name%></p>
-    <% end %>
+    <tr>
+      <td><%=candidate.name%></td>
+      <td><%=candidate.username%></td>
+      <td><%=candidate.email%></td>
+    </tr>
+  <% end %>
+  </table>
+  <br /><br />
+  <h3> Send an Email Message to a Candidate </h3>
+  <%= form_tag("message_candidate", method: "post") do %>
+    <%= label_tag(:candidate, "Candidate's Username") %>
+    <%= text_field_tag(:candidate) %>
+    <%= label_tag(:message, "Your Message") %>
+    <%= text_field_tag(:message) %>
+    <%= submit_tag("Send")%>
+  <% end %>
   </div>
 
   <div class = "large-3 columns">
@@ -32,6 +52,7 @@
       <%= text_field_tag(:candidate) %>
       <%= submit_tag("Add") %>
   <% end %>
+
 
   </div>
 </div>

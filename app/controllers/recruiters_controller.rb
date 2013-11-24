@@ -1,3 +1,5 @@
+require "cgi"
+
 class RecruitersController < UsersController
   before_filter :except => [:create] { |c|
     c.authorize params[:id], :recruiter
@@ -58,4 +60,17 @@ class RecruitersController < UsersController
     end
   end
 
+  def message_candidate
+    @recruiter = Recruiter.find_by_username(session[:authenticated_user])
+    @candidate = Candidate.find_by_username(params[:candidate])
+    @message = CGI::escapeHTML(params[:message])
+    if @candidate
+      UserMailer.recruiter_send(@recruiter, @candidate, @message)
+                .deliver
+      flash[:notice] = "Message successfully sent!"
+    else
+      flash[:error] = "Invalid candidate name specified."
+    end
+    redirect_to list_recruiter_path(@recruiter.username)
+  end
 end
