@@ -12,14 +12,17 @@ Scheduler::Application.routes.draw do
   post "event/create" => "events#create"
   get "recruiter/get_candidates" => "recruiter#get_candidates"
   get "candidate/:id/list" => "candidates#list", as: 'list_candidate'
+  get "candidate/:id/calendar" => "candidates#calendar", as: 'calendar_candidate'
   get "welcome/show" => "welcome#show"
   get "recruiter/:id/list" => "recruiters#list", as: 'list_recruiter'
+  get "recruiter/:id/calendar" => "recruiters#calendar", as: 'calendar_recruiter'
 
   post '/logout' => "welcome#logout"
   #For Debug purposes, this will automatically go to these pages
   post "recruiter/create" => "recruiters#create"
   post "candidate/create" => "candidates#create"
   post "recruiter/:id/add_candidate" => "recruiters#add_candidate"
+  post "recruiter/:id/message_candidate" => "recruiters#message_candidate"
   post "candidate/:id/add_recruiter" => "candidates#add_recruiter"
 
   match "welcome/show", :to => redirect("welcome/show")

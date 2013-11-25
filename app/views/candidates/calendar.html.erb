@@ -1,0 +1,65 @@
+<div class = "row">
+  <div class = "large-12 columns">
+    <%= content_tag :h4, "#{@candidate.name}'s page" %>
+  </div>
+
+  <br/>
+  <div class="large-12 columns">
+    <a style="display: inline-block;" href="<%= @candidate.attach.url %>">Resume</a>
+  </div>
+</div>
+
+<div class = "row">
+  <div class = "large-1 columns user-icon">
+  <%= link_to raw('<i style="display: inline-block;" class="fi-home profile-icon"></i>'), candidate_path %>
+  <%= link_to raw('<i style="display: inline-block;" class="fi-list-thumbnails profile-icon"></i>'), list_candidate_path %>
+  <%= link_to raw('<i style="display: inline-block;" class="fi-calendar profile-icon"></i>'), calendar_candidate_path %>
+    <i class="fi-mail profile-icon"></i>
+    <i class="fi-wrench profile-icon"></i>
+  </div>
+
+  <div class = "large-8 columns">
+    <div id = "calendar">
+    </div>
+<div>
+     <div class="customOrange">
+          Pending Events with no candidate specified
+      </div>
+      <div class="customRed">
+         Pending interview timeslots in which no candidate has agreed to yet.
+      </div>
+      <div class="customGreen">
+         Confirmed interview timeslots
+      </div>
+    </div>
+  </div>
+<div class= "large-3 columns">
+</div>
+</div>
+<script type='text/javascript'>
+
+  $(document).ready(function() {
+
+
+    $('#calendar').fullCalendar({
+      editable: true,
+      events: [
+          <% @events.each do |event| %>
+          {
+             title : "<%= event.name %>",
+             start: "<%= event.start_at %>",
+             end: "<%= event.end_at %>",
+             <% if event.pending_id == "" or event.pending_id.nil? %>
+                className: 'customOrange'
+              <% elsif not (event.pending_id.nil? or event.pending_id == "") and not (event.candidate_id.nil? or event.pending_id == "")%>
+                className: 'customGreen'
+              <% else %>
+                className: 'customRed'
+             <% end %>
+           },
+          <% end %>
+      ]
+    });
+
+  });
+</script>

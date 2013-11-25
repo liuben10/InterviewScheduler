@@ -1,3 +1,5 @@
+require "cgi"
+
 class RecruitersController < UsersController
   before_filter :except => [:create] { |c|
     c.authorize params[:id], :recruiter
@@ -35,16 +37,20 @@ class RecruitersController < UsersController
   end
 
   def show
-    require 'json'
     @recruiter = Recruiter.find_by_username(params[:id])
-    @events = get_events(@recruiter, "recruiter")
-    #respond_with(@events)
+    @events = Event.find(:all, :conditions=>["recruiter_id = ?", @recruiter.username], :order=>"start_at ASC", :limit=>5)
   end
 
   def list
     @recruiter = Recruiter.find_by_username(params[:id])
     @candidates = @recruiter.candidates
   end
+
+  def calendar
+    require 'json'
+    @recruiter = Recruiter.find_by_username(params[:id])
+    @events = get_events(@recruiter, "recruiter")
+   end
 
   def add_candidate
     @recruiter = Recruiter.find_by_username(params[:id])
@@ -58,4 +64,17 @@ class RecruitersController < UsersController
     end
   end
 
+  def message_candidate
+    @recruiter = Recruiter.find_by_username(session[:authenticated_user])
+    @candidate = Candidate.find_by_username(params[:candidate])
+    @message = CGI::escapeHTML(params[:message])
+    if @candidate
+      UserMailer.recruiter_send(@recruiter, @candidate, @message)
+                .deliver
+      flash[:notice] = "Message successfully sent!"
+    else
+      flash[:error] = "Invalid candidate name specified."
+    end
+    redirect_to list_recruiter_path(@recruiter.username)
+  end
 end

@@ -38,7 +38,7 @@ Scheduler::Application.configure do
   #ImageMagick path needed for image processing
   Paperclip.options[:command_path] = "/usr/bin/"
 
-  # Configure ActionMailer to use ischeduler33@gmail.com for
+  # Configure ActionMailer to use interviewscheduler33@gmail.com for
   # outbound email via SMTP. Followed directions in the "Action Mailer
   # Basics" article (http://guides.rubyonrails.org/action_mailer_basics.html)
   # for guidance.

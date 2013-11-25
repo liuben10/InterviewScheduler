@@ -65,7 +65,7 @@ Scheduler::Application.configure do
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
-  # Configure ActionMailer to use ischeduler33@gmail.com for
+  # Configure ActionMailer to use interviewscheduler33@gmail.com for
   # outbound email via SMTP. Followed directions in the "Action Mailer
   # Basics" article (http://guides.rubyonrails.org/action_mailer_basics.html)
   # for guidance.
