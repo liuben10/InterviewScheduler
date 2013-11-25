@@ -7,63 +7,33 @@ Feature: Allow recruiters to see list of candidates reviewing
 Background: the recruiter has the following candidates
 
 	Given the following accounts exist:
-	  | username              | password          | type       |
-  	  | fluffyBunnies         | pass1234          | recruiter  |
-	  | nestorga              | fooPass3          | candidate  |
-	  | efriesen              | secure!p@ss       | candidate  |
-	  | rottenPotatoes	  | notGood	      | candidate  |
-	  | joeSchmoe		  | testPass	      | candidate  |
-          | penelope              | 456pass           | candidate  |
+    | username       | password      | type       | email                   | name       |
+  	| fluffyBunnies  | pass1234      | recruiter  | foo@recruiter.com       | Mr.Bunny   |
+	| nestorga       | fooPass3      | candidate  | nestorga@candidate.com  | Nick       |
+	| efriesen       | secure!p@ss   | candidate  | bar@candidate.com       | Erin       |
+	| rottenPotatoes | notGood	     | candidate  | spuds@candidate.com     | Mr.Potato  |
+	| joeSchmoe		 | testPass	     | candidate  | joe@candidate.com       | Joe Schmoe |
+    | penelope       | 456pass       | candidate  | pens@candidate.com      | Penelope   |
 
-	Given the following information of the candidates:
-	  | username              | email 		| status      |
-	  | nestorga              | foo@candidate.com	| New         |
-	  | efriesen              | bar@candidate.com   | In Progress |
-	  | rottenPotatoes	  | spuds@candidate.com | Rejected    |
-	  | joeSchmoe		  | joe@candidate.com   | In Progress |
-          | penelope		  | pens@candidate.com  | Hired       |
 
+	And the recruiter "fluffyBunnies" is associated with the following candidates:
+    | username       |
+    | rottenPotatoes |
+    | joeSchmoe      |
+    | nestorga       |
+
+    And I am logged in as "fluffyBunnies" with password "pass1234"
 	And I am on the "fluffyBunnies" recruiters page
 
-Scenario: check to see the status of all the candidates
-	When I check "all_candidates"
-	Then I should see the candidate "nestorga" with the status "New"
-	And I should see the candidate "efriesen" with the status "In Progress"
-	And I should see the candidate "rottenPotatoes" with the status "Rejected"
-	And I should see the candidate "penelope" with the status "Hired"
-	And I should see the candidate "joeSchmoe" with the status "In Progress"
-	And I should see the candidate "nestorga" with the email "foo@candidate.com"
-	And I should see the candidate "efriesen" with the email "bar@candidate.com"
-	And I should see the candidate "rottenPotatoes" with the email "spuds@candidate.com"
-	And I should see the candidate "penelope" with the email "pens@candidate.com"
-	And I should see the candidate "joeSchmoe" with the email "joe@candidate.com"
-
-Scenario: check the status of all the "In Progress" candidates
-	When I check "In_Progress"
-	Then I should see the candidate "efriesen" with the status "In Progress"
-	And I should see the candidate "efriesen" with the email "bar@candidate.com" 
-	Then I should see the candidate "joeSchmoe" with the status "In Progress"
-	And I should see the candidate "joeSchmoe" with the email "joe@candidate.com" 
-	And I should not see "nestorga"
-	And I should not see "rottenPotatoes"
-	And I should not see "penelope"
-
-Scenario: check the status of all the "Rejected" candidates
-	When I check "rejected"
-	Then I should see the candidate "rottenPotatoes" with the status "Rejected"
-	And I should see the candidate "rottenPotatoes" with the email "spuds@candidate.com" 
-	And I should not see "nestorga"
-	And I should not see "penelope"
-	And I should not see "efriesen"
-	And I should not see "joeSchmoe"
-
-Scenario: check the status of all the "Hired" candidates
-	When I check "Hired"
-	Then I should see the candidate "penelope" with the status "Hired"
-	And I should see the candidate "penelope" with the email "pens@candidate.com" 
-	And I should not see "nestorga"
-	And I should not see "rottenPotatoes"
-	And I should not see "efriesen"
-	And I should not see "joeSchmoe"
+Scenario: Should see list of associated candidates on recruiter list
+	When I press the list icon
+	Then I should see candidate "joeSchmoe" with the email "joe@candidate.com" and the name "Joe Schmoe"
+	And I should see candidate "nestorga" with the email "nestorga@candidate.com" and the name "Nick"
+	And I should see candidate "rottenPotatoes" with the email "spuds@candidate.com" and the name "Mr.Potato"
+	
+Scenario: Should not see recruiters that the candidate is not associated with
+	When I press the list icon
+	Then I should not see candidate "penelope" with the email "pens@candidate.com" and the name "Penelope"
+	And I should not see candidate "efriesen" with the email "bar@recruiter.com" and the name "Erin"
 	
 	

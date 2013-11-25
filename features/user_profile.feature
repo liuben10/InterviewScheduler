@@ -16,7 +16,7 @@ Scenario:  candidates should be able to edit their information
   Given I am logged in as "nestorga" with password "fooPass3"
   And I am on the "nestorga" candidates page
   When I press the wrench icon
-  Then I am on the edit page for candidate "nestorga"
+  Then I should be on the edit page for candidate "nestorga"
 
 Scenario:  candidates should be able to change their password
   Given I am logged in as "nestorga" with password "fooPass3"
@@ -40,7 +40,7 @@ Scenario: candidates should be able to change their email
   Given I am logged in as "fluffyBunnies" with password "pass1234"
   And I am on the "fluffyBunnies" recruiters page
   When I press the wrench icon
-  Then I am on the edit page for recruiter "fluffyBunnies"
+  Then I should be on the edit page for recruiter "fluffyBunnies"
 
 Scenario:  recruiters should be able to change their password
   Given I am logged in as "fluffyBunnies" with password "pass1234"
@@ -60,8 +60,26 @@ Scenario: recruiters should be able to change their email
   Then I should be on the "fluffyBunnies" recruiters page
   And the email for "fluffyBunnies" should be "wtf@yahoo.com"
 
+Scenario: recruiter should be redirected when trying to view a nonexistent profile
+  Given I am logged in as "fluffyBunnies" with password "pass1234"
+  And I am on the "fluffyBunnies" recruiters page
+  And I go to the "nonexistentperson" recruiters page
+  Then I should be on the "fluffyBunnies" recruiters page
+
 Scenario: recruiter should not be able to view a candidate's page
   Given I am logged in as "fluffyBunnies" with password "pass1234"
   And I am on the "fluffyBunnies" recruiters page
-  And I go to the "fluffyBunnies" candidates page
+  And I go to the "nestorga" candidates page
   Then I should be on the "fluffyBunnies" recruiters page
+
+Scenario: candidate should be redirected when trying to view a nonexistent profile
+  Given I am logged in as "efriesen" with password "secure!p@ss"
+  And I am on the "efriesen" candidates page
+  And I go to the "somenonexistentperson" candidates page
+  Then I should be on the "efriesen" candidates page
+
+Scenario: candidate should not be able to view a recruiter's page
+  Given I am logged in as "efriesen" with password "secure!p@ss"
+  And I am on the "efriesen" candidates page
+  And I go to the "fluffyBunnies" recruiters page
+  Then I should be on the "efriesen" candidates page
