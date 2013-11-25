@@ -25,7 +25,7 @@ Given the following accounts exist:
   | efriesen        | candidate     | fluffyBunnies | 12/25/12   |
   | some_cand       | candidate     | radhesh       | 03/02/14   |
 
-  And I am on the "nestorga" candidates page
+  And I am logged in as "nestorga" with password "fooPass3"
 
 Scenario: Display upcoming appointments
   Then I should see an appointment with "fluffyBunnies" on "10/03/13"

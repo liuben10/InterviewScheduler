@@ -14,8 +14,8 @@ Given the following accounts exist:
   | efriesen              | secure!p@ss       | candidate  |
   | some_cand             | hello321          | candidate  |
 
-  And the following appointments exist:
-  | username        | type          | meet_with     | date       |
+  And the following events exist:
+  | username        | type          | pending_id    | start_at       |
   | fluffyBunnies   | recruiter     | nestorga      | 10/03/13   |
   | fluffyBunnies   | recruiter     | efriesen      | 12/25/12   |
   | radhesh         | recruiter     | some_cand     | 03/02/14   |

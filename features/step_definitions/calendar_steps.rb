@@ -1,5 +1,5 @@
 Given /the following events exist/ do |event_table|
-	  event_table.hashes.each do |event|
+    event_table.hashes.each do |event|
     # each returned element will be a hash whose key is the table header.
     # you should arrange to add that movie to the database here.
     Event.create(event)
@@ -13,13 +13,13 @@ Then /^I should see the appointment with "(.*)" on "(.*)" before "(.*)" on "(.*)
 end
 
 Then /^I should (not )?see an appointment with "(.*)" on "(.*)"$/ do |not_see, meet_with, date|
-	if not_see
-		steps %Q{
-			Then I should not see "#{meet_with} on #{date}"
-		}
-	else
-		steps %Q{
-			Then I should see "#{meet_with} on #{date}"
-		}
-	end
+  if not_see
+    steps %Q{
+      Then I should not see "#{meet_with} on #{date}"
+    }
+  else
+    steps %Q{
+      Then I should see "#{meet_with} on #{date}"
+    }
+  end
 end

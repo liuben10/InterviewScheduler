@@ -57,7 +57,7 @@ end
 
 When /I select acctype "(.*)"$/ do |acctype|
   #print acctype
-  select(acctype, :from=>"acctype")
+  select(acctype, :from => "acctype")
 end
 
 When /I press the wrench icon/ do

@@ -54,12 +54,12 @@
       </div>
       <% end %>
 
-		<form class="custom">
-        	<select id="acctype" class = "large">
-          		<option value="candidate">Candidate</option>
-          		<option value="recruiter">Recruiter</option>
-        	</select>
-		</form>
+    <form class="custom">
+          <select id="acctype" name="acctype" class = "large">
+              <option value="candidate">Candidate</option>
+              <option value="recruiter">Recruiter</option>
+          </select>
+    </form>
 
         <%= form_for(@candidate) do |f| %>
             <div class="field">
@@ -76,8 +76,8 @@
             </div>
             <div class ="field">
                 <%= f.label "Password" %>
-            	<%= f.password_field :password %>
-        	</div>
+              <%= f.password_field :password %>
+          </div>
             <div class="field">
                 <label id="companyLabel" style="display:none;">Company </label>
                 <input type="hidden" id="character_company" name="company" value="">
