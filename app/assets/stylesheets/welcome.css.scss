@@ -6,7 +6,11 @@
 $index-main-color: #344152;
 $index-second-color: #687C97;
 
-.large-2, .large-1, .large-3 {	
+.invisible {
+	display: none;
+}
+
+.columns {	
 	min-height: 1px;
 }
 

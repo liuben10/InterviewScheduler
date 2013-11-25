@@ -1,7 +1,6 @@
 class UserMailer < ActionMailer::Base
   default from: "InterviewScheduler <ischeduler33@gmail.com>"
 
-
   # This file created with help from the Action Mailer Basics
   # documentation.
   def recruiter_send(recruiter, candidate, message)
@@ -27,7 +26,7 @@ class UserMailer < ActionMailer::Base
     email_with_name = "#{@recruiter.name} <#{@recruiter.email}>"
     mail(to: email_with_name, subject: "Welcome to InterviewScheduler!")
   end
-
+  
   def forgot_password(user_email, message)
       @message = message
       mail(to: user_email, subject: "RESET PASSWORD- DO NOT REPLY")
