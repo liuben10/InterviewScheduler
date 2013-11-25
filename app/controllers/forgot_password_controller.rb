@@ -2,7 +2,6 @@ class ForgottenPassword < ApplicationController
 
 require 'securerandom'
 
-attr_accessible :user_email
 def reset_password(user_email)
   #Check to see if they are a valid user and what kind they are
   # Get a userid for the email address then check to see if the information is nil
@@ -13,7 +12,7 @@ def reset_password(user_email)
      user = Recruiter.find_by_email(user_email).user.to_s
   if not Candidate.find_by_email(user_email).nil?
       type = "candidate"
-      user = Candidate.find_by_email(user_email).user
+      user = Candidate.find_by_email(user_email).user.to_s
   else
     flash[:notice] = "No user associated with this email address: #{user_email} "
         redirect_to welcome_index_path and return
