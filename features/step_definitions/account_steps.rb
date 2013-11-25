@@ -59,3 +59,8 @@ When /I select acctype "(.*)"$/ do |acctype|
   #print acctype
   select(acctype, :from=>"acctype")
 end
+
+When /I press the wrench icon/ do
+  link = page.find('#Edit')
+  link.click()
+end
