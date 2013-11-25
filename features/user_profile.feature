@@ -12,15 +12,10 @@ Background: the user's account does not already exist
   | nestorga              | fooPass3          | candidate  |
   | efriesen              | secure!p@ss       | candidate  |
 
-Scenario:  recruiters should be able to see their events
-  Given I am on the "fluffyBunnies" recruiters page
-  When I create an event "GoogleInterview" at "10/10/10"
-  Then I should see the event on my feed
-
 Scenario:  candidates should be able to edit their information
   Given I am logged in as "nestorga" with password "fooPass3"
   And I am on the "nestorga" candidates page
-  When I press "Edit"
+  When I press the wrench icon
   Then I am on the edit page for candidate "nestorga"
 
 Scenario:  candidates should be able to change their password
@@ -44,7 +39,7 @@ Scenario: candidates should be able to change their email
   Scenario:  recruiters should be able to edit their information
   Given I am logged in as "fluffyBunnies" with password "pass1234"
   And I am on the "fluffyBunnies" recruiters page
-  When I press "Edit"
+  When I press the wrench icon
   Then I am on the edit page for recruiter "fluffyBunnies"
 
 Scenario:  recruiters should be able to change their password
