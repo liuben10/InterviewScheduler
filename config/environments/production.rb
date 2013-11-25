@@ -64,4 +64,19 @@ Scheduler::Application.configure do
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
+
+  # Configure ActionMailer to use ischeduler33@gmail.com for
+  # outbound email via SMTP. Followed directions in the "Action Mailer
+  # Basics" article (http://guides.rubyonrails.org/action_mailer_basics.html)
+  # for guidance.
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      address:                'smtp.gmail.com',
+      port:                   587,
+      domain:                 'gmail.com',
+      user_name:              'interviewscheduler33@gmail.com',
+      password:               'itmbxenctffipqfr',
+      authentication:         'plain',
+      enable_starttls_auto:   true }
+
 end

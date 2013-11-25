@@ -34,4 +34,23 @@ Scheduler::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+
+  #ImageMagick path needed for image processing
+  Paperclip.options[:command_path] = "/usr/bin/"
+
+  # Configure ActionMailer to use ischeduler33@gmail.com for
+  # outbound email via SMTP. Followed directions in the "Action Mailer
+  # Basics" article (http://guides.rubyonrails.org/action_mailer_basics.html)
+  # for guidance.
+  config.action_mailer.raise_delivery_errors = true #dev env only
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+      address:                'smtp.gmail.com',
+      port:                   587,
+      domain:                 'gmail.com',
+      user_name:              'interviewscheduler33@gmail.com',
+      password:               'itmbxenctffipqfr',
+      authentication:         'plain',
+      enable_starttls_auto:   true }
+
 end

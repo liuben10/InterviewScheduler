@@ -1,13 +1,18 @@
 <div class = "row">
   <div class = "large-12 columns">
-           <%= content_tag :h4, "#{@recruiter.name}'s page" %>
+    <%= content_tag :h4, "#{@recruiter.name}'s page" %>
   </div>
+  <div class="large-12 columns">
+    <%= image_tag @recruiter.pic.url(:thumb) %>
+  </div>
+  <br/>
+
 </div>
 
 <div class = "row">
   <div class = "large-1 columns user-icon">
-  <%= link_to raw('<i class="fi-home profile-icon"></i>'), recruiter_path %>
-    <%= link_to raw('<i class="fi-list-thumbnails profile-icon"></i>'), list_recruiter_path %>
+  <%= link_to raw('<i style="display: inline-block;" class="fi-home profile-icon"></i>'), recruiter_path %>
+    <%= link_to raw('<i style="display: inline-block;" class="fi-list-thumbnails profile-icon"></i>'), list_recruiter_path %>
     <i class="fi-mail profile-icon"></i>
     <i class="fi-wrench profile-icon"></i>
   </div>
@@ -84,7 +89,7 @@
    <select id="end_date" name="end_date">
        <%  options = []
            (1..31).each do |n|
-              dateOption = [n + 1, n + 1]
+              dateOption = [n+1, n+1]
               options << dateOption
            end %>
         <%= options_for_select(options, 1) %>
@@ -153,7 +158,7 @@
   </select></div>
  <label>Description</label><textarea id="description" name="description" class="textarea"></textarea>
 <%= hidden_field_tag "recruiter_id", "#{@recruiter.id}" %>
-<input type="submit" class="submitForm" value="Submit">
+<input type="submit" class="submitForm" id="submitButton" value="Submit">
 </form>
 <input type="submit" class="submitForm" id="cancelButton" value="Cancel"></div>
 
@@ -190,6 +195,16 @@
       editable: true,
       selectable: true,
       selectHelper: true,
+      events:
+      [
+          <% @events.each do |event| %>
+          {
+             title : "<%= event.name %>",
+             start: "<%= event.start_at %>",
+             end: "<%= event.end_at %>",
+           },
+          <% end %>
+      ],
       select: function(start, end, allDay) {
          $(".popup").show(); // show's pop up
          $(".popup").attr("action", "/event/create");

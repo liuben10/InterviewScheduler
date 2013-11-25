@@ -3,6 +3,8 @@ class RecruitersController < UsersController
     c.authorize params[:id], :recruiter
   }
 
+  respond_to :json
+
   def index
     @recruiter=Recruiter.new
   end
@@ -35,8 +37,8 @@ class RecruitersController < UsersController
   def show
     require 'json'
     @recruiter = Recruiter.find_by_username(params[:id])
-    @events = get_events(@recruiter, "recruiter").to_a
-    
+    @events = get_events(@recruiter, "recruiter")
+    #respond_with(@events)
   end
 
   def list

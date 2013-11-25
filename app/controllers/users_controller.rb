@@ -19,11 +19,29 @@ class UsersController < ApplicationController
 
   def create_account(user, type)
     type.to_s.constantize.create! params[:candidate]
-        flash[:notice] = "New #{type} created with password: #{params[:candidate][:password]} and email: #{params[:candidate][:email]}"
-      session[:authenticated_user] = user[:username]
+    flash[:notice] = "New #{type} created with password: #{params[:candidate][:password]} and email: #{params[:candidate][:email]}"
+    session[:authenticated_user] = user[:username]
+    if type.to_s == "Candidate"
+      UserMailer.welcome_candidate(Candidate.find_by_name(params[:candidate][:name]))
+                .deliver
+    elsif type.to_s == "Recruiter"
+      UserMailer.welcome_recruiter(Recruiter.find_by_name(params[:candidate][:name]))
+                .deliver
+    end
   end
 
   def modify(user, type)
+=begin
+    nowTime = Time.new
+    Rails.logger.debug "abcde"
+    Rails.logger.debug params[type][:attach].methods
+    user.attach_file_name = params[type][:attach].original_filename
+    user.attach_content_type = params[type][:attach].content_type
+    user.attach_file_size = params[type][:attach].size
+    user.attach_updated_at = nowTime
+=end
+    user.attach = params[type][:attach]
+    user.pic = params[type][:pic]
     user.email = params[type][:email]
     user.name = params[type][:name]
     user.password = params[type][:password]
