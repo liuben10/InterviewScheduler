@@ -49,7 +49,7 @@ class RecruitersController < UsersController
   def calendar
     require 'json'
     @recruiter = Recruiter.find_by_username(params[:id])
-    @events =  Event.find(:all, :conditions=>["recruiter_id = ?", @recruiter.username], :order=>"start_at ASC")
+    @events =  Event.find(:all, :conditions=>["recruiter_id = ?", @recruiter.username])
    end
 
   def add_candidate
