@@ -33,3 +33,4 @@ def make_new_password(user, type)
   return newPass
 end
 end
+
