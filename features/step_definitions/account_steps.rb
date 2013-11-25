@@ -1,15 +1,23 @@
 Given /the following accounts exist/ do |account_table|
   account_table.hashes.each do |account|
-    newaccounthash = {}
-    #print account
-    newaccounthash["username"] = account["username"]
-    newaccounthash["password"] = account["password"]
-    #newaccounthash["email"] = account["email"]
-    #print newaccounthash
     if account["type"] == "recruiter"
-      Recruiter.create! newaccounthash
+      account.delete("type")
+      Recruiter.create! account
     else
-      Candidate.create! newaccounthash
+      account.delete("type")
+      Candidate.create! account
+    end
+  end
+end
+
+Given /the (candidate|recruiter) "(.*)" is associated with the following (recruiters|candidates)/ do |user_type, username, assn_type, assn_table|
+  assn_table.hashes.each do |assn|
+    if user_type == "candidate"
+      user = Candidate.find_by_username(username)
+      user.recruiters << Recruiter.find_by_username(assn["username"])
+    else
+      user = Recruiter.find_by_username(username)
+      user.candidates << Candidate.find_by_username(assn["username"])
     end
   end
 end
@@ -21,6 +29,19 @@ Given /I am logged in as "(.*)" with password "(.*)"/ do |username, password|
     And I fill in "password" with "#{password}"
     And I press "Login"
   }
+end
+
+Then /I should( not)? see (candidate|recruiter) "(.*)" with the email "(.*)" and the name "(.*)"/ do |not_see, type, username, email, name|
+  usernames = page.all("table##{type}s td#username").map(&:text)
+  emails = page.all("table##{type}s td#email").map(&:text)
+  names = page.all("table##{type}s td#name").map(&:text)
+  if not_see
+    usernames.should_not include(username)
+  else
+    usernames.should include(username)
+    emails.should include(email)
+    names.should include(name)
+  end
 end
 
 Then /the password for "(.*)" should be "(.*)"/ do |username, password|
@@ -61,6 +82,9 @@ When /I select acctype "(.*)"$/ do |acctype|
 end
 
 When /I press the wrench icon/ do
-  link = page.find('#Edit')
-  link.click()
+  click_link("Edit")
+end
+
+When /I press the list icon/ do
+  click_link("List")
 end
