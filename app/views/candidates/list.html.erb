@@ -11,7 +11,7 @@
   <%= link_to raw('<i class="fi-list-thumbnails profile-icon"></i>'), list_candidate_path %>
   <%= link_to raw('<i style="display: inline-block;" class="fi-calendar profile-icon"></i>'), calendar_candidate_path %>
     <i class="fi-mail profile-icon"></i>
-    <i class="fi-wrench profile-icon"></i>
+    <%=  link_to raw('<i class="fi-wrench profile-icon" id="Edit"></i>'), "/candidates/#{@candidate.username}/edit"%>
   </div>
 
   <div class = "large-8 columns">
