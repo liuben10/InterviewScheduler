@@ -181,6 +181,7 @@
       events:
       [
           <% @events.each do |event| %>
+		  
           {
              title : "<%= event.name %>",
              start: "<%= event.start_at.iso8601 %>",
