@@ -16,6 +16,7 @@ Scheduler::Application.routes.draw do
   get "welcome/show" => "welcome#show"
   get "recruiter/:id/list" => "recruiters#list", as: 'list_recruiter'
   get "recruiter/:id/calendar" => "recruiters#calendar", as: 'calendar_recruiter'
+  get "welcome/forgotpassword" => "welcome#forgotpassword"
 
   post '/logout' => "welcome#logout"
   #For Debug purposes, this will automatically go to these pages
