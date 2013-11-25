@@ -21,13 +21,16 @@
   </ul>
       <% if session[:authenticated_user].nil? %>
       <ul class = "right">
-        <li class="has-form top-bar-item">
+        <li class="has-form top-bar-item">            
             <form action="/welcome/show" method="get" id="inputform">
                 <div class="row collapse">
-                  <div class="small-5 columns">
+                  <div class = "small-4 columns">
+                      <%= link_to "Forgot your password?", logout_path%>
+                  </div>
+                  <div class="small-3 columns">
                       <input type="text" name="userid" value="Username">
                   </div>
-                  <div class="small-5 columns">
+                  <div class="small-3 columns">
                       <input type="password" name="password" value="Password">
                   </div>
                   <div class="small-2 columns">
