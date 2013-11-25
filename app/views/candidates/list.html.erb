@@ -40,7 +40,7 @@
   <% end %>
   <%= form_tag("add_recruiter", method: "post") do %>
       <%= label_tag(:recruiter, "Recruiter's Username") %>
-      <%= text_field_tag(:recruiter) %>
+      <%= text_field_tag(:recruiter, nil, :id=>"recruiter_username") %>
       <%= submit_tag("Add") %>
   <% end %>
 
