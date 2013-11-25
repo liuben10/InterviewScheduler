@@ -49,7 +49,7 @@ class CandidatesController < UsersController
 
   def calendar
     @candidate = Candidate.find_by_username(params[:id])
-    @events =  Event.all
+    @events =  Event.find(:all, :conditions=>["pending_id = ?", @candidate.username])
   end
 
   def add_recruiter

@@ -11,7 +11,7 @@ class EventsController < ApplicationController
     Rails.logger.debug session
     Rails.logger.debug "++++++++++++++++"
     Event.create! newEventHash
-    redirect_to recruiter_path(params[:recruiter_id])
+    redirect_to calendar_recruiter_path(params[:recruiter_id])
   end
 
   def update
