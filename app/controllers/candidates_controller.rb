@@ -39,7 +39,8 @@ class CandidatesController < UsersController
   def show
     #Redirects to the candidate view
     @candidate = Candidate.find_by_username(params[:id])
-    @events = Event.find(:all, :conditions=>["pending_id = ?", @candidate.username], :order=>"start_at ASC", :limit=>5)
+    #@events = Event.find(:all, :conditions=>["pending_id = ?", @candidate.username], :order=>"start_at ASC")
+    @events = Event.all
   end
 
   def list
@@ -49,7 +50,7 @@ class CandidatesController < UsersController
 
   def calendar
     @candidate = Candidate.find_by_username(params[:id])
-    @events = get_events(@candidate, "candidate")
+    @events =  Event.all
   end
 
   def add_recruiter
