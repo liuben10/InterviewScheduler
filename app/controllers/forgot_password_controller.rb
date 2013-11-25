@@ -31,3 +31,4 @@ def make_new_password(user, type)
     user.password = newPass
     user.save!
     return newPass
+end
