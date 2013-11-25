@@ -17,7 +17,7 @@ Scheduler::Application.routes.draw do
   get "recruiter/:id/list" => "recruiters#list", as: 'list_recruiter'
   get "recruiter/:id/calendar" => "recruiters#calendar", as: 'calendar_recruiter'
   get "welcome/forgotpassword" => "welcome#forgotpassword"
-
+  get "welcome/reset_password" => "welcome#reset_password"
   post '/logout' => "welcome#logout"
   #For Debug purposes, this will automatically go to these pages
   post "recruiter/create" => "recruiters#create"

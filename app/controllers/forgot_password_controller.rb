@@ -2,9 +2,10 @@ class ForgottenPassword < ApplicationController
 
 require 'securerandom'
 
-def reset_password(user_email)
+def reset_password
   #Check to see if they are a valid user and what kind they are
   # Get a userid for the email address then check to see if the information is nil
+  user_email = params[:email]
   type = ""
   user = ""
   if not Recruiter.find_by_email(user_email).nil?
@@ -31,5 +32,7 @@ def make_new_password(user, type)
     user.password = newPass
     user.save!
     return newPass
+end
+
 end
 
