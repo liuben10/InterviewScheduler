@@ -49,7 +49,7 @@
   <% end %>
   <%= form_tag("add_candidate", method: "post") do %>
       <%= label_tag(:candidate, "Candidate's Username") %>
-      <%= text_field_tag(:candidate) %>
+      <%= text_field_tag(:candidate, nil, :id=>"candidate_username") %>
       <%= submit_tag("Add") %>
   <% end %>
 
