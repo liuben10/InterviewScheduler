@@ -183,8 +183,8 @@
           <% @events.each do |event| %>
           {
              title : "<%= event.name %>",
-             start: "<%= event.start_at %>",
-             end: "<%= event.end_at %>",
+             start: "<%= event.start_at.iso8601 %>",
+             end: "<%= event.end_at.iso8601 %>",
              <% if event.pending_id == "" or event.pending_id.nil? %>
                 className: 'customOrange'
               <% elsif not (event.pending_id.nil? or event.pending_id == "") and not (event.candidate_id.nil? or event.pending_id == "")%>
