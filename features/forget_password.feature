@@ -18,6 +18,10 @@ Scenario: I forget my password and want to reset it
   When I fill in "email" with "fluffyBunnies@recruiter.com"
   And I press "Retrieve"
   Then I should be on the InterviewScheduler home page
+  When I fill in "userid" with "fluffyBunnies"
+  When I fill in "password" with "pass1234"
+  When I press "Login"
+  Then I should be on the InterviewScheduler home page
 
 Scenario: I am not a user and try to reset my password
   Given I am on the ForgotPassword page
