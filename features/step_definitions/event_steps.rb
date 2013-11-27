@@ -1,4 +1,9 @@
 
+Given /I am on "(.*)" calendar page/ do |user|
+  link = page.find(".fi-calendar profile-icon")
+  link.click()
+end
+
 When /I add an event "(.*)" starting at "(.*)" and ending at "(.*)"/ do |name, start, endDate|
   page.find(:css, "td[data-date='2013-11-11']").click()
   startarr = start.split(",")

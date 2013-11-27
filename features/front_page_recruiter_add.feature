@@ -15,7 +15,7 @@ Background:
     | joeSchmoe             | testPass          | candidate  | joeSchmoe@bum.com          |
     | penelope              | 456pass           | candidate  | penelope@cruz.com          |
 
-  And I am on the "fluffyBunnies" recruiters page
+  And I am logged in as "fluffyBunnies" with password "pass1234"
 
 Scenario: Enter a valid candidate email address
   When I fill in "candidate_email" with "joeSchmoe@bum.com"

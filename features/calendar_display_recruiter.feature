@@ -15,17 +15,18 @@ Given the following accounts exist:
   | some_cand             | hello321          | candidate  |
 
   And the following events exist:
-  | username        | type          | pending_id    | start_at       |
-  | fluffyBunnies   | recruiter     | nestorga      | 10/03/13   |
-  | fluffyBunnies   | recruiter     | efriesen      | 12/25/12   |
-  | radhesh         | recruiter     | some_cand     | 03/02/14   |
-  | radhesh         | recruiter     | nestorga      | 07/27/08   |
-  | nestorga        | candidate     | fluffyBunnies | 10/03/13   |
-  | nestorga        | recruiter     | radhesh       | 07/27/08   |
-  | efriesen        | candidate     | fluffyBunnies | 12/25/12   |
-  | some_cand       | candidate     | radhesh       | 03/02/14   |
+  | recruiter_id    | name          | pending_id       | start_at   |
+  | fluffyBunnies   | lovefest1     | nestorga         | 10/03/13   |
+  | fluffyBunnies   | lovefest2     | efriesen         | 12/25/12   |
+  | radhesh         | lovefest3     | some_cand        | 03/02/14   |
+  | radhesh         | gamingfest1   | nestorga         | 07/27/08   |
+  | nestorga        | gamingfest2   | fluffyBunnies    | 10/03/13   |
+  | nestorga        | lanparty1     | radhesh          | 07/27/08   |
+  | efriesen        | lanparty2     | fluffyBunnies    | 12/25/12   |
+  | some_cand       | lanparty3     | radhesh          | 03/02/14   |
 
-  Given I am logged in as "fluffyBunnies" with password "pass1234"
+  And I am logged in as "fluffyBunnies" with password "pass1234"
+  And I am on the "fluffyBunnies" calendar page
   
 @javascript
 Scenario: Add events as recruiter

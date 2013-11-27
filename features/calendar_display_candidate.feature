@@ -14,16 +14,16 @@ Given the following accounts exist:
   | efriesen              | secure!p@ss       | candidate  |
   | some_cand             | hello321          | candidate  |
 
-  And the following appointments exist:
-  | username        | type          | meet_with     | date       |
-  | fluffyBunnies   | recruiter     | nestorga      | 10/03/13   |
-  | fluffyBunnies   | recruiter     | efriesen      | 12/25/12   |
-  | radhesh         | recruiter     | some_cand     | 03/02/14   |
-  | radhesh         | recruiter     | nestorga      | 07/27/08   |
-  | nestorga        | candidate     | fluffyBunnies | 10/03/13   |
-  | nestorga        | recruiter     | radhesh       | 07/27/08   |
-  | efriesen        | candidate     | fluffyBunnies | 12/25/12   |
-  | some_cand       | candidate     | radhesh       | 03/02/14   |
+  And the following events exist:
+  | recruiter_id        | name          | pending_id     | start_at       |
+  | fluffyBunnies   | Wrecruiter     | nestorga      | 10/03/13   |
+  | fluffyBunnies   | arecruiter     | efriesen      | 12/25/12   |
+  | radhesh         | brecruiter     | some_cand     | 03/02/14   |
+  | radhesh         | crecruiter     | nestorga      | 07/27/08   |
+  | nestorga        | dcandidate     | fluffyBunnies | 10/03/13   |
+  | nestorga        | erecruiter     | radhesh       | 07/27/08   |
+  | efriesen        | fcandidate     | fluffyBunnies | 12/25/12   |
+  | some_cand       | gcandidate     | radhesh       | 03/02/14   |
 
   And I am logged in as "nestorga" with password "fooPass3"
 
