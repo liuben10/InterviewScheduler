@@ -101,7 +101,7 @@ When /^(?:|I )choose "([^"]*)"$/ do |field|
 end
 
 When /^(?:|I )attach the file "([^"]*)" to "([^"]*)"$/ do |path, field|
-  attach_file(field, File.expand_path(path))
+  attach_file(field, File.expand_path("#{::Rails.root}"+path))
 end
 
 Then /^(?:|I )should( not)? see "([^"]*)"$/ do |not_see, text|

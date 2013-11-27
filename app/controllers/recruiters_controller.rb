@@ -59,7 +59,7 @@ class RecruitersController < UsersController
       @recruiter.candidates << @candidate
       redirect_to list_recruiter_path(@recruiter.username)
     else
-      flash[:error] = "Could not find the recruiter with that username"
+      flash[:error] = "Could not find the candidate with that username"
       redirect_to list_recruiter_path(@recruiter.username)
     end
   end

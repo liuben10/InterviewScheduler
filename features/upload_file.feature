@@ -18,6 +18,6 @@ Scenario: Attachment and Picture option exist
   And I should see "Picture"
 
 Scenario: File upload
-  When I attach the file "/home/saasbook/Desktop/cs169/features/sample_uploads/no-attach.png" to "candidate_attach"
+  When I attach the file "/features/sample_uploads/no-attach.png" to "candidate_attach"
   And I press "Update"
   Then I am on the "tien" candidates page

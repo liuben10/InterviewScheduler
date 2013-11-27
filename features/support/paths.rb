@@ -21,6 +21,7 @@ module NavigationHelpers
     when /^the "(.*)" (candidates|recruiters) page$/ then "/#{$2}/#{$1}"
     when /^the edit page for (candidate|recruiter) "(.*)"/ then "/#{$1}s/#{$2}/edit"
     when /^the "(.*)" calendar page&/ then "calendar"
+    when /^the ForgotPassword page$/ then "/welcome/forgotpassword"
 
 
     # Add more mappings here.

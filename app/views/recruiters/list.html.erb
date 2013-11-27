@@ -8,15 +8,15 @@
 
   <div class = "large-1 columns user-icon">
   <%= link_to raw('<i class="fi-home profile-icon"></i>'), recruiter_path %>
-  <%= link_to raw('<i class="fi-list-thumbnails profile-icon"></i>'), list_recruiter_path %>
+  <%= link_to raw('<i class="fi-list-thumbnails profile-icon"></i>'), list_recruiter_path, :id=>"List" %>
   <%= link_to raw('<i style="display: inline-block;" class="fi-calendar profile-icon"></i>'), calendar_recruiter_path %>
     <i class="fi-mail profile-icon"></i>
-    <%= link_to raw('<i class="fi-wrench profile-icon" id="Edit"></i>'), "/recruiters/#{@recruiter.username}/edit" %>
+    <%= link_to raw('<i class="fi-wrench profile-icon"></i>'), "/recruiters/#{@recruiter.username}/edit", :id=>"Edit" %>
   </div>
 
   <div class = "large-8 columns">
   <h3> List of Associated Candidates </h3>
-  <table>
+  <table id="candidates">
     <tr>
       <th>Full Name</th>
       <th>Username</th>
@@ -24,9 +24,9 @@
     </tr>
   <% @candidates.each do |candidate|%>
     <tr>
-      <td><%=candidate.name%></td>
-      <td><%=candidate.username%></td>
-      <td><%=candidate.email%></td>
+      <td id="name"><%=candidate.name%></td>
+      <td id="username"><%=candidate.username%></td>
+      <td id="email"><%=candidate.email%></td>
     </tr>
   <% end %>
   </table>
@@ -49,7 +49,7 @@
   <% end %>
   <%= form_tag("add_candidate", method: "post") do %>
       <%= label_tag(:candidate, "Candidate's Username") %>
-      <%= text_field_tag(:candidate) %>
+      <%= text_field_tag(:candidate, nil, :id=>"candidate_username") %>
       <%= submit_tag("Add") %>
   <% end %>
 

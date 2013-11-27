@@ -13,10 +13,10 @@
 <div class = "row">
   <div class = "large-1 columns user-icon">
   <%= link_to raw('<i style="display: inline-block;" class="fi-home profile-icon"></i>'), candidate_path %>
-  <%= link_to raw('<i style="display: inline-block;" class="fi-list-thumbnails profile-icon"></i>'), list_candidate_path %>
+  <%= link_to raw('<i style="display: inline-block;" class="fi-list-thumbnails profile-icon"></i>'), list_candidate_path, :id=>"List"%>
   <%= link_to raw('<i style="display: inline-block;" class="fi-calendar profile-icon"></i>'), calendar_candidate_path %>
     <i class="fi-mail profile-icon"></i>
-   <%=  link_to raw('<i class="fi-wrench profile-icon" id="Edit"></i>'), "/candidates/#{@candidate.username}/edit"%>
+   <%=  link_to raw('<i class="fi-wrench profile-icon"></i>'), "/candidates/#{@candidate.username}/edit", :id=>"Edit"%>
   </div>
 
   <div class = "large-8 columns">
