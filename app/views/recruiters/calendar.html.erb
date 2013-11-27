@@ -181,7 +181,7 @@
       events:
       [
           <% @events.each do |event| %>
-		  
+
           {
              title : "<%= event.name %>",
              start: "<%= event.start_at.iso8601 %>",
@@ -197,8 +197,7 @@
           <% end %>
       ],
       eventClick: function(calEvent, jsEvent, view) {
-           alert("hello");
-           alert("world");
+            window.location.href = "/event/show/" + calEvent.title;
        },
 
       select: function(start, end, allDay) {

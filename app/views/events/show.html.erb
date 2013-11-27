@@ -1,0 +1,23 @@
+<div>
+  <form action="/event/update/" id="event_form" method="post">
+       <input type="hidden" id="hidden_id" name="id" value="<%= @event.id %>">
+      <label for="title">Title</label>
+      <input type="text" id="title" name="title" value="<%= @event.name %>">
+       <label for="start">Start</label>
+       <input type="text" id="start" name="start" value="<%= @event.start_at %>">
+       <label for="end">End</label>
+       <input type="text" id="end" name="end" value="<%= @event.end_at %>">
+       <label for="description">Description</label>
+       <input type="text" id="description" name="description" value="<%= @event.description %>">
+       <label for="pending_id">Invited Candidate</label>
+       <input type="text" id="pending_id" name="pending_id" value="<%= @event.pending_id %>">
+        <input type="submit" id="subbutton" value="Update">
+        <input type="submit" id="delbutton" value="Delete">
+     </form>
+</div>
+
+<script>
+   $("#delbutton").click( function() {
+       $("#event_form").attr("action", "/event/delete");
+    });
+</script>

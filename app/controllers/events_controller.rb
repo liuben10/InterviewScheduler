@@ -14,11 +14,25 @@ class EventsController < ApplicationController
     redirect_to calendar_recruiter_path(params[:recruiter_id])
   end
 
-  def update
+  def delete
+    Event.destroy(params[:id])
+    redirect_to welcome_index_path
+  end
 
+
+  def update
+     @event = Event.find(params[:id])
+     @event.name = params[:title]
+     @event.start_at = params[:start]
+     @event.end_at = params[:end]
+     @event.description = params[:description]
+     @event.pending_id = params[:pending_id]
+     @event.save!
+     redirect_to welcome_index_path
   end
   def show
-
+    Rails.logger.debug params
+    @event = Event.find_by_name(params[:id])
   end
 
   def createDate(type)
