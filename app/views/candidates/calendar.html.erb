@@ -39,9 +39,11 @@
 <script type='text/javascript'>
 
   $(document).ready(function() {
-
-
     $('#calendar').fullCalendar({
+       eventClick: function(calEvent, jsEvent, view) {
+        var title = calEvent.title
+        window.location.href = "/event/show/" + title + "?from_id=<%= @candidate.username %>";
+      },
       editable: true,
       events: [
           <% @events.each do |event| %>

@@ -10,6 +10,7 @@ Scheduler::Application.routes.draw do
   resources :candidates
   resources :recruiters
   resources :events
+  post "event/addcandidate" => "events#addcandidate"
   post "event/create" => "events#create"
   post "event/update" => "events#update"
   post "event/delete" => "events#delete"
@@ -17,6 +18,7 @@ Scheduler::Application.routes.draw do
   get "candidate/:id/list" => "candidates#list", as: 'list_candidate'
   get "candidate/:id/calendar" => "candidates#calendar", as: 'calendar_candidate'
   get "welcome/show" => "welcome#show"
+  get "event/show_candidate/:id" => "events#show_candidate"
   get "event/show/:id" => "events#show", as: 'events_show'
   get "recruiter/:id/list" => "recruiters#list", as: 'list_recruiter'
   get "recruiter/:id/calendar" => "recruiters#calendar", as: 'calendar_recruiter'

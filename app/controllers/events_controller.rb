@@ -19,19 +19,30 @@ class EventsController < ApplicationController
     redirect_to welcome_index_path
   end
 
-
   def update
+     Rails.logger.debug ";;;;;;;;;;;;;;"
+     Rails.logger.debug params
+     Rails.logger.debug ";;;;;;;;;;;;;;"
      @event = Event.find(params[:id])
      @event.name = params[:title]
      @event.start_at = params[:start]
      @event.end_at = params[:end]
      @event.description = params[:description]
      @event.pending_id = params[:pending_id]
+     @event.candidate_id = params[:candidate_id]
      @event.save!
      redirect_to welcome_index_path
   end
+
+  def show_candidate
+    @candidate = params[:from_id]
+    @event = Event.find_by_name(params[:id])
+    @event.candidate_id = @candidate
+    @event.save!
+  end
+
   def show
-    Rails.logger.debug params
+    @candidate = params[:from_id]
     @event = Event.find_by_name(params[:id])
   end
 
