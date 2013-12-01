@@ -17,18 +17,18 @@ Background:
   
 
   And the following events exist:
-  | pending_id      | recruiter_id  | start_at   |
-  | nestorga        | fluffyBunnies | 2013-10-03 |
-  | nestorga        | radhesh       | 2012-12-25 |
-  | nestorga        | some_recr     | 2008-07-27 |
-  | nestorga        | some_recr     | 2014-03-02 |
-  | nestorga        | some_recr     | 2019-10-29 |
-  | nestorga        | some_recr     | 2021-06-20 |
-  | efriesen        | radhesh       | 2016-08-10 |
-  | some_cand       | radhesh       | 2000-11-13 |
-  | some_cand       | radhesh       | 2021-06-14 |
-  | some_cand       | radhesh       | 2014-02-20 |
-  | some_cand       | radhesh       | 2019-12-07 |
+  | name | pending_id      | recruiter_id  | start_at   |     end_at |
+  | a     | nestorga        | fluffyBunnies | 2013-10-03 | 2013-10-03 |
+  | b       | nestorga        | radhesh       | 2012-12-25 | 2012-12-25 |
+  | c       | nestorga        | some_recr     | 2008-07-27 | 2008-07-27 |
+  | d       | nestorga        | some_recr     | 2014-03-02 | 2014-03-02 |
+  | e       | nestorga        | some_recr     | 2019-10-29 | 2019-10-29 |
+  | f       | nestorga        | some_recr     | 2021-06-20 | 2021-06-20 |
+  | g       | efriesen        | radhesh       | 2016-08-10 | 2016-08-10 |
+  | h       | some_cand       | radhesh       | 2000-11-13 | 2000-11-13 |
+  | i       | some_cand       | radhesh       | 2021-06-14 | 2021-06-14 |
+  | j       | some_cand       | radhesh       | 2014-02-20 | 2014-02-20 |
+  | k       | some_cand       | radhesh       | 2019-12-07 | 2019-12-07 |
 
 
  

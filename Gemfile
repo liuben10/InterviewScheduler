@@ -1,5 +1,7 @@
 source 'https://rubygems.org'
 
+
+gem 'launchy', "~> 2.4.2"
 gem 'rails', '3.2.14'
 gem 'selenium-webdriver', '2.35.1'
 # Bundle edge Rails instead:

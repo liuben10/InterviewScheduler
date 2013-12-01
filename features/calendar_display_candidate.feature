@@ -15,26 +15,26 @@ Given the following accounts exist:
   | some_cand             | hello321          | candidate  |
 
   And the following events exist:
-  | recruiter_id        | name          | pending_id     | start_at       |
-  | fluffyBunnies   | Wrecruiter     | nestorga      | 10/03/13   |
-  | fluffyBunnies   | arecruiter     | efriesen      | 12/25/12   |
-  | radhesh         | brecruiter     | some_cand     | 03/02/14   |
-  | radhesh         | crecruiter     | nestorga      | 07/27/08   |
-  | nestorga        | dcandidate     | fluffyBunnies | 10/03/13   |
-  | nestorga        | erecruiter     | radhesh       | 07/27/08   |
-  | efriesen        | fcandidate     | fluffyBunnies | 12/25/12   |
-  | some_cand       | gcandidate     | radhesh       | 03/02/14   |
+  | recruiter_id        | name          | pending_id     | start_at | end_at |
+  | fluffyBunnies   | Wrecruiter     | nestorga      | 2013-12-13   |2013-12-13   |
+  | fluffyBunnies   | arecruiter     | efriesen      | 2013-12-12   |2013-12-12   |
+  | radhesh         | brecruiter     | some_cand     | 2013-12-14   |2013-12-14   |
+  | radhesh         | crecruiter     | nestorga      | 2013-12-08   |2013-12-08   |
+  | nestorga        | dcandidate     | fluffyBunnies | 2013-12-13   |2013-12-13   |
+  | nestorga        | erecruiter     | radhesh       | 2013-12-08   |2013-12-08   |
+  | efriesen        | fcandidate     | fluffyBunnies | 2013-12-12   |2013-12-12   |
+  | some_cand       | gcandidate     | radhesh       | 2013-12-14   |2013-12-14   |
 
   And I am logged in as "nestorga" with password "fooPass3"
 
 Scenario: Display upcoming appointments
-  Then I should see an appointment with "fluffyBunnies" on "10/03/13"
-  And I should see an appointment with "radhesh" on "07/27/08"
+  Then I should see an appointment with "fluffyBunnies" on "2013/13/13"
+  And I should see an appointment with "radhesh" on "2013/12/08"
 
 Scenario: Don't display appointments candidate doesn't have
-  Then I should not see an appointment with "radhesh" on "01/05/11"
-  And I should not see an appointment with "fluffyBunnies" on "02/02/02"
-  And I should not see an appointment with "radhesh" on "09/11/19"
+  Then I should not see an appointment with "radhesh" on "2013/12/11"
+  And I should not see an appointment with "fluffyBunnies" on "2013/12/12"
+  And I should not see an appointment with "radhesh" on "2013/12/14"
 
 Scenario: Don't display appointments of other candidates
   And I should not see an appointment with "fluffyBunnies" on "12/25/12"

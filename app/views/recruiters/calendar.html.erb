@@ -181,7 +181,7 @@
       events:
       [
           <% @events.each do |event| %>
-
+             <% if not event.name.nil? or event.start_at.nil? or event.end_at.nil? %>
           {
              title : "<%= event.name %>",
              start: "<%= event.start_at.iso8601 %>",
@@ -194,6 +194,7 @@
                 className: 'customRed'
              <% end %>
            },
+            <% end %>
           <% end %>
       ],
       eventClick: function(calEvent, jsEvent, view) {
