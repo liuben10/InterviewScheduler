@@ -15,8 +15,8 @@
           <% if not @event.candidate_id.nil? and not @event.candidate_id.strip.nil? %>
             <input type="hidden" id="candidate_id" name="candidate_id" value="<%= @event.candidate_id %>">
           <% end %>
-          <input type="submit" id="subbutton" value="Update">
-          <input type="submit" id="delbutton" value="Delete">
+          <input type="submit" id="Update" value="Update">
+          <input type="submit" id="Delete" value="Delete">
         </form>
       </div>
 <% else %>
@@ -48,7 +48,7 @@
       </form>
 <% end %>
 <script>
-   $("#delbutton").click( function() {
+   $("#Delete").click( function() {
        $("#event_form").attr("action", "/event/delete");
     });
 </script>

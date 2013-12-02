@@ -21,3 +21,5 @@ Given the following accounts exist:
 Scenario: Add events as recruiter
   When I add an event "InterviewTest1" starting at "2013,11,11,1,30" and ending at "2013,11,11,2,30"
   Then I should see the event "InterviewTest1" in my events table
+  When I am looking at "fluffyBunnies" calendar page
+  Then I should see "InterviewTest1"

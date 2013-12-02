@@ -26,3 +26,13 @@ Then /I should see the event "(.*)" in my events table/ do |event|
   event = Event.find_by_name(event)
   assert_not_nil event
 end
+
+Then /"(.*)" should have "(.*)" as description/ do |event, description|
+  event = Event.find_by_name(event)
+  assert_equal event.description, description
+end
+
+Then /"(.*)" does not exist/ do |event|
+  res = Event.find_by_name(event)
+  assert res.nil?
+end
