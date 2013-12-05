@@ -17,6 +17,7 @@ Scheduler::Application.routes.draw do
   get "recruiter/get_candidates" => "recruiter#get_candidates"
   get "candidate/:id/list" => "candidates#list", as: 'list_candidate'
   get "candidate/:id/calendar" => "candidates#calendar", as: 'calendar_candidate'
+  get "message/:id" => "message#index", as: 'message'
   get "welcome/show" => "welcome#show"
   get "event/show_candidate/:id" => "events#show_candidate"
   get "event/show/:id" => "events#show", as: 'events_show'

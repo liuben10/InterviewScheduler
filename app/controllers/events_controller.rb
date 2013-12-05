@@ -1,15 +1,14 @@
+require "cgi"
+
 class EventsController < ApplicationController
   def create
-    Rails.logger.debug "++++++++++++++++"
-    Rails.logger.debug params
-    Rails.logger.debug "++++++++++++++++"
     startDate = createDate("start")
     endDate = createDate("end")
     Rails.logger.debug startDate.strftime("%FT%T%:z")
+    messageToSend = ""
     newEventHash = {:name => params[:title], :start_at => startDate, :end_at => endDate, :description => params[:description], :pending_id => params[:pending_id], :recruiter_id => params[:recruiter_id]}
-    Rails.logger.debug "++++++++++++++++"
-    Rails.logger.debug session
-    Rails.logger.debug "++++++++++++++++"
+    messageToSend += "Recruiter " + params[:recruiter_id] + " has invited you to an event on " +  startDate.strftime("%FT%T%:z") + " and ending on " + endDate.strftime("%FT%T%:z") + " and description: " + params[:description]
+    message(params[:recruiter_id], params[:pending_id], messageToSend)
     Event.create! newEventHash
     redirect_to calendar_recruiter_path(params[:recruiter_id])
   end

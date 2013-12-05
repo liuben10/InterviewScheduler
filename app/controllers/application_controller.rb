@@ -1,3 +1,5 @@
+require "cgi"
+
 class ApplicationController < ActionController::Base
   #protect_from_forgery
 
@@ -21,4 +23,17 @@ class ApplicationController < ActionController::Base
       end
     end
 
+
+  def message(recruiter, candidate, message)
+    @recruiter = Recruiter.find_by_username(recruiter)
+    @candidate = Candidate.find_by_username(candidate)
+    @message = CGI::escapeHTML(message)
+    if @candidate
+      UserMailer.recruiter_send(@recruiter, @candidate, @message)
+                .deliver
+      flash[:notice] = "Message successfully sent!"
+    else
+      flash[:error] = "Invalid candidate name specified."
+    end
+  end
 end

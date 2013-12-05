@@ -30,9 +30,9 @@ Background:
 
  
   Scenario: Display pending interview requests 
-    Then I should see a pending interview request with "some_recr" on "07/27/08"
-    And I should see a pending interview request with "radhesh" on "12/25/12"
-    And I should see a pending interview request with "some_recr" on "10/29/19"
+    Then I should see a pending interview request named "c" with "some_recr" on "07/27/08"
+    And I should see a pending interview request named "b" with "radhesh" on "12/25/12"
+    And I should see a pending interview request named "e" with "some_recr" on "10/29/19"
 
   Scenario: Don't display requests that have been accepted
     Then I should not see a pending interview request with "fluffyBunnies" on "10/03/13"
