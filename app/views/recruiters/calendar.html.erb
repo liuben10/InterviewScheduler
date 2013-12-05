@@ -23,8 +23,8 @@
     <div id = "calendar">
     </div>
     <div>
-      <div class="customOrange">
-          Pending Events with no candidate specified
+      <div class="customBlack">
+          Event has expired
       </div>
       <div class="customRed">
          Pending interview timeslots in which no candidate has agreed to yet.
@@ -172,10 +172,9 @@
 </form>
 <input type="submit" class="submitForm" id="cancelButton" value="Cancel">
 <input type="submit" class="deleteButton" id="delete_button" value="Delete"></div>
-
 <script type='text/javascript'>
   $(document).ready(function() {
-     $('#calendar').fullCalendar({
+      $('#calendar').fullCalendar({
       editable: true,
       selectable: true,
       selectHelper: true,
@@ -188,8 +187,8 @@
              title : "<%= event.name %>",
              start: "<%= event.start_at.iso8601 %>",
              end: "<%= event.end_at.iso8601 %>",
-             <% if event.pending_id == "" or event.pending_id.nil? %>
-                className: 'customOrange'
+             <% if event.start_at.to_i < Time.now.to_i %>
+                className: 'customBlack'
               <% elsif not (event.pending_id.nil? or event.pending_id == "") and not (event.candidate_id.nil? or event.pending_id == "")%>
                 className: 'customGreen'
               <% else %>

@@ -15,9 +15,9 @@
           <% if not @event.candidate_id.nil? and not @event.candidate_id.strip.nil? %>
             <input type="hidden" id="candidate_id" name="candidate_id" value="<%= @event.candidate_id %>">
           <% end %>
-          <input type="submit" id="Update" value="Update">
-          <input type="submit" id="Delete" value="Delete">
-          <input type="submit" id="Cancel" value="Cancel">
+          <input type="submit" id="Update" class="small button" value="Update">
+          <input type="submit" id="Delete" class="small button" value="Delete">
+          <input type="submit" id="Cancel" class="small button" value="Cancel">
         </form>
       </div>
 <% else %>
@@ -53,8 +53,10 @@
           <input type="hidden" id="description" name="description" value="<%= @event.description %>">
           <input type="hidden" id="pending_id" name="pending_id" value="<%= @event.pending_id %>">
          <input type="hidden" id="candidate_id" name="candidate_id" value="<%= @candidate %>">
-         <input type="submit" value="Accept invitation" id="acceptbutton">
-          <input type="submit" value="Cancel" id="CancelRecruiter">
+         <% if @event.candidate_id.nil? %>
+             <input type="submit" value="Accept invitation" class="small button" id="acceptbutton">
+          <% end %>
+          <input type="submit" value="Cancel" class="small button" id="CancelRecruiter">
       </form>
 <% end %>
 <script>

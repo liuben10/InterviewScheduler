@@ -588,11 +588,11 @@ table.fc-border-separate {
 	}
 	
 
-.customOrange,
-.customOrange div,	
-.customOrange span {
-     background-color: orange;
-     border-color: orange;
+.customBlack,
+.customBlack div,	
+.customBlack span {
+     background-color: grey;
+     border-color: grey;
      color: black;
      font-weight: bold;
 }
