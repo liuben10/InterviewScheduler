@@ -23,12 +23,28 @@ When /I add an event "(.*)" with candidate "(.*)" starting at "(.*)" and ending 
   click_button("submitButton")
 end
 
+
+When /I am looking at "(.*)" event page as "(.*)"/ do |event, user|
+  eve = Event.find_by_name(event)
+  if user == "recruiter"
+    visit "/event/show/" + eve.id.to_s
+  else
+    visit "/event/show/" + eve.id.to_s + "?from_id=" + user
+  end
+  print URI.parse(current_url)
+end
+
 When /I click on an event "(.*)"/ do |event|
   page.find("span", :text => event).click()
 end
 
 Then /^I should see a pending interview request named "(.*)" with "(.*?)" on "(.*?)"$/ do |event, candidate, start_date|
    page.should have_content(event)
+end
+
+Then /event "(.*)" should have "(.*)" as accepted/ do |event, user|
+  event = Event.find_by_name(event)
+  assert_equal event.candidate_id, user
 end
 
 Then /I should see the event "(.*)" in my events table/ do |event|

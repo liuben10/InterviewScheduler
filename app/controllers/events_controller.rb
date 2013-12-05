@@ -4,13 +4,36 @@ class EventsController < ApplicationController
   def create
     startDate = createDate("start")
     endDate = createDate("end")
-    Rails.logger.debug startDate.strftime("%FT%T%:z")
-    messageToSend = ""
-    newEventHash = {:name => params[:title], :start_at => startDate, :end_at => endDate, :description => params[:description], :pending_id => params[:pending_id], :recruiter_id => params[:recruiter_id]}
-    messageToSend += "Recruiter " + params[:recruiter_id] + " has invited you to an event on " +  startDate.strftime("%FT%T%:z") + " and ending on " + endDate.strftime("%FT%T%:z") + " and description: " + params[:description]
-    message(params[:recruiter_id], params[:pending_id], messageToSend)
-    Event.create! newEventHash
+    if not validations(params, startDate, endDate)
+      Rails.logger.debug startDate.strftime("%FT%T%:z")
+      newEventHash = {:name => params[:title], :start_at => startDate, :end_at => endDate, :description => params[:description], :pending_id => params[:pending_id], :recruiter_id => params[:recruiter_id]}
+
+      if has_conflict(startDate, endDate, get_candidate_events(params[:pending_id]))
+        create_if_candidate_has_conflict(newEventHash)
+        flash[:notice] = "Candidate has a conflicting event at this time, creating invitation anyways"
+      else
+      Event.create! newEventHash
+        messageToSend = ""
+        messageToSend += "Recruiter " + params[:recruiter_id] + " has invited you to an event on " +  startDate.strftime("%FT%T%:z") + " and ending on " + endDate.strftime("%FT%T%:z") + " and description: " + params[:description]
+        message(params[:recruiter_id], params[:pending_id], messageToSend)
+      end
+    else
+      flash[:notice] = "Invalid input, either no invitation was made, start_date didn't come before end_date, or there already is an event at the specified timeslot"
+    end
     redirect_to calendar_recruiter_path(params[:recruiter_id])
+  end
+
+  def create_if_candidate_has_conflict(event)
+    messageToSend = ""
+    messageToSend += "Recruiter " + event[:recruiter_id] + " has invited you to an event on " +  event[:start_at].strftime("%FT%T%:z") + " and ending on " + event[:end_at].strftime("%FT%T%:z") + " and description: " + event[:description]
+
+    message(event[:pending_id], event[:recruiter_id], "Candidate has a conflicting event in the interval " +  event[:start_at].strftime("%FT%T%:z") + " to " + event[:end_at].strftime("%FT%T%:z"))
+    message(event[:recruiter_id], event[:pending_id], messageToSend)
+    Event.create! event
+  end
+
+  def validations(params, startDate, endDate)
+    return ((params[:pending_id].strip.nil?) or (startDate.to_i > endDate.to_i) or (has_conflict(startDate, endDate, get_recruiter_events(params[:recruiter_id]))))
   end
 
   def delete
@@ -18,31 +41,56 @@ class EventsController < ApplicationController
     redirect_to welcome_index_path
   end
 
+  def get_recruiter_events(recruiter_id)
+    event_set = Event.where(:recruiter_id => recruiter_id)
+    return event_set
+  end
+
+  def get_candidate_events(candidate_id)
+    event_set = Event.where(:candidate_id => candidate_id)
+    return event_set
+  end
+
+  def get_candidate_pending_events(candidate_id)
+    eventRes = Event.where(:pending_id => candidate_id)
+  end
+
+  def has_conflict(new_start, new_end, setOfEvents)
+    setOfEvents.each do |event|
+      if new_start.to_i >= event.start_at.to_i and new_start.to_i <= event.end_at.to_i
+        return true
+      end
+      if new_end.to_i <= event.end_at.to_i and new_end.to_i >= event.start_at.to_i
+        return true
+      end
+    end
+    return false
+  end
+
   def update
-     Rails.logger.debug ";;;;;;;;;;;;;;"
-     Rails.logger.debug params
-     Rails.logger.debug ";;;;;;;;;;;;;;"
      @event = Event.find(params[:id])
+     if @event.candidate_id.nil? or @event.candidate_id.strip.nil?
+        invitation_accepted = "aa"
+     end
      @event.name = params[:title]
      @event.start_at = params[:start]
      @event.end_at = params[:end]
      @event.description = params[:description]
      @event.pending_id = params[:pending_id]
      @event.candidate_id = params[:candidate_id]
-     @event.save!
+    @event.save!
+     if invitation_accepted == "aa"
+       if not @event.candidate_id.nil?
+         message(@event.candidate_id, @event.recruiter_id, "Candidate " + @event.candidate_id + " has accepted your invitation for the event " + @event.name)
+       end
+     end
      redirect_to welcome_index_path
   end
 
-  def show_candidate
-    @candidate = params[:from_id]
-    @event = Event.find_by_name(params[:id])
-    @event.candidate_id = @candidate
-    @event.save!
-  end
 
   def show
     @candidate = params[:from_id]
-    @event = Event.find_by_name(params[:id])
+    @event = Event.find(params[:id])
   end
 
   def createDate(type)
