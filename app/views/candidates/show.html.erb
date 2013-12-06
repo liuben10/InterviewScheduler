@@ -21,14 +21,31 @@
 
   <div class = "large-8 columns">
     <h2> Dashboard </h2>
-    <h3> Upcoming Events </h3>
-    <% if @events.empty? %>
-      <p> No upcoming events </p>
-    <% else %>
-      <% @events.each do |event|%>
-        <p><%=show_event_info(event, event.recruiter_id)%></p>
-      <% end %>
-    <% end %>
+
+    <div class = "row">
+      <div class = "large-6 columns">
+        <h3> Upcoming Events </h3>
+        <% if @events.empty? %>
+          <p> No upcoming events </p>
+        <% else %>
+          <% @events.each do |event|%>
+            <p><%=show_event_info(event, event.recruiter_id)%></p>
+          <% end %>
+        <% end %>
+      </div>
+
+      <div class = "large-6 columns">
+        <h3> Pending Interview Requests </h3>
+        <% if @requests.empty? %>
+          <p> No pending requests </p>
+        <% else %>
+          <% @requests.each do |request|%>
+            <p><%=show_request_info(request, request.recruiter_id)%></p>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
   </div>
 
 
