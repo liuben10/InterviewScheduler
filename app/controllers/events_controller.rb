@@ -7,14 +7,14 @@ class EventsController < ApplicationController
     if not validations(params, startDate, endDate)
       newEventHash = {:name => params[:title], :start_at => startDate, :end_at => endDate, :description => params[:description], :pending_id => params[:pending_id], :recruiter_id => params[:recruiter_id]}
       Event.create! newEventHash
-      sendMessageFromRecruiter(params)
+      sendMessageFromRecruiter(params, startDate, endDate)
     else
       flash[:notice] = "Invalid input, either no invitation was made, start_date didn't come before end_date, or there is a conflict with the recruiter or the candidate"
     end
     redirect_to calendar_recruiter_path(params[:recruiter_id])
   end
 
-  def sendMessageFromRecruiter(params)
+  def sendMessageFromRecruiter(params, startDate, endDate)
     messageToSend = ""
     messageToSend += "Recruiter " + params[:recruiter_id]
     messageToSend += " has invited you to an event on " +  startDate.strftime("%FT%T%:z")
