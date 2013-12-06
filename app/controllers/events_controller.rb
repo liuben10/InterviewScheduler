@@ -7,25 +7,31 @@ class EventsController < ApplicationController
     if not validations(params, startDate, endDate)
       newEventHash = {:name => params[:title], :start_at => startDate, :end_at => endDate, :description => params[:description], :pending_id => params[:pending_id], :recruiter_id => params[:recruiter_id]}
       Event.create! newEventHash
-      messageToSend = ""
-      messageToSend += "Recruiter " + params[:recruiter_id]
-      messageToSend += " has invited you to an event on " +  startDate.strftime("%FT%T%:z")
-      messageToSend += " and ending on " + endDate.strftime("%FT%T%:z") + " and description: " + params[:description]
-      message(params[:recruiter_id], params[:pending_id], messageToSend)
+      sendMessageFromRecruiter(params)
     else
       flash[:notice] = "Invalid input, either no invitation was made, start_date didn't come before end_date, or there is a conflict with the recruiter or the candidate"
     end
     redirect_to calendar_recruiter_path(params[:recruiter_id])
   end
 
+  def sendMessageFromRecruiter(params)
+    messageToSend = ""
+    messageToSend += "Recruiter " + params[:recruiter_id]
+    messageToSend += " has invited you to an event on " +  startDate.strftime("%FT%T%:z")
+    messageToSend += " and ending on " + endDate.strftime("%FT%T%:z") + " and description: " + params[:description]
+    message(params[:recruiter_id], params[:pending_id], messageToSend)
+  end
+
+=begin
   def create_if_candidate_has_conflict(event)
     messageToSend = ""
     messageToSend += "Recruiter " + event[:recruiter_id] + " has invited you to an event on " +  event[:start_at].strftime("%FT%T%:z") + " and ending on " + event[:end_at].strftime("%FT%T%:z") + " and description: " + event[:description]
 
-    message(event[:pending_id], event[:recruiter_id], "Candidate has a conflicting event in the interval " +  event[:start_at].strftime("%FT%T%:z") + " to " + event[:end_at].strftime("%FT%T%:z"))
+   message(event[:pending_id], event[:recruiter_id], "Candidate has a conflicting event in the interval " +  event[:start_at].strftime("%FT%T%:z") + " to " + event[:end_at].strftime("%FT%T%:z"))
     message(event[:recruiter_id], event[:pending_id], messageToSend)
     Event.create! event
   end
+=end
 
   def validations(params, startDate, endDate)
     return (((params[:pending_id].strip.nil?) or params[:pending_id].nil? or params[:pending_id].empty?) or (params[:title].nil?) or (startDate.to_i > endDate.to_i) or (has_conflict(startDate, endDate, get_recruiter_events(params[:recruiter_id]))) or (has_conflict(startDate, endDate, get_candidate_events(params[:recruiter_id]))))
