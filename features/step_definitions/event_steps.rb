@@ -39,7 +39,7 @@ When /I click on an event "(.*)"/ do |event|
 end
 
 Then /^I should see a pending interview request named "(.*)" with "(.*?)" on "(.*?)"$/ do |event, candidate, start_date|
-   page.should have_content(event)
+   pending
 end
 
 Then /event "(.*)" should have "(.*)" as accepted/ do |event, user|
