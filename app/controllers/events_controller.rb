@@ -14,13 +14,6 @@ class EventsController < ApplicationController
     redirect_to calendar_recruiter_path(params[:recruiter_id])
   end
 
-  def sendMessageFromRecruiter(params, startDate, endDate)
-    messageToSend = ""
-    messageToSend += "Recruiter " + params[:recruiter_id]
-    messageToSend += " has invited you to an event on " +  startDate.strftime("%FT%T%:z")
-    messageToSend += " and ending on " + endDate.strftime("%FT%T%:z") + " and description: " + params[:description]
-    message(params[:recruiter_id], params[:pending_id], messageToSend)
-  end
 
 =begin
   def create_if_candidate_has_conflict(event)
@@ -89,12 +82,6 @@ class EventsController < ApplicationController
     message = "Candidate " + @event.candidate_id + " has accepted your invitation for the event " + @event.name
     candidateMessageRecruiter(@event.candidate_id, @event.recruiter_id, message)
     redirect_to welcome_index_path
-  end
-
-  def candidateMessageRecruiter(candidate_id, recruiter_id, message)
-    if not candidate_id.nil?
-      message(candidate_id, recruiter_id, message)
-    end
   end
 
   def show

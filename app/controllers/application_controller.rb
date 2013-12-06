@@ -23,6 +23,20 @@ class ApplicationController < ActionController::Base
       end
     end
 
+  def candidateMessageRecruiter(candidate_id, recruiter_id, message)
+    if not candidate_id.nil?
+      message(candidate_id, recruiter_id, message)
+    end
+  end
+
+  def sendMessageFromRecruiter(params, startDate, endDate)
+    messageToSend = ""
+    messageToSend += "Recruiter " + params[:recruiter_id]
+    messageToSend += " has invited you to an event on " +  startDate.strftime("%FT%T%:z")
+    messageToSend += " and ending on " + endDate.strftime("%FT%T%:z") + " and description: " + params[:description]
+    message(params[:recruiter_id], params[:pending_id], messageToSend)
+  end
+
 
   def message(recruiter, candidate, message)
     @recruiter = Recruiter.find_by_username(recruiter)
