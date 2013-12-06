@@ -38,10 +38,6 @@ When /I click on an event "(.*)"/ do |event|
   page.find("span", :text => event).click()
 end
 
-Then /^I should see a pending interview request named "(.*)" with "(.*?)" on "(.*?)"$/ do |event, candidate, start_date|
-   page.should have_content(event)
-end
-
 Then /event "(.*)" should have "(.*)" as accepted/ do |event, user|
   event = Event.find_by_name(event)
   assert_equal event.candidate_id, user
