@@ -35,14 +35,19 @@
       </div>
 
       <div class = "large-6 columns">
-        <h3> Pending Interview Requests </h3>
-        <% if @requests.empty? %>
-          <p> No pending requests </p>
-        <% else %>
-          <% @requests.each do |request|%>
-            <p><%=show_request_info(request, request.recruiter_id)%></p>
+          <h3> Pending Interview Requests </h3>
+          <% if @requests.empty? %>
+            <p> No pending requests </p>
+          <% else %>
+            <table id="pending_requests">
+              <% @requests.each do |request|%>
+                <tr>
+                  <td><%=show_request_info(request, request.recruiter_id)%></td>
+                  <td><a class="small button" href="/event/show/<%=request.id%>?from_id=<%=@candidate.username%>">Details</a></td>
+                </tr>
+              <% end %>
+            </table>
           <% end %>
-        <% end %>
       </div>
     </div>
 
