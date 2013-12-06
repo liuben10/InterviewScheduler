@@ -41,53 +41,52 @@
 <div class = "row" id = "main-form">
   <div class = "large-3 columns"></div>
   <div class = "large-6 columns">
-
-      <div class = "form-wrapper" >
-
+    <div class = "form-wrapper" >
       <h4> CREATE AN ACCOUNT </h4>
 
-    <% if flash[:notice] == "createError" %>
+      <% if flash[:notice] == "createError" %>
         <div id="error_explanation">
           <ul>
-          <li>Error: User Exists</li>
+            <li>Error: User Exists</li>
           </ul>
-      </div>
+        </div>
       <% end %>
-
-
-        <%= form_for(@candidate) do |f| %>
-           <select id="acctype" name="acctype" class = "large">
-              <option value="candidate">Candidate</option>
-              <option value="recruiter">Recruiter</option>
-          </select>
-            <div class="field">
-                <%= f.label "Username" %>
-                <%= f.text_field :username %>
-            </div>
-            <div class="field">
-                <%= f.label "Name" %>
-                <%= f.text_field :name %>
-            </div>
-            <div class="field">
-                <%= f.label "Email" %>
-                <%= f.text_field :email %>
-            </div>
-            <div class ="field">
-                <%= f.label "Password" %>
-              <%= f.password_field :password %>
-          </div>
-            <div class="field">
-                <label id="companyLabel" style="display:none;">Company </label>
-                <input type="hidden" id="character_company" name="company" value="">
-             </div>
-             <div class="actions">
-                <input type="submit" id="subutton" class="large button" value="Create">
-             </div>
-        <% end %>
-
-      </div>
+      
+      <%= form_for(@candidate) do |f| %>
+        
+        <select id="acctype" name="acctype" class = "large">
+          <option value="candidate">Candidate</option>
+          <option value="recruiter">Recruiter</option>
+        </select>
+            
+        <div class="field">
+          <%= f.label "Username" %>
+          <%= f.text_field :username %>
+        </div>
+        <div class="field">
+          <%= f.label "Name" %>
+          <%= f.text_field :name %>
+        </div>
+        <div class="field">
+          <%= f.label "Email" %>
+          <%= f.text_field :email %>
+        </div>
+        <div class ="field">
+          <%= f.label "Password" %>
+          <%= f.password_field :password %>
+        </div>
+        <div class="field">
+          <label id="companyLabel" style="display:none;">Company </label>
+          <input type="hidden" id="character_company" name="company" value="">
+        </div>
+        <div class="actions">
+          <input type="submit" id="subutton" class="large button" value="Create">
+        </div>
+      <% end %>
+    </div>
   </div>
-  <div class = "large-3 columns"></div>
+  <div class = "large-3 columns">
+  </div>
 </div>
 
 <script>

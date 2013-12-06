@@ -18,7 +18,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'compass'
   gem 'compass-rails' # you need this or you get an err
-  gem 'zurb-foundation', '~> 4.0.0'
+  gem 'foundation-rails'
   gem 'foundation-icons-sass-rails'
 end
 

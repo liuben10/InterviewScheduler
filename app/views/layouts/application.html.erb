@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Interview Scheduler</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application"%>
@@ -11,45 +12,47 @@
 
 <nav class="top-bar">
   <ul class="title-area">
-      <li class="name">
-        <h1>
+    <li class="name">
+      <h1>
         <a href="/welcome/index">Interview Scheduler</a>
-        </h1>
-      </li>
+      </h1>
+    </li>
   </ul>
-      <% if session[:authenticated_user].nil? %>
-      <ul class = "right">
-        <li class="has-form top-bar-item">            
-            <form action="/welcome/show" method="get" id="inputform">
-                <div class="row collapse">
-                  <div class = "small-4 columns">
-                      <%= link_to "Forgot your password?", "/welcome/forgotpassword"%>
-                  </div>
-                  <div class="small-3 columns">
-                      <input type="text" name="userid" value="Username">
-                  </div>
-                  <div class="small-3 columns">
-                      <input type="password" name="password" value="Password">
-                  </div>
-                  <div class="small-2 columns">
-                      <input type="submit" class="button" value="Login"></a>
-                  </div>
-                </div>
-        <% if flash[:notice] == "Username not found" %>
+  <% if session[:authenticated_user].nil? %>
+    <ul class = "right">
+      <li class="has-form top-bar-item">            
+        <form action="/welcome/show" method="get" id="inputform">
+          <div class="row collapse">
+            <div class = "small-4 columns">
+              <%= link_to "Forgot your password?", "/welcome/forgotpassword", id: "forgot-password"%>
+            </div>
+            <div class="small-3 columns">
+              <input type="text" name="userid" placeholder="Username">
+            </div>
+            <div class="small-3 columns">
+              <input type="password" name="password" placeholder="Password">
+            </div>
+            <div class="small-2 columns">
+              <input type="submit" class="button" value="Login"></a>
+            </div>
+          </div>
+          <% if flash[:notice] == "Username not found" %>
             <small class="error">Username Not Found</small>
-        <% elsif flash[:notice] == "Password was incorrect, please try again" %>
-          <small class="error">Password Incorrect</small>
-        <% end %>
-            </form>
-        </li>
-      </ul>
-      <% else %>
-        <section class = "top-bar-section">
-      <ul class="right">
-      <li class = "top-bar-item"><%= link_to "Logout", logout_path, method: :post %></li>
+          <% elsif flash[:notice] == "Password was incorrect, please try again" %>
+            <small class="error">Password Incorrect</small>
+          <% end %>
+        </form>
+      </li>
     </ul>
+  <% else %>
+    <section class = "top-bar-section">
+      <ul class="right">
+        <li class = "top-bar-item">
+		      <%= link_to "Logout", logout_path, method: :post %>
+		</li>
+      </ul>
     </section>
-      <% end %>
+  <% end %>
 </nav>
 
 <%= yield %>
@@ -61,7 +64,8 @@
     </div>
   </footer>
 </div>
-
-
 </body>
+<script>
+  $(document).foundation();
+</script>
 </html>

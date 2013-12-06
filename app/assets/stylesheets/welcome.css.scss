@@ -37,12 +37,14 @@ table {
 		}
 	}
 	
- 	.top-bar-item a {
-		line-height: 61px !important;
-	}
-	
 	.top-bar-item a:hover {
 		background-color: #E8E8E8 !important;
+		color: black;
+	}
+	
+	.top-bar-item a {
+		color: black;
+		height:61px;
 	}
 	
 	.error {
@@ -52,6 +54,10 @@ table {
 	
 	.button {
 		width: 100%;
+	}
+	
+	#forgot-password {
+		line-height: 45px;
 	}
 }
 

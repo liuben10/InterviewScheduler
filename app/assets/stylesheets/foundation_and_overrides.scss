@@ -967,7 +967,7 @@ $anchor-font-color-hover: lighten($secondary-color, 50%);
 //
 
 // Background color for the top bar
-$topbar-bg: #FFFFFF;
+$topbar-bg: white;
 
 // Height and margin
 $topbar-height: 65px;
@@ -981,7 +981,7 @@ $topbar-margin-bottom: 0px;
 // $topbar-title-font-size: emCalc(17px);
 
 // Set the link colors and styles for top-level nav
-$topbar-link-color: black;
+//$topbar-link-color: black;
 // $topbar-link-weight: bold;
 // $topbar-link-font-size: emCalc(13px);
 
@@ -1006,6 +1006,5 @@ $topbar-link-color: black;
 // $topbar-transition-speed: 300ms;
 // $topbar-breakpoint: emCalc(940px); // Change to 9999px for always mobile layout
 // $topbar-media-query: "only screen and (min-width "#{$topbar-breakpoint}")";
-
 
 @import 'foundation';
