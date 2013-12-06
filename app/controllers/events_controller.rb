@@ -86,12 +86,16 @@ class EventsController < ApplicationController
     @event.pending_id = params[:pending_id]
     @event.candidate_id = params[:candidate_id]
     @event.save!
-    if not @event.candidate_id.nil?
-      message(@event.candidate_id, @event.recruiter_id, "Candidate " + @event.candidate_id + " has accepted your invitation for the event " + @event.name)
-    end
+    message = "Candidate " + @event.candidate_id + " has accepted your invitation for the event " + @event.name
+    candidateMessageRecruiter(@event.candidate_id, @event.recruiter_id, message)
     redirect_to welcome_index_path
   end
 
+  def candidateMessageRecruiter(candidate_id, recruiter_id, message)
+    if not candidate_id.nil?
+      message(candidate_id, recruiter_id, message)
+    end
+  end
 
   def show
     @candidate = params[:from_id]
