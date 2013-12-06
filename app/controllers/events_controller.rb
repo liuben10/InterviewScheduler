@@ -8,7 +8,9 @@ class EventsController < ApplicationController
       newEventHash = {:name => params[:title], :start_at => startDate, :end_at => endDate, :description => params[:description], :pending_id => params[:pending_id], :recruiter_id => params[:recruiter_id]}
       Event.create! newEventHash
       messageToSend = ""
-      messageToSend += "Recruiter " + params[:recruiter_id] + " has invited you to an event on " +  startDate.strftime("%FT%T%:z") + " and ending on " + endDate.strftime("%FT%T%:z") + " and description: " + params[:description]
+      messageToSend += "Recruiter " + params[:recruiter_id]
+      messageToSend += " has invited you to an event on " +  startDate.strftime("%FT%T%:z")
+      messageToSend += " and ending on " + endDate.strftime("%FT%T%:z") + " and description: " + params[:description]
       message(params[:recruiter_id], params[:pending_id], messageToSend)
     else
       flash[:notice] = "Invalid input, either no invitation was made, start_date didn't come before end_date, or there is a conflict with the recruiter or the candidate"
@@ -50,14 +52,23 @@ class EventsController < ApplicationController
 
   def has_conflict(new_start, new_end, setOfEvents)
     setOfEvents.each do |event|
-      if new_start.to_i >= event.start_at.to_i and new_start.to_i <= event.end_at.to_i
-        return true
-      end
-      if new_end.to_i <= event.end_at.to_i and new_end.to_i >= event.start_at.to_i
+      if conflicting_intervals(new_start, new_end, event)
         return true
       end
     end
     return false
+  end
+
+  def conflicting_intervals(new_start, new_end, event)
+    return (start_is_between_interval(new_start, event) or end_is_between_interval(new_end, event))
+  end
+
+  def start_is_between_interval(new_start, event)
+    return ((new_start.to_i >= event.start_at.to_i) and (new_start.to_i <= event.end_at.to_i))
+  end
+
+  def end_is_between_interval(new_end, event)
+    return ((new_end.to_i <= event.end_at.to_i) and (new_end.to_i >= event.start_at.to_i))
   end
 
   def update
