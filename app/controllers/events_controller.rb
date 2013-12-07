@@ -27,7 +27,16 @@ class EventsController < ApplicationController
 =end
 
   def validations(params, startDate, endDate)
-    return (((params[:pending_id].strip.nil?) or params[:pending_id].nil? or params[:pending_id].empty?) or (params[:title].nil?) or (startDate.to_i > endDate.to_i) or (has_conflict(startDate, endDate, get_recruiter_events(params[:recruiter_id]))) or (has_conflict(startDate, endDate, get_candidate_events(params[:recruiter_id]))))
+    return ((emptyCheck(params)) or (startDate.to_i > endDate.to_i) or (conflictCheck(params, startDate, endDate)))
+  end
+
+
+  def emptyCheck(params)
+    return (fieldIsEmpty(params[:pending_id]) or (fieldIsEmpty(params[:title])))
+  end
+
+  def conflictCheck(params, startDate, endDate)
+    return ((has_conflict(startDate, endDate, get_recruiter_events(params[:recruiter_id]))) or (has_conflict(startDate, endDate, get_candidate_events(params[:recruiter_id]))))
   end
 
   def delete

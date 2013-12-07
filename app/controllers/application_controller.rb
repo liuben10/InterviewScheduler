@@ -6,9 +6,6 @@ class ApplicationController < ActionController::Base
   protected
     def authorize (currentUser, userType)
       userid = session[:authenticated_user]
-      Rails.logger.debug ";;;;;;;;;;;;;;;;;"
-      Rails.logger.debug session
-      Rails.logger.debug ";;;;;;;;;;;;;;;;;"
       if not Candidate.find_by_username(userid).nil?
         type = :candidate
       else
@@ -37,6 +34,9 @@ class ApplicationController < ActionController::Base
     message(params[:recruiter_id], params[:pending_id], messageToSend)
   end
 
+  def fieldIsEmpty(field)
+    return ((field.strip.nil?) or field.nil? or field.empty?)
+  end
 
   def message(recruiter, candidate, message)
     @recruiter = Recruiter.find_by_username(recruiter)
