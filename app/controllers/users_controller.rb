@@ -48,6 +48,15 @@ class UsersController < ApplicationController
     return @user_events
   end
 
+  def get_mail(user, type)
+    if type == "inbox"
+      @mail = Message.where(:to => user)
+    else
+      @mail = Message.where(:from => user)
+    end
+    return @mail
+  end
+
   def validations(name, email, password, username)
       return (email.nil? or email.strip.empty? or password.nil? or password.strip.empty? or name.nil? or name.strip.empty? or username.nil? or username.strip.empty?)
     end

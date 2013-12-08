@@ -7,6 +7,13 @@ class CandidatesController < UsersController
   def index
   end
 
+
+  def mailbox
+    @candidate = params[:id]
+    @type = params[:type]
+    @mail = get_mail(@candidate, @type)
+  end
+
   def create
     Rails.logger.debug params
     #Creates a candidate.

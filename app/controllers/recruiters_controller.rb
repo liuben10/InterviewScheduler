@@ -11,6 +11,12 @@ class RecruitersController < UsersController
     @recruiter=Recruiter.new
   end
 
+  def mailbox
+    @recruiter = params[:id]
+    @type = params[:type]
+    @mail = get_mail(@recruiter, @type)
+  end
+
   def create
     #Creates a new recruiter similar to candidate.
     Rails.logger.debug params

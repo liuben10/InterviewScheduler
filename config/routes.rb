@@ -10,22 +10,14 @@ Scheduler::Application.routes.draw do
   resources :candidates
   resources :recruiters
   resources :events
+  resources :messages
+  #POST REQUESTS
   post "event/addcandidate" => "events#addcandidate"
   post "event/create" => "events#create"
   post "event/update" => "events#update"
   post "event/delete" => "events#delete"
-  get "recruiter/get_candidates" => "recruiter#get_candidates"
-  get "candidate/:id/list" => "candidates#list", as: 'list_candidate'
-  get "candidate/:id/calendar" => "candidates#calendar", as: 'calendar_candidate'
-  get "message/:id" => "message#index", as: 'message'
-  get "welcome/show" => "welcome#show"
-  get "event/show_candidate/:id" => "events#show_candidate"
-  get "event/show/:id" => "events#show", as: 'events_show'
-  get "recruiter/:id/list" => "recruiters#list", as: 'list_recruiter'
-  get "recruiter/:id/calendar" => "recruiters#calendar", as: 'calendar_recruiter'
-  get "welcome/forgotpassword" => "welcome#forgotpassword"
-  get "welcome/reset_password" => "welcome#reset_password"
   post '/logout' => "welcome#logout"
+  post '/message/create' => "message#create"
   #For Debug purposes, this will automatically go to these pages
   post "recruiter/create" => "recruiters#create"
   post "candidate/create" => "candidates#create"
@@ -33,6 +25,21 @@ Scheduler::Application.routes.draw do
   post "recruiter/:id/message_candidate" => "recruiters#message_candidate"
   post "candidate/:id/add_recruiter" => "candidates#add_recruiter"
 
+# GET REQUESTS
+  get "recruiter/get_candidates" => "recruiter#get_candidates"
+  get "candidate/:id/list" => "candidates#list", as: 'list_candidate'
+  get "candidate/:id/calendar" => "candidates#calendar", as: 'calendar_candidate'
+  get "message/:type/:id" => "message#index", as: 'message'
+  get "recruiter/:id/mailbox/:type" => "recruiters#mailbox", as: 'recruiter_mailbox'
+  get "message/show/:type/:user_id/:id" => "message#show", as: 'message_show'
+  get "candidate/:id/mailbox/:type" => "candidates#mailbox", as: 'candidate_mailbox'
+  get "welcome/show" => "welcome#show"
+  get "event/show_candidate/:id" => "events#show_candidate"
+  get "event/show/:id" => "events#show", as: 'events_show'
+  get "recruiter/:id/list" => "recruiters#list", as: 'list_recruiter'
+  get "recruiter/:id/calendar" => "recruiters#calendar", as: 'calendar_recruiter'
+  get "welcome/forgotpassword" => "welcome#forgotpassword"
+  get "welcome/reset_password" => "welcome#reset_password"
   match "welcome/show", :to => redirect("welcome/show")
   #match "candidates", :to => redirect('candidates/show')
 

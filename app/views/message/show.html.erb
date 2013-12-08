@@ -1,0 +1,24 @@
+
+<div class = "row">
+
+ <div class = "large-1 columns user-icon">
+  <%= link_to raw('<i class="fi-home profile-icon"></i>'), recruiter_path %>
+  <%= link_to raw('<i class="fi-list-thumbnails profile-icon"></i>'), list_recruiter_path, :id=>"List" %>
+  <%= link_to raw('<i style="display: inline-block;" class="fi-calendar profile-icon"></i>'), calendar_recruiter_path %>
+   <%= link_to raw('<i style="display: inline-block;" class="fi-mail profile-icon"></i>'), candidate_mailbox_path(@user, "inbox") %>
+    <%= link_to raw('<i class="fi-wrench profile-icon"></i>'), "/candidates/#{@user}/edit", :id=>"Edit" %>
+  </div>
+
+<label>Title</label>
+<h6><%= @message.title %></h6>
+
+<div>
+<label>From</label>
+  <%= @message.from %>
+</div>
+<br>
+<div>
+<label>Content: </label>
+  <%= @message.content %>
+</div>
+</div>
