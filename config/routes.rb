@@ -5,7 +5,7 @@ Scheduler::Application.routes.draw do
 
   root :to => 'welcome#index'
 
-  get "welcome/index" => "welcome#index"
+
   post "user/modify" => "users#modify"
   resources :candidates
   resources :recruiters
@@ -26,6 +26,7 @@ Scheduler::Application.routes.draw do
   post "candidate/:id/add_recruiter" => "candidates#add_recruiter"
 
 # GET REQUESTS
+  get "welcome/index" => "welcome#index"
   get "recruiter/get_candidates" => "recruiter#get_candidates"
   get "candidate/:id/list" => "candidates#list", as: 'list_candidate'
   get "candidate/:id/calendar" => "candidates#calendar", as: 'calendar_candidate'
@@ -33,6 +34,10 @@ Scheduler::Application.routes.draw do
   get "recruiter/:id/mailbox/:type" => "recruiters#mailbox", as: 'recruiter_mailbox'
   get "message/show/:type/:user_id/:id" => "message#show", as: 'message_show'
   get "candidate/:id/mailbox/:type" => "candidates#mailbox", as: 'candidate_mailbox'
+  get "recruiter/:id/search" => "recruiters#search", as: 'recruiter_search'
+  get "candidate/:id/search" => "candidates#search", as: 'candidate_search'
+  get "recruiter/search" => "recruiters#search"
+  get "candidate/search" => "candidates#search"
   get "welcome/show" => "welcome#show"
   get "event/show_candidate/:id" => "events#show_candidate"
   get "event/show/:id" => "events#show", as: 'events_show'

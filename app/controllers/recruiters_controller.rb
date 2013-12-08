@@ -47,6 +47,12 @@ class RecruitersController < UsersController
     @events = Event.find(:all, :conditions=>["recruiter_id = ? and end_at > ?", @recruiter.username, DateTime.now], :order=>"start_at ASC", :limit=>5)
   end
 
+  def search
+    @keyword = params[:keyword]
+    @recruiter = params[:recruiter]
+    @candidates = search_helper(params[:keyword], "recruiter")
+  end
+
   def list
     @recruiter = Recruiter.find_by_username(params[:id])
     @candidates = @recruiter.candidates
