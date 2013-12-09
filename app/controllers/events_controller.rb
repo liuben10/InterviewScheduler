@@ -88,7 +88,7 @@ class EventsController < ApplicationController
     @event.pending_id = params[:pending_id]
     @event.candidate_id = params[:candidate_id]
     @event.save!
-    message = "Candidate " + @event.candidate_id + " has accepted your invitation for the event " + @event.name
+    message = "Candidate " + @event.candidate_id + " has accepted your invitationto " + @event.name
     candidateMessageRecruiter(@event.candidate_id, @event.recruiter_id, message)
     redirect_to welcome_index_path
   end
