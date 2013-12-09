@@ -34,6 +34,11 @@ class CandidatesController < UsersController
     @candidate = Candidate.find_by_username(params[:id])
   end
 
+  def view
+    @profile = Recruiter.find_by_username(params[:profile_id])
+    @src_id = params[:id]
+  end
+
   def search
     @keyword = params[:keyword]
     @candidate = params[:candidate]

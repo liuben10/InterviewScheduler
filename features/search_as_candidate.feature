@@ -14,12 +14,21 @@ Given the following accounts exist:
   | some_cand             | hello321          | candidate  |
 
 
-And I am logged in as "nestorga" with password "fooPass3"
-And I am on the "nestorga" candidates page
-
 @javascript
-Scenario: Searching for a recruiter
+Scenario: Scenario searching for recruiter
+Given I am logged in as "nestorga" with password "fooPass3"
+And I am on the "nestorga" candidates page
 When I press the list icon
 And I fill in "keyword" with "radhesh"
 And I press "Search"
 Then I should see "radhesh"
+
+
+@javascript
+Scenario: Searching for a candidate
+Given I am logged in as "radhesh" with password "lamepass101"
+And I am on the "radhesh" recruiters page
+When I press the list icon
+And I fill in "keyword" with "nestorga"
+And I press "Search"
+Then I should see "nestorga"

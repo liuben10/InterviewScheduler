@@ -16,6 +16,7 @@ class UserMailer < ActionMailer::Base
   end
 
   def candidate_send(recruiter, candidate, message)
+    @message = message
     email_with_name = "#{recruiter.name} <#{recruiter.email}>"
     mail(to: email_with_name, subject: "#{candidate.name} has accepted your invitation")
   end
