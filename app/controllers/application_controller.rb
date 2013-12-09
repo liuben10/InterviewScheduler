@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
 
   def candidateMessageRecruiter(candidate_id, recruiter_id, message)
     if not candidate_id.nil?
-      message_recruiter(candidate_id, recruiter_id, message)
+      message(recruiter_id, candidate_id, message, "candidate")
     end
   end
 
@@ -38,25 +38,18 @@ class ApplicationController < ActionController::Base
     return ((field.strip.nil?) or field.nil? or field.empty?)
   end
 
-  def message_recruiter(candidate, recruiter, message)
-    @recruiter = Recruiter.find_by_username(recruiter)
-    @candidate = Candidate.find_by_username(candidate)
-    @message = CGI::escapeHTML(message)
-    if @recruiter
-      UserMailer.candidate_send(@recruiter, @candidate, @message).deliver
-      flash[:notice] = "Message successfully sent!"
-    else
-      flash[:error] = "Message failed to be sent"
-    end
-  end
 
-  def message(recruiter, candidate, message)
+  def message(recruiter, candidate, message, type="recruiter")
     @recruiter = Recruiter.find_by_username(recruiter)
     @candidate = Candidate.find_by_username(candidate)
     @message = CGI::escapeHTML(message)
     if @candidate
-      UserMailer.recruiter_send(@recruiter, @candidate, @message)
+      if type == "candidate"
+        UserMailer.candidate_send(@recruiter, @candidate, @message)
+      else
+        UserMailer.recruiter_send(@recruiter, @candidate, @message)
                 .deliver
+      end
       flash[:notice] = "Message successfully sent!"
     else
       flash[:error] = "Invalid candidate name specified."
