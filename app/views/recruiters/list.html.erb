@@ -15,7 +15,7 @@
   </div>
 
   <div class = "large-8 columns">
-  <h3> List of Associated Candidates </h3>
+  <h4> List of Associated Candidates </h4>
   <table id="candidates">
     <tr>
       <th>Full Name</th>
@@ -31,10 +31,10 @@
   <% end %>
   </table>
   <br /><br />
-  <h3> Send an Email Message to a Candidate </h3>
+  <h4> Send an Email Message to a Candidate </h4>
   <%= form_tag("message_candidate", method: "post") do %>
     <%= label_tag(:candidate, "Candidate's Username") %>
-    <%= text_field_tag(:candidate) %>
+    <%= select_tag(:candidate, options_from_collection_for_select(@candidates, "username", "username")) %>
     <%= label_tag(:message, "Your Message") %>
     <%= text_field_tag(:message) %>
     <%= submit_tag("Send")%>
