@@ -6,17 +6,18 @@
 $index-main-color: #344152;
 $index-second-color: #687C97;
 
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
 .invisible {
 	display: none;
 }
 
 .columns {	
 	min-height: 1px;
-}
-
-table {
-	border: 0;
-	margin-bottom: 0;
 }
 
 .top-bar {

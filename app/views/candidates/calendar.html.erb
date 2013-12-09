@@ -1,27 +1,21 @@
-<div class = "row">
-  <div class = "large-12 columns">
-    <%= content_tag :h4, "#{@candidate.name}'s page" %>
-  </div>
-
-  <br/>
-  <div class="large-12 columns">
-    <a style="display: inline-block;" href="<%= @candidate.attach.url %>">Resume</a>
-  </div>
-</div>
-
-<div class = "row">
-  <div class = "large-1 columns user-icon">
-  <%= link_to raw('<i style="display: inline-block;" class="fi-home profile-icon"></i>'), candidate_path %>
-  <%= link_to raw('<i style="display: inline-block;" class="fi-list-thumbnails profile-icon"></i>'), list_candidate_path, :id=>"List"%>
-  <%= link_to raw('<i style="display: inline-block;" class="fi-calendar profile-icon"></i>'), calendar_candidate_path %>
-    <i class="fi-mail profile-icon"></i>
-    <%=  link_to raw('<i class="fi-wrench profile-icon"></i>'), "/candidates/#{@candidate.username}/edit", :id=>"Edit"%>
+<div class = "row main-page">
+  <div class = "small-1 columns user-icon">
+    <%= link_to raw('<i class="fi-home profile-icon active-icon"></i>'), candidate_path %>
+    <p>Home</p>
+    <%= link_to raw('<i class="fi-calendar profile-icon"></i>'), calendar_candidate_path %>
+    <p>Calendar</p>
+    <%= link_to raw('<i class="fi-list-thumbnails profile-icon"></i>'), list_candidate_path, :id=>"List"%>
+    <p>Contacts</p>
+    <%= link_to raw('<i class="fi-mail profile-icon"></i>'), message_path %>
+    <p>Messages</p>
+    <%= link_to raw('<i class="fi-wrench profile-icon"></i>'), "/candidates/#{@candidate.username}/edit", :id=>"Edit"%>
+    <p>Settings</p>
   </div>
 
   <div class = "large-8 columns">
     <div id = "calendar">
     </div>
-<div>
+  </div>
      <div class="customOrange">
           Pending Events with no candidate specified
       </div>
@@ -41,13 +35,14 @@
   $(document).ready(function() {
     $('#calendar').fullCalendar({
        eventClick: function(calEvent, jsEvent, view) {
-        var title = calEvent.title
+        var title = calEvent.id
         window.location.href = "/event/show/" + title + "?from_id=<%= @candidate.username %>";
       },
       editable: true,
       events: [
           <% @events.each do |event| %>
           {
+             id : "<%= event.id %>",
              title : "<%= event.name %>",
              start: "<%= event.start_at.strftime('%Y-%m-%d') %>",
              end: "<%= event.end_at.strftime('%Y-%m-%d') %>",

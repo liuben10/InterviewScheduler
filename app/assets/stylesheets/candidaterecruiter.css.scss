@@ -1,55 +1,112 @@
 $index-main-color: #344152;
 $index-second-color: #687C97;
 
-.main-header {
-
-	border-bottom: solid 3px #e0eeee;
-	padding: 20px 0;
-	background-image: linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
-	background-image: -o-linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
-	background-image: -moz-linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
-	background-image: -webkit-linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
-	background-image: -ms-linear-gradient(bottom, #E7F3F5 14%, #DAE8F0 99%);
-
-	background-image: -webkit-gradient(
-		linear,
-		left bottom,
-		left top,
-		color-stop(0.14, #E7F3F5),
-		color-stop(0.99, #DAE8F0)
-	);
+.main-page {
+	height: 90%;
 	
-	.main-banner {
+	.page-title {
+		margin-top: 10px !important;
+		margin-bottom: 10px !important;
+	}
+	
+	.user-icon {
+		height: 100%;
+		padding-top: 20px;
+		border-right: #CDCDCD solid 1px; 
 		
-		h1 {
-			color: $index-main-color;
-			font-weight: 500;
-			font-size: 44px;
-			margin: 0 0 5px 0 ;
-		}
+		a {
+			color: black;
+            display: block;
+			text-align: center;
+	    }
 	
-		h4 {
-			color: $index-main-color;
+		.profile-icon {
+			font-size: 70px;
+		}
+		
+		.profile-icon:hover {
+			font-size: 80px;
+			color: grey;
+		}
+		
+		.active-icon {
+			font-size: 80px;
+			color: grey;
+		}
+		
+		p {
+			text-align: center;
+			font-size: 15px;
+			margin: 0;
 			font-weight: 300;
-			font-size: 20px;
+			line-height: 10px;
+			padding-bottom: 15px;
+		}
+		
+	}
+	
+	.profile-view {
+	
+		#profile-picture {
+			width: 100%;
+		}
+	  	
+		.profile-info {
+			margin-left: 0px;
+			padding-left: 0;
+			
+			h5 {
+				font-weight: bold;
+				font-size: 15px;
+				line-height: 15px;
+				margin-bottom: 4px;
+			}
+			
+			h6 {
+				margin-bottom: 10px;
+			}
+		}
+	} 
+	
+	.profile-info-summary {
+		margin-top: 10px;
+		h5 {
+			margin-top: 15px;
+			font-weight: bold;
+			font-size: 15px;
+			line-height: 15px;
+			margin-bottom: 4px;
+		}
+		
+		h6 {
+			margin-bottom: 10px;
+		}
+		
+		#resume-button {
+			float: right;
+		}
+	}
+	
+	.request-events {
+		h3 {
+			
+		}
+		
+		#pending_requests {
+			a {
+				margin: 0;
+			}
+		}
+	}
+	
+	
+	#show-events {
+		a {
+			margin: 0;
 		}
 	}
 	
 }
 
-.user-icon {
-	a {
-		color: black;
-                display: inline-block
-	}
-	
-	a:hover {
-		color: grey;
-	}
 
-}
 
-.profile-icon {
-	font-size: 80px;
-	text-align: center;
-}

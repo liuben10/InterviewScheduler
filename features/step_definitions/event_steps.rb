@@ -3,12 +3,13 @@ Given /I am looking at "(.*)" calendar page/ do |user|
    visit calendar_recruiter_path(user)
  end
 
-When /I add an event "(.*)" starting at "(.*)" and ending at "(.*)"/ do |name, start, endDate|
+When /I add an event "(.*)" with candidate "(.*)" starting at "(.*)" and ending at "(.*)"/ do |name, candidate, start, endDate|
   print URI.parse(current_url)
-  page.find(:css, "td[data-date='2013-12-11']").click()
+  page.find(:css, "td[data-date='#{start}']").click()
   startarr = start.split(",")
   endarr = endDate.split(",")
   fill_in("title", :with => name)
+  fill_in("pending_id", :with => candidate)
  #select(startarr[0], :from => "start_year")
  # select(startarr[1], :from => "start_month")
  # select(startarr[2], :from => "start_date")
@@ -20,6 +21,26 @@ When /I add an event "(.*)" starting at "(.*)" and ending at "(.*)"/ do |name, s
  # select(endarr[3], :from => "end_hour")
  # select(endarr[4], :from => "end_minutes")
   click_button("submitButton")
+end
+
+
+When /I am looking at "(.*)" event page as "(.*)"/ do |event, user|
+  eve = Event.find_by_name(event)
+  if user == "recruiter"
+    visit "/event/show/" + eve.id.to_s
+  else
+    visit "/event/show/" + eve.id.to_s + "?from_id=" + user
+  end
+  print URI.parse(current_url)
+end
+
+When /I click on an event "(.*)"/ do |event|
+  page.find("span", :text => event).click()
+end
+
+Then /event "(.*)" should have "(.*)" as accepted/ do |event, user|
+  event = Event.find_by_name(event)
+  assert_equal event.candidate_id, user
 end
 
 Then /I should see the event "(.*)" in my events table/ do |event|

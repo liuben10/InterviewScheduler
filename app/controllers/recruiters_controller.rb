@@ -38,7 +38,7 @@ class RecruitersController < UsersController
 
   def show
     @recruiter = Recruiter.find_by_username(params[:id])
-    @events = Event.find(:all, :conditions=>["recruiter_id = ?", @recruiter.username], :order=>"start_at ASC")
+    @events = Event.find(:all, :conditions=>["recruiter_id = ? and end_at > ?", @recruiter.username, DateTime.now], :order=>"start_at ASC", :limit=>5)
   end
 
   def list
@@ -65,16 +65,7 @@ class RecruitersController < UsersController
   end
 
   def message_candidate
-    @recruiter = Recruiter.find_by_username(session[:authenticated_user])
-    @candidate = Candidate.find_by_username(params[:candidate])
-    @message = CGI::escapeHTML(params[:message])
-    if @candidate
-      UserMailer.recruiter_send(@recruiter, @candidate, @message)
-                .deliver
-      flash[:notice] = "Message successfully sent!"
-    else
-      flash[:error] = "Invalid candidate name specified."
-    end
+    message(session[:authenticated_user], params[:candidate], params[:message])
     redirect_to list_recruiter_path(@recruiter.username)
   end
 end

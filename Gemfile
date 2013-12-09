@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 
-gem 'launchy', "~> 2.4.2"
+gem 'launchy', '~> 2.4.2'
 gem 'rails', '3.2.14'
 gem 'selenium-webdriver', '2.35.1'
 # Bundle edge Rails instead:
@@ -40,6 +40,8 @@ group :test do
   gem 'cucumber-rails-training-wheels'
 end
 
+gem 'railties'
+gem 'jquery-qtip2-rails', '~> 0.5.0'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'haml'

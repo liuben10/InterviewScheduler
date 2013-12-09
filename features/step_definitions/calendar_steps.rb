@@ -19,11 +19,23 @@ end
 Then /^I should (not )?see an appointment with "(.*)" on "(.*)"$/ do |not_see, meet_with, date|
   if not_see
     steps %Q{
-      Then I should not see "#{meet_with} on #{date}"
+      Then I should not see "Appointment with #{meet_with} on #{date}"
     }
   else
     steps %Q{
-      Then I should see "#{meet_with} on #{date}"
+      Then I should see "Appointment with #{meet_with} on #{date}"
+    }
+  end
+end
+
+Then /^I should (not )?see a pending interview request named "(.*)" with "(.*?)" on "(.*?)"$/ do |not_see, event, recruiter, start_date|
+  if not_see
+    steps %Q{
+      Then I should not see "Pending request #{event} from #{recruiter} for an appointment on #{start_date}"
+    }
+  else
+    steps %Q{
+      Then I should see "Pending request #{event} from #{recruiter} for an appointment on #{start_date}"
     }
   end
 end

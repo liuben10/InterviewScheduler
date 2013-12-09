@@ -1,6 +1,6 @@
 
 <%= content_tag :h4, "Edit page for #{@recruiter.name}" %>
-  <%= form_for @recruiter, :html => { :multipart => true }, url: "/recruiters/#{@recruiter.username}", method: :put do |f| %>
+  <%= form_for @recruiter, :html => { :id => "new_recruiter", :multipart => true }, url: "/recruiters/#{@recruiter.username}",  method: :put do |f| %>
     <div class="field">
       <%= f.label "Name" %>
       <%= f.text_field :name, :value=>"#{@recruiter.name}" %>
@@ -24,7 +24,14 @@
     <br/>
 
     <div class="actions">
-      <input type="submit" id="subutton" class="large button" value="Update">
+      <input type="submit" id="subutton" class="small button" value="Update">
+       <input type="submit" id="cancel" class="small button" value="Cancel">
     </div>
 <% end %>
 
+<script>
+ $("#cancel").click( function () {
+    $("#new_recruiter").attr("action", "/welcome/index");
+    $("#new_recruiter").attr("method", "get");
+ });
+</script>

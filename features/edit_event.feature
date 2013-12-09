@@ -35,3 +35,8 @@ Scenario: Delete event from table
 When I am looking at "TestDelete" event page as "recruiter"
 And I press "Delete"
 Then "TestDelete" does not exist
+
+@javascript
+Scenario: Navigate to the edit page
+Given I am looking at "fluffyBunnies" calendar page
+When I click on an event "TestEdit"
