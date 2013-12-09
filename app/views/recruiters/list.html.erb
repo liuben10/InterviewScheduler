@@ -10,7 +10,7 @@
   <%= link_to raw('<i class="fi-home profile-icon"></i>'), recruiter_path %>
   <%= link_to raw('<i class="fi-list-thumbnails profile-icon"></i>'), list_recruiter_path, :id=>"List" %>
   <%= link_to raw('<i style="display: inline-block;" class="fi-calendar profile-icon"></i>'), calendar_recruiter_path %>
-      <%= link_to raw('<i style="display: inline-block;" class="fi-mail profile-icon"></i>'), recruiter_mailbox_path(@recruiter.username, "inbox") %>
+      <%= link_to raw('<i style="display: inline-block;" class="fi-mail profile-icon"></i>'), recruiter_mailbox_path(@recruiter.username, "inbox"), :id => "mailbox" %>
     <%= link_to raw('<i class="fi-wrench profile-icon"></i>'), "/recruiters/#{@recruiter.username}/edit", :id=>"Edit" %>
   </div>
 
@@ -24,7 +24,7 @@
     </tr>
   <% @candidates.each do |candidate|%>
     <tr>
-      <td id="name"><%=candidate.name%></td>
+      <td id="name"><a href="/candidate/<%= @recruiter.username %>/view/<%= candidate.username %>"><%= candidate.name %></a></td>
       <td id="username"><%=candidate.username%></td>
       <td id="email"><%=candidate.email%></td>
     </tr>
@@ -56,7 +56,7 @@
   <%= form_tag("search", method: "get") do %>
     <input type="hidden" id="recruiter" name="recruiter" value="<%= @recruiter.username %>" >
     <input type="text" id="keyword" name="keyword">
-    <input type="submit" id="submit" value="Search">
+    <input type="submit" id="Search" value="Search">
   <% end %>
 
   </div>

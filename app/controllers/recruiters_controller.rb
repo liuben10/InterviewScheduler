@@ -17,6 +17,11 @@ class RecruitersController < UsersController
     @mail = get_mail(@recruiter, @type)
   end
 
+  def view
+    @profile = Recruiter.find_by_username(params[:profile_id])
+    @src_id = params[:id]
+  end
+
   def create
     #Creates a new recruiter similar to candidate.
     Rails.logger.debug params

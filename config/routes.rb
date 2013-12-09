@@ -26,6 +26,8 @@ Scheduler::Application.routes.draw do
   post "candidate/:id/add_recruiter" => "candidates#add_recruiter"
 
 # GET REQUESTS
+  get "recruiter/:id/view/:profile_id" => "recruiter#view"
+  get "candidate/:id/view/:profile_id" => "candidate#view"
   get "welcome/index" => "welcome#index"
   get "recruiter/get_candidates" => "recruiter#get_candidates"
   get "candidate/:id/list" => "candidates#list", as: 'list_candidate'

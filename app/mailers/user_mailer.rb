@@ -15,6 +15,12 @@ class UserMailer < ActionMailer::Base
     end
   end
 
+  def candidate_send(recruiter, candidate, message)
+    @message = message
+    email_with_name = "#{recruiter.name} <#{recruiter.email}>"
+    mail(to: email_with_name, subject: "#{candidate.name} has accepted your invitation")
+  end
+
   def welcome_candidate(candidate)
     @candidate = candidate
     email_with_name = "#{@candidate.name} <#{@candidate.email}>"
@@ -26,7 +32,7 @@ class UserMailer < ActionMailer::Base
     email_with_name = "#{@recruiter.name} <#{@recruiter.email}>"
     mail(to: email_with_name, subject: "Welcome to InterviewScheduler!")
   end
-  
+
   def forgot_password(user_email, message)
       @message = message
       mail(to: user_email, subject: "RESET PASSWORD- DO NOT REPLY")

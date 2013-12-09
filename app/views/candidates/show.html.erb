@@ -15,7 +15,7 @@
   <%= link_to raw('<i style="display: inline-block;" class="fi-home profile-icon"></i>'), candidate_path %>
   <%= link_to raw('<i style="display: inline-block;" class="fi-list-thumbnails profile-icon"></i>'), list_candidate_path, :id=>"List"%>
   <%= link_to raw('<i style="display: inline-block;" class="fi-calendar profile-icon"></i>'), calendar_candidate_path %>
-    <%= link_to raw('<i style="display: inline-block;" class="fi-mail profile-icon"></i>'), candidate_mailbox_path(@candidate.username, "inbox") %>
+    <%= link_to raw('<i style="display: inline-block;" class="fi-mail profile-icon"></i>'), candidate_mailbox_path(@candidate.username, "inbox"), :id => "mailbox" %>
    <%=  link_to raw('<i class="fi-wrench profile-icon"></i>'), "/candidates/#{@candidate.username}/edit", :id=>"Edit"%>
   </div>
 
