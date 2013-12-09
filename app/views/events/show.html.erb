@@ -1,4 +1,25 @@
-<% if @candidate.nil? %>
+<div class = "row main-page">
+  <div class = "small-1 columns user-icon">
+    <%= link_to raw('<i class="fi-home profile-icon"></i>'), candidate_path %>
+    <p>Home</p>
+    <%= link_to raw('<i class="fi-calendar profile-icon"></i>'), calendar_candidate_path %>
+    <p>Calendar</p>
+    <%= link_to raw('<i class="fi-list-thumbnails profile-icon"></i>'), list_candidate_path, :id=>"List"%>
+    <p>Contacts</p>
+    <%= link_to raw('<i class="fi-mail profile-icon"></i>'), candidate_path %>
+    <p>Messages</p>
+    <%= link_to raw('<i class="fi-wrench profile-icon"></i>'), "/candidates/@candidate/edit", :id=>"Edit"%>
+    <p>Settings</p>
+  </div>
+  <div class = "small-6 columns">
+    <div class = "row page-title">
+      <div class = "small-12 columns">
+        <h2> Event Info </h2>
+      </div>
+    </div>  
+	
+	
+	<% if @candidate.nil? %>
        <div>
         <form action="/event/update/" id="event_form" method="post">
           <input type="hidden" id="hidden_id" name="id" value="<%= @event.id %>">
@@ -20,45 +41,94 @@
           <input type="submit" id="Cancel" class="small button" value="Cancel">
         </form>
       </div>
-<% else %>
-      <div>
-        <h6> Title </h6>
-        <%= @event.name %>
-     </div>
-      <div>
-         <h6> Start: </h6>
-         <%= @event.start_at %>
-      </div>
-      <div>
-          <h6>End: </h6>
-         <%= @event.end_at %>
-      </div>
-      <div>
-      <h6> Description: </h6>
-      <%= @event.description %>
-      </div>
-      <div>
-      <h6> Invite From: </h6>
-      <%= @event.recruiter_id %>
-      </div>
-      <div>
-      <h6> Invite To: </h6>
-      <%= @event.candidate_id %>
-      </div>
+    <% else %>
+      <table id = "event-info">
+	    <tbody>
+		  <tr>
+			<td>
+				Title
+		    </td>
+		  </tr>
+		  <tr>
+		    <td>
+							<%= @event.name %>
+			</td>
+	      </tr>
+		  <tr>
+			<td>
+				Start
+		    </td>
+		  </tr>
+		  <tr>
+		    <td>
+              <%= @event.start_at %>
+			</td>
+	      </tr>
+	      <tr>
+			<td>
+				End
+		    </td>
+		  </tr>
+		  <tr>
+		    <td>
+              <%= @event.end_at %>
+			</td>
+	      </tr>
+		  <tr>
+			<td>
+				Description
+		    </td>
+		  </tr>
+		  <tr>
+		    <td>
+              <%= @event.description %>
+			</td>
+	      </tr>
+		  <tr>
+			<td>
+				Invite From
+		    </td>
+		  </tr>
+		  <tr>
+		    <td>
+              <%= @event.recruiter_id %>
+			</td>
+	      </tr>
+		  <tr>
+			<td>
+				Invite To
+		    </td>
+		  </tr>
+		  <tr>
+		    <td>
+              <%= @event.candidate_id %>
+			</td>
+	      </tr>
+		</tbody>
+	  </table>
+
       <form action="/event/update/" id="update_form" method="post">
-           <input type="hidden" id="hidden_id" name="id" value="<%= @event.id %>">
-           <input type="hidden" id="title" name="title" value="<%= @event.name %>">
+          <input type="hidden" id="hidden_id" name="id" value="<%= @event.id %>">
+          <input type="hidden" id="title" name="title" value="<%= @event.name %>">
           <input type="hidden" id="start" name="start" value="<%= @event.start_at %>">
           <input type="hidden" id="end" name="end" value="<%= @event.end_at %>">
           <input type="hidden" id="description" name="description" value="<%= @event.description %>">
           <input type="hidden" id="pending_id" name="pending_id" value="<%= @event.pending_id %>">
          <input type="hidden" id="candidate_id" name="candidate_id" value="<%= @candidate %>">
          <% if @event.candidate_id.nil? %>
-             <input type="submit" value="Accept invitation" class="small button" id="acceptbutton">
+             <input type="submit" value="Accept invitation" class="small button alert" id="acceptbutton">
           <% end %>
-          <input type="submit" value="Cancel" class="small button" id="CancelRecruiter">
+          <input type="submit" value="Cancel" class="small button alert" id="CancelRecruiter">
       </form>
-<% end %>
+    <% end %>
+	
+	
+	
+  </div>
+  <div class = "small-5 columns">
+  </div>
+</div>
+
 <script>
    $("#Delete").click( function() {
        $("#event_form").attr("action", "/event/delete");

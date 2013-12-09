@@ -14,13 +14,6 @@ class EventsController < ApplicationController
     redirect_to calendar_recruiter_path(params[:recruiter_id])
   end
 
-  def sendMessageFromRecruiter(params, startDate, endDate)
-    messageToSend = ""
-    messageToSend += "Recruiter " + params[:recruiter_id]
-    messageToSend += " has invited you to an event on " +  startDate.strftime("%FT%T%:z")
-    messageToSend += " and ending on " + endDate.strftime("%FT%T%:z") + " and description: " + params[:description]
-    message(params[:recruiter_id], params[:pending_id], messageToSend)
-  end
 
 =begin
   def create_if_candidate_has_conflict(event)
@@ -34,7 +27,16 @@ class EventsController < ApplicationController
 =end
 
   def validations(params, startDate, endDate)
-    return (((params[:pending_id].strip.nil?) or params[:pending_id].nil? or params[:pending_id].empty?) or (params[:title].nil?) or (startDate.to_i > endDate.to_i) or (has_conflict(startDate, endDate, get_recruiter_events(params[:recruiter_id]))) or (has_conflict(startDate, endDate, get_candidate_events(params[:recruiter_id]))))
+    return ((emptyCheck(params)) or (startDate.to_i > endDate.to_i) or (conflictCheck(params, startDate, endDate)))
+  end
+
+
+  def emptyCheck(params)
+    return (fieldIsEmpty(params[:pending_id]) or (fieldIsEmpty(params[:title])))
+  end
+
+  def conflictCheck(params, startDate, endDate)
+    return ((has_conflict(startDate, endDate, get_recruiter_events(params[:recruiter_id]))) or (has_conflict(startDate, endDate, get_candidate_events(params[:recruiter_id]))))
   end
 
   def delete
@@ -86,12 +88,10 @@ class EventsController < ApplicationController
     @event.pending_id = params[:pending_id]
     @event.candidate_id = params[:candidate_id]
     @event.save!
-    if not @event.candidate_id.nil?
-      message(@event.candidate_id, @event.recruiter_id, "Candidate " + @event.candidate_id + " has accepted your invitation for the event " + @event.name)
-    end
+    message = "Candidate " + @event.candidate_id + " has accepted your invitationto " + @event.name
+    candidateMessageRecruiter(@event.candidate_id, @event.recruiter_id, message)
     redirect_to welcome_index_path
   end
-
 
   def show
     @candidate = params[:from_id]

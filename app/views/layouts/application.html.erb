@@ -66,8 +66,9 @@
 </div>
 </body>
 <script>
-  $(document).foundation();
   var cw = $('#profile-picture').width();
-  $('profile-picture').css({'height':cw * 1.2 + 'px'});
+  $('#profile-picture').css({'height':cw * 1.2 + 'px'});
+  var uheight = $('.main-page').height();
+  $('.user-icon').css({'height':uheight});
 </script>
 </html>

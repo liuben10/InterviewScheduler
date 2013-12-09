@@ -2,7 +2,7 @@ $index-main-color: #344152;
 $index-second-color: #687C97;
 
 .main-page {
-	height: 90%;
+	min-height: 90%;
 	
 	.page-title {
 		margin-top: 10px !important;
@@ -10,7 +10,6 @@ $index-second-color: #687C97;
 	}
 	
 	.user-icon {
-		height: 100%;
 		padding-top: 20px;
 		border-right: #CDCDCD solid 1px; 
 		
@@ -106,6 +105,80 @@ $index-second-color: #687C97;
 		}
 	}
 	
+	
+	
+	#calendar {
+		table {
+			margin-top: 20px;
+			margin-bottom: 0px;
+			border: none;
+		}
+	}
+	
+	.calendar-explanation {
+		margin-top: 100px;
+		
+		.row {
+			margin-bottom: 10px;
+		}
+
+		#pending-block {
+		  width: 30px;
+		  height: 30px;
+		  background-color: #8E2323;
+		  margin-top: 7px;
+		  margin-left: 15px;
+		}
+		
+		#no-block {
+		  width: 30px;
+		  height: 30px;
+		  background-color: #E9967A;
+		  margin-top: 7px;
+		  margin-left: 15px;
+		}
+		
+		#confirm-block {
+		  width: 30px;
+		  height: 30px;
+		  background-color: #B5A642;
+		  margin-top: 7px;
+		  margin-left: 15px;
+		}
+		
+		.setting-saying {
+
+			p{
+				margin: 0;
+				float: left;
+				padding: 0;
+				text-align: left;
+				font-weight: 300;
+			}
+		}
+	}
+	
+	#recruiters {
+		table-layout: fixed !important;
+		width: 100%;
+	}
+	
+	.search-feature {
+		h3 {
+			margin-top: 20px;
+		}
+		
+		h6 {
+			margin-bottom: 5px;
+			margin-top: 15px;
+			font-size: 18px;
+		}
+		
+	}
+	
+	#event-info {
+		width: 100%;
+	}
 }
 
 

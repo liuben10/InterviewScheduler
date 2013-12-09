@@ -1,4 +1,13 @@
 
+<div class="row">
+ <div class = "large-1 columns user-icon">
+    <%= link_to raw('<i style="display: inline-block;" class="fi-home profile-icon"></i>'), recruiter_path %>
+    <%= link_to raw('<i style="display: inline-block;" class="fi-list-thumbnails profile-icon"></i>'), list_recruiter_path, :id=>"List" %>
+    <%= link_to raw('<i style="display: inline-block;" class="fi-calendar profile-icon"></i>'), calendar_recruiter_path %>
+      <%= link_to raw('<i style="display: inline-block;" class="fi-mail profile-icon"></i>'), recruiter_mailbox_path(@recruiter.username, "inbox") %>
+    <%= link_to raw('<i class="fi-wrench profile-icon"></i>'), "/recruiters/#{@recruiter.username}/edit", :id=>"Edit" %>
+  </div>
+  <div class = "large-11 columns">
 <%= content_tag :h4, "Edit page for #{@recruiter.name}" %>
   <%= form_for @recruiter, :html => { :id => "new_recruiter", :multipart => true }, url: "/recruiters/#{@recruiter.username}",  method: :put do |f| %>
     <div class="field">
@@ -28,10 +37,12 @@
        <input type="submit" id="cancel" class="small button" value="Cancel">
     </div>
 <% end %>
-
+</div>
+</div>
 <script>
  $("#cancel").click( function () {
     $("#new_recruiter").attr("action", "/welcome/index");
     $("#new_recruiter").attr("method", "get");
  });
 </script>
+

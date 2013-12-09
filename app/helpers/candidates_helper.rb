@@ -28,9 +28,9 @@ module CandidatesHelper
 		end
 		[title, with, date]
 	end
-
-	def mdyFormat(date)
-		date.strftime("%m/%d/%y")
-	end
 	
+	def mdyFormat(date)
+    date.strftime("%m/%d/%y")
+  end
+
 end

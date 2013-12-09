@@ -1,1 +1,33 @@
-<h3> Hello World! </h3>
+<h3>Create new message</h3>
+
+
+
+<form action="/message/create" id="create_form" method="post">
+    <div class="row">
+   <div class="large-4 columns">
+   <label>Title:</label><input type="text" id="title" name="title">
+   </div>
+   </div>
+   <input type="hidden" id="from" name="type" value="<%= @type %>">
+   <input type="hidden" id="from" name="from" value="<%= @user.username %>">
+   <div class="row">
+   <div class="large-4 columns">
+   <label>To:</label><input type="text" id="to" name="to">
+    </div>
+    </div>
+     <div class="row">
+    <div class="large-4 columns">
+   <label>Content:</label><textarea id="content" name="content"></textarea>
+    </div>
+    </div>
+   <input type="submit" id="submit" value="Create">
+   <input type="submit" id="cancel" value="Cancel">
+</form>
+
+
+<script>
+$("#cancel").click( function () {
+    $("#create_form").attr("action", "/<%= @type %>/<%= @user.username %>/mailbox/inbox");
+    $("#create_form").attr("method", "get");
+});
+</script>

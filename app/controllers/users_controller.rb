@@ -48,6 +48,24 @@ class UsersController < ApplicationController
     return @user_events
   end
 
+  def search_helper(keyword, type)
+    if type == "recruiter"
+      @res = Candidate.where("UPPER(name) like UPPER(?) or UPPER(username) like UPPER(?)", "%#{keyword}%", "%#{keyword}%")
+    else
+      @res = Recruiter.where("UPPER(name) like UPPER(?) or UPPER(username) like UPPER(?)", "%#{keyword}%", "%#{keyword}%")
+    end
+    return @res
+  end
+
+  def get_mail(user, type)
+    if type == "inbox"
+      @mail = Message.where(:to => user)
+    else
+      @mail = Message.where(:from => user)
+    end
+    return @mail
+  end
+
   def validations(name, email, password, username)
       return (email.nil? or email.strip.empty? or password.nil? or password.strip.empty? or name.nil? or name.strip.empty? or username.nil? or username.strip.empty?)
     end

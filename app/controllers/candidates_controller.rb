@@ -7,6 +7,13 @@ class CandidatesController < UsersController
   def index
   end
 
+
+  def mailbox
+    @candidate = params[:id]
+    @type = params[:type]
+    @mail = get_mail(@candidate, @type)
+  end
+
   def create
     Rails.logger.debug params
     #Creates a candidate.
@@ -25,6 +32,17 @@ class CandidatesController < UsersController
   def edit
     #Shows the corresponding edit page.
     @candidate = Candidate.find_by_username(params[:id])
+  end
+
+  def view
+    @profile = Recruiter.find_by_username(params[:profile_id])
+    @src_id = params[:id]
+  end
+
+  def search
+    @keyword = params[:keyword]
+    @candidate = params[:candidate]
+    @recruiters = search_helper(params[:keyword], "candidate")
   end
 
   def update

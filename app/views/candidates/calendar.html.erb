@@ -1,34 +1,52 @@
 <div class = "row main-page">
   <div class = "small-1 columns user-icon">
-    <%= link_to raw('<i class="fi-home profile-icon active-icon"></i>'), candidate_path %>
+    <%= link_to raw('<i class="fi-home profile-icon"></i>'), candidate_path %>
     <p>Home</p>
-    <%= link_to raw('<i class="fi-calendar profile-icon"></i>'), calendar_candidate_path %>
+    <%= link_to raw('<i class="fi-calendar profile-icon active-icon"></i>'), calendar_candidate_path %>
     <p>Calendar</p>
     <%= link_to raw('<i class="fi-list-thumbnails profile-icon"></i>'), list_candidate_path, :id=>"List"%>
     <p>Contacts</p>
-    <%= link_to raw('<i class="fi-mail profile-icon"></i>'), message_path %>
+    <%= link_to raw('<i class="fi-mail profile-icon"></i>'), candidate_path %>
     <p>Messages</p>
     <%= link_to raw('<i class="fi-wrench profile-icon"></i>'), "/candidates/#{@candidate.username}/edit", :id=>"Edit"%>
     <p>Settings</p>
   </div>
 
-  <div class = "large-8 columns">
+  <div class = "large-7 columns">
     <div id = "calendar">
     </div>
   </div>
-     <div class="customOrange">
-          Pending Events with no candidate specified
-      </div>
-      <div class="customRed">
-         Pending interview timeslots in which no candidate has agreed to yet.
-      </div>
-      <div class="customGreen">
-         Confirmed interview timeslots
-      </div>
-    </div>
+  <div class = "large-3 columns calendar-explanation">
+    
+    <div class = "row">
+	  <div class = "large-2 columns">
+	    <div id = "pending-block"></div> 
+	  </div>
+	  <div class = "large-10 columns setting-saying">
+	    <p><b>No Candidate</b> </br>[No Candidate Specified]</p>
+	  </div>
+	</div>
+	
+	<div class = "row">
+	  <div class = "large-2 columns">
+	    <div id = "no-block"></div>
+	  </div>
+	  <div class = "large-10 columns setting-saying">
+	    <p><b>Pending</b> </br>[No Candidate confirmed]</p>
+	  </div>
+	</div>
+		
+	<div class = "row">
+	  <div class = "large-2 columns">
+	    <div id = "confirm-block"></div>
+	  </div>
+	  <div class = "large-10 columns setting-saying">
+	    <p><b>Confirmed</b> </br>[Confirmed Interview Timeslot]</p>
+	  </div>
+	</div>
   </div>
-<div class= "large-3 columns">
-</div>
+  <div class = "large-1 columns">
+  </div>
 </div>
 <script type='text/javascript'>
 

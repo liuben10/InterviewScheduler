@@ -11,6 +11,17 @@ class RecruitersController < UsersController
     @recruiter=Recruiter.new
   end
 
+  def mailbox
+    @recruiter = params[:id]
+    @type = params[:type]
+    @mail = get_mail(@recruiter, @type)
+  end
+
+  def view
+    @profile = Recruiter.find_by_username(params[:profile_id])
+    @src_id = params[:id]
+  end
+
   def create
     #Creates a new recruiter similar to candidate.
     Rails.logger.debug params
@@ -39,6 +50,12 @@ class RecruitersController < UsersController
   def show
     @recruiter = Recruiter.find_by_username(params[:id])
     @events = Event.find(:all, :conditions=>["recruiter_id = ? and end_at > ?", @recruiter.username, DateTime.now], :order=>"start_at ASC", :limit=>5)
+  end
+
+  def search
+    @keyword = params[:keyword]
+    @recruiter = params[:recruiter]
+    @candidates = search_helper(params[:keyword], "recruiter")
   end
 
   def list

@@ -1,44 +1,60 @@
+<div class = "row main-page">
+  <div class = "small-1 columns user-icon">
+    <%= link_to raw('<i class="fi-home profile-icon"></i>'), candidate_path %>
+    <p>Home</p>
+    <%= link_to raw('<i class="fi-calendar profile-icon"></i>'), calendar_candidate_path %>
+    <p>Calendar</p>
+    <%= link_to raw('<i class="fi-list-thumbnails profile-icon"></i>'), list_candidate_path, :id=>"List"%>
+    <p>Contacts</p>
+    <%= link_to raw('<i class="fi-mail profile-icon"></i>'), candidate_path %>
+    <p>Messages</p>
+    <%= link_to raw('<i class="fi-wrench profile-icon active-icon"></i>'), "/candidates/#{@candidate.username}/edit", :id=>"Edit"%>
+    <p>Settings</p>
+  </div>
 
-<%= content_tag :h4, "Edit page for #{@candidate.name}" %>
-  <%= form_for @candidate, :html => {:id => "new_recruiter", :multipart => true }, url: "/candidates/#{@candidate.username}", method: :put do |f| %>
-    <div class="field">
-      <%= f.label "Name" %>
-      <%= f.text_field :name, :value=>"#{@candidate.name}" %>
-    </div>
-    <div class="field">
-      <%= f.label "Email" %>
-      <%= f.text_field :email, :value=>"#{@candidate.email}" %>
-    </div>
-    <div class ="field">
-      <%= f.label "Password" %>
-      <%= f.password_field :password, :value=>"#{@candidate.password}" %>
-    </div>
 
-    <div class="attachment">
-      <%= f.label "Attachment" %>
-      <%= f.file_field :attach %>
-      <br/>
-    </div>
+  <div class = "small-5 columns">
+    <div class = "row page-title">
+      <div class = "small-12 columns">
+        <h2> Settings </h2>
+      </div>
+    </div>  
+    <%= content_tag :h4, "Edit page for #{@candidate.name}" %>
+    <%= form_for @candidate, :html => {:id => "new_candidate", :multipart => true }, url: "/candidates/#{@candidate.username}", method: :put do |f| %>
+      <div class="field">
+        <%= f.label "Name" %>
+        <%= f.text_field :name, :value=>"#{@candidate.name}" %>
+      </div>
+      <div class="field">
+        <%= f.label "Email" %>
+        <%= f.text_field :email, :value=>"#{@candidate.email}" %>
+      </div>
+      <div class ="field">
+        <%= f.label "Password" %>
+        <%= f.password_field :password, :value=>"#{@candidate.password}" %>
+      </div>
+      <div class="attachment">
+        <%= f.label "Attachment" %>
+        <%= f.file_field :attach %>
+        <br/>
+      </div>
+     <div class="pic">
+       <br/>
+       <%= f.label "Picture" %>
+       <%= f.file_field :pic %>
+       <br/>
+     </div>
+     
+     <br/>
 
-    <div class="pic">
-      <br/>
-      <%= f.label "Picture" %>
-      <%= f.file_field :pic %>
-      <br/>
-    </div>
-
-    <br/>
-
-    <div class="actions">
-      <input type="submit" id="subutton" class="large button" value="Update">
-    </div>
-<% end %>
-
-<script>
- $("#cancel").click( function () {
-    $("#new_recruiter").attr("action", "/welcome/index");
-    $("#new_recruiter").attr("method", "get");
- });
-</script>
+     <div class="actions">
+       <input type="submit" id="subutton" class="button small alert" value="Update">
+     </div>
+    <% end %>
+  </div>
+  
+  <div class = "small-6 columns">
+  </div>
+</div>
 
 
