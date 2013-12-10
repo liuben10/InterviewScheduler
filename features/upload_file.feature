@@ -12,11 +12,11 @@ Given the following accounts exist:
 
   And I am logged in as "tien" with password "1234"
   And I am on the edit page for candidate "tien"
-@javascript
+
 Scenario: Attachment and Picture option exist
   Then I should see "Attachment"
   And I should see "Picture"
-@javascript
+
 Scenario: File upload
   When I attach the file "/features/sample_uploads/no-attach.png" to "candidate_attach"
   And I press "Update"
