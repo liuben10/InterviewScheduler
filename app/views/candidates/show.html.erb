@@ -6,7 +6,7 @@
     <p>Calendar</p>
     <%= link_to raw('<i class="fi-list-thumbnails profile-icon"></i>'), list_candidate_path, :id=>"List"%>
     <p>Contacts</p>
-    <%= link_to raw('<i class="fi-mail profile-icon"></i>'), candidate_mailbox_path(@candidate.username, "inbox") %>
+    <%= link_to raw('<i class="fi-mail profile-icon"></i>'), candidate_mailbox_path(@candidate.username, "inbox"), :id => "mailbox" %>
     <p>Messages</p>
     <%= link_to raw('<i class="fi-wrench profile-icon"></i>'), "/candidates/#{@candidate.username}/edit", :id=>"Edit"%>
     <p>Settings</p>
@@ -27,16 +27,16 @@
       </div>
       <div class = "small-6 columns profile-info">
         <div class = "panel">
-				<h5>Username</h5>
-				<h6><%= @candidate.username %></h6>
-				<h5>Name</h5>
-				<h6><%= @candidate.name %></h6>
-				<h5>Area of Interest</h5>
-				<h6><%= @candidate.area_of_interest %></h6>
-				<h5>Education</h5>
-				<h6><%= @candidate.education %></h6>
-				<h5>Location</h5>
-				<h6><%= @candidate.location %></h6>
+        <h5>Username</h5>
+        <h6><%= @candidate.username %></h6>
+        <h5>Name</h5>
+        <h6><%= @candidate.name %></h6>
+        <h5>Area of Interest</h5>
+        <h6><%= @candidate.area_of_interest %></h6>
+        <h5>Education</h5>
+        <h6><%= @candidate.education %></h6>
+        <h5>Location</h5>
+        <h6><%= @candidate.location %></h6>
         </div>
       </div>
     </div>

@@ -1,37 +1,117 @@
-<div class = "row">
-  <div class = "large-12 columns">
-    <%= content_tag :h4, "#{@recruiter.name}'s page" %>
-  </div>
-  <div class="large-12 columns">
-      </div>
-  <br/>
-
-</div>
-
-<div class = "row">
-  <div class = "large-1 columns user-icon">
+<div class = "row main-page">
+  <div class = "small-1 columns user-icon">
     <%= link_to raw('<i style="display: inline-block;" class="fi-home profile-icon"></i>'), recruiter_path %>
     <%= link_to raw('<i style="display: inline-block;" class="fi-list-thumbnails profile-icon"></i>'), list_recruiter_path, :id=>"List"%>
-    <%= link_to raw('<i id="calendar_button" style="display: inline-block;" class="fi-calendar profile-icon"></i>'), calendar_recruiter_path %>
+    <%= link_to raw('<i id="calendar_button" style="display: inline-block;" class="fi-calendar profile-icon"></i>'), calendar_recruiter_path(@recruiter.username) %>
     <%= link_to raw('<i style="display: inline-block;" class="fi-mail profile-icon"></i>'), recruiter_mailbox_path(@recruiter.username, "inbox") , :id => "mailbox"%>
     <%= link_to raw('<i class="fi-wrench profile-icon"></i>'), "/recruiters/#{@recruiter.username}/edit", :id=>"Edit"%>
   </div>
 
-  <div class = "large-8 columns">
-    <h2> Dashboard </h2>
-    <h3> Upcoming Events </h3>
-    <% if @events.empty? %>
-      <p> No upcoming events </p>
-    <% else %>
-      <% @events.each do |event|%>
-        <p><%=show_event_info(event, event.pending_id)%></p>
-      <% end %>
-    <% end %>
+  <div class = "small-11 columns">
+    <div class = "row page-title">
+      <div class = "small-12 columns">
+        <h2> Dashboard </h2>
+      </div>
+    </div>
+
+
+    <div class = "row">
+      <div class = "small-5 columns">
+    <div class = "row profile-view">
+      <div class = "small-6 columns">
+            <%= image_tag @recruiter.pic.url(:thumb), id: "profile-picture" %>
+      </div>
+      <div class = "small-6 columns profile-info">
+        <div class = "panel">
+        <h5>Username</h5>
+        <h6><%= @recruiter.username %></h6>
+        <h5>Name</h5>
+        <h6><%= @recruiter.name %></h6>
+        </div>
+      </div>
+    </div>
+    <div class = "row">
+      <div class = "small-12 columns profile-info-summary">
+        <div class = "panel">
+        </div>
+
+
+      </div>
+    </div>
+
+      </div>
+
+      <div class = "small-7 columns ">
+    <div class = "row request-events">
+      <div class = "small-12 columns">
+            <h4> Pending Interview Requests </h4>
+            <% if @requests.empty? %>
+              <p> No pending requests </p>
+            <% else %>
+              <table id="pending_requests">
+        <thread>
+          <tr>
+            <th>Event Title</th>
+            <th>Recruiter</th>
+            <th>Date</th>
+            <th>Details</th>
+          </tr>
+        </thread>
+        <tbody>
+                <% @events.each do |request|%>
+          <% request_info = show_event_info(request, request.recruiter_id)%>
+                  <tr>
+                    <td><%= request_info[0] %></td>
+          <td><%= request_info[1] %></td>
+          <td><%= request_info[2] %></td>
+                    <td>
+            <a class="small button" href="/event/show/<%=request.id%>?from_id=<%=@recruiter.username%>">Details</a>
+            </td>
+                  </tr>
+                <% end %>
+        </tbody>
+              </table>
+            <% end %>
+          </div>
+    </div>
+    <div class = "row">
+      <div class = "small-12 columns">
+        <h4> Upcoming Events </h4>
+            <% if @events.empty? %>
+              <p> No upcoming events </p>
+            <% else %>
+
+        <table id="show-events">
+        <thread>
+          <tr>
+            <th>Event Title</th>
+            <th>Recruiter</th>
+            <th>Statue</th>
+            <th>Date</th>
+            <th>Details</th>
+          </tr>
+        </thread>
+        <tbody>
+                <% @events.each do |event|%>
+          <% request_info = show_event_info(event, event.recruiter_id)%>
+                  <tr>
+                    <td><%= request_info[0] %></td>
+          <td><%= request_info[1] %></td>
+          <td><%= request_info[2] %></td>
+          <td><%= request_info[3] %></td>
+                    <td>
+            <a class="small button" href="/event/show/<%=event.id%>?from_id=<%=@recruiter.username%>">Details</a>
+            </td>
+                  </tr>
+                <% end %>
+        </tbody>
+              </table>
+
+            <% end %>
+      </div>
+    </div>
+      </div>
+
+    </div>
   </div>
-
-  <div class = "large-3 columns">
-      <%= image_tag @recruiter.pic.url(:thumb) %>
-   </div>
-
-
 </div>

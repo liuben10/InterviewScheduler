@@ -15,12 +15,11 @@ Given the following accounts exist:
   | efriesen              | secure!p@ss       | candidate  | c@d  |
   | some_cand             | hello321          | candidate  | d@e |
 
-
+  And I am logged in as "fluffyBunnies" with password "pass1234"
+  And I am looking at "fluffyBunnies" calendar page
   
 @javascript
 Scenario: Add events as recruiter
-  Given I am logged in as "fluffyBunnies" with password "pass1234"
-  And I am looking at "fluffyBunnies" calendar page
   When I add an event "InterviewTest1" with candidate "nestorga" starting at "2013-12-15" and ending at "2013-12-15"
   Then I should see the event "InterviewTest1" in my events table
   When I am looking at "fluffyBunnies" calendar page
