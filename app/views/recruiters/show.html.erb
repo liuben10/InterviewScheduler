@@ -64,7 +64,7 @@
         </thread>
         <tbody>
                 <% @events.each do |request|%>
-          <% request_info = show_event_info(request, request.recruiter_id)%>
+          <% request_info = show_event_info(request, request.candidate_id)%>
                   <tr>
                     <td><%= request_info[0] %></td>
           <td><%= request_info[1] %></td>
@@ -90,15 +90,15 @@
         <thread>
           <tr>
             <th>Event Title</th>
-            <th>Recruiter</th>
-            <th>Statue</th>
+            <th>Candidate</th>
+            <th>Status</th>
             <th>Date</th>
             <th>Details</th>
           </tr>
         </thread>
         <tbody>
                 <% @events.each do |event|%>
-          <% request_info = show_event_info(event, event.candidate_id)%>
+          <% request_info = show_event_info(event, event.pending_id)%>
                   <tr>
                     <td><%= request_info[0] %></td>
           <td><%= request_info[1] %></td>
