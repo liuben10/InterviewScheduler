@@ -23,7 +23,7 @@ And I am logged in as "nestorga" with password "fooPass3"
 And I am looking at "nestorga" calendar page
 
 
-@javascript
+
 Scenario: Accepting invitation
 When I am looking at "TestEvent" event page as "nestorga"
 And I press "acceptbutton"
