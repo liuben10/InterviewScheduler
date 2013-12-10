@@ -33,6 +33,22 @@
         <%= f.label "Password" %>
         <%= f.password_field :password, :value=>"#{@candidate.password}" %>
       </div>
+      <div class="field">
+        <%= f.label "Area of Interest" %>
+        <%= f.text_field :area_of_interest, :value=>"#{@candidate.area_of_interest}" %>
+      </div>
+      <div class="field">
+        <%= f.label "Education" %>
+        <%= f.text_field :education, :value=>"#{@candidate.education}" %>
+      </div>
+      <div class="field">
+        <%= f.label "Location" %>
+        <%= f.text_field :location, :value=>"#{@candidate.location}" %>
+      </div>
+      <div class="field">
+        <%= f.label "Summary" %>
+        <%= f.text_field :summary, :value=>"#{@candidate.summary}" %>
+      </div>
       <div class="attachment">
         <%= f.label "Attachment" %>
         <%= f.file_field :attach %>
