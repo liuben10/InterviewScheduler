@@ -1,10 +1,15 @@
 <div class = "row main-page">
-  <div class = "small-1 columns user-icon">
-    <%= link_to raw('<i style="display: inline-block;" class="fi-home profile-icon"></i>'), recruiter_path %>
-    <%= link_to raw('<i style="display: inline-block;" class="fi-list-thumbnails profile-icon"></i>'), list_recruiter_path, :id=>"List"%>
-    <%= link_to raw('<i id="calendar_button" style="display: inline-block;" class="fi-calendar profile-icon"></i>'), calendar_recruiter_path(@recruiter.username) %>
-    <%= link_to raw('<i style="display: inline-block;" class="fi-mail profile-icon"></i>'), recruiter_mailbox_path(@recruiter.username, "inbox") , :id => "mailbox"%>
+   <div class = "small-1 columns user-icon">
+    <%= link_to raw('<i class="fi-home profile-icon active-icon"></i>'), recruiter_path %>
+    <p>Home</p>
+    <%= link_to raw('<i class="fi-calendar profile-icon"></i>'), calendar_recruiter_path %>
+    <p>Calendar</p>
+    <%= link_to raw('<i class="fi-list-thumbnails profile-icon"></i>'), list_recruiter_path, :id=>"List"%>
+    <p>Contacts</p>
+    <%= link_to raw('<i class="fi-mail profile-icon"></i>'), recruiter_mailbox_path(@recruiter.username, "inbox"), :id => "mailbox" %>
+    <p>Messages</p>
     <%= link_to raw('<i class="fi-wrench profile-icon"></i>'), "/recruiters/#{@recruiter.username}/edit", :id=>"Edit"%>
+    <p>Settings</p>
   </div>
 
   <div class = "small-11 columns">
@@ -93,7 +98,7 @@
         </thread>
         <tbody>
                 <% @events.each do |event|%>
-          <% request_info = show_event_info(event, event.recruiter_id)%>
+          <% request_info = show_event_info(event, event.candidate_id)%>
                   <tr>
                     <td><%= request_info[0] %></td>
           <td><%= request_info[1] %></td>

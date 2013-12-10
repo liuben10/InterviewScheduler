@@ -1,6 +1,6 @@
 
 Given /I am looking at "(.*)" calendar page/ do |user|
-   visit calendar_recruiter_path(user)
+   visit calendar_recruiter_path
  end
 
 When /I add an event "(.*)" with candidate "(.*)" starting at "(.*)" and ending at "(.*)"/ do |name, candidate, start, endDate|
