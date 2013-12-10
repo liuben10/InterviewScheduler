@@ -27,16 +27,16 @@
       </div>
       <div class = "small-6 columns profile-info">
         <div class = "panel">
-        <h5>Username</h5>
-        <h6>bonghyuasdlfkjasfn5</h6>
-        <h5>Name</h5>
-        <h6>Bonghyun</h6>
-        <h5>Area of Interest</h5>
-        <h6>Computer Science </h6>
-        <h5>Education</h5>
-        <h6>UC Berkeley</h6>
-        <h5>Location</h5>
-        <h6>Berkeley, CA </h6>
+				<h5>Username</h5>
+				<h6><%= @candidate.username %></h6>
+				<h5>Name</h5>
+				<h6><%= @candidate.name %></h6>
+				<h5>Area of Interest</h5>
+				<h6><%= @candidate.area_of_interest %></h6>
+				<h5>Education</h5>
+				<h6><%= @candidate.education %></h6>
+				<h5>Location</h5>
+				<h6><%= @candidate.location %></h6>
         </div>
       </div>
     </div>
@@ -44,7 +44,7 @@
       <div class = "small-12 columns profile-info-summary">
         <div class = "panel">
           <h5>Summary</h5>
-          <h6>Hello My name is </h6>
+          <h6><%= @candidate.summary %></h6>
         </div>
 
         <a class = "button secondary" id = "resume-button" href="<%= @candidate.attach.url %>">Resume</a>
