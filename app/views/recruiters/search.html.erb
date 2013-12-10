@@ -1,52 +1,67 @@
-<div class = "row">
-  <div class = "large-12 columns">
-       <%= content_tag :h4, "Search results for #{@keyword}" %>
-  </div>
-</div>
-
-<div class = "row">
-
-  <div class = "large-1 columns user-icon">
-  <%= link_to raw('<i class="fi-home profile-icon"></i>'), recruiter_path %>
-  <%= link_to raw('<i class="fi-list-thumbnails profile-icon"></i>'), list_recruiter_path, :id=>"List" %>
-  <%= link_to raw('<i style="display: inline-block;" class="fi-calendar profile-icon"></i>'), calendar_recruiter_path %>
-      <%= link_to raw('<i style="display: inline-block;" class="fi-mail profile-icon"></i>'), recruiter_mailbox_path(@recruiter, "inbox") %>
-    <%= link_to raw('<i class="fi-wrench profile-icon"></i>'), "/recruiters/#{@recruiter}/edit", :id=>"Edit" %>
+<div class = "row main-page">
+   <div class = "small-1 columns user-icon">
+    <%= link_to raw('<i class="fi-home profile-icon"></i>'), recruiter_path %>
+    <p>Home</p>
+    <%= link_to raw('<i class="fi-calendar profile-icon"></i>'), calendar_recruiter_path %>
+    <p>Calendar</p>
+    <%= link_to raw('<i class="fi-list-thumbnails profile-icon  active-icon"></i>'), list_recruiter_path, :id=>"List"%>
+    <p>Contacts</p>
+    <%= link_to raw('<i class="fi-mail profile-icon"></i>'), recruiter_mailbox_path(@recruiter, "inbox")%>
+    <p>Messages</p>
+    <%= link_to raw('<i class="fi-wrench profile-icon"></i>'), "/recruiters/#{@recruiter}/edit", :id=>"Edit"%>
+    <p>Settings</p>
   </div>
 
-  <div class = "large-8 columns">
-  <h3> Found Candidates </h3>
-  <table id="candidates">
-    <tr>
-      <th>Full Name</th>
-      <th>Username</th>
-      <th>Email</th>
-    </tr>
-  <% @candidates.each do |candidate|%>
-    <tr>
-      <%= form_tag("add_recruiter", method: "post") do %>
-      <td id="name"><%=candidate.name%></td>
-      <%= hidden_field_tag(:candidate, candidate.username, :id => "candidate_username") %>
-      <td id="username"><%=candidate.username%></td>
-      <td id="email"><%=candidate.email%></td>
-      <%= submit_tag("Add") %>
-      <% end %>
-    </tr>
-  <% end %>
-  </table>
-  <br /><br />
-  <h3> Send an Email Message to a Candidate </h3>
-  <%= form_tag("message_candidate", method: "post") do %>
-    <%= label_tag(:candidate, "Candidate's Username") %>
-    <%= text_field_tag(:candidate) %>
-    <%= label_tag(:message, "Your Message") %>
-    <%= text_field_tag(:message) %>
-    <%= submit_tag("Send")%>
-  <% end %>
+  <div class = "small-8 columns">
+    <div class = "row page-title">
+      <div class = "small-12 columns">
+        <h2> Search Results</h2>
+      </div>
+    </div>
+    
+    <div class = "row">
+	  <div class = "small-12 columns"> 
+        <table id="candidates">
+          <tr>
+      		<th>Full Name</th>
+      		<th>Username</th>
+      		<th>Email</th>
+      		<th>Add</th>    
+    	  </tr>
+  		  <% @candidates.each do |candidate|%>
+    	    <tr>
+      		  <%= form_tag("add_recruiter", method: "post") do %>
+      		  	<td id="name"><%=candidate.name%></td>
+      			<%= hidden_field_tag(:candidate, candidate.username, :id => "candidate_username") %>
+      			<td id="username"><%=candidate.username%></td>
+      			<td id="email"><%=candidate.email%></td>
+      			<td><%= submit_tag("Add", class: "button small") %></td>
+      	      <% end %>
+    	    </tr>
+  		  <% end %>
+  		</table>
+	  </div>
+	</div>
+
+	<div class = "row">
+	  <div class = "small-8 columns">
+	    <h3> Send an Email Message to a Candidate </h3>
+        <%= form_tag("message_candidate", method: "post") do %>
+          <%= label_tag(:candidate, "Candidate's Username") %>
+          <%= text_field_tag(:candidate) %>
+          <%= label_tag(:message, "Your Message") %>
+          <%= text_field_tag(:message) %>
+          <%= submit_tag("Send", class:"button alert")%>
+        <% end %> 	
+      </div>
+      <div class = "small-4 columns">
+	  </div>
+	</div>
   </div>
 
-  <div class = "large-3 columns">
-  <h6> Associate Candidate </h6>
+  <div class = "small-3 columns">
+  </br></br>   
+  <h4> Associate Candidate </h4>
   <% if flash[:error] %>
     <%= flash[:error] %>
     </br></br>
@@ -54,14 +69,16 @@
   <%= form_tag("add_candidate", method: "post") do %>
       <%= label_tag(:candidate, "Candidate's Username") %>
       <%= text_field_tag(:candidate, nil, :id=>"candidate_username") %>
-      <%= submit_tag("Add") %>
+      <%= submit_tag("Add", class: "button alert small") %>
   <% end %>
-  <h6> Search by name or username </h6>
+  <h4>Search</h4>
   <%= form_tag("search", method: "get") do %>
+    <%= label_tag("Search by name or username")%>
     <input type="hidden" id="recruiter" name="recruiter" value="<%= @recruiter %>" >
     <input type="text" id="keyword" name="keyword">
-    <input type="submit" id="Search" value="Search">
+    <input type="submit" id="Search" value="Search" class = "button alert small">
   <% end %>
 
   </div>
+  
 </div>
