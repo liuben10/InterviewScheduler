@@ -25,14 +25,14 @@ Background: the recruiter has the following candidates
     And I am logged in as "fluffyBunnies" with password "pass1234"
 	And I am on the "fluffyBunnies" recruiters page
 
-@javascript
+
 Scenario: Should see list of associated candidates on recruiter list
 	When I press the list icon
 	Then I should see candidate "joeSchmoe" with the email "joe@candidate.com" and the name "Joe Schmoe"
 	And I should see candidate "nestorga" with the email "nestorga@candidate.com" and the name "Nick"
 	And I should see candidate "rottenPotatoes" with the email "spuds@candidate.com" and the name "Mr.Potato"
 
-@javascript
+
 Scenario: Should not see recruiters that the candidate is not associated with
 	When I press the list icon
 	Then I should not see candidate "penelope" with the email "pens@candidate.com" and the name "Penelope"
