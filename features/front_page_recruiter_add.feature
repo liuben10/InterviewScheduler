@@ -17,13 +17,14 @@ Background:
 
   And I am logged in as "fluffyBunnies" with password "pass1234"
 
-
+@javascript
 Scenario: Enter a valid candidate username
   When I press the list icon
   And I fill in "candidate_username" with "joeSchmoe"
   And I press "Add"
   Then I should see candidate "joeSchmoe" with the email "joeSchmoe@bum.com" and the name "Joe Schmoe"
 
+@javascript
 Scenario: Enter an invalid candidate username
   When I press the list icon
   And I fill in "candidate_username" with "huehuehue"

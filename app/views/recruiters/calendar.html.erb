@@ -1,47 +1,58 @@
 <%= javascript_include_tag :defaults %>
 <%= flash[:notice] %>
-<div class = "row">
-  <div class = "large-12 columns">
-    <%= content_tag :h4, "#{@recruiter.name}'s page" %>
-  </div>
-  <div class="large-12 columns">
-  </div>
-  <br/>
 
-</div>
-
-<div class = "row">
-  <div class = "large-1 columns user-icon">
+<div class = "row main-page">
+  <div class = "small-1 columns user-icon">
     <%= link_to raw('<i style="display: inline-block;" class="fi-home profile-icon"></i>'), recruiter_path %>
-    <%= link_to raw('<i style="display: inline-block;" class="fi-list-thumbnails profile-icon"></i>'), list_recruiter_path, :id=>"List" %>
+    <p>Home</p>
+
     <%= link_to raw('<i style="display: inline-block;" class="fi-calendar profile-icon"></i>'), calendar_recruiter_path %>
+    <p>Calendar</p>
+    <%= link_to raw('<i style="display: inline-block;" class="fi-list-thumbnails profile-icon"></i>'), list_recruiter_path, :id=>"List" %>
+    <p>Contacts</p>
       <%= link_to raw('<i style="display: inline-block;" class="fi-mail profile-icon"></i>'), recruiter_mailbox_path(@recruiter.username, "inbox") %>
+     <p>Messages</p>
     <%= link_to raw('<i class="fi-wrench profile-icon"></i>'), "/recruiters/#{@recruiter.username}/edit", :id=>"Edit" %>
+    <p>Settings</p>
   </div>
 
-  <div class = "large-8 columns">
+  <div class = "large-7 columns">
     <div id = "calendar">
     </div>
   </div>
 
-  <div class = "large-3 columns">
-    <div class="row" style="font-size: 18px">
-      <div class="customBlack" style="width:12px; height:12px; display: inline-block;">
-      </div>
-      Expired events
+  <div class = "large-3 columns calendar-explanation">
+
+    <div class = "row">
+    <div class = "large-2 columns">
+      <div id = "pending-block"></div>
     </div>
- <div class="row" style="font-size: 18px" >
-      <div class="customRed" style="width:12px; height: 12px; display: inline-block;">
-      </div>
-     Pending interviews
+    <div class = "large-10 columns setting-saying">
+      <p><b>No Candidate</b> </br>[No Candidate Specified]</p>
+    </div>
   </div>
-   <div class="row" style="font-size: 18px" >
-      <div class="customGreen" style="width:12px; height: 12px; display: inline-block;">
-      </div>
-         Confirmed interviews
-       </div>
-</div>
+
+  <div class = "row">
+    <div class = "large-2 columns">
+      <div id = "no-block"></div>
+    </div>
+    <div class = "large-10 columns setting-saying">
+      <p><b>Pending</b> </br>[No Candidate confirmed]</p>
+    </div>
   </div>
+
+  <div class = "row">
+    <div class = "large-2 columns">
+      <div id = "confirm-block"></div>
+    </div>
+    <div class = "large-10 columns setting-saying">
+      <p><b>Confirmed</b> </br>[Confirmed Interview Timeslot]</p>
+    </div>
+  </div>
+  </div>
+  <div class = "large-1 columns">
+  </div>
+     </div>
 </div>
 <div class="popup" id="new_event"><h3>Add an Event</h3>
 <form action="/event/create" id="creationForm" method="post">

@@ -12,6 +12,7 @@ Background: The user's account already exists
 
     And I am on the InterviewScheduler home page
 
+@javascript
 Scenario: I forget my password and want to reset it
   When I follow "Forgot your password?"
   Then I should be on the ForgotPassword page
@@ -23,6 +24,7 @@ Scenario: I forget my password and want to reset it
   When I press "Login"
   Then I should be on the InterviewScheduler home page
 
+@javascript
 Scenario: I am not a user and try to reset my password
   Given I am on the ForgotPassword page
   When I fill in "email" with "false@candidate.com"

@@ -31,7 +31,7 @@ Background:
   | k       | some_cand       | radhesh       | 2019-12-07 | 2019-12-07 |
 
 
- 
+ @javascript
   Scenario: Display next five appointments in order from earliest to latest for candidates
     Given I am logged in as "nestorga" with password "fooPass3"
     And I am on the "nestorga" candidates page
@@ -41,11 +41,13 @@ Background:
     And I should see the appointment with "some_recr" on "03/02/16" before "some_recr" on "10/29/19"
     And I should see an appointment with "some_recr" on "10/29/19"
 
+  @javascript
   Scenario: Don't display more than five appointments for candidates
     Given I am logged in as "nestorga" with password "fooPass3"
     And I am on the "nestorga" candidates page
     Then I should not see an appointment with "some_recr" on "06/20/21" 
 
+  @javascript
   Scenario: Display next five appointments in order from earliest to latest for recruiters
     Given I am logged in as "radhesh" with password "lamepass101"
     And I am on the "radhesh" recruiters page
@@ -55,6 +57,7 @@ Background:
     And I should see the appointment with "efriesen" on "08/10/16" before "some_cand" on "12/07/19"
     And I should see an appointment with "some_cand" on "12/07/19"
 
+  @javascript
   Scenario: Don't display more than five appointments for recruiters
     Given I am logged in as "radhesh" with password "lamepass101"
     And I am on the "radhesh" recruiters page

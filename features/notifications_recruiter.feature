@@ -25,15 +25,16 @@ Background: the recruiter's account already exists
   And I am logged in as "tien" with password "1234"
   And I am on the "tien" recruiters page
 
+@javascript
 Scenario: Notifications exist
   Then I should see "Notifications"
-
+@javascript
 Scenario: Candidate accepts event invitation
   Then I should see "bonghyun has accepted your event invitation"
-
+@javascript
 Scenario: Candidate declines event invitation
   Then I should see "bonghyun has declined your event invitation" 
-
+@javascript
 Scenario: Candidate does not respond to invitation to event
   Then I should not see "bonghyun has accepted your event invitation"
   Then I should not see "bonghyun has declined your event invitation"

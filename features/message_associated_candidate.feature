@@ -12,12 +12,14 @@ Background: the requisite accounts exist
   | nestorga              | fooPass3          | candidate  |
   | efriesen              | secure!p@ss       | candidate  |
 
+@javascript
 Scenario: associated candidate should appear in list of recipients
   Given I am logged in as "fluffyBunnies" with password "pass1234"
   And I am on the list page for recruiter "fluffyBunnies"
   And candidate "efriesen" is associated
   Then I should see "efriesen" in the list of message recipients
 
+@javascript
 Scenario: non-associated candidate should not appear in list of recipients
   Given I am logged in as "fluffyBunnies" with password "pass1234"
   And I am on the list page for recruiter "fluffyBunnies"
