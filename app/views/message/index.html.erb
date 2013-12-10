@@ -1,30 +1,41 @@
-<h3>Create new message</h3>
-
-
-
-<form action="/message/create" id="create_form" method="post">
-    <div class="row">
-   <div class="large-4 columns">
-   <label>Title:</label><input type="text" id="title" name="title">
-   </div>
-   </div>
-   <input type="hidden" id="from" name="type" value="<%= @type %>">
-   <input type="hidden" id="from" name="from" value="<%= @user.username %>">
-   <div class="row">
-   <div class="large-4 columns">
-   <label>To:</label><input type="text" id="to" name="to">
+<div class = "row main-page">
+  <div class = "small-1 columns user-icon">
+    <%= link_to raw('<i class="fi-home profile-icon"></i>'), candidate_path %>
+    <p>Home</p>
+    <%= link_to raw('<i class="fi-calendar profile-icon"></i>'), calendar_candidate_path %>
+    <p>Calendar</p>
+    <%= link_to raw('<i class="fi-list-thumbnails profile-icon"></i>'), list_candidate_path, :id=>"List"%>
+    <p>Contacts</p>
+    <%= link_to raw('<i class="fi-mail profile-icon active-icon"></i>'), candidate_mailbox_path(@user, "inbox") %>
+    <p>Messages</p>
+    <%= link_to raw('<i class="fi-wrench profile-icon"></i>'), "/candidates/#{@user}/edit", :id=>"Edit"%>
+    <p>Settings</p>
+  </div>
+  
+  <div class = "small-5 columns">
+	<div class = "row page-title">
+      <div class = "small-12 columns">
+        <h2> Create a Message </h2>
+      </div>
     </div>
-    </div>
-     <div class="row">
-    <div class="large-4 columns">
-   <label>Content:</label><textarea id="content" name="content"></textarea>
-    </div>
-    </div>
-   <input type="submit" id="submit" value="Create">
-   <input type="submit" id="cancel" value="Cancel">
-</form>
-
-
+	
+	<form action="/message/create" id="create_form" method="post">
+      <h5>Title:</h5>
+      <input type="text" id="title" name="title">
+      <input type="hidden" id="from" name="type" value="<%= @type %>">
+      <input type="hidden" id="from" name="from" value="<%= @user.username %>">
+      <h5>To:</h5>
+      <input type="text" id="to" name="to">
+      <h5>Content:</h5>
+      <textarea id="content" name="content"></textarea>
+      <input class = "button alert" type="submit" id="submit" value="Create">
+      <input class = "button alert" type="submit" id="cancel" value="Cancel">
+    </form>
+  </div>
+   
+  <div class = "small-6 columns">
+  </div>
+</div>
 <script>
 $("#cancel").click( function () {
     $("#create_form").attr("action", "/<%= @type %>/<%= @user.username %>/mailbox/inbox");

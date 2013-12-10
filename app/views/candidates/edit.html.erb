@@ -6,7 +6,7 @@
     <p>Calendar</p>
     <%= link_to raw('<i class="fi-list-thumbnails profile-icon"></i>'), list_candidate_path, :id=>"List"%>
     <p>Contacts</p>
-    <%= link_to raw('<i class="fi-mail profile-icon"></i>'), candidate_path %>
+    <%= link_to raw('<i class="fi-mail profile-icon"></i>'), candidate_mailbox_path(@candidate.username, "inbox") %>
     <p>Messages</p>
     <%= link_to raw('<i class="fi-wrench profile-icon active-icon"></i>'), "/candidates/#{@candidate.username}/edit", :id=>"Edit"%>
     <p>Settings</p>
@@ -18,7 +18,7 @@
       <div class = "small-12 columns">
         <h2> Settings </h2>
       </div>
-    </div>  
+    </div>
     <%= content_tag :h4, "Edit page for #{@candidate.name}" %>
     <%= form_for @candidate, :html => {:id => "new_candidate", :multipart => true }, url: "/candidates/#{@candidate.username}", method: :put do |f| %>
       <div class="field">
@@ -33,6 +33,22 @@
         <%= f.label "Password" %>
         <%= f.password_field :password, :value=>"#{@candidate.password}" %>
       </div>
+      <div class="field">
+        <%= f.label "Area of Interest" %>
+        <%= f.text_field :area_of_interest, :value=>"#{@candidate.area_of_interest}" %>
+      </div>
+      <div class="field">
+        <%= f.label "Education" %>
+        <%= f.text_field :education, :value=>"#{@candidate.education}" %>
+      </div>
+      <div class="field">
+        <%= f.label "Location" %>
+        <%= f.text_field :location, :value=>"#{@candidate.location}" %>
+      </div>
+      <div class="field">
+        <%= f.label "Summary" %>
+        <%= f.text_field :summary, :value=>"#{@candidate.summary}" %>
+      </div>
       <div class="attachment">
         <%= f.label "Attachment" %>
         <%= f.file_field :attach %>
@@ -44,7 +60,7 @@
        <%= f.file_field :pic %>
        <br/>
      </div>
-     
+
      <br/>
 
      <div class="actions">
@@ -52,7 +68,7 @@
      </div>
     <% end %>
   </div>
-  
+
   <div class = "small-6 columns">
   </div>
 </div>

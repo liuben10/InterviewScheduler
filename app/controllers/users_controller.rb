@@ -36,6 +36,12 @@ class UsersController < ApplicationController
     user.email = params[type][:email]
     user.name = params[type][:name]
     user.password = params[type][:password]
+    if type == :candidate
+      user.area_of_interest = params[type][:area_of_interest]
+      user.education = params[type][:education]
+      user.location = params[type][:location]
+      user.summary = params[type][:summary]
+    end
     user.save!
   end
 

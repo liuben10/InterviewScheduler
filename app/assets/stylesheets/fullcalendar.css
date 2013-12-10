@@ -592,25 +592,27 @@ table.fc-border-separate {
 .customBlack div,	
 .customBlack span {
      background-color: grey;
-     border-color: grey;
-     color: black;
-     font-weight: bold;
+     color: grey;
+     font-weight: 300px;
+     font-size: 12px;
 }
 
 .customGreen,
 .customGreen div,
 .customGreen span {
-   background-color: green;
-   border-color: green;
-   color: yellow;
-   font-weight: bold;
+   background-color: #B5A642;
+   border-color: #B5A642;
+   color: black;
+   font-weight: 300px;
+   font-size: 12px;
 }
 
 .customRed,
 .customRed div,
 .customRed span {
-   background-color: red;
-   color: white;
-   font-weight: bold;
+   background-color: #E9967A;
+   color: black;
+   font-weight: 300px;
+   font-size: 12px;
    
 }
