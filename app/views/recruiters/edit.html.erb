@@ -19,6 +19,13 @@
         <h2> Settings </h2>
       </div>
     </div>
+    <%= content_tag :h4, "Edit page for #{@recruiter.name}" %>
+    <%= form_for @recruiter, :html => {:id => "new_recruiter", :multipart => true }, url: "/recruiters/#{@recruiter.username}", method: :put do |f| %>
+      <div class="field">
+        <%= f.label "Name" %>
+        <%= f.text_field :name, :value=>"#{@recruiter.name}" %>
+      </div>
+
     <div class="field">
       <%= f.label "Company" %>
       <%= f.text_field :company, :value=>"#{@recruiter.company}" %>
@@ -43,7 +50,17 @@
         <%= f.label "Summary" %>
         <%= f.text_field :summary, :value=>"#{@recruiter.summary}" %>
     </div>
->>>>>>> aaeff9a6540941f4e8f0391ab28864558551ff4b
+     <div class="pic">
+       <br/>
+       <%= f.label "Picture" %>
+       <%= f.file_field :pic %>
+       <br/>
+     </div>
+      <div class="attachment">
+        <%= f.label "Attachment" %>
+        <%= f.file_field :attach %>
+        <br/>
+      </div>
 
      <br/>
 
