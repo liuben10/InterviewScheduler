@@ -178,6 +178,31 @@ $index-second-color: #687C97;
 	
 	#event-info {
 		width: 100%;
+		tr {
+			min-height: 30px;
+		}  
+		td {
+			text-align: center;
+		}
+	}
+	.sub-nav {
+		margin-left: 15px;
+	}
+	
+	#mailbox {
+		margin-left: 15px;
+		width: 100%;
+		#messenger {
+			width: 20%;
+		}
+		
+		#title {
+			width: 20%;
+		}
+		
+		#content {
+			width: 60%;
+		}
 	}
 }
 
