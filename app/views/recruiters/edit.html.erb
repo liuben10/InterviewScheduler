@@ -1,48 +1,77 @@
-
-<div class="row">
- <div class = "large-1 columns user-icon">
-    <%= link_to raw('<i style="display: inline-block;" class="fi-home profile-icon"></i>'), recruiter_path %>
-    <%= link_to raw('<i style="display: inline-block;" class="fi-list-thumbnails profile-icon"></i>'), list_recruiter_path, :id=>"List" %>
-    <%= link_to raw('<i style="display: inline-block;" class="fi-calendar profile-icon"></i>'), calendar_recruiter_path %>
-      <%= link_to raw('<i style="display: inline-block;" class="fi-mail profile-icon"></i>'), recruiter_mailbox_path(@recruiter.username, "inbox") %>
-    <%= link_to raw('<i class="fi-wrench profile-icon"></i>'), "/recruiters/#{@recruiter.username}/edit", :id=>"Edit" %>
+<div class = "row main-page">
+  <div class = "small-1 columns user-icon">
+    <%= link_to raw('<i class="fi-home profile-icon"></i>'), recruiter_path %>
+    <p>Home</p>
+    <%= link_to raw('<i class="fi-calendar profile-icon"></i>'), calendar_recruiter_path %>
+    <p>Calendar</p>
+    <%= link_to raw('<i class="fi-list-thumbnails profile-icon"></i>'), list_recruiter_path, :id=>"List"%>
+    <p>Contacts</p>
+    <%= link_to raw('<i class="fi-mail profile-icon"></i>'), recruiter_mailbox_path(@recruiter.username, "inbox") %>
+    <p>Messages</p>
+    <%= link_to raw('<i class="fi-wrench profile-icon active-icon"></i>'), "/recruiters/#{@recruiter.username}/edit", :id=>"Edit"%>
+    <p>Settings</p>
   </div>
-  <div class = "large-11 columns">
-<%= content_tag :h4, "Edit page for #{@recruiter.name}" %>
-  <%= form_for @recruiter, :html => { :id => "new_recruiter", :multipart => true }, url: "/recruiters/#{@recruiter.username}",  method: :put do |f| %>
-    <div class="field">
-      <%= f.label "Name" %>
-      <%= f.text_field :name, :value=>"#{@recruiter.name}" %>
+
+
+  <div class = "small-5 columns">
+    <div class = "row page-title">
+      <div class = "small-12 columns">
+        <h2> Settings </h2>
+      </div>
     </div>
+    <%= content_tag :h4, "Edit page for #{@recruiter.name}" %>
+    <%= form_for @recruiter, :html => {:id => "new_recruiter", :multipart => true }, url: "/recruiters/#{@recruiter.username}", method: :put do |f| %>
       <div class="field">
+        <%= f.label "Name" %>
+        <%= f.text_field :name, :value=>"#{@recruiter.name}" %>
+      </div>
+
+    <div class="field">
+      <%= f.label "Company" %>
+      <%= f.text_field :company, :value=>"#{@recruiter.company}" %>
+    </div>
+    <div class="field">
         <%= f.label "Email" %>
         <%= f.text_field :email, :value=>"#{@recruiter.email}" %>
     </div>
-      <div class ="field">
+     <div class ="field">
         <%= f.label "Password" %>
         <%= f.password_field :password, :value=>"#{@recruiter.password}" %>
     </div>
-
-    <div class="pic">
-      <br/>
-      <%= f.label "Picture" %>
-      <%= f.file_field :pic %>
-      <br/>
+    <div class="field">
+        <%= f.label "Location" %>
+        <%= f.text_field :location, :value=>"#{@recruiter.location}" %>
     </div>
-
-    <br/>
-
-    <div class="actions">
-      <input type="submit" id="subutton" class="small button" value="Update">
-       <input type="submit" id="cancel" class="small button" value="Cancel">
+    <div class="field">
+        <%= f.label "Education" %>
+        <%= f.text_field :education, :value=>"#{@recruiter.education}" %>
     </div>
-<% end %>
+    <div class="field">
+        <%= f.label "Summary" %>
+        <%= f.text_field :summary, :value=>"#{@recruiter.summary}" %>
+    </div>
+     <div class="pic">
+       <br/>
+       <%= f.label "Picture" %>
+       <%= f.file_field :pic %>
+       <br/>
+     </div>
+      <div class="attachment">
+        <%= f.label "Attachment" %>
+        <%= f.file_field :attach %>
+        <br/>
+      </div>
+
+     <br/>
+
+     <div class="actions">
+       <input type="submit" id="subutton" class="button small alert" value="Update">
+     </div>
+    <% end %>
+  </div>
+
+  <div class = "small-6 columns">
+  </div>
 </div>
-</div>
-<script>
- $("#cancel").click( function () {
-    $("#new_recruiter").attr("action", "/welcome/index");
-    $("#new_recruiter").attr("method", "get");
- });
-</script>
+
 
