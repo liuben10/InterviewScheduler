@@ -39,3 +39,6 @@ Then "TestDelete" does not exist
 Scenario: Navigate to the edit page
 Given I am looking at "fluffyBunnies" calendar page
 When I click on an event "TestEdit"
+Then I should be on the edit event page for "TestEdit"
+
+

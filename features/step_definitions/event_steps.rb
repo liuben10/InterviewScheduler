@@ -4,7 +4,7 @@ Given /I am looking at "(.*)" calendar page/ do |user|
  end
 
 When /I add an event "(.*)" with candidate "(.*)" starting at "(.*)" and ending at "(.*)"/ do |name, candidate, start, endDate|
-  print URI.parse(current_url)
+  #print URI.parse(current_url)
   page.find(:css, "td[data-date='#{start}']").click()
   startarr = start.split(",")
   endarr = endDate.split(",")

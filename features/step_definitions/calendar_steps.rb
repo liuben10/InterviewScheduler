@@ -13,29 +13,26 @@ end
 Then /^I should see the appointment with "(.*)" on "(.*)" before "(.*)" on "(.*)"$/ do |meet1, date1, meet2, date2|
   #  ensure that that e1 occurs before e2.
   #  page.body is the entire content of the page as a string.
-  page.body.match(/#{meet1} on #{date1}(.|\n)*#{meet2} on #{date2}/).should_not be(nil)
+  page.body.match(/#{meet1}(.|\n)*#{date1}(.|\n)*#{meet2}(.|\n)*#{date2}/).should_not be(nil)
 end
 
 Then /^I should (not )?see an appointment with "(.*)" on "(.*)"$/ do |not_see, meet_with, date|
   if not_see
-    steps %Q{
-      Then I should not see "Appointment with #{meet_with} on #{date}"
-    }
+    page.body.match(/#{meet_with}(.|\n)*#{date}(.|\n)*/).should be(nil)
   else
-    steps %Q{
-      Then I should see "Appointment with #{meet_with} on #{date}"
-    }
+    page.body.match(/#{meet_with}(.|\n)*#{date}(.|\n)*/).should_not be(nil)
   end
 end
 
 Then /^I should (not )?see a pending interview request named "(.*)" with "(.*?)" on "(.*?)"$/ do |not_see, event, recruiter, start_date|
+  events = page.all("table#pending_requests td#title").map(&:text)
+  recruiters = page.all("table#pending_requests td#meet_with").map(&:text)
+  start_dates = page.all("table#pending_requests td#date").map(&:text)
   if not_see
-    steps %Q{
-      Then I should not see "Pending request #{event} from #{recruiter} for an appointment on #{start_date}"
-    }
+    events.should_not include(event)
   else
-    steps %Q{
-      Then I should see "Pending request #{event} from #{recruiter} for an appointment on #{start_date}"
-    }
+    events.should include(event)
+    recruiters.should include(recruiter)
+    start_dates.should include(start_date)
   end
 end

@@ -1,63 +1,56 @@
-<div class = "row">
-  <div class = "large-12 columns">
-    <%= content_tag :h4, "#{@recruiter.name}'s page" %>
+<div class = "row main-page">
+  <div class = "small-1 columns user-icon">
+    <%= link_to raw('<i class="fi-home profile-icon"></i>'), recruiter_path %>
+    <p>Home</p>
+    <%= link_to raw('<i class="fi-calendar profile-icon"></i>'), calendar_recruiter_path(@recruiter.username) %>
+    <p>Calendar</p>
+    <%= link_to raw('<i class="fi-list-thumbnails profile-icon active-icon"></i>'), list_recruiter_path, :id=>"List"%>
+    <p>Contacts</p>
+    <%= link_to raw('<i class="fi-mail profile-icon"></i>'), recruiter_mailbox_path(@recruiter.username, "inbox") %>
+    <p>Messages</p>
+    <%= link_to raw('<i class="fi-wrench profile-icon"></i>'), "/recruiters/#{@recruiter.username}/edit", :id=>"Edit"%>
+    <p>Settings</p>
   </div>
-</div>
-
-<div class = "row">
-
-  <div class = "large-1 columns user-icon">
-  <%= link_to raw('<i class="fi-home profile-icon"></i>'), recruiter_path %>
-  <%= link_to raw('<i class="fi-list-thumbnails profile-icon"></i>'), list_recruiter_path, :id=>"List" %>
-  <%= link_to raw('<i style="display: inline-block;" class="fi-calendar profile-icon"></i>'), calendar_recruiter_path %>
-      <%= link_to raw('<i style="display: inline-block;" class="fi-mail profile-icon"></i>'), recruiter_mailbox_path(@recruiter.username, "inbox"), :id => "mailbox" %>
-    <%= link_to raw('<i class="fi-wrench profile-icon"></i>'), "/recruiters/#{@recruiter.username}/edit", :id=>"Edit" %>
-  </div>
-
-  <div class = "large-8 columns">
-  <h4> List of Associated Candidates </h4>
-  <table id="candidates">
-    <tr>
-      <th>Full Name</th>
-      <th>Username</th>
-      <th>Email</th>
-    </tr>
-  <% @candidates.each do |candidate|%>
-    <tr>
-      <td id="name"><a href="/candidate/<%= @recruiter.username %>/view/<%= candidate.username %>"><%= candidate.name %></a></td>
-      <td id="username"><%=candidate.username%></td>
-      <td id="email"><%=candidate.email%></td>
-    </tr>
-  <% end %>
-  </table>
-  <br /><br />
-  <h4> Send an Email Message to a Candidate </h4>
-  <%= form_tag("message_candidate", method: "post") do %>
-    <%= label_tag(:candidate, "Candidate's Username") %>
-    <%= select_tag(:candidate, options_from_collection_for_select(@candidates, "username", "username")) %>
-    <%= label_tag(:message, "Your Message") %>
-    <%= text_field_tag(:message) %>
-    <%= submit_tag("Send")%>
-  <% end %>
+  <div class = "large-6 columns">
+  <div class = "row page-title">
+      <div class = "small-12 columns">
+        <h2> List of Associated Candidates </h2>
+      </div>
+    </div>
+    <table id="candidates">
+      <tr>
+        <th id = "name">Full Name</th>
+        <th id = "uname">Username</th>
+        <th id = "email">Email</th>
+      </tr>
+      <% @candidates.each do |candidate|%>
+        <tr>
+          <td id="name"><%=candidate.name%></td>
+          <td id="username"><%=candidate.username%></td>
+          <td id="email"><%=candidate.email%></td>
+        </tr>
+      <% end %>
+    </table>
   </div>
 
-  <div class = "large-3 columns">
-  <h6> Associate Candidate </h6>
+  <div class = "large-3 columns search-feature">
+  <h3> Associate Candidate </h3>
   <% if flash[:error] %>
     <%= flash[:error] %>
     </br></br>
   <% end %>
+  <h6> Add Candidate </h6>
   <%= form_tag("add_candidate", method: "post") do %>
-      <%= label_tag(:candidate, "Candidate's Username") %>
       <%= text_field_tag(:candidate, nil, :id=>"candidate_username") %>
-      <%= submit_tag("Add") %>
+      <%= submit_tag("Add", class: "button small alert")%>
   <% end %>
-  <h6> Search by name / username </h6>
+   <h6> Search by name or username </h6>
   <%= form_tag("search", method: "get") do %>
-    <input type="hidden" id="recruiter" name="recruiter" value="<%= @recruiter.username %>" >
-    <input type="text" id="keyword" name="keyword">
-    <input type="submit" id="Search" value="Search">
+     <input type="hidden" id="recruiter" name="recruiter" value="<%= @recruiter.username %>">
+     <input type="text" id="keyword" name="keyword">
+     <input type="submit" class ="button small alert" id="Search" value="Search">
   <% end %>
-
+  </div>
+  <div class = "large-2 columns">
   </div>
 </div>

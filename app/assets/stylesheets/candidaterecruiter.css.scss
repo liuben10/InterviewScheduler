@@ -125,7 +125,7 @@ $index-second-color: #687C97;
 		#pending-block {
 		  width: 30px;
 		  height: 30px;
-		  background-color: #8E2323;
+		  background-color: #575757;
 		  margin-top: 7px;
 		  margin-left: 15px;
 		}
@@ -133,7 +133,7 @@ $index-second-color: #687C97;
 		#no-block {
 		  width: 30px;
 		  height: 30px;
-		  background-color: #E9967A;
+		  background-color: #c60f13;
 		  margin-top: 7px;
 		  margin-left: 15px;
 		}
@@ -141,7 +141,7 @@ $index-second-color: #687C97;
 		#confirm-block {
 		  width: 30px;
 		  height: 30px;
-		  background-color: #B5A642;
+		  background-color: #488214;
 		  margin-top: 7px;
 		  margin-left: 15px;
 		}
@@ -210,6 +210,53 @@ $index-second-color: #687C97;
 			height: 200px;
 		}
 	}
+	
+	#candidates {
+		width: 100%;
+		#name {
+			width: 33%;
+		}
+		#uname {
+			width: 33%;
+		}
+		#email {
+			width: 33%;
+		}
+	}
+	.customBlack,
+	.customBlack div,	
+	.customBlack span {
+	     background-color: #575757;
+	     color: white;
+	     font-weight: 300px;
+	     font-size: 12px;
+	     line-height: 20px;
+	     border: none;
+	}
+
+	.customGreen,
+	.customGreen div,
+	.customGreen span {
+	   background-color: #488214;
+	   color: white;
+	   font-weight: 300px;
+	   font-size: 12px;
+	   line-height: 20px;
+	   border: none;
+	}
+
+	.customRed,
+	.customRed div,
+	.customRed span {
+	   background-color: #c60f13;
+	   color: white;
+	   font-weight: 300px;
+	   font-size: 12px;
+	   line-height: 20px;
+   	   border:none;
+	}
+
+	
 }
 
 

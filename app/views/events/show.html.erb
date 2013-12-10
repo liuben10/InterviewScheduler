@@ -36,9 +36,9 @@
           <% if not @event.candidate_id.nil? and not @event.candidate_id.strip.nil? %>
             <input type="hidden" id="candidate_id" name="candidate_id" value="<%= @event.candidate_id %>">
           <% end %>
-          <input type="submit" id="Update" class="small button" value="Update">
-          <input type="submit" id="Delete" class="small button" value="Delete">
-          <input type="submit" id="Cancel" class="small button" value="Cancel">
+          <input type="submit" id="Update" class="small button alert" value="Update">
+          <input type="submit" id="Delete" class="small button alert" value="Delete">
+          <input type="submit" id="Cancel" class="small button alert" value="Cancel">
         </form>
       </div>
     <% else %>

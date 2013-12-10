@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131210000246) do
+ActiveRecord::Schema.define(:version => 20131210012814) do
 
   create_table "appointments", :force => true do |t|
     t.string   "username"
@@ -85,6 +85,9 @@ ActiveRecord::Schema.define(:version => 20131210000246) do
     t.string   "pic_content_type"
     t.integer  "pic_file_size"
     t.datetime "pic_updated_at"
+    t.string   "education"
+    t.string   "location"
+    t.string   "summary"
   end
 
 end

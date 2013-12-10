@@ -23,20 +23,20 @@
       <div class = "small-5 columns">
     <div class = "row profile-view">
       <div class = "small-6 columns">
-            <%= image_tag @candidate.pic.url(:thumb), id: "profile-picture" %>
+        <%= image_tag @candidate.pic.url(:thumb), id: "profile-picture" %>
       </div>
       <div class = "small-6 columns profile-info">
         <div class = "panel">
-				<h5>Username</h5>
-				<h6><%= @candidate.username %></h6>
-				<h5>Name</h5>
-				<h6><%= @candidate.name %></h6>
-				<h5>Area of Interest</h5>
-				<h6><%= @candidate.area_of_interest %></h6>
-				<h5>Education</h5>
-				<h6><%= @candidate.education %></h6>
-				<h5>Location</h5>
-				<h6><%= @candidate.location %></h6>
+        <h5>Username</h5>
+        <h6><%= @candidate.username %></h6>
+        <h5>Name</h5>
+        <h6><%= @candidate.name %></h6>
+        <h5>Area of Interest</h5>
+        <h6><%= @candidate.area_of_interest %></h6>
+        <h5>Education</h5>
+        <h6><%= @candidate.education %></h6>
+        <h5>Location</h5>
+        <h6><%= @candidate.location %></h6>
         </div>
       </div>
     </div>
@@ -74,9 +74,9 @@
                 <% @requests.each do |request|%>
           <% request_info = show_request_info(request, request.recruiter_id)%>
                   <tr>
-                    <td><%= request_info[0] %></td>
-          <td><%= request_info[1] %></td>
-          <td><%= request_info[2] %></td>
+                    <td id="title"><%= request_info[0] %></td>
+          <td id="meet_with"><%= request_info[1] %></td>
+          <td id="date"><%= request_info[2] %></td>
                     <td>
             <a class="small button" href="/event/show/<%=request.id%>?from_id=<%=@candidate.username%>">Details</a>
             </td>
@@ -99,7 +99,7 @@
           <tr>
             <th>Event Title</th>
             <th>Recruiter</th>
-            <th>Statue</th>
+            <th>Status</th>
             <th>Date</th>
             <th>Details</th>
           </tr>
@@ -108,10 +108,10 @@
                 <% @events.each do |event|%>
           <% request_info = show_event_info(event, event.recruiter_id)%>
                   <tr>
-                    <td><%= request_info[0] %></td>
-          <td><%= request_info[1] %></td>
-          <td><%= request_info[2] %></td>
-          <td><%= request_info[3] %></td>
+                    <td id="title"><%= request_info[0] %></td>
+          <td id="meet_with"><%= request_info[1] %></td>
+          <td id="status"><%= request_info[2] %></td>
+          <td id="date"><%= request_info[3] %></td>
                     <td>
             <a class="small button" href="/event/show/<%=event.id%>?from_id=<%=@candidate.username%>">Details</a>
             </td>

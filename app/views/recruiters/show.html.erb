@@ -1,12 +1,12 @@
 <div class = "row main-page">
-  <div class = "small-1 columns user-icon">
+   <div class = "small-1 columns user-icon">
     <%= link_to raw('<i class="fi-home profile-icon active-icon"></i>'), recruiter_path %>
     <p>Home</p>
     <%= link_to raw('<i class="fi-calendar profile-icon"></i>'), calendar_recruiter_path %>
     <p>Calendar</p>
     <%= link_to raw('<i class="fi-list-thumbnails profile-icon"></i>'), list_recruiter_path, :id=>"List"%>
     <p>Contacts</p>
-    <%= link_to raw('<i class="fi-mail profile-icon"></i>'), recruiter_mailbox_path(@recruiter.username, "inbox") %>
+    <%= link_to raw('<i class="fi-mail profile-icon"></i>'), recruiter_mailbox_path(@recruiter.username, "inbox")%>
     <p>Messages</p>
     <%= link_to raw('<i class="fi-wrench profile-icon"></i>'), "/recruiters/#{@recruiter.username}/edit", :id=>"Edit"%>
     <p>Settings</p>
@@ -27,23 +27,24 @@
       </div>
       <div class = "small-6 columns profile-info">
         <div class = "panel">
-				<h5>Username</h5>
-				<h6>Hello</h6>
-				<h5>Name</h5>
-				<h6>Helloo</h6>
-				<h5>Company</h5>
-				<h6>Hello.inc</h6>
-				<h5>Location</h5>
-				<h6>asldkfjdsal</h6>
+        <h5>Username</h5>
+        <h6><%= @recruiter.username %></h6>
+        <h5>Name</h5>
+        <h6><%= @recruiter.name %></h6>
+        <h5>Company</h5>
+        <h6><%= @recruiter.company %></h6>
+		<h5>Location</h5>
+		<h6><%= @recruiter.location %></h6>
         </div>
       </div>
     </div>
     <div class = "row">
       <div class = "small-12 columns profile-info-summary">
         <div class = "panel">
-          <h5>Summary</h5>
-          <h6>asdlkfjdslk</h6>
+			<h5>Summary </h5>
+			<h6><%= @recruiter.summary %></h6>
         </div>
+
 
       </div>
     </div>
@@ -51,38 +52,7 @@
       </div>
 
       <div class = "small-7 columns ">
-    <div class = "row request-events">
-      <div class = "small-12 columns">
-            <h4> Pending Interview Requests </h4>
-            <% if @events.empty? %>
-              <p> No pending requests </p>
-            <% else %>
-              <table id="pending_requests">
-        <thread>
-          <tr>
-            <th>Event Title</th>
-            <th>Candidate</th>
-            <th>Date</th>
-            <th>Details</th>
-          </tr>
-        </thread>
-        <tbody>
-                <% @events.each do |event|%>
-          <% request_info = show_request_info(event, event.recruiter_id)%>
-                  <tr>
-                    <td><%= request_info[0] %></td>
-          			<td><%= request_info[1] %></td>
-          			<td><%= request_info[2] %></td>
-                    <td>
-            		  <a class="small button" href="/event/show/<%=event.id%>?from_id=<%=@recruiter.username%>">Details</a>
-            		</td>
-                  </tr>
-                <% end %>
-        </tbody>
-              </table>
-            <% end %>
-          </div>
-    </div>
+    
     <div class = "row">
       <div class = "small-12 columns">
         <h4> Upcoming Events </h4>
@@ -94,15 +64,15 @@
         <thread>
           <tr>
             <th>Event Title</th>
-            <th>Recruiter</th>
-            <th>Statue</th>
+            <th>Candidate</th>
+            <th>Status</th>
             <th>Date</th>
             <th>Details</th>
           </tr>
         </thread>
         <tbody>
                 <% @events.each do |event|%>
-          <% request_info = show_event_info(event, event.recruiter_id)%>
+          <% request_info = show_event_info(event, event.pending_id)%>
                   <tr>
                     <td><%= request_info[0] %></td>
           <td><%= request_info[1] %></td>
@@ -123,10 +93,4 @@
 
     </div>
   </div>
-</div>
-
-
-</div>
-
-
 </div>

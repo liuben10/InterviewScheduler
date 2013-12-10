@@ -23,6 +23,9 @@ module NavigationHelpers
     when /^the list page for (candidate|recruiter) "(.*)"/ then "/#{$1}/#{$2}/list"
     when /^the "(.*)" calendar page&/ then "calendar"
     when /^the ForgotPassword page$/ then "/welcome/forgotpassword"
+    when /^the edit event page for "(.*)"$/ then
+      event = Event.find_by_name($1)
+      "/event/show/#{event.id}"
 
 
     # Add more mappings here.
