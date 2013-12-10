@@ -6,14 +6,14 @@
     <p>Calendar</p>
     <%= link_to raw('<i class="fi-list-thumbnails profile-icon"></i>'), list_candidate_path, :id=>"List"%>
     <p>Contacts</p>
-    <%= link_to raw('<i class="fi-mail profile-icon"></i>'), candidate_path %>
+    <%= link_to raw('<i class="fi-mail profile-icon"></i>'), candidate_mailbox_path(@candidate.username, "inbox") %>
     <p>Messages</p>
     <%= link_to raw('<i class="fi-wrench profile-icon"></i>'), "/candidates/#{@candidate.username}/edit", :id=>"Edit"%>
     <p>Settings</p>
   </div>
 
   <div class = "small-11 columns">
-	<div class = "row page-title">
+  <div class = "row page-title">
       <div class = "small-12 columns">
         <h2> Dashboard </h2>
       </div>
@@ -21,108 +21,108 @@
 
     <div class = "row">
       <div class = "small-5 columns">
-		<div class = "row profile-view">
-			<div class = "small-6 columns">
-		        <%= image_tag @candidate.pic.url(:thumb), id: "profile-picture" %>
-			</div>
-			<div class = "small-6 columns profile-info">
-				<div class = "panel">
-				<h5>Username</h5>
-				<h6>bonghyuasdlfkjasfn5</h6>
-				<h5>Name</h5>
-				<h6>Bonghyun</h6>
-				<h5>Area of Interest</h5>
-				<h6>Computer Science </h6>
-				<h5>Education</h5>
-				<h6>UC Berkeley</h6>
-				<h5>Location</h5>
-				<h6>Berkeley, CA </h6>
-				</div>
-			</div>
-		</div>
-		<div class = "row">
-			<div class = "small-12 columns profile-info-summary">
-				<div class = "panel">
-					<h5>Summary</h5>
-					<h6>Hello My name is </h6>
-				</div>
-				
-				<a class = "button secondary" id = "resume-button" href="<%= @candidate.attach.url %>">Resume</a>
+    <div class = "row profile-view">
+      <div class = "small-6 columns">
+            <%= image_tag @candidate.pic.url(:thumb), id: "profile-picture" %>
+      </div>
+      <div class = "small-6 columns profile-info">
+        <div class = "panel">
+        <h5>Username</h5>
+        <h6>bonghyuasdlfkjasfn5</h6>
+        <h5>Name</h5>
+        <h6>Bonghyun</h6>
+        <h5>Area of Interest</h5>
+        <h6>Computer Science </h6>
+        <h5>Education</h5>
+        <h6>UC Berkeley</h6>
+        <h5>Location</h5>
+        <h6>Berkeley, CA </h6>
+        </div>
+      </div>
+    </div>
+    <div class = "row">
+      <div class = "small-12 columns profile-info-summary">
+        <div class = "panel">
+          <h5>Summary</h5>
+          <h6>Hello My name is </h6>
+        </div>
 
-			</div>
-		</div>
-		
+        <a class = "button secondary" id = "resume-button" href="<%= @candidate.attach.url %>">Resume</a>
+
+      </div>
+    </div>
+
       </div>
 
       <div class = "small-7 columns ">
-		<div class = "row request-events">
-		  <div class = "small-12 columns">
+    <div class = "row request-events">
+      <div class = "small-12 columns">
             <h4> Pending Interview Requests </h4>
             <% if @requests.empty? %>
               <p> No pending requests </p>
             <% else %>
               <table id="pending_requests">
-				<thread>
-					<tr>
-						<th>Event Title</th>
-						<th>Recruiter</th>
-						<th>Date</th>
-						<th>Details</th>
-					</tr>
-				</thread>
-				<tbody>
+        <thread>
+          <tr>
+            <th>Event Title</th>
+            <th>Recruiter</th>
+            <th>Date</th>
+            <th>Details</th>
+          </tr>
+        </thread>
+        <tbody>
                 <% @requests.each do |request|%>
-				  <% request_info = show_request_info(request, request.recruiter_id)%>
+          <% request_info = show_request_info(request, request.recruiter_id)%>
                   <tr>
                     <td><%= request_info[0] %></td>
-					<td><%= request_info[1] %></td>
-					<td><%= request_info[2] %></td>
+          <td><%= request_info[1] %></td>
+          <td><%= request_info[2] %></td>
                     <td>
-					  <a class="small button" href="/event/show/<%=request.id%>?from_id=<%=@candidate.username%>">Details</a>
-				    </td>
+            <a class="small button" href="/event/show/<%=request.id%>?from_id=<%=@candidate.username%>">Details</a>
+            </td>
                   </tr>
                 <% end %>
-				</tbody>
+        </tbody>
               </table>
             <% end %>
           </div>
-		</div>
-		<div class = "row">
-		  <div class = "small-12 columns">
-		    <h4> Upcoming Events </h4>
+    </div>
+    <div class = "row">
+      <div class = "small-12 columns">
+        <h4> Upcoming Events </h4>
             <% if @events.empty? %>
               <p> No upcoming events </p>
             <% else %>
-			
-				<table id="show-events">
-				<thread>
-					<tr>
-						<th>Event Title</th>
-						<th>Recruiter</th>
-						<th>Statue</th>
-						<th>Date</th>
-						<th>Details</th>
-					</tr>
-				</thread>
-				<tbody>
+
+        <table id="show-events">
+        <thread>
+          <tr>
+            <th>Event Title</th>
+            <th>Recruiter</th>
+            <th>Statue</th>
+            <th>Date</th>
+            <th>Details</th>
+          </tr>
+        </thread>
+        <tbody>
                 <% @events.each do |event|%>
-				  <% request_info = show_event_info(event, event.recruiter_id)%>
+          <% request_info = show_event_info(event, event.recruiter_id)%>
                   <tr>
                     <td><%= request_info[0] %></td>
-					<td><%= request_info[1] %></td>
-					<td><%= request_info[2] %></td>
-					<td><%= request_info[3] %></td>
+          <td><%= request_info[1] %></td>
+          <td><%= request_info[2] %></td>
+          <td><%= request_info[3] %></td>
                     <td>
-					  <a class="small button" href="/event/show/<%=event.id%>?from_id=<%=@candidate.username%>">Details</a>
-				    </td>
+            <a class="small button" href="/event/show/<%=event.id%>?from_id=<%=@candidate.username%>">Details</a>
+            </td>
                   </tr>
                 <% end %>
-				</tbody>
+        </tbody>
               </table>
-			
+
             <% end %>
-		  </div>	
-		</div>
+      </div>
+    </div>
       </div>
 
     </div>

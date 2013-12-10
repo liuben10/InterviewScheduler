@@ -6,7 +6,7 @@
     <p>Calendar</p>
     <%= link_to raw('<i class="fi-list-thumbnails profile-icon"></i>'), list_candidate_path, :id=>"List"%>
     <p>Contacts</p>
-    <%= link_to raw('<i class="fi-mail profile-icon"></i>'), candidate_path %>
+    <%= link_to raw('<i class="fi-mail profile-icon"></i>'), candidate_mailbox_path(@candidate.username, "inbox") %>
     <p>Messages</p>
     <%= link_to raw('<i class="fi-wrench profile-icon active-icon"></i>'), "/candidates/#{@candidate.username}/edit", :id=>"Edit"%>
     <p>Settings</p>
@@ -18,7 +18,7 @@
       <div class = "small-12 columns">
         <h2> Settings </h2>
       </div>
-    </div>  
+    </div>
     <%= content_tag :h4, "Edit page for #{@candidate.name}" %>
     <%= form_for @candidate, :html => {:id => "new_candidate", :multipart => true }, url: "/candidates/#{@candidate.username}", method: :put do |f| %>
       <div class="field">
@@ -44,7 +44,7 @@
        <%= f.file_field :pic %>
        <br/>
      </div>
-     
+
      <br/>
 
      <div class="actions">
@@ -52,7 +52,7 @@
      </div>
     <% end %>
   </div>
-  
+
   <div class = "small-6 columns">
   </div>
 </div>

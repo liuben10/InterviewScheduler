@@ -3,6 +3,9 @@ class MessageController < ApplicationController
       @type = params[:type]
       @from = params[:id]
       @user = Recruiter.find_by_username(@from)
+      if @user.nil?
+        @user = Candidate.find_by_username(@from)
+      end
     end
 
     def create

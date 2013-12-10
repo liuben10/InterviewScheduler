@@ -6,18 +6,18 @@
     <p>Calendar</p>
     <%= link_to raw('<i class="fi-list-thumbnails profile-icon active-icon"></i>'), list_candidate_path, :id=>"List"%>
     <p>Contacts</p>
-    <%= link_to raw('<i class="fi-mail profile-icon"></i>'), candidate_path %>
+    <%= link_to raw('<i class="fi-mail profile-icon"></i>'), candidate_mailbox_path(@candidate.username, "inbox") %>
     <p>Messages</p>
     <%= link_to raw('<i class="fi-wrench profile-icon"></i>'), "/candidates/#{@candidate.username}/edit", :id=>"Edit"%>
     <p>Settings</p>
   </div>
 
   <div class = "large-6 columns">
-	<div class = "row page-title">
+  <div class = "row page-title">
       <div class = "small-12 columns">
         <h2> List of Associated Recruiters </h2>
       </div>
-    </div>  
+    </div>
     <table id="recruiters">
       <tr>
         <th>Full Name</th>
