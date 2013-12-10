@@ -21,12 +21,17 @@ class UsersController < ApplicationController
     type.to_s.constantize.create! params[:candidate]
     flash[:notice] = "New #{type} created with password: #{params[:candidate][:password]} and email: #{params[:candidate][:email]}"
     session[:authenticated_user] = user[:username]
+    deliver_message(params, type)
+  end
+
+
+  def deliver_message(params, type)
     if type.to_s == "Candidate"
       UserMailer.welcome_candidate(Candidate.find_by_name(params[:candidate][:name]))
                 .deliver
     elsif type.to_s == "Recruiter"
       UserMailer.welcome_recruiter(Recruiter.find_by_name(params[:candidate][:name]))
-                .deliver
+        .deliver
     end
   end
 
@@ -37,12 +42,18 @@ class UsersController < ApplicationController
     user.name = params[type][:name]
     user.password = params[type][:password]
     if type == :candidate
-      user.area_of_interest = params[type][:area_of_interest]
-      user.education = params[type][:education]
-      user.location = params[type][:location]
-      user.summary = params[type][:summary]
+      candidate_modifications(user, params)
     end
     user.save!
+  end
+
+
+  def candidate_modifications(user, params)
+    user.area_of_interest = params[type][:area_of_interest]
+    user.education = params[type][:education]
+    user.location = params[type][:location]
+    user.summary = params[type][:summary]
+
   end
 
   def get_events(user, type)
