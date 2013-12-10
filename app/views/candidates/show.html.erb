@@ -65,7 +65,7 @@
         <thread>
           <tr>
             <th>Event Title</th>
-            <th>Recruiter</th>
+            <th>Meet_With</th>
             <th>Date</th>
             <th>Details</th>
           </tr>
@@ -74,9 +74,9 @@
                 <% @requests.each do |request|%>
           <% request_info = show_request_info(request, request.recruiter_id)%>
                   <tr>
-                    <td><%= request_info[0] %></td>
-          <td><%= request_info[1] %></td>
-          <td><%= request_info[2] %></td>
+                    <td id="title"><%= request_info[0] %></td>
+          <td id="meet_with"><%= request_info[1] %></td>
+          <td id="date"><%= request_info[2] %></td>
                     <td>
             <a class="small button" href="/event/show/<%=request.id%>?from_id=<%=@candidate.username%>">Details</a>
             </td>
@@ -98,8 +98,8 @@
         <thread>
           <tr>
             <th>Event Title</th>
-            <th>Recruiter</th>
-            <th>Statue</th>
+            <th>Meet_With</th>
+            <th>Status</th>
             <th>Date</th>
             <th>Details</th>
           </tr>
@@ -108,10 +108,10 @@
                 <% @events.each do |event|%>
           <% request_info = show_event_info(event, event.recruiter_id)%>
                   <tr>
-                    <td><%= request_info[0] %></td>
-          <td><%= request_info[1] %></td>
-          <td><%= request_info[2] %></td>
-          <td><%= request_info[3] %></td>
+                    <td id="title"><%= request_info[0] %></td>
+          <td id="meet_with"><%= request_info[1] %></td>
+          <td id="status"><%= request_info[2] %></td>
+          <td id="date"><%= request_info[3] %></td>
                     <td>
             <a class="small button" href="/event/show/<%=event.id%>?from_id=<%=@candidate.username%>">Details</a>
             </td>

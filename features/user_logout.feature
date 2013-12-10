@@ -20,5 +20,3 @@ Scenario: Should sign out of account when "Logout" is pressed
 	When I follow "Logout"
 	Then I should be on the InterviewScheduler homepage
 	And I should not see "Logout"
-	And the "userid" field should contain "Username"
-	And the "password" field should contain "Password"
