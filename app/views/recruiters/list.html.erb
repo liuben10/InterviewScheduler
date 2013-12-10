@@ -19,9 +19,9 @@
     </div>
     <table id="candidates">
       <tr>
-        <th>Full Name</th>
-        <th>Username</th>
-        <th>Email</th>
+        <th id = "name">Full Name</th>
+        <th id = "uname">Username</th>
+        <th id = "email">Email</th>
       </tr>
       <% @candidates.each do |candidate|%>
         <tr>
@@ -42,13 +42,13 @@
   <h6> Add Candidate </h6>
   <%= form_tag("add_candidate", method: "post") do %>
       <%= text_field_tag(:candidate, nil, :id=>"candidate_username") %>
-      <%= submit_tag("Add", class: "button alert")%>
+      <%= submit_tag("Add", class: "button small alert")%>
   <% end %>
    <h6> Search by name or username </h6>
   <%= form_tag("search", method: "get") do %>
      <input type="hidden" id="recruiter" name="recruiter" value="<%= @recruiter.username %>">
      <input type="text" id="keyword" name="keyword">
-     <input type="submit" class ="button alert" id="Search" value="Search">
+     <input type="submit" class ="button small alert" id="Search" value="Search">
   <% end %>
   </div>
   <div class = "large-2 columns">

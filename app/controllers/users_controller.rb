@@ -41,19 +41,15 @@ class UsersController < ApplicationController
     user.email = params[type][:email]
     user.name = params[type][:name]
     user.password = params[type][:password]
-    if type == :candidate
-      candidate_modifications(user, params)
-    end
-    user.save!
-  end
-
-
-  def candidate_modifications(user, params)
-    user.area_of_interest = params[type][:area_of_interest]
-    user.education = params[type][:education]
     user.location = params[type][:location]
     user.summary = params[type][:summary]
-
+    if type == :candidate
+      user.area_of_interest = params[type][:area_of_interest]
+      user.education = params[type][:education]
+    else
+      user.company = params[type][:company]
+    end
+    user.save!
   end
 
   def get_events(user, type)

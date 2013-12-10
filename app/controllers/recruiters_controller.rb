@@ -50,7 +50,6 @@ class RecruitersController < UsersController
   def show
     @recruiter = Recruiter.find_by_username(params[:id])
     @events = Event.find(:all, :conditions=>["recruiter_id = ? and end_at > ?", @recruiter.username, DateTime.now], :order=>"start_at ASC", :limit=>5)
-    @requests = Event.find(:all, :conditions=>["pending_id = ? and end_at > ? and (candidate_id = '' or candidate_id IS NULL)", @recruiter.username, DateTime.now], :order=>"start_at ASC", :limit=>5)
   end
 
   def search
