@@ -93,10 +93,12 @@ class EventsController < ApplicationController
 
   def confirm
     @event = Event.find(params[:id])
+    @event.candidate_id = params[:candidate_id]
+    @event.save!
     if not @event.candidate_id.nil?
       message = "Candidate " + @event.candidate_id + " has ACCEPTED your invitation to " + @event.name
     else
-      message = "Candidate " + @event.candidate_id + " has REJECTED your invitation to " + @event.name
+      message = "Candidate " + @event.pending_id + " has REJECTED your invitation to " + @event.name
     end
     candidateMessageRecruiter(@event.candidate_id, @event.recruiter_id, message)
     redirect_to welcome_index_path

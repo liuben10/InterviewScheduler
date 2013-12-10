@@ -31,7 +31,7 @@ When /I am looking at "(.*)" event page as "(.*)"/ do |event, user|
   else
     visit "/event/show/" + eve.id.to_s + "?from_id=" + user
   end
-  print URI.parse(current_url)
+  #print URI.parse(current_url)
 end
 
 When /I click on an event "(.*)"/ do |event|
@@ -40,7 +40,7 @@ end
 
 Then /event "(.*)" should have "(.*)" as accepted/ do |event, user|
   event = Event.find_by_name(event)
-  assert_equal event.candidate_id, user
+  assert_equal user, event.candidate_id
 end
 
 Then /I should see the event "(.*)" in my events table/ do |event|
