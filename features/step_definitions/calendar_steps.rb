@@ -25,13 +25,14 @@ Then /^I should (not )?see an appointment with "(.*)" on "(.*)"$/ do |not_see, m
 end
 
 Then /^I should (not )?see a pending interview request named "(.*)" with "(.*?)" on "(.*?)"$/ do |not_see, event, recruiter, start_date|
+  events = page.all("table#pending_requests td#title").map(&:text)
+  recruiters = page.all("table#pending_requests td#meet_with").map(&:text)
+  start_dates = page.all("table#pending_requests td#date").map(&:text)
   if not_see
-    steps %Q{
-      Then I should not see "Pending request #{event} from #{recruiter} for an appointment on #{start_date}"
-    }
+    events.should_not include(event)
   else
-    steps %Q{
-      Then I should see "Pending request #{event} from #{recruiter} for an appointment on #{start_date}"
-    }
+    events.should include(event)
+    recruiters.should include(recruiter)
+    start_dates.should include(start_date)
   end
 end
