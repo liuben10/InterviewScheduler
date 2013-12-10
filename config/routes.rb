@@ -15,6 +15,7 @@ Scheduler::Application.routes.draw do
   post "event/addcandidate" => "events#addcandidate"
   post "event/create" => "events#create"
   post "event/update" => "events#update"
+  post "event/confirm" => "events#confirm"
   post "event/delete" => "events#delete"
   post '/logout' => "welcome#logout"
   post '/message/create' => "message#create"
