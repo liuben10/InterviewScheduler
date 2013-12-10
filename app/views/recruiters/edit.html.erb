@@ -14,13 +14,29 @@
       <%= f.label "Name" %>
       <%= f.text_field :name, :value=>"#{@recruiter.name}" %>
     </div>
-      <div class="field">
+    <div class="field">
+      <%= f.label "Company" %>
+      <%= f.text_field :company, :value=>"#{@recruiter.company}" %>
+    </div>
+    <div class="field">
         <%= f.label "Email" %>
         <%= f.text_field :email, :value=>"#{@recruiter.email}" %>
     </div>
-      <div class ="field">
+     <div class ="field">
         <%= f.label "Password" %>
         <%= f.password_field :password, :value=>"#{@recruiter.password}" %>
+    </div>
+    <div class="field">
+        <%= f.label "Location" %>
+        <%= f.text_field :location, :value=>"#{@recruiter.location}" %>
+    </div>
+    <div class="field">
+        <%= f.label "Education" %>
+        <%= f.text_field :education, :value=>"#{@recruiter.education}" %>
+    </div>
+    <div class="field">
+        <%= f.label "Summary" %>
+        <%= f.text_field :summary, :value=>"#{@recruiter.summary}" %>
     </div>
 
     <div class="pic">

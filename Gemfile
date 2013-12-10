@@ -41,7 +41,6 @@ group :test do
 end
 
 gem 'railties'
-gem 'jquery-qtip2-rails', '~> 0.5.0'
 gem 'jquery-rails'
 gem 'jquery-ui-rails'
 gem 'haml'
