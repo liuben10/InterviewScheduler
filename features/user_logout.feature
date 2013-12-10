@@ -15,7 +15,7 @@ Background: the user is already logged in
   And I am logged in as "fluffyBunnies" with password "pass1234"
   And I am on the "fluffyBunnies" recruiters page
 
-@javascript
+
 Scenario: Should sign out of account when "Logout" is pressed
 	When I follow "Logout"
 	Then I should be on the InterviewScheduler homepage
