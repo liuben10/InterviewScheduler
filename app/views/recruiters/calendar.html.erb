@@ -189,6 +189,9 @@
 <input type="submit" class="deleteButton" id="delete_button" value="Delete"></div>
 <script type='text/javascript'>
   $(document).ready(function() {
+     $("#cancelButton").click(function() {
+           $("#new_event").hide();
+     });
       $('#calendar').fullCalendar({
       editable: true,
       selectable: true,
@@ -237,9 +240,6 @@
             $(".title").attr("value", "");
             $("#new_event").hide(); // hide pop up box
         });
-        $("#cancelButton").click(function() {
-           $("#new_event").hide();
-     });
 
       },
      unselect: function() {
