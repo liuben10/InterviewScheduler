@@ -12,12 +12,14 @@ Background: the user's account does not already exist
   | nestorga              | fooPass3          | candidate  |
   | efriesen              | secure!p@ss       | candidate  |
 
+@javascript
 Scenario:  candidates should be able to edit their information
   Given I am logged in as "nestorga" with password "fooPass3"
   And I am on the "nestorga" candidates page
   When I press the wrench icon
   Then I should be on the edit page for candidate "nestorga"
 
+@javascript
 Scenario:  candidates should be able to change their password
   Given I am logged in as "nestorga" with password "fooPass3"
   And I am on the "nestorga" candidates page
@@ -27,6 +29,7 @@ Scenario:  candidates should be able to change their password
   Then I should be on the "nestorga" candidates page
   And the password for "nestorga" should be "abcde"
 
+@javascript
 Scenario: candidates should be able to change their email
   Given I am logged in as "nestorga" with password "fooPass3"
   And I am on the "nestorga" candidates page
@@ -36,12 +39,14 @@ Scenario: candidates should be able to change their email
   Then I should be on the "nestorga" candidates page
   And the email for "nestorga" should be "new_email@gmail.com"
 
-  Scenario:  recruiters should be able to edit their information
+@javascript
+Scenario:  recruiters should be able to edit their information
   Given I am logged in as "fluffyBunnies" with password "pass1234"
   And I am on the "fluffyBunnies" recruiters page
   When I press the wrench icon
   Then I should be on the edit page for recruiter "fluffyBunnies"
 
+@javascript
 Scenario:  recruiters should be able to change their password
   Given I am logged in as "fluffyBunnies" with password "pass1234"
   And I am on the "fluffyBunnies" recruiters page
@@ -51,6 +56,7 @@ Scenario:  recruiters should be able to change their password
   Then I should be on the "fluffyBunnies" recruiters page
   And the password for "fluffyBunnies" should be "anewpass"
 
+@javascript
 Scenario: recruiters should be able to change their email
   Given I am logged in as "fluffyBunnies" with password "pass1234"
   And I am on the "fluffyBunnies" recruiters page
@@ -60,24 +66,28 @@ Scenario: recruiters should be able to change their email
   Then I should be on the "fluffyBunnies" recruiters page
   And the email for "fluffyBunnies" should be "wtf@yahoo.com"
 
+@javascript
 Scenario: recruiter should be redirected when trying to view a nonexistent profile
   Given I am logged in as "fluffyBunnies" with password "pass1234"
   And I am on the "fluffyBunnies" recruiters page
   And I go to the "nonexistentperson" recruiters page
   Then I should be on the "fluffyBunnies" recruiters page
 
+@javascript
 Scenario: recruiter should not be able to view a candidate's page
   Given I am logged in as "fluffyBunnies" with password "pass1234"
   And I am on the "fluffyBunnies" recruiters page
   And I go to the "nestorga" candidates page
   Then I should be on the "fluffyBunnies" recruiters page
 
+@javascript
 Scenario: candidate should be redirected when trying to view a nonexistent profile
   Given I am logged in as "efriesen" with password "secure!p@ss"
   And I am on the "efriesen" candidates page
   And I go to the "somenonexistentperson" candidates page
   Then I should be on the "efriesen" candidates page
 
+@javascript
 Scenario: candidate should not be able to view a recruiter's page
   Given I am logged in as "efriesen" with password "secure!p@ss"
   And I am on the "efriesen" candidates page

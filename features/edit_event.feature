@@ -3,7 +3,6 @@ As a recruiter
 So that I can edit events after I've submitted them
 I want to be able to Edit Events
 
-
 Background: Following users exists as well as events.
 
 

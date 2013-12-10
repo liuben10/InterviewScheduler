@@ -27,19 +27,23 @@ Given the following accounts exist:
 
   And I am logged in as "nestorga" with password "fooPass3"
 
+@javascript
 Scenario: Display upcoming appointments
   Then I should see an appointment with "fluffyBunnies" on "2013/13/13"
   And I should see an appointment with "radhesh" on "2013/12/08"
 
+@javascript
 Scenario: Don't display appointments candidate doesn't have
   Then I should not see an appointment with "radhesh" on "2013/12/11"
   And I should not see an appointment with "fluffyBunnies" on "2013/12/12"
   And I should not see an appointment with "radhesh" on "2013/12/14"
 
+@javascript
 Scenario: Don't display appointments of other candidates
   And I should not see an appointment with "fluffyBunnies" on "12/25/12"
   And I should not see an appointment with "radhesh" on "03/02/14"
 
+@javascript
 Scenario: Don't display appointments of recruiters
   Then I should not see an appointment with "some_cand" on "03/02/14"
   And I should not see an appointment with "efriesen" on "12/25/12"
