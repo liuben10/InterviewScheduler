@@ -115,7 +115,6 @@ GEM
     mime-types (1.25)
     mini_portile (0.5.1)
     multi_json (1.8.2)
-<<<<<<< HEAD
     multi_test (0.0.2)
     nokogiri (1.6.0)
       mini_portile (~> 0.5.0)
@@ -124,8 +123,6 @@ GEM
       activesupport (>= 3.0.0)
       cocaine (~> 0.5.3)
       mime-types
-=======
->>>>>>> 8b8304d529ae0ac90015fc2658b308ab7bf366e2
     pg (0.17.0)
     polyglot (0.3.3)
     rack (1.4.5)
@@ -225,12 +222,9 @@ DEPENDENCIES
   foundation-rails
   haml
   jquery-rails
-<<<<<<< HEAD
   jquery-ui-rails
   launchy (~> 2.4.2)
   paperclip (~> 3.0)
-=======
->>>>>>> 8b8304d529ae0ac90015fc2658b308ab7bf366e2
   pg
   rails (= 3.2.14)
   railties
