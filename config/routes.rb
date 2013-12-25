@@ -1,5 +1,4 @@
 Scheduler::Application.routes.draw do
-<<<<<<< HEAD
   #match 'candidates/:name/calendar(/:year(/:month))' =>  'calendar#index', :as => :calendar_candidate, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
   #match 'recruiters/:name/calendar(/:year(/:month))' =>  'calendar#index', :as => :calendar_recruiter, :constraints => {:year => /\d{4}/, :month => /\d{1,2}/}
 
@@ -8,10 +7,7 @@ Scheduler::Application.routes.draw do
 
 
   post "user/modify" => "users#modify"
-=======
-  get "login/index"
   get "welcome/index" => "welcome#index"
->>>>>>> 8b8304d529ae0ac90015fc2658b308ab7bf366e2
   resources :candidates
   resources :recruiters
   resources :events
@@ -30,8 +26,6 @@ Scheduler::Application.routes.draw do
   post "recruiter/:id/add_candidate" => "recruiters#add_candidate"
   post "recruiter/:id/message_candidate" => "recruiters#message_candidate"
   post "candidate/:id/add_recruiter" => "candidates#add_recruiter"
-
-<<<<<<< HEAD
 # GET REQUESTS
   get "recruiter/:id/view/:profile_id" => "recruiter#view"
   get "candidate/:id/view/:profile_id" => "candidate#view"
@@ -63,9 +57,7 @@ Scheduler::Application.routes.draw do
 
 #temporary
   match 'login', :to => redirect('/welcome/index')
-=======
   match 'welcome', :to => redirect('/welcome/index')
->>>>>>> 8b8304d529ae0ac90015fc2658b308ab7bf366e2
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -116,10 +108,6 @@ Scheduler::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-<<<<<<< HEAD
-=======
-  root :to => redirect('welcome/index')
->>>>>>> 8b8304d529ae0ac90015fc2658b308ab7bf366e2
 
   # See how all your routes lay out with "rake routes"
 

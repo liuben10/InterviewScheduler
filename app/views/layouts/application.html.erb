@@ -1,15 +1,11 @@
+# -*- coding: utf-8 -*-
 <!DOCTYPE html>
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Interview Scheduler</title>
-<<<<<<< HEAD
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application"%>
-=======
-  <%= stylesheet_link_tag "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
->>>>>>> 8b8304d529ae0ac90015fc2658b308ab7bf366e2
   <%= csrf_meta_tags %>
 </head>
 
@@ -23,10 +19,9 @@
       </h1>
     </li>
   </ul>
-<<<<<<< HEAD
   <% if session[:authenticated_user].nil? %>
     <ul class = "right">
-      <li class="has-form top-bar-item">            
+      <li class="has-form top-bar-item">
         <form action="/welcome/show" method="get" id="inputform">
           <div class="row collapse">
             <div class = "small-4 columns">
@@ -48,41 +43,17 @@
             <small class="error">Password Incorrect</small>
           <% end %>
         </form>
-=======
-  <section class="top-bar-section">
-    <ul class="right">
-    <li class="has-form">
-          <form>
-              <div class="row collapse">
-                <div class="small-5 columns">
-                    <input type="text" value="Username">
-                </div>
-                <div class="small-5 columns">
-                    <input type="text" value="Password">
-                </div>
-                <div class="small-2 columns">
-                    <a href="#" class="button">Login</a>
-                </div>
-              </div>
-          </form>
->>>>>>> 8b8304d529ae0ac90015fc2658b308ab7bf366e2
-      </li>
-    </ul>
+
   <% else %>
     <section class = "top-bar-section">
       <ul class="right">
         <li class = "top-bar-item">
-		      <%= link_to "Logout", logout_path, method: :post %>
-		</li>
+          <%= link_to "Logout", logout_path, method: :post %>
+    </li>
       </ul>
     </section>
   <% end %>
 </nav>
-<<<<<<< HEAD
-=======
-
-<%= yield %>
->>>>>>> 8b8304d529ae0ac90015fc2658b308ab7bf366e2
 
 <%= yield %>
 
