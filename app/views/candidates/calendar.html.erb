@@ -13,7 +13,6 @@
     <%= link_to raw('<i class="fi-wrench profile-icon"></i>'), "/candidates/#{@candidate.username}/edit", :id=>"Edit"%>
     <p>Settings</p>
   </div>
-
   <div class = "large-7 columns">
     <div id = "calendar">
     </div>
@@ -66,8 +65,8 @@
              title : "<%= event.name %>",
              start: "<%= event.start_at.strftime('%Y-%m-%d') %>",
              end: "<%= event.end_at.strftime('%Y-%m-%d') %>",
-             <% if event.pending_id == "" or event.pending_id.nil? %>
-                className: 'customOrange'
+             <% if event.start_at.to_i  < Time.now.to_i %>
+                className: 'customBlack'
               <% elsif not (event.pending_id.nil? or event.pending_id == "") and not (event.candidate_id.nil? or event.pending_id == "")%>
                 className: 'customGreen'
               <% else %>

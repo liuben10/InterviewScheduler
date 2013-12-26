@@ -232,6 +232,7 @@
          $("#end_month").val(endDate.getMonth());
          $("#end_date").val(endDate.getDate());
          $("#end_year").val(endDate.getFullYear());
+         $("#new_event").draggable();
          $(".submitForm").click(function(){ // on submission
               var title = $(".title").val(); // gets title value
               if(title != ""){ // if the title exists run script
